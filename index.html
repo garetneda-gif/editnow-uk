@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "secondary": "#3b6934",
+                        "tertiary": "#593d00",
+                        "secondary-fixed": "#bcf0ae",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#002201",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container-highest": "#e4e2e2",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2e2",
+                        "on-tertiary-fixed": "#271900",
+                        "primary-fixed": "#ffdad7",
+                        "on-surface-variant": "#58413f",
+                        "outline-variant": "#e0bfbc",
+                        "inverse-primary": "#ffb3ad",
+                        "on-background": "#1b1c1c",
+                        "on-secondary-fixed-variant": "#23501e",
+                        "surface-container-high": "#eae8e7",
+                        "tertiary-fixed-dim": "#f5bd58",
+                        "tertiary-fixed": "#ffdeaa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffc868",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "on-secondary-container": "#3f6d38",
+                        "surface-dim": "#dbdad9",
+                        "on-primary-container": "#ffc2bd",
+                        "inverse-surface": "#303030",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "primary-container": "#a62c2b",
+                        "on-primary-fixed": "#410004",
+                        "surface-container": "#efeded",
+                        "tertiary-container": "#775300",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#a1d494",
+                        "secondary-container": "#b9eeab",
+                        "outline": "#8c716e",
+                        "surface": "#fbf9f8",
+                        "primary": "#851217",
+                        "surface-tint": "#ad312f",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#8b181b",
+                        "background": "#fbf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .paper-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+            background-blend-mode: multiply;
+        }
+        .silk-overlay {
+            background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 dark:bg-[#1b1c1c]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+<div class="flex justify-between items-center w-full px-12 py-5 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-headline font-extrabold tracking-tight text-[#851217] dark:text-[#a62c2b]">四色香屯</div>
+<div class="hidden md:flex gap-16 items-center">
+<a class="text-[#851217] dark:text-[#a62c2b] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="#">传承 Heritage</a>
+<a class="text-[#1b1c1c]/60 dark:text-[#fbf9f8]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="#">画廊 Gallery</a>
+<a class="text-[#1b1c1c]/60 dark:text-[#fbf9f8]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="#">文创 Merchandise</a>
+</div>
+<div class="flex items-center gap-8">
+<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">shopping_bag</span>
+</div>
+</div>
+</nav>
+<main class="max-w-screen-2xl mx-auto px-12 pt-40 pb-32 relative">
+<!-- Hero Branding Section -->
+<header class="mb-48 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative">
+<div class="lg:col-span-7">
+<div class="mb-6 flex items-center gap-4">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Identity Exhibition | 身份定义展</span>
+</div>
+<h1 class="text-7xl font-headline font-extrabold text-on-surface tracking-tight mb-10 leading-[1.1]">
+                四色香屯：<span class="text-primary italic">视觉身份定义</span>
+<br/><span class="text-4xl opacity-40 font-medium">Identity of The Four Colors</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl font-headline italic leading-relaxed opacity-90">
+                源自香屯土壤的视觉叙事。我们颂扬建筑的厚重感与自然律动的交汇。
+            </p>
+</div>
+<div class="lg:col-span-5 flex flex-col items-center">
+<div class="relative w-full aspect-square max-w-md bg-white p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] rounded-sm silk-overlay border border-outline-variant/20">
+<div class="w-full h-full flex items-center justify-center p-8 border border-outline-variant/10">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="minimalist logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC38khLWDGqN-_7VWleMT-UQfoInM0m9avKgQ28yoS6n31gTPPKVM9kDvOC0D5BCqFvdSqvZ8UaJCq2DC2SNSTQZuXBqi5R6RDZgL1knuOFW796mZUGYeFK3WsnLP5riFFBlSMVVTnaMFQVuodUDyOmz968wN0VKPhk9-3QQdukCTOYBMsybo-Lizjekvk7zC9u-WVX7QqtpFwZFlXWBjymFs25_ZdESzli8Q0Wa_7Sdd6zOYDPJ4lA1ZlFz1olrBfvycQswZ51t1I"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl border border-outline-variant/10">
+<h2 class="text-3xl font-headline font-black text-primary mb-1">四色香屯</h2>
+<p class="text-[10px] font-body text-on-surface-variant tracking-[0.3em] uppercase">Visual Identity MMXXIV</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Section 1: Color Palette -->
+<section class="mb-48">
+<div class="flex flex-col items-center mb-20 text-center">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Section 01</h3>
+<h2 class="text-5xl font-headline font-bold">色彩溯源与色值研究</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Pigment &amp; Origin Studies</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- Red -->
+<div class="group">
+<div class="aspect-[3/4] bg-primary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
+<div class="absolute inset-0 bg-black/5 mix-blend-overlay"></div>
+<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">R</span>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30 pl-6">
+<h4 class="font-headline font-extrabold text-2xl">传承红</h4>
+<p class="text-[10px] font-body font-bold text-primary tracking-widest uppercase">Heritage Red | #851217</p>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">源自古砖的脉动与砖窑的余温。</p>
+</div>
+</div>
+<!-- Gold -->
+<div class="group">
+<div class="aspect-[3/4] bg-tertiary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
+<div class="absolute inset-0 bg-black/5 mix-blend-overlay"></div>
+<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">G</span>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30 pl-6">
+<h4 class="font-headline font-extrabold text-2xl">板栗金</h4>
+<p class="text-[10px] font-body font-bold text-tertiary tracking-widest uppercase">Chestnut Gold | #593D00</p>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">丰收时节，挂在村落林间的圆月之色。</p>
+</div>
+</div>
+<!-- Green -->
+<div class="group">
+<div class="aspect-[3/4] bg-secondary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
+<div class="absolute inset-0 bg-black/5 mix-blend-overlay"></div>
+<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">M</span>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30 pl-6">
+<h4 class="font-headline font-extrabold text-2xl">远山绿</h4>
+<p class="text-[10px] font-body font-bold text-secondary tracking-widest uppercase">Mountain Green | #3B6934</p>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">山谷中四季常青的呼吸与古老树冠。</p>
+</div>
+</div>
+<!-- Ink -->
+<div class="group">
+<div class="aspect-[3/4] bg-on-surface mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
+<div class="absolute inset-0 bg-white/5 mix-blend-overlay"></div>
+<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">S</span>
+</div>
+<div class="space-y-2 border-l border-outline-variant/30 pl-6">
+<h4 class="font-headline font-extrabold text-2xl">玄石墨</h4>
+<p class="text-[10px] font-body font-bold text-on-surface-variant tracking-widest uppercase">Stone Ink | #1B1C1C</p>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">镌刻在古石上，历经风雨的书法印记。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: IP Character -->
+<section class="mb-48">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-24">
+<div class="lg:col-span-5">
+<div class="sticky top-32">
+<span class="inline-block border border-primary text-primary px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-10">Mascot Design Study | 形象研究</span>
+<h3 class="text-5xl font-headline font-extrabold mb-10 leading-tight">核心IP形象：<br/><span class="italic font-normal">板栗守护灵</span></h3>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-12 font-headline italic">
+                        自然与建筑的拟人化结合。“板栗守护灵”的外壳设计灵感来源于明长城的城砖纹理。
+                    </p>
+<div class="space-y-6">
+<div class="flex items-center gap-6 p-6 border border-outline-variant/30 bg-surface/50 rounded-sm hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-primary scale-125">architecture</span>
+<div>
+<h5 class="text-sm font-bold uppercase tracking-widest">建筑基石 Architectural Foundation</h5>
+<p class="text-xs text-on-surface-variant mt-1">源自敌楼石材的几何砌筑纹理。</p>
+</div>
+</div>
+<div class="flex items-center gap-6 p-6 border border-outline-variant/30 bg-surface/50 rounded-sm hover:border-secondary/40 transition-colors">
+<span class="material-symbols-outlined text-secondary scale-125">eco</span>
+<div>
+<h5 class="text-sm font-bold uppercase tracking-widest">有机生长 Organic Flourish</h5>
+<p class="text-xs text-on-surface-variant mt-1">代表季节生命周期的叶状装饰。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 space-y-16">
+<!-- Character Sheet -->
+<div class="p-16 bg-white rounded-sm shadow-[0_20px_60px_-10px_rgba(0,0,0,0.05)] border border-outline-variant/10">
+<h4 class="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant mb-16 text-center">三视图技术分析 Technical 3-View Analysis</h4>
+<div class="grid grid-cols-3 gap-12">
+<div class="group">
+<div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
+<img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVwLnOvuuPfUzNkC7aGpBeQwLq-gQPVk95W0qWW6lei9S4QE6Bp7XemyaVTDwku70gW9QgmzHIuFiKCfJGpDiz6iOofskbBGyPb7Y1-F0s-D7BEUDPx8tOvlfVtouN29RzcuACAAS1pLRD9eNyiL9VxihsDrvn8inFv0DrH3_dFdgw6HQ77JCMrQhjDC3l4V0BQ2RgZPU4hleLk3erAtREgmOhMnvqae5nTEGU4ysefiGFJwDxaYNDtlJmwg1FuIFITvHIqq8U7oM"/>
+</div>
+<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-60">I. 正面 Aspect</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
+<img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuZe6GCzSVdhsOmSqZuJjNXVtRoFnPP7prOxDIRKz5A_FRdfBroUPg8kgVRzzZ1-_zMEtouW_n39BYV0YvXzGo69YL_S4iWhXjjcNToMOAzhtzMbcst0n3RGcJsu4mpPR1E_LqtlXa9Up9KjaweAekSZH9-ua6uwtde6so7tkY_hud-0rmnSGaBdUBszOQOJPymFu8N6kCqVe4AdZ2tSu0xMBBEolBRHcpoiBkjnT0ZB1QMNmqE4LfVPkKwPmidrQnxmugLwHNH40"/>
+</div>
+<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-60">II. 侧面 Profile</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
+<img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzVikDP90FkveoIHaCdKa4p0WnMluiubmGLRRAuAIDExMESDKdRimfL2qUN93rtd5rI3pgmvI2BCcofs1v-r6UHqWhAHKOp5wjCuxM1IoeIbG6v5l8a8OsuS1VFzF7DgpVHx69Y5eCT3lNjmHqfKhDg4T5HUvUrDdfn5286Qoc8ylgwQu-hg1P2DQ5qukGmXjNW72Tb3kCBQLnGWH8LVUl9ZtOi8JnZ7v5RwzTg10huLtpZdMb39kHhVJLFBNGYJnS57ggHAK1bj0"/>
+</div>
+<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-60">III. 背面 Detail</p>
+</div>
+</div>
+</div>
+<!-- Expressions -->
+<div class="grid grid-cols-3 gap-8">
+<div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
+<img class="w-24 h-24 mx-auto rounded-full relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCveGhtjlb8VB6xVzsXrYSbR5VfwxfhO4LTejdxbQvbFZ6Ua7ZBmwgekE1G_FjFvS30f7FUVGTOsKK9zEiuOzboRn3wHE0pAvm6th2h-Vb39qGvrEdyCmOsyk2jI3zhI0dM2D6jPw_Wlo4voFyzHoRkGj5xV5G4W4Z-07j-Mi337IUwOiC_Z60XEQQD2f8YFuiC5Zpil9VVwn9r_rDlBDsjNkxI3fl5bvwtaJ6Vda3lyOv9n2e5CeF4PCeX5wtf2hLe9RD5pBhUoq0"/>
+</div>
+<h5 class="font-headline font-extrabold text-lg italic">喜悦绽放 Joyous</h5>
+</div>
+<div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
+<img class="w-24 h-24 mx-auto rounded-full relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkVPlrm6ehVOO7hNzS5hx3s8Lvsgp-7imMkffYiWDGNj7JLPDhmizt8qs_Vq9k3NAm8QDLEuEwTRrXoArz0MiRCU17kGPBQHIILsLzZLNM3ofc9uT84gfEUEfNKkjoL7ySuHVLqCLEFxn68YPzZn5jDKLc3wDtUkPWqvzeau1lmWoEjYVeK05pNxf2am04-z9ordHCmF4VONE6dHTB5bXdXhxhskwXx7oSo0bX-Ot99RK7cHQVckSJwA_n7TsyIt7QNZ02-zD2KFQ"/>
+</div>
+<h5 class="font-headline font-extrabold text-lg italic">守护瞭望 Watchman</h5>
+</div>
+<div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
+<img class="w-24 h-24 mx-auto rounded-full relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF0z65Jtukg35VZLKL394zg57Id-axyM-AAaa7hjiQmQY7RSzC5eVBAjMC-8lBAcDNchLnq8BXRnF8xvAPEHRV9nm6-oJqlTtG_ILkF7KCk1Fo3VOziS4TMk0rHyYGF9pg7pWuUwt7dv0qKP23qZw3fbYnJeXoc_yLOkwwyCY7Jhumwr44MIivNwnq9Fcw6B4TEyRrs1kSES_vTYztJfWuadigPEKOwKrVuGlInFaxB8CUPvUY1Bb1LJ52fOXBXrib0AgN1cUaSQk"/>
+</div>
+<h5 class="font-headline font-extrabold text-lg italic">静默成长 Growth</h5>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Mural Concept -->
+<section class="mb-48 relative">
+<div class="max-w-4xl mx-auto mb-20 text-center">
+<h3 class="text-[10px] font-black tracking-[0.6em] uppercase text-primary mb-6">Masterwork Rendering | 重点作品渲染</h3>
+<h2 class="text-6xl font-headline font-extrabold mb-8">历史之门：<span class="italic font-normal">四色画廊</span></h2>
+<p class="text-lg text-on-surface-variant font-headline max-w-2xl mx-auto opacity-80 leading-relaxed">
+                为村落入口设计的地标性装置，运用水墨美学将长城轮廓与现代交互式文化遗产层相融合。
+            </p>
+</div>
+<div class="relative group overflow-hidden rounded-sm shadow-2xl bg-white p-2">
+<div class="border border-outline-variant/20 p-2">
+<img class="w-full aspect-[21/9] object-cover transition-transform duration-[2000ms] group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDux_oz_4OU0eBl5H6UiLQmtyROKvwb4IL40C2FNtbXEO-XgIfog-R63LNmgTN_yECWWq4S8v8NnodJfAjPhQGMTxM_d7hXTJikDht8enRjaAUZsca2AYejQpIALJhTAQL8HIdZQ6dvK3S-tlGUwnwnGbfBXvCu_N9qFLCPE9bLySAYke3XsRmXOLM97pF2oVCHDP8QxNPLDbvU8nNI83rdew29LNM2cOIcY-g0LR8ubi4zKQx5VDibuEAzNkmbPe--pcejuR4NY2Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-12 left-12 right-12 flex items-end justify-between">
+<div class="text-white border-l-2 border-primary pl-8 py-2">
+<p class="text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 mb-2">Heritage Site: Main Village Entrance | 遗产地：村庄主入口</p>
+<h4 class="text-4xl font-headline font-extrabold italic tracking-tight">四色壁画 The Mural of Four Colors</h4>
+</div>
+<div class="bg-surface/10 backdrop-blur-xl p-8 rounded-sm border border-white/20 flex items-center gap-8 group/ar hover:bg-surface/20 transition-all cursor-pointer">
+<div class="w-20 h-20 bg-white p-2 rounded-sm shadow-lg overflow-hidden">
+<img class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR7TJ5dPVJvg3Og1eLPntUAK63PSVzKjbih9Q_zXwFPrtW6IWAUfMW2eHDuFr9y0Sr7fufRlU-gJ3awVdrtqR7uBXMcXO73tL2WkAML5Ss9Nqw5ZCWP4ygeZ45UYDEWPBsbEz1I-drkGlncWTa9XufivP0q7jVgYRNOocKDJfweIi2nXtWKrH83L31gSkUxbzhHUw1LJYGlMme6FnyNiBZ-ov6RmnhJ5kdbI7t7wVIOzU8X6SBjSF5zV19PVCrXrA_kPphyGH7Yr4"/>
+</div>
+<div class="text-white">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm">view_in_ar</span>
+<span class="text-[10px] font-black tracking-widest uppercase">Augmented layer | 增强现实</span>
+</div>
+<p class="text-xs font-bold leading-tight uppercase opacity-90">扫码体验<br/>数字活化画廊 Experience</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Merchandise -->
+<section class="mb-20">
+<div class="flex flex-col items-center mb-24">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Collection 03</h3>
+<h2 class="text-5xl font-headline font-bold">限量文创精品</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Limited Artisan Editions</p>
+<div class="h-px w-32 bg-outline-variant mt-8"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-20">
+<!-- Product 1 -->
+<div class="group flex flex-col">
+<div class="bg-white aspect-[4/5] rounded-sm overflow-hidden mb-10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-outline-variant/10 p-4 transition-all duration-700 group-hover:shadow-3xl group-hover:-translate-y-2">
+<div class="w-full h-full overflow-hidden bg-[#f9f8f6] relative">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0zAK4EUeUR-A4qXg63HrgbG7gNIG5QX_JsUiNwVYTa9PEWs_cVkrfRNKepVJQWn2tpdEI9EQrKev0b9Zgj1BxmXauBJoNFfjOveRY2jWLyjMH16h-HI17hHSB_0pyofsqepphnNai_9QD7Q6PuN1piLc7wtnppfzqqAAKsBnKpbB2TJvtc7b_evYB1Ts2VpBTjOQiWG5LthN8SfeyTMTHGZldi8sG_1v5TGbRXnRvgsLApsps8lwV4-XRksoQRzuSmVqu73GbC6Q"/>
+<span class="absolute top-6 right-6 bg-secondary-fixed text-on-secondary-fixed px-3 py-1 text-[9px] font-black tracking-widest uppercase rounded-full">新品上架 New</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center px-4">
+<h5 class="font-headline font-extrabold text-2xl mb-1">守护者帆布包</h5>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">环保亚麻帆布材质</p>
+<div class="h-px w-10 bg-outline-variant/30 group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group flex flex-col">
+<div class="bg-white aspect-[4/5] rounded-sm overflow-hidden mb-10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-outline-variant/10 p-4 transition-all duration-700 group-hover:shadow-3xl group-hover:-translate-y-2">
+<div class="w-full h-full overflow-hidden bg-[#f9f8f6] relative">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa5xrjYSNnc0DQ-62CRAwwSM6yd_kDomhvfbAt-cIh-TvuXNV_2xlPfLlZljIZ01H9aXQjl_wXwZJ_vKYq3p_PUkcWmI7ZKBJfO4u5E9gFB2e9hrq0WHBvaAVfw_YtQUIU0fubmuUE1weEQH1-8VgXazF_w_XtonO4Pu4Gajtaj7bkohza3N3ji8k1Mzl3Fouze0543qQRatXUJKDyLRAFnIJW_uFGEELcC2R6FV658RUNf3LoZxSWKEnWbWt-q8pvFMFTm00Q2k4"/>
+</div>
+</div>
+<div class="flex flex-col items-center text-center px-4">
+<h5 class="font-headline font-extrabold text-2xl mb-1">传承系列手机壳</h5>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">标志纹理压印工艺</p>
+<div class="h-px w-10 bg-outline-variant/30 group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group flex flex-col">
+<div class="bg-white aspect-[4/5] rounded-sm overflow-hidden mb-10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-outline-variant/10 p-4 transition-all duration-700 group-hover:shadow-3xl group-hover:-translate-y-2">
+<div class="w-full h-full overflow-hidden bg-[#f9f8f6] relative">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBarYt0sqo44NFPXRSlw3ITgTbB6DSGPvBArAv8c2OtdhII0cTtg_AHo58EcZo7ywLczkM14eOPRqZ59VFB_jFaiQ-fKiJJX7qPQJ4cNbBwiWcVAfnYL04bTXvRzQrrHYv8HanYiD-HKKhyvxynQ8PNORPzNrwYVKmiDEhcxbLIM32uYfxQQ_eEOZkoycaTRcueYJ_WFMMo1ZCRZTR_fWjxahEQ7ysaaHws3N4eV2BW12Y0lvSxdxExSuite3mI5UUbZAOB7I_vI4A"/>
+<span class="absolute top-6 right-6 bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 text-[9px] font-black tracking-widest uppercase rounded-full">匠心甄选 Select</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center px-4">
+<h5 class="font-headline font-extrabold text-2xl mb-1">壁画主题日记本</h5>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">烫金封面设计</p>
+<div class="h-px w-10 bg-outline-variant/30 group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-24 px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+<div class="max-w-xs">
+<div class="text-3xl font-headline font-black text-primary mb-6">四色香屯</div>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+                通过现代视觉叙事，守护长城板栗林色彩遗产。
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">设计哲学</a></li>
+<li><a class="hover:text-white transition-colors" href="#">壁画地图</a></li>
+<li><a class="hover:text-white transition-colors" href="#">文化档案馆</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">商城 Store</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">限量系列</a></li>
+<li><a class="hover:text-white transition-colors" href="#">配送与退货</a></li>
+<li><a class="hover:text-white transition-colors" href="#">隐私政策</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>© 2024 THE FOUR COLORS XIANGTUN | 四色香屯. 版权所有.</p>
+<div class="flex gap-12">
+<a class="hover:text-white transition-colors" href="#">Instagram</a>
+<a class="hover:text-white transition-colors" href="#">WeChat</a>
+<a class="hover:text-white transition-colors" href="#">Behance</a>
+</div>
+</div>
+</footer>
+</body></html>
