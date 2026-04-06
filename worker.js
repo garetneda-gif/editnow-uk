@@ -1,7 +1,4 @@
 // Cloudflare Worker: 香屯文化导游 LLM API 代理
-// 部署到 Cloudflare Workers，绑定子域名 xiangtun-chat.editnow.uk
-// 环境变量: LLM_API_KEY, LLM_API_URL (在 Cloudflare Dashboard 设置)
-
 export default {
   async fetch(request, env) {
     // CORS 预检
@@ -16,11 +13,21 @@ export default {
       });
     }
 
+    const url = new URL(request.url);
+
+    // 调试端点：检查环境变量是否正确配置
+    if (url.pathname === '/debug') {
+      return jsonResponse({
+        hasApiKey: !!env.LLM_API_KEY,
+        apiKeyPrefix: env.LLM_API_KEY ? env.LLM_API_KEY.substring(0, 6) + '...' : 'NOT SET',
+        apiUrl: env.LLM_API_URL || 'default: deepseek',
+      });
+    }
+
     if (request.method !== 'POST') {
       return new Response('Method not allowed', { status: 405 });
     }
 
-    const url = new URL(request.url);
     if (url.pathname !== '/api/chat') {
       return new Response('Not found', { status: 404 });
     }
@@ -29,7 +36,6 @@ export default {
       const body = await request.json();
       const messages = body.messages || [];
 
-      // 限制消息数量防滥用
       if (messages.length > 20) {
         return jsonResponse({ error: 'Too many messages' }, 400);
       }
@@ -55,10 +61,20 @@ export default {
         }),
       });
 
-      const data = await resp.json();
-      return jsonResponse(data);
+      const text = await resp.text();
+
+      if (!resp.ok) {
+        return jsonResponse({ error: 'LLM API error', status: resp.status, detail: text }, 502);
+      }
+
+      return new Response(text, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     } catch (err) {
-      return jsonResponse({ error: 'Internal error' }, 500);
+      return jsonResponse({ error: 'Internal error', detail: err.message, stack: err.stack }, 500);
     }
   },
 };
