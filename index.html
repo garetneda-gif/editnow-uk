@@ -333,6 +333,8 @@
             <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">首页 Home</a>
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="about/history.html">香屯故事 Story</a>
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="routes/red-study.html">文旅路线 Routes</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="guardian/index.html">守护者 Guardian</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="booking/index.html">预约 Booking</a>
         </div>
         <div class="flex items-center gap-8">
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
@@ -345,7 +347,9 @@
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
         <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">首页 Home</a>
         <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="about/history.html">香屯故事 Story</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="routes/red-study.html">文旅路线 Routes</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="routes/red-study.html">文旅路线 Routes</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian/index.html">守护者 Guardian</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="booking/index.html">预约 Booking</a>
     </div>
 </nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
@@ -354,14 +358,14 @@
 <div class="lg:col-span-7 fade-in">
 <div class="mb-6 flex items-center gap-4">
 <span class="h-px w-12 bg-primary"></span>
-<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Identity Exhibition | 身份定义展</span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Heritage Revived | 长城文化振兴</span>
 </div>
 <h1 class="text-3xl md:text-5xl lg:text-7xl font-headline font-extrabold text-on-surface tracking-tight mb-10 leading-[1.1]">
                 四色香屯：<span class="text-primary">长城脚下的四色人间</span>
 <br/><span class="text-2xl md:text-4xl opacity-40 font-medium">Where the Great Wall Meets Village Life</span>
 </h1>
 <p class="text-xl text-on-surface-variant max-w-xl font-headline italic leading-relaxed opacity-90">
-                六百年前，戍边将士在这里垒石筑城；六百年后，38户人家仍在长城脚下守望。延庆大庄科乡香屯村，以传承红、板栗金、远山绿、玄石墨四色，书写一部活着的长城史诗。
+                延庆、昌平、怀柔三区交界处，四面环山、一水中流。辽代铁炉的余烬尚温，明代戍卒的棋局犹在城砖之上。38户人家、74口人，守着3号敌台与400米城墙，守着考古发掘出的杏核与粮种——这是香屯，一座用传承红、板栗金、远山绿、玄石墨四色书写的活态长城史诗。
             </p>
 </div>
 <div class="lg:col-span-5 flex flex-col items-center fade-in-right">
@@ -387,9 +391,16 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
 <!-- Red -->
 <div class="group scale-in" style="transition-delay: 0.1s">
-<div class="aspect-[3/4] bg-primary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
-<div class="absolute inset-0 bg-black/5 mix-blend-overlay"></div>
-<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">R</span>
+<div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#a8292f 0%,#851217 45%,#520b0e 100%)">
+<div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.1)"></div>
+<span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">R</span>
+<div class="absolute bottom-0 left-0 right-0 flex h-5">
+<div class="flex-1" style="background:#f0c8ca"></div>
+<div class="flex-1" style="background:#c07478"></div>
+<div class="flex-1" style="background:#851217"></div>
+<div class="flex-1" style="background:#5c0d10"></div>
+<div class="flex-1" style="background:#2e0608"></div>
+</div>
 </div>
 <div class="space-y-2 border-l border-outline-variant/30 pl-6">
 <h4 class="font-headline font-extrabold text-2xl">传承红</h4>
@@ -399,9 +410,16 @@
 </div>
 <!-- Gold -->
 <div class="group scale-in" style="transition-delay: 0.2s">
-<div class="aspect-[3/4] bg-tertiary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
-<div class="absolute inset-0 bg-black/5 mix-blend-overlay"></div>
-<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">G</span>
+<div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#7a5a10 0%,#593D00 45%,#3a2700 100%)">
+<div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.1)"></div>
+<span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">G</span>
+<div class="absolute bottom-0 left-0 right-0 flex h-5">
+<div class="flex-1" style="background:#e5d4b0"></div>
+<div class="flex-1" style="background:#b89050"></div>
+<div class="flex-1" style="background:#593D00"></div>
+<div class="flex-1" style="background:#3d2a00"></div>
+<div class="flex-1" style="background:#1f1500"></div>
+</div>
 </div>
 <div class="space-y-2 border-l border-outline-variant/30 pl-6">
 <h4 class="font-headline font-extrabold text-2xl">板栗金</h4>
@@ -411,9 +429,16 @@
 </div>
 <!-- Green -->
 <div class="group scale-in" style="transition-delay: 0.3s">
-<div class="aspect-[3/4] bg-secondary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
-<div class="absolute inset-0 bg-black/5 mix-blend-overlay"></div>
-<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">M</span>
+<div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#4f8a46 0%,#3B6934 45%,#274822 100%)">
+<div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.1)"></div>
+<span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">M</span>
+<div class="absolute bottom-0 left-0 right-0 flex h-5">
+<div class="flex-1" style="background:#c6dbc3"></div>
+<div class="flex-1" style="background:#7aab72"></div>
+<div class="flex-1" style="background:#3B6934"></div>
+<div class="flex-1" style="background:#294a24"></div>
+<div class="flex-1" style="background:#152513"></div>
+</div>
 </div>
 <div class="space-y-2 border-l border-outline-variant/30 pl-6">
 <h4 class="font-headline font-extrabold text-2xl">远山绿</h4>
@@ -423,9 +448,16 @@
 </div>
 <!-- Ink -->
 <div class="group scale-in" style="transition-delay: 0.4s">
-<div class="aspect-[3/4] bg-on-surface mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
-<div class="absolute inset-0 bg-white/5 mix-blend-overlay"></div>
-<span class="absolute bottom-6 left-6 text-white font-headline text-6xl font-black opacity-10">S</span>
+<div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#3a3b3b 0%,#1B1C1C 45%,#0a0a0a 100%)">
+<div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.08)"></div>
+<span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">S</span>
+<div class="absolute bottom-0 left-0 right-0 flex h-5">
+<div class="flex-1" style="background:#c8c9c9"></div>
+<div class="flex-1" style="background:#787a7a"></div>
+<div class="flex-1" style="background:#1B1C1C"></div>
+<div class="flex-1" style="background:#111212"></div>
+<div class="flex-1" style="background:#070808"></div>
+</div>
 </div>
 <div class="space-y-2 border-l border-outline-variant/30 pl-6">
 <h4 class="font-headline font-extrabold text-2xl">玄石墨</h4>
@@ -457,7 +489,7 @@
 <div>
 <p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 01 | 灰色长城</p>
 <h3 class="text-4xl md:text-5xl font-headline font-extrabold text-white mb-6 tracking-tight">六百年石语</h3>
-<p class="text-white/70 leading-relaxed max-w-md text-sm md:text-base">国家文物局首批研究性修缮试点。3号、4号敌台与400米墙体，见证明代军事防御的严密布局。</p>
+<p class="text-white/70 leading-relaxed max-w-md text-sm md:text-base">2021年国家文物局首批研究性修缮试点，香港黄廷方基金会捐赠千万。考古先行、最小干预——3号、4号敌台与400米墙体，每一块城砖都有三维数字档案。</p>
 </div>
 <div class="mt-8">
 <span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">探索路线 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
@@ -483,7 +515,7 @@
 <div class="z-10 relative">
 <p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 02 | 红色研学</p>
 <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-4 tracking-tight">烽火传承</h3>
-<p class="text-white/70 leading-relaxed text-sm">重走长城抗战路，聆听历史的回响</p>
+<p class="text-white/70 leading-relaxed text-sm">从抗日前沿阵地到"开学第一课"，5公里外便是沙塘沟"平北红色第一村"</p>
 </div>
 <div class="z-10 mt-8">
 <span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">探索路线 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
@@ -499,7 +531,7 @@
 <div>
 <p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 03 | 绿色生态</p>
 <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-4 tracking-tight">天然氧吧</h3>
-<p class="text-white/70 leading-relaxed text-sm max-w-xs">95%林木覆盖率，四面环山的世外桃源</p>
+<p class="text-white/70 leading-relaxed text-sm max-w-xs">95%林木覆盖率冠绝延庆，村东峡谷直通怀柔水长城</p>
 </div>
 <div class="mt-6">
 <span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">探索路线 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
@@ -518,7 +550,7 @@
 <div>
 <p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">STORY | 香屯故事</p>
 <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-4 tracking-tight">六百年守望</h3>
-<p class="text-white/70 leading-relaxed text-sm max-w-xs">从辽代铁火到明长城，38户人家的传承故事</p>
+<p class="text-white/70 leading-relaxed text-sm max-w-xs">辽代"首钢"采矿地、2007年"北京最美村庄"、2025年首届长城国潮文化季</p>
 </div>
 <div class="mt-6">
 <span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">了解更多 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
@@ -540,44 +572,49 @@
 <span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">INTERACTIVE MAP | 交互导览</span>
 </div>
 <h2 class="text-3xl md:text-5xl lg:text-6xl font-headline font-extrabold tracking-tight">探索香屯 · <span class="font-normal">山河在此</span></h2>
-<p class="text-sm font-headline italic opacity-60 mt-3">十二个文化坐标，三条历史脉络，一座活着的长城村落</p>
+<p class="text-sm font-headline italic opacity-60 mt-3">三条路线、十二个坐标——从辽代铁炉到明代敌台，从龙吟溪谷到西星口营地</p>
 <div class="h-1 w-24 bg-primary mt-6"></div>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 <!-- Map Container -->
 <div class="lg:col-span-8">
-<div class="relative rounded-sm overflow-hidden border border-outline-variant/20" style="height: 500px;">
+<div class="relative overflow-hidden shadow-[0_32px_64px_-12px_rgba(27,28,28,0.25)]" style="height: 520px;">
 <div id="xiangtun-map" class="w-full h-full"></div>
+<div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(27,28,28,0.15)]"></div>
+<div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1b1c1c]/30 to-transparent pointer-events-none"></div>
 </div>
 </div>
 <!-- Route Toggle Panel -->
-<div class="lg:col-span-4 flex flex-col gap-4 lg:gap-6">
-<div class="p-6 bg-surface-container rounded-sm border border-outline-variant/20">
-<h4 class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant mb-6">路线切换 Route Selector</h4>
-<div class="flex flex-row lg:flex-col gap-3">
-<button onclick="focusRoute('grey')" class="route-btn flex-1 lg:flex-none bg-gradient-to-r from-[#1b1c1c] to-[#303030] text-white rounded-sm p-4 lg:p-5 text-left" data-route="grey">
-<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-1">ROUTE 01</p>
-<p class="font-headline font-bold text-sm lg:text-base">灰色长城</p>
-<p class="text-[11px] opacity-60 mt-1 hidden lg:block">六百年石语</p>
+<div class="lg:col-span-4 flex flex-col bg-[#1b1c1c]">
+<div class="p-6 lg:p-8 flex-1 flex flex-col">
+<h4 class="text-[10px] font-black tracking-[0.4em] uppercase text-white/40 mb-6 lg:mb-8">路线切换 Route Selector</h4>
+<div class="flex flex-row lg:flex-col gap-2 flex-1">
+<button onclick="focusRoute('grey')" class="route-btn flex-1 lg:flex-none relative overflow-hidden rounded-sm p-5 lg:p-6 text-left text-white transition-all duration-500 hover:translate-x-1 group border border-white/5 hover:border-white/15 bg-white/5 hover:bg-white/10" data-route="grey">
+<div class="absolute top-0 left-0 w-1 h-full bg-white/30 group-hover:bg-white transition-colors duration-300"></div>
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-40 mb-1.5 pl-3">ROUTE 01</p>
+<p class="font-headline font-bold text-sm lg:text-base pl-3">灰色长城</p>
+<p class="text-[11px] opacity-40 mt-1 hidden lg:block pl-3">六百年石语</p>
 </button>
-<button onclick="focusRoute('red')" class="route-btn flex-1 lg:flex-none bg-gradient-to-r from-[#851217] to-[#a62c2b] text-white rounded-sm p-4 lg:p-5 text-left" data-route="red">
-<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-1">ROUTE 02</p>
-<p class="font-headline font-bold text-sm lg:text-base">红色研学</p>
-<p class="text-[11px] opacity-60 mt-1 hidden lg:block">烽火传承</p>
+<button onclick="focusRoute('red')" class="route-btn flex-1 lg:flex-none relative overflow-hidden rounded-sm p-5 lg:p-6 text-left text-white transition-all duration-500 hover:translate-x-1 group border border-white/5 hover:border-primary/40 bg-white/5 hover:bg-primary/15" data-route="red">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/40 group-hover:bg-primary transition-colors duration-300"></div>
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-40 mb-1.5 pl-3">ROUTE 02</p>
+<p class="font-headline font-bold text-sm lg:text-base pl-3">红色研学</p>
+<p class="text-[11px] opacity-40 mt-1 hidden lg:block pl-3">烽火传承</p>
 </button>
-<button onclick="focusRoute('green')" class="route-btn flex-1 lg:flex-none bg-gradient-to-r from-[#3b6934] to-[#23501e] text-white rounded-sm p-4 lg:p-5 text-left" data-route="green">
-<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-1">ROUTE 03</p>
-<p class="font-headline font-bold text-sm lg:text-base">绿色生态</p>
-<p class="text-[11px] opacity-60 mt-1 hidden lg:block">天然氧吧</p>
-</button>
-</div>
-</div>
-<button onclick="focusRoute('all')" class="route-btn bg-surface-container-high text-on-surface rounded-sm p-4 text-center border border-outline-variant/20 text-sm font-bold tracking-wider uppercase hover:bg-surface-container-highest">
-显示全部路线
+<button onclick="focusRoute('green')" class="route-btn flex-1 lg:flex-none relative overflow-hidden rounded-sm p-5 lg:p-6 text-left text-white transition-all duration-500 hover:translate-x-1 group border border-white/5 hover:border-secondary/40 bg-white/5 hover:bg-secondary/15" data-route="green">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary/40 group-hover:bg-secondary transition-colors duration-300"></div>
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-40 mb-1.5 pl-3">ROUTE 03</p>
+<p class="font-headline font-bold text-sm lg:text-base pl-3">绿色生态</p>
+<p class="text-[11px] opacity-40 mt-1 hidden lg:block pl-3">天然氧吧</p>
 </button>
 </div>
 </div>
-<p class="text-[11px] text-on-surface-variant/60 mt-4 italic">路线坐标仅供示意，实际游览路线以现场指引为准</p>
+<button onclick="focusRoute('all')" class="route-btn text-white/60 hover:text-white p-4 lg:p-5 text-center text-[11px] font-bold tracking-[0.3em] uppercase border-t border-white/10 hover:bg-white/5 transition-all duration-300">
+<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">layers</span>显示全部路线</span>
+</button>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant/60 mt-6 italic">路线坐标仅供示意，实际游览路线以现场指引为准</p>
 </section>
 
 <!-- Section 2: IP Character -->
@@ -588,21 +625,21 @@
 <span class="inline-block border border-primary text-primary px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-10">Mascot Design Study | 形象研究</span>
 <h3 class="text-2xl md:text-3xl lg:text-5xl font-headline font-extrabold mb-10 leading-tight">核心IP形象：<br/><span class="font-normal">板栗守护灵</span></h3>
 <p class="text-lg text-on-surface-variant leading-relaxed mb-12 font-headline italic">
-                        长城的厚重与板栗的温柔，在这个形象中融为一体。外壳取自明长城城砖纹理，内心怀揣着香屯村世代守护的赤诚。它是村庄的守护灵，也是文化的传承者。
+                        以明长城3号敌台的城砖纹理为甲壳，以百年板栗林的温厚为内核。它的轮廓取自考古出土的戍边盾牌，身姿脱胎于长城攻防游戏中的守卒形象——既是38户人家世代相传的守护灵，也是连接六百年历史与当下的文化信使。
                     </p>
 <div class="space-y-6">
 <div class="flex items-center gap-6 p-6 border border-outline-variant/30 bg-surface/50 rounded-sm hover:border-primary/40 transition-colors">
 <span class="material-symbols-outlined text-primary scale-125">architecture</span>
 <div>
 <h5 class="text-sm font-bold uppercase tracking-widest">建筑基石 Architectural Foundation</h5>
-<p class="text-xs text-on-surface-variant mt-1">源自敌楼石材的几何砌筑纹理。</p>
+<p class="text-xs text-on-surface-variant mt-1">取自3号、4号敌台城砖的几何砌筑肌理，历经六百年风雨。</p>
 </div>
 </div>
 <div class="flex items-center gap-6 p-6 border border-outline-variant/30 bg-surface/50 rounded-sm hover:border-secondary/40 transition-colors">
 <span class="material-symbols-outlined text-secondary scale-125">eco</span>
 <div>
 <h5 class="text-sm font-bold uppercase tracking-widest">有机生长 Organic Flourish</h5>
-<p class="text-xs text-on-surface-variant mt-1">代表季节生命周期的叶状装饰。</p>
+<p class="text-xs text-on-surface-variant mt-1">源于百年板栗林的叶形脉络，呼应考古出土的明代杏核遗存。</p>
 </div>
 </div>
 </div>
@@ -610,51 +647,56 @@
 </div>
 <div class="lg:col-span-7 space-y-16 fade-in-right">
 <!-- Character Sheet -->
-<div class="p-6 md:p-16 bg-white rounded-sm shadow-[0_20px_60px_-10px_rgba(0,0,0,0.05)] border border-outline-variant/10">
-<h4 class="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant mb-8 md:mb-16 text-center">三视图技术分析 Technical 3-View Analysis</h4>
-<div class="grid grid-cols-3 gap-4 md:gap-12">
-<div class="group">
-<div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
-<div class="w-full h-full bg-gradient-to-br from-[#593d00]/20 to-[#851217]/10 flex items-center justify-center"><span class="material-symbols-outlined text-on-surface/20" style="font-size:60px">nature_people</span></div><!--  -->
+<div class="relative p-6 md:p-16 bg-[#faf9f7] rounded-sm shadow-[0_32px_80px_-16px_rgba(27,28,28,0.08)] overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/3 to-transparent pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-tertiary/3 to-transparent pointer-events-none"></div>
+<h4 class="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant/60 mb-8 md:mb-16 text-center relative">三视图技术分析 Technical 3-View Analysis</h4>
+<div class="grid grid-cols-3 gap-4 md:gap-10 relative">
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-white p-4 rounded-sm shadow-[0_4px_24px_-4px_rgba(27,28,28,0.06)] group-hover:shadow-[0_12px_32px_-4px_rgba(133,18,23,0.12)] transition-all duration-700 overflow-hidden mb-6 border border-[#e8e6e4] group-hover:border-primary/20">
+<div class="w-full h-full bg-gradient-to-br from-[#593d00]/15 to-[#851217]/8 flex items-center justify-center rounded-sm"><span class="material-symbols-outlined text-on-surface/15 group-hover:text-primary/25 transition-colors duration-500" style="font-size:56px">nature_people</span></div>
 </div>
-<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-60">I. 正面 Aspect</p>
+<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-40 group-hover:opacity-70 transition-opacity">I. 正面 Aspect</p>
 </div>
-<div class="group">
-<div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
-<div class="w-full h-full bg-gradient-to-br from-[#3b6934]/20 to-[#593d00]/10 flex items-center justify-center"><span class="material-symbols-outlined text-on-surface/20" style="font-size:60px">shield</span></div><!--  -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-white p-4 rounded-sm shadow-[0_4px_24px_-4px_rgba(27,28,28,0.06)] group-hover:shadow-[0_12px_32px_-4px_rgba(59,105,52,0.12)] transition-all duration-700 overflow-hidden mb-6 border border-[#e8e6e4] group-hover:border-secondary/20">
+<div class="w-full h-full bg-gradient-to-br from-[#3b6934]/15 to-[#593d00]/8 flex items-center justify-center rounded-sm"><span class="material-symbols-outlined text-on-surface/15 group-hover:text-secondary/25 transition-colors duration-500" style="font-size:56px">shield</span></div>
 </div>
-<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-60">II. 侧面 Profile</p>
+<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-40 group-hover:opacity-70 transition-opacity">II. 侧面 Profile</p>
 </div>
-<div class="group">
-<div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
-<div class="w-full h-full bg-gradient-to-br from-[#1b1c1c]/20 to-[#593d00]/10 flex items-center justify-center"><span class="material-symbols-outlined text-on-surface/20" style="font-size:60px">globe</span></div><!--  -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] bg-white p-4 rounded-sm shadow-[0_4px_24px_-4px_rgba(27,28,28,0.06)] group-hover:shadow-[0_12px_32px_-4px_rgba(89,61,0,0.12)] transition-all duration-700 overflow-hidden mb-6 border border-[#e8e6e4] group-hover:border-tertiary/20">
+<div class="w-full h-full bg-gradient-to-br from-[#1b1c1c]/15 to-[#593d00]/8 flex items-center justify-center rounded-sm"><span class="material-symbols-outlined text-on-surface/15 group-hover:text-tertiary/25 transition-colors duration-500" style="font-size:56px">globe</span></div>
 </div>
-<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-60">III. 背面 Detail</p>
+<p class="text-[10px] font-black text-center tracking-widest uppercase opacity-40 group-hover:opacity-70 transition-opacity">III. 背面 Detail</p>
 </div>
 </div>
 </div>
 <!-- Expressions -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-<div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
-<div class="relative mb-6">
-<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
-<div class="w-24 h-24 mx-auto rounded-full relative z-10 bg-gradient-to-br from-[#ffd700] to-[#f0c040] flex items-center justify-center"><span class="text-3xl">😊</span></div data-placeholder="true"/>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="relative p-10 bg-gradient-to-b from-white to-[#faf9f7] rounded-sm text-center group overflow-hidden shadow-[0_8px_32px_-8px_rgba(27,28,28,0.06)] hover:shadow-[0_16px_48px_-8px_rgba(27,28,28,0.1)] transition-all duration-700 border border-[#e8e6e4] hover:border-primary/15">
+<div class="absolute inset-0 bg-gradient-to-br from-[#ffd700]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative mb-8">
+<div class="absolute inset-0 w-28 h-28 mx-auto bg-[#ffd700]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+<div class="w-24 h-24 mx-auto rounded-full relative z-10 bg-gradient-to-br from-[#ffd700] to-[#e8b000] flex items-center justify-center shadow-[0_8px_24px_-4px_rgba(255,215,0,0.4)] group-hover:scale-105 transition-transform duration-500"><span class="text-3xl">😊</span></div>
 </div>
-<h5 class="font-headline font-extrabold text-lg italic">喜悦绽放 Joyous</h5>
+<h5 class="font-headline font-extrabold text-lg italic relative">喜悦绽放 Joyous</h5>
 </div>
-<div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
-<div class="relative mb-6">
-<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
-<div class="w-24 h-24 mx-auto rounded-full relative z-10 bg-gradient-to-br from-[#593d00] to-[#8b6914] flex items-center justify-center"><span class="text-3xl">🛡️</span></div data-placeholder="true"/>
+<div class="relative p-10 bg-gradient-to-b from-white to-[#faf9f7] rounded-sm text-center group overflow-hidden shadow-[0_8px_32px_-8px_rgba(27,28,28,0.06)] hover:shadow-[0_16px_48px_-8px_rgba(27,28,28,0.1)] transition-all duration-700 border border-[#e8e6e4] hover:border-tertiary/15">
+<div class="absolute inset-0 bg-gradient-to-br from-[#593d00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative mb-8">
+<div class="absolute inset-0 w-28 h-28 mx-auto bg-[#593d00]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+<div class="w-24 h-24 mx-auto rounded-full relative z-10 bg-gradient-to-br from-[#7a5a1a] to-[#593d00] flex items-center justify-center shadow-[0_8px_24px_-4px_rgba(89,61,0,0.4)] group-hover:scale-105 transition-transform duration-500"><span class="text-3xl">🛡️</span></div>
 </div>
-<h5 class="font-headline font-extrabold text-lg italic">守护瞭望 Watchman</h5>
+<h5 class="font-headline font-extrabold text-lg italic relative">守护瞭望 Watchman</h5>
 </div>
-<div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
-<div class="relative mb-6">
-<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
-<div class="w-24 h-24 mx-auto rounded-full relative z-10 bg-gradient-to-br from-[#3b6934] to-[#5a8a52] flex items-center justify-center"><span class="text-3xl">🌱</span></div data-placeholder="true"/>
+<div class="relative p-10 bg-gradient-to-b from-white to-[#faf9f7] rounded-sm text-center group overflow-hidden shadow-[0_8px_32px_-8px_rgba(27,28,28,0.06)] hover:shadow-[0_16px_48px_-8px_rgba(27,28,28,0.1)] transition-all duration-700 border border-[#e8e6e4] hover:border-secondary/15">
+<div class="absolute inset-0 bg-gradient-to-br from-[#3b6934]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative mb-8">
+<div class="absolute inset-0 w-28 h-28 mx-auto bg-[#3b6934]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+<div class="w-24 h-24 mx-auto rounded-full relative z-10 bg-gradient-to-br from-[#4a7a42] to-[#3b6934] flex items-center justify-center shadow-[0_8px_24px_-4px_rgba(59,105,52,0.4)] group-hover:scale-105 transition-transform duration-500"><span class="text-3xl">🌱</span></div>
 </div>
-<h5 class="font-headline font-extrabold text-lg italic">静默成长 Growth</h5>
+<h5 class="font-headline font-extrabold text-lg italic relative">静默成长 Growth</h5>
 </div>
 </div>
 </div>
@@ -666,7 +708,7 @@
 <h3 class="text-[10px] font-black tracking-[0.6em] uppercase text-primary mb-6">Masterwork Rendering | 重点作品渲染</h3>
 <h2 class="text-3xl md:text-4xl lg:text-6xl font-headline font-extrabold mb-8">历史之门：<span class="font-normal">四色画廊</span></h2>
 <p class="text-lg text-on-surface-variant font-headline max-w-2xl mx-auto opacity-80 leading-relaxed">
-                为村落入口设计的地标性装置，运用水墨美学将长城轮廓与现代交互式文化遗产层相融合。
+                北京建筑大学师生实地创作的长城主题墙画，以建筑学视角将大庄科段明长城轮廓融入村庄日常空间，让"陈列在广阔大地上的遗产"在村口真正活了起来。
             </p>
 </div>
 <div class="relative group overflow-hidden rounded-sm shadow-2xl bg-white p-2">
@@ -714,7 +756,7 @@
 </div>
 <div class="flex flex-col items-center text-center px-4">
 <h5 class="font-headline font-extrabold text-2xl mb-1">守护者帆布包</h5>
-<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">守护者图腾 · 环保亚麻织造</p>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">敌台守护者纹样 · 环保亚麻织造</p>
 <div class="h-px w-10 bg-outline-variant/30 group-hover:w-full transition-all duration-500"></div>
 </div>
 </div>
@@ -729,7 +771,7 @@
 </div>
 <div class="flex flex-col items-center text-center px-4">
 <h5 class="font-headline font-extrabold text-2xl mb-1">传承系列手机壳</h5>
-<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">城砖纹理 · 手工压印工艺</p>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">3号敌台城砖纹理 · 手工压印工艺</p>
 <div class="h-px w-10 bg-outline-variant/30 group-hover:w-full transition-all duration-500"></div>
 </div>
 </div>
@@ -744,7 +786,7 @@
 </div>
 <div class="flex flex-col items-center text-center px-4">
 <h5 class="font-headline font-extrabold text-2xl mb-1">壁画主题日记本</h5>
-<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">壁画灵感 · 烫金手工装帧</p>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-[0.3em] uppercase mb-4">四色画廊壁画灵感 · 烫金手工装帧</p>
 <div class="h-px w-10 bg-outline-variant/30 group-hover:w-full transition-all duration-500"></div>
 </div>
 </div>
@@ -753,26 +795,40 @@
 
 <!-- 团队标注 -->
 <section class="mb-24 md:mb-48">
-<div class="bg-gradient-to-r from-[#851217] to-[#a62c2b] rounded-sm py-16 md:py-20 px-6 md:px-16 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-1/2 h-full opacity-5">
-<span class="font-headline font-black text-[300px] leading-none select-none">挑战杯</span>
+<div class="relative rounded-sm overflow-hidden" style="min-height:420px;">
+<!-- 背景实景图 -->
+<img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1400&q=80&fit=crop" alt="长城" class="absolute inset-0 w-full h-full object-cover">
+<!-- 渐变叠加层 -->
+<div class="absolute inset-0 bg-gradient-to-r from-[#1b1c1c]/90 via-[#851217]/70 to-transparent"></div>
+<!-- 装饰线条 -->
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-white/20 via-white/5 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-white/20 via-white/5 to-transparent"></div>
+<!-- 内容 -->
+<div class="relative z-10 py-20 md:py-28 px-8 md:px-20 max-w-4xl">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white/80 text-lg">school</span>
 </div>
-<div class="relative z-10 max-w-3xl">
-<span class="inline-block bg-white/20 px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8">CHALLENGE CUP TEAM</span>
-<h2 class="text-3xl md:text-5xl font-headline font-extrabold mb-6 leading-tight">首都师范大学<br/>挑战杯参赛团队</h2>
-<p class="text-lg md:text-xl opacity-90 font-headline mb-8 leading-relaxed">「让长城文化成为乡村振兴的新动力」<br/>"青振京郊"乡村振兴专项赛 · 项目编号17</p>
-<div class="flex flex-wrap gap-6 items-center">
-<div class="bg-white/15 backdrop-blur-sm px-6 py-3 rounded-sm">
-<p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">组长</p>
-<p class="font-headline font-bold text-lg">沈书诚</p>
+<span class="text-white/60 text-[11px] font-bold tracking-[0.4em] uppercase">Capital Normal University · Challenge Cup</span>
 </div>
-<div class="bg-white/15 backdrop-blur-sm px-6 py-3 rounded-sm">
-<p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">合作村庄</p>
-<p class="font-headline font-bold text-lg">香屯村</p>
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold text-white mb-4 leading-[1.1]">首都师范大学</h2>
+<p class="text-2xl md:text-3xl font-headline text-white/70 mb-10">挑战杯参赛团队</p>
+<div class="h-px w-20 bg-primary mb-10"></div>
+<p class="text-lg text-white/80 font-headline leading-relaxed mb-12 max-w-2xl">「让长城文化成为乡村振兴的新动力」<br/><span class="text-white/50 text-base">"青振京郊"乡村振兴专项赛 · 项目编号17</span></p>
+<div class="flex flex-wrap gap-8 items-start">
+<div>
+<p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">PROJECT LEADER</p>
+<p class="font-headline font-bold text-xl text-white">沈书诚</p>
 </div>
-<div class="bg-white/15 backdrop-blur-sm px-6 py-3 rounded-sm">
-<p class="text-[10px] uppercase tracking-widest opacity-70 mb-1">联系邮箱</p>
-<p class="font-headline font-bold text-lg">rjk2021@163.com</p>
+<div class="w-px h-12 bg-white/15 hidden md:block"></div>
+<div>
+<p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">PARTNER VILLAGE</p>
+<p class="font-headline font-bold text-xl text-white">香屯村 · 延庆区大庄科乡</p>
+</div>
+<div class="w-px h-12 bg-white/15 hidden md:block"></div>
+<div>
+<p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">CONTACT</p>
+<p class="font-headline font-bold text-xl text-white">rjk2021@163.com</p>
 </div>
 </div>
 </div>
