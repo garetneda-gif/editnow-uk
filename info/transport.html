@@ -91,8 +91,8 @@
         background-size: 1200px 900px;
         background-blend-mode: multiply;
     }
-    .silk-overlay {
-        background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
+    . {
+        /* removed */
     }
     .fade-in {
         opacity: 0;
@@ -188,6 +188,19 @@ Journey to the Foot of the Great Wall
 </div>
 </header>
 
+<!-- HERO IMAGE BANNER -->
+<section class="mb-24 md:mb-48 fade-in">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+<div class="md:col-span-7 overflow-hidden rounded-lg">
+<img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80&fit=crop" alt="城市天际线远景" class="w-full h-64 md:h-96 object-cover" loading="lazy"/>
+</div>
+<div class="md:col-span-5 overflow-hidden rounded-lg">
+<img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80&fit=crop" alt="蜿蜒的山间公路" class="w-full h-64 md:h-96 object-cover" loading="lazy"/>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant mt-4 text-center font-label">从城市到山野 -- 一段从喧嚣到宁静的旅程</p>
+</section>
+
 <!-- SECTION 1: Driving Route -->
 <section class="mb-24 md:mb-48">
 <div class="flex flex-col items-center mb-20 text-center fade-in">
@@ -247,6 +260,40 @@ Journey to the Foot of the Great Wall
 <p class="text-on-surface-variant leading-[1.9] text-sm">
 东香路为山间乡村公路，弯道较多，请控制车速。冬季可能有路面结冰，建议查看天气预报并准备防滑链。雨季需注意山洪预警。
 </p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Scenic Route Section -->
+<section class="mb-24 md:mb-48">
+<div class="flex flex-col items-center mb-20 text-center fade-in">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Scenic Route</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">沿途风景</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">The Journey Is Part of the Experience</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 fade-in">
+<div class="overflow-hidden rounded-lg">
+<img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80&fit=crop" alt="八达岭段长城远景" class="w-full h-48 md:h-56 object-cover mb-4" loading="lazy"/>
+<div class="px-2">
+<h4 class="font-headline font-bold text-sm mb-1">八达岭长城段</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">沿京藏高速行驶时，远眺八达岭长城蜿蜒于群山之巅。虽然不在行程之中，但这段路本身就是一场视觉预热。</p>
+</div>
+</div>
+<div class="overflow-hidden rounded-lg">
+<img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80&fit=crop" alt="延庆山区的晨雾与丘陵" class="w-full h-48 md:h-56 object-cover mb-4" loading="lazy"/>
+<div class="px-2">
+<h4 class="font-headline font-bold text-sm mb-1">延庆山区公路</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">转入延庆山区后，公路两侧山峦起伏，晨雾缭绕。秋季栗林金黄，冬日银装素裹，每个季节都有不同的色彩惊喜。</p>
+</div>
+</div>
+<div class="overflow-hidden rounded-lg">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&fit=crop" alt="香屯村入口处的山谷风光" class="w-full h-48 md:h-56 object-cover mb-4" loading="lazy"/>
+<div class="px-2">
+<h4 class="font-headline font-bold text-sm mb-1">东香路进村段</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">东香路蜿蜒于山谷之间，一水中流，两山夹峙。这段5公里的乡村公路，是从现代文明进入古朴山村的过渡通道。</p>
 </div>
 </div>
 </div>
@@ -328,23 +375,51 @@ Journey to the Foot of the Great Wall
 
 <!-- SECTION 3: Tips -->
 <section class="mb-24 md:mb-48">
-<div class="bg-surface-container-low rounded-lg p-8 md:p-16 fade-in">
-<div class="max-w-3xl mx-auto text-center">
-<span class="material-symbols-outlined text-primary text-4xl mb-6 block">tips_and_updates</span>
-<h2 class="text-3xl md:text-4xl font-headline font-bold mb-8">出行贴士</h2>
-<div class="text-left text-on-surface-variant leading-[1.9] space-y-4">
-<p>山区手机信号可能不稳定，建议提前下载离线地图。</p>
-<p>进村公路沿途没有加油站，请在延庆城区加满油再出发。</p>
-<p>村内暂无便利店，饮用水和零食请自行准备。</p>
-<p>村东峡谷可步行通往怀柔水长城景区，但路程较长，非专业徒步者不建议独自前往。</p>
+<div class="flex flex-col items-center mb-20 text-center fade-in">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Tips</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">出行贴士</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Practical Advice for a Smooth Journey</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
 </div>
-<div class="mt-10">
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 fade-in">
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl mb-4 block">signal_cellular_alt</span>
+<h4 class="text-lg font-headline font-bold mb-3">信号与导航</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">山区手机信号不稳定，建议提前下载高德或百度地图离线包。进村后部分区域可能无4G信号。</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4 block">local_gas_station</span>
+<h4 class="text-lg font-headline font-bold mb-3">加油补给</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">进村公路沿途没有加油站，请在延庆城区加满油再出发。最近的加油站在大庄科乡附近。</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4 block">water_drop</span>
+<h4 class="text-lg font-headline font-bold mb-3">饮水食物</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">村内暂无便利店或餐饮店。饮用水、零食和午餐请自行准备。计划留宿的游客可预约农家饭。</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl mb-4 block">hiking</span>
+<h4 class="text-lg font-headline font-bold mb-3">峡谷徒步</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">村东峡谷可步行通往怀柔水长城景区（约15公里），路程较长且路况复杂，非专业徒步者不建议独自前往。</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4 block">wb_twilight</span>
+<h4 class="text-lg font-headline font-bold mb-3">最佳出行时段</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">建议早晨7点前出发避开京藏高速拥堵。返程避开下午4-6点高峰。山区天黑较早，冬季建议下午4点前离村。</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4 block">emergency</span>
+<h4 class="text-lg font-headline font-bold mb-3">应急信息</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">最近的医院在延庆城区（约30公里）。山区道路救援可拨打12122。遇极端天气请勿强行进山。</p>
+</div>
+</div>
+
+<div class="mt-12 text-center fade-in">
 <a href="visitor-guide.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary font-label font-bold text-sm tracking-wider uppercase rounded-lg hover:bg-primary-container transition-colors duration-300">
 <span class="material-symbols-outlined text-lg">checklist</span>
 查看游客须知
 </a>
-</div>
-</div>
 </div>
 </section>
 
