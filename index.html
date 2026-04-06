@@ -243,7 +243,7 @@
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
 <!-- Top Navigation Bar -->
 <nav class="bg-[#fbf9f8]/80 dark:bg-[#1b1c1c]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
-<div class="flex justify-between items-center w-full px-12 py-5 max-w-screen-2xl mx-auto">
+<div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
 <div class="text-2xl font-headline font-extrabold tracking-tight text-[#851217] dark:text-[#a62c2b]">四色香屯</div>
 <div class="hidden md:flex gap-16 items-center">
 <a class="text-[#851217] dark:text-[#a62c2b] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">首页 Home</a>
@@ -251,29 +251,37 @@
 <a class="text-[#1b1c1c]/60 dark:text-[#fbf9f8]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="routes/red-study.html">文旅路线 Routes</a>
 </div>
 <div class="flex items-center gap-8">
-<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+<button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu-index').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity hidden md:inline">search</span>
 <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="toggleChat()">smart_toy</span>
 </div>
+</div>
+<div id="mobile-menu-index" class="hidden md:hidden px-4 pb-4 space-y-3 bg-[#fbf9f8]/95 backdrop-blur-xl">
+<a class="block text-[#851217] font-medium font-headline py-2" href="index.html">首页 Home</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-2" href="about/history.html">香屯故事 Story</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-2" href="routes/red-study.html">文旅路线 Routes</a>
 </div>
 </nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
 <!-- Hero Branding Section -->
-<header class="mb-24 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative">
+<header class="mb-24 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-center relative">
 <div class="lg:col-span-7">
 <div class="mb-6 flex items-center gap-4">
 <span class="h-px w-12 bg-primary"></span>
 <span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Identity Exhibition | 身份定义展</span>
 </div>
-<h1 class="text-4xl md:text-7xl font-headline font-extrabold text-on-surface tracking-tight mb-10 leading-[1.1]">
+<h1 class="text-3xl md:text-5xl lg:text-7xl font-headline font-extrabold text-on-surface tracking-tight mb-10 leading-[1.1]">
                 四色香屯：<span class="text-primary italic">长城脚下的四色人间</span>
-<br/><span class="text-4xl opacity-40 font-medium">Where the Great Wall Meets Village Life</span>
+<br/><span class="text-2xl md:text-4xl opacity-40 font-medium">Where the Great Wall Meets Village Life</span>
 </h1>
 <p class="text-xl text-on-surface-variant max-w-xl font-headline italic leading-relaxed opacity-90">
                 源自长城脚下的文化叙事。延庆区大庄科乡香屯村——明长城守护者的家园，用四种颜色讲述六百年的传承。
             </p>
 </div>
 <div class="lg:col-span-5 flex flex-col items-center">
-<div class="relative w-full aspect-square max-w-md bg-white p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] rounded-sm silk-overlay border border-outline-variant/20">
+<div class="relative w-full aspect-square max-w-md bg-white p-8 md:p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] rounded-sm silk-overlay border border-outline-variant/20">
 <div class="w-full h-full flex items-center justify-center p-8 border border-outline-variant/10">
 <img class="w-full h-full object-contain mix-blend-multiply" data-alt="minimalist logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC38khLWDGqN-_7VWleMT-UQfoInM0m9avKgQ28yoS6n31gTPPKVM9kDvOC0D5BCqFvdSqvZ8UaJCq2DC2SNSTQZuXBqi5R6RDZgL1knuOFW796mZUGYeFK3WsnLP5riFFBlSMVVTnaMFQVuodUDyOmz968wN0VKPhk9-3QQdukCTOYBMsybo-Lizjekvk7zC9u-WVX7QqtpFwZFlXWBjymFs25_ZdESzli8Q0Wa_7Sdd6zOYDPJ4lA1ZlFz1olrBfvycQswZ51t1I"/>
 </div>
@@ -292,7 +300,7 @@
 <p class="text-sm font-headline italic opacity-60 mt-2">Pigment &amp; Origin Studies</p>
 <div class="h-1 w-24 bg-primary mt-6"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
 <!-- Red -->
 <div class="group">
 <div class="aspect-[3/4] bg-primary mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl">
@@ -349,7 +357,7 @@
 <div class="lg:col-span-5">
 <div class="sticky top-32">
 <span class="inline-block border border-primary text-primary px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-10">Mascot Design Study | 形象研究</span>
-<h3 class="text-3xl md:text-5xl font-headline font-extrabold mb-10 leading-tight">核心IP形象：<br/><span class="italic font-normal">板栗守护灵</span></h3>
+<h3 class="text-2xl md:text-3xl lg:text-5xl font-headline font-extrabold mb-10 leading-tight">核心IP形象：<br/><span class="italic font-normal">板栗守护灵</span></h3>
 <p class="text-lg text-on-surface-variant leading-relaxed mb-12 font-headline italic">
                         自然与建筑的拟人化结合。“板栗守护灵”的外壳设计灵感来源于明长城的城砖纹理。
                     </p>
@@ -373,9 +381,9 @@
 </div>
 <div class="lg:col-span-7 space-y-16">
 <!-- Character Sheet -->
-<div class="p-16 bg-white rounded-sm shadow-[0_20px_60px_-10px_rgba(0,0,0,0.05)] border border-outline-variant/10">
-<h4 class="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant mb-16 text-center">三视图技术分析 Technical 3-View Analysis</h4>
-<div class="grid grid-cols-3 gap-12">
+<div class="p-6 md:p-16 bg-white rounded-sm shadow-[0_20px_60px_-10px_rgba(0,0,0,0.05)] border border-outline-variant/10">
+<h4 class="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant mb-8 md:mb-16 text-center">三视图技术分析 Technical 3-View Analysis</h4>
+<div class="grid grid-cols-3 gap-4 md:gap-12">
 <div class="group">
 <div class="aspect-[3/4] bg-[#f9f8f6] p-4 rounded-sm border border-outline-variant/5 group-hover:border-primary/20 transition-all duration-500 overflow-hidden mb-6">
 <img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVwLnOvuuPfUzNkC7aGpBeQwLq-gQPVk95W0qWW6lei9S4QE6Bp7XemyaVTDwku70gW9QgmzHIuFiKCfJGpDiz6iOofskbBGyPb7Y1-F0s-D7BEUDPx8tOvlfVtouN29RzcuACAAS1pLRD9eNyiL9VxihsDrvn8inFv0DrH3_dFdgw6HQ77JCMrQhjDC3l4V0BQ2RgZPU4hleLk3erAtREgmOhMnvqae5nTEGU4ysefiGFJwDxaYNDtlJmwg1FuIFITvHIqq8U7oM"/>
@@ -397,7 +405,7 @@
 </div>
 </div>
 <!-- Expressions -->
-<div class="grid grid-cols-3 gap-8">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
 <div class="p-10 bg-white/40 backdrop-blur-sm rounded-sm border border-outline-variant/20 text-center hover:bg-white transition-colors duration-500 group">
 <div class="relative mb-6">
 <div class="absolute inset-0 bg-primary/5 rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-all"></div>
@@ -427,7 +435,7 @@
 <section class="mb-24 md:mb-48 relative">
 <div class="max-w-4xl mx-auto mb-20 text-center">
 <h3 class="text-[10px] font-black tracking-[0.6em] uppercase text-primary mb-6">Masterwork Rendering | 重点作品渲染</h3>
-<h2 class="text-3xl md:text-6xl font-headline font-extrabold mb-8">历史之门：<span class="italic font-normal">四色画廊</span></h2>
+<h2 class="text-3xl md:text-4xl lg:text-6xl font-headline font-extrabold mb-8">历史之门：<span class="italic font-normal">四色画廊</span></h2>
 <p class="text-lg text-on-surface-variant font-headline max-w-2xl mx-auto opacity-80 leading-relaxed">
                 为村落入口设计的地标性装置，运用水墨美学将长城轮廓与现代交互式文化遗产层相融合。
             </p>
@@ -436,12 +444,12 @@
 <div class="border border-outline-variant/20 p-2">
 <img class="w-full aspect-[21/9] object-cover transition-transform duration-[2000ms] group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDux_oz_4OU0eBl5H6UiLQmtyROKvwb4IL40C2FNtbXEO-XgIfog-R63LNmgTN_yECWWq4S8v8NnodJfAjPhQGMTxM_d7hXTJikDht8enRjaAUZsca2AYejQpIALJhTAQL8HIdZQ6dvK3S-tlGUwnwnGbfBXvCu_N9qFLCPE9bLySAYke3XsRmXOLM97pF2oVCHDP8QxNPLDbvU8nNI83rdew29LNM2cOIcY-g0LR8ubi4zKQx5VDibuEAzNkmbPe--pcejuR4NY2Q"/>
 <div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent"></div>
-<div class="absolute bottom-12 left-12 right-12 flex items-end justify-between">
+<div class="absolute bottom-4 left-4 right-4 md:bottom-12 md:left-12 md:right-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
 <div class="text-white border-l-2 border-primary pl-8 py-2">
 <p class="text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 mb-2">Heritage Site: Main Village Entrance | 遗产地：村庄主入口</p>
-<h4 class="text-4xl font-headline font-extrabold italic tracking-tight">四色壁画 The Mural of Four Colors</h4>
+<h4 class="text-2xl md:text-4xl font-headline font-extrabold italic tracking-tight">四色壁画 The Mural of Four Colors</h4>
 </div>
-<div class="bg-surface/10 backdrop-blur-xl p-8 rounded-sm border border-white/20 flex items-center gap-8 group/ar hover:bg-surface/20 transition-all cursor-pointer">
+<div class="hidden md:flex bg-surface/10 backdrop-blur-xl p-8 rounded-sm border border-white/20 items-center gap-8 group/ar hover:bg-surface/20 transition-all cursor-pointer">
 <div class="w-20 h-20 bg-white p-2 rounded-sm shadow-lg overflow-hidden">
 <img class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR7TJ5dPVJvg3Og1eLPntUAK63PSVzKjbih9Q_zXwFPrtW6IWAUfMW2eHDuFr9y0Sr7fufRlU-gJ3awVdrtqR7uBXMcXO73tL2WkAML5Ss9Nqw5ZCWP4ygeZ45UYDEWPBsbEz1I-drkGlncWTa9XufivP0q7jVgYRNOocKDJfweIi2nXtWKrH83L31gSkUxbzhHUw1LJYGlMme6FnyNiBZ-ov6RmnhJ5kdbI7t7wVIOzU8X6SBjSF5zV19PVCrXrA_kPphyGH7Yr4"/>
 </div>
@@ -465,7 +473,7 @@
 <p class="text-sm font-headline italic opacity-60 mt-2">Limited Artisan Editions</p>
 <div class="h-px w-32 bg-outline-variant mt-8"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20">
 <!-- Product 1 -->
 <div class="group flex flex-col">
 <div class="bg-white aspect-[4/5] rounded-sm overflow-hidden mb-10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-outline-variant/10 p-4 transition-all duration-700 group-hover:shadow-3xl group-hover:-translate-y-2">
@@ -511,15 +519,15 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-[#1b1c1c] text-white py-24 px-4 md:px-12 border-t border-white/5">
-<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
 <div class="max-w-xs">
 <div class="text-3xl font-headline font-black text-primary mb-6">四色香屯</div>
 <p class="text-sm text-gray-500 leading-relaxed font-headline italic">
                 通过现代视觉叙事，守护长城板栗林色彩遗产。
             </p>
 </div>
-<div class="grid grid-cols-2 gap-10 md:gap-20">
+<div class="grid grid-cols-2 gap-8 md:gap-20">
 <div class="space-y-6">
 <h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
 <ul class="space-y-4 text-sm text-gray-400">

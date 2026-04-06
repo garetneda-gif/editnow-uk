@@ -60,8 +60,16 @@ tailwind.config = {
 <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="#">文旅路线 Routes</a>
 </div>
 <div class="flex items-center gap-8">
-<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+<button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu-green').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity hidden md:inline">search</span>
 </div>
+</div>
+<div id="mobile-menu-green" class="hidden md:hidden px-4 pb-4 space-y-3 bg-[#fbf9f8]/95 backdrop-blur-xl">
+<a class="block text-[#1b1c1c]/60 font-headline py-2" href="../index.html">首页 Home</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-2" href="../about/history.html">香屯故事 Story</a>
+<a class="block text-[#851217] font-medium font-headline py-2" href="#">文旅路线 Routes</a>
 </div>
 </nav>
 
@@ -122,8 +130,8 @@ tailwind.config = {
 </div>
 </div>
 <div class="lg:col-span-7">
-<div class="grid grid-cols-2 gap-6">
-<div class="aspect-[4/5] bg-secondary/20 rounded-sm flex items-center justify-center col-span-2">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="aspect-[4/5] bg-secondary/20 rounded-sm flex items-center justify-center sm:col-span-2">
 <div class="text-center">
 <span class="material-symbols-outlined text-secondary text-6xl mb-4">forest</span>
 <p class="text-sm text-secondary font-headline italic">香屯四面环山全景</p>
@@ -142,7 +150,7 @@ tailwind.config = {
 </div>
 </div>
 </div>
-<div class="mt-8 grid grid-cols-3 gap-8">
+<div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
 <div class="text-center py-8 border-t-2 border-secondary/20">
 <p class="text-4xl font-headline font-black text-secondary">95%</p>
 <p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">林木覆盖率</p>
@@ -170,7 +178,7 @@ tailwind.config = {
 </div>
 
 <!-- Stop 1 -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20 md:mb-32 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 mb-20 md:mb-32 items-center">
 <div class="lg:col-span-7 order-2 lg:order-1">
 <div class="aspect-[16/10] bg-secondary/15 rounded-sm flex items-center justify-center relative overflow-hidden">
 <div class="absolute top-6 left-6 bg-secondary text-white px-4 py-2 rounded-sm">
@@ -202,7 +210,7 @@ tailwind.config = {
 </div>
 
 <!-- Stop 2 -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20 md:mb-32 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 mb-20 md:mb-32 items-center">
 <div class="lg:col-span-5">
 <div class="border-l-2 border-secondary pl-8">
 <div class="flex items-center gap-3 mb-4">
@@ -234,7 +242,7 @@ tailwind.config = {
 </div>
 
 <!-- Stop 3 -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20 md:mb-32 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 mb-20 md:mb-32 items-center">
 <div class="lg:col-span-7 order-2 lg:order-1">
 <div class="aspect-[16/10] bg-secondary/10 rounded-sm flex items-center justify-center relative overflow-hidden">
 <div class="absolute top-6 left-6 bg-secondary text-white px-4 py-2 rounded-sm">
@@ -265,7 +273,7 @@ tailwind.config = {
 </div>
 
 <!-- Stop 4 -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center">
 <div class="lg:col-span-5">
 <div class="border-l-2 border-secondary pl-8">
 <div class="flex items-center gap-3 mb-4">
@@ -419,7 +427,7 @@ tailwind.config = {
 <p class="text-sm font-headline italic opacity-60 mt-2">Suggested Itineraries</p>
 <div class="h-1 w-24 bg-secondary mt-6"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
 <!-- Half Day -->
 <div class="bg-white/60 p-10 md:p-12 rounded-sm hover:bg-white transition-colors duration-500">
 <div class="flex items-center gap-4 mb-8">
@@ -612,15 +620,15 @@ tailwind.config = {
 </main>
 
 <!-- Footer -->
-<footer class="bg-[#1b1c1c] text-white py-24 px-4 md:px-12 border-t border-white/5">
-<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
 <div class="max-w-xs">
 <a href="../index.html" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
 <p class="text-sm text-gray-500 leading-relaxed font-headline italic">
 通过现代视觉叙事，守护长城板栗林色彩遗产。
 </p>
 </div>
-<div class="grid grid-cols-2 gap-10 md:gap-20">
+<div class="grid grid-cols-2 gap-8 md:gap-20">
 <div class="space-y-6">
 <h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
 <ul class="space-y-4 text-sm text-gray-400">
