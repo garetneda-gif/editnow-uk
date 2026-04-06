@@ -102,25 +102,26 @@
 
 <!-- Navigation -->
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
-<div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
-    <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
-    <div class="hidden md:flex gap-16 items-center">
-        <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
-        <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../about/history.html">香屯故事 Story</a>
-        <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="#">文旅路线 Routes</a>
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-16 items-center">
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../about/history.html">香屯故事 Story</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="grey-greatwall.html">文旅路线 Routes</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
     </div>
-    <div class="flex items-center gap-8">
-        <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu-grey').classList.toggle('hidden')">
-            <span class="material-symbols-outlined text-2xl">menu</span>
-        </button>
-        <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity hidden md:inline">search</span>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../about/history.html">香屯故事 Story</a>
+        <a class="block text-[#851217] font-medium font-headline py-3" href="grey-greatwall.html">文旅路线 Routes</a>
     </div>
-</div>
-<div id="mobile-menu-grey" class="hidden md:hidden px-4 pb-4 space-y-3 bg-[#fbf9f8]/95 backdrop-blur-xl">
-    <a class="block text-[#1b1c1c]/60 font-headline py-2" href="../index.html">首页 Home</a>
-    <a class="block text-[#1b1c1c]/60 font-headline py-2" href="../about/history.html">香屯故事 Story</a>
-    <a class="block text-[#851217] font-medium font-headline py-2" href="#">文旅路线 Routes</a>
-</div>
 </nav>
 
 <!-- Hero Section -->
@@ -685,18 +686,14 @@
             <ul class="space-y-4 text-sm text-gray-400">
                 <li><a class="hover:text-white transition-colors" href="#">交通指南</a></li>
                 <li><a class="hover:text-white transition-colors" href="#">游客须知</a></li>
-                <li><a class="hover:text-white transition-colors" href="#">联系我们</a></li>
+                <li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
-    <p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队</p>
+    <p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队 · 任济坤</p>
     <p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
-    <div class="flex gap-12">
-        <a class="hover:text-white transition-colors" href="#">微信公众号</a>
-        <a class="hover:text-white transition-colors" href="#">小红书</a>
-    </div>
 </div>
 </footer>
 

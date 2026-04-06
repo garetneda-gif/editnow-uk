@@ -105,26 +105,27 @@
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
 
 <!-- Top Navigation Bar -->
-<nav class="bg-[#fbf9f8]/80 dark:bg-[#1b1c1c]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
-<div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
-<a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217] dark:text-[#a62c2b]">四色香屯</a>
-<div class="hidden md:flex gap-16 items-center">
-<a class="text-[#1b1c1c]/60 dark:text-[#fbf9f8]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
-<a class="text-[#851217] dark:text-[#a62c2b] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="history.html">香屯故事 Story</a>
-<a class="text-[#1b1c1c]/60 dark:text-[#fbf9f8]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../routes/red-study.html">文旅路线 Routes</a>
-</div>
-<div class="flex items-center gap-8">
-<button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu-history').classList.toggle('hidden')">
-<span class="material-symbols-outlined text-2xl">menu</span>
-</button>
-<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity hidden md:inline">search</span>
-</div>
-</div>
-<div id="mobile-menu-history" class="hidden md:hidden px-4 pb-4 space-y-3 bg-[#fbf9f8]/95 backdrop-blur-xl">
-<a class="block text-[#1b1c1c]/60 font-headline py-2" href="../index.html">首页 Home</a>
-<a class="block text-[#851217] font-medium font-headline py-2" href="history.html">香屯故事 Story</a>
-<a class="block text-[#1b1c1c]/60 font-headline py-2" href="../routes/red-study.html">文旅路线 Routes</a>
-</div>
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-16 items-center">
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="history.html">香屯故事 Story</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../routes/red-study.html">文旅路线 Routes</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="history.html">香屯故事 Story</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="../routes/red-study.html">文旅路线 Routes</a>
+    </div>
 </nav>
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
@@ -449,8 +450,8 @@ Six Centuries of Guarding the Great Wall
 
 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="bg-surface-container-low p-8 rounded-sm flex items-start gap-6 group hover:bg-surface-container-high transition-colors duration-500">
-<div class="w-14 h-14 flex-shrink-0 bg-primary/10 rounded-sm flex items-center justify-center">
-<span class="text-primary font-headline font-black text-lg">北师大</span>
+<div class="w-14 h-14 flex-shrink-0 rounded-sm flex items-center justify-center overflow-hidden bg-white p-1">
+<img src="../img/bnu-logo.png" alt="北京师范大学" class="w-full h-full object-contain">
 </div>
 <div>
 <h4 class="font-headline font-bold text-base mb-1">北京师范大学</h4>
@@ -458,8 +459,8 @@ Six Centuries of Guarding the Great Wall
 </div>
 </div>
 <div class="bg-surface-container-low p-8 rounded-sm flex items-start gap-6 group hover:bg-surface-container-high transition-colors duration-500">
-<div class="w-14 h-14 flex-shrink-0 bg-tertiary/10 rounded-sm flex items-center justify-center">
-<span class="text-tertiary font-headline font-black text-lg">北建大</span>
+<div class="w-14 h-14 flex-shrink-0 rounded-sm flex items-center justify-center overflow-hidden bg-white p-1">
+<img src="../img/bucea-logo.png" alt="北京建筑大学" class="w-full h-full object-contain">
 </div>
 <div>
 <h4 class="font-headline font-bold text-base mb-1">北京建筑大学</h4>
@@ -467,8 +468,8 @@ Six Centuries of Guarding the Great Wall
 </div>
 </div>
 <div class="bg-surface-container-low p-8 rounded-sm flex items-start gap-6 group hover:bg-surface-container-high transition-colors duration-500">
-<div class="w-14 h-14 flex-shrink-0 bg-secondary/10 rounded-sm flex items-center justify-center">
-<span class="text-secondary font-headline font-black text-lg">北邮</span>
+<div class="w-14 h-14 flex-shrink-0 rounded-sm flex items-center justify-center overflow-hidden bg-white p-1">
+<img src="../img/bupt-logo.png" alt="北京邮电大学" class="w-full h-full object-contain">
 </div>
 <div>
 <h4 class="font-headline font-bold text-base mb-1">北京邮电大学</h4>
@@ -476,8 +477,8 @@ Six Centuries of Guarding the Great Wall
 </div>
 </div>
 <div class="bg-surface-container-low p-8 rounded-sm flex items-start gap-6 group hover:bg-surface-container-high transition-colors duration-500">
-<div class="w-14 h-14 flex-shrink-0 bg-on-surface/10 rounded-sm flex items-center justify-center">
-<span class="text-on-surface font-headline font-black text-lg">贸大</span>
+<div class="w-14 h-14 flex-shrink-0 rounded-sm flex items-center justify-center overflow-hidden bg-white p-1">
+<img src="../img/uibe-logo.png" alt="对外经济贸易大学" class="w-full h-full object-contain">
 </div>
 <div>
 <h4 class="font-headline font-bold text-base mb-1">对外经济贸易大学</h4>
@@ -485,8 +486,8 @@ Six Centuries of Guarding the Great Wall
 </div>
 </div>
 <div class="bg-surface-container-low p-8 rounded-sm flex items-start gap-6 group hover:bg-surface-container-high transition-colors duration-500">
-<div class="w-14 h-14 flex-shrink-0 bg-primary/10 rounded-sm flex items-center justify-center">
-<span class="text-primary font-headline font-black text-lg">首师</span>
+<div class="w-14 h-14 flex-shrink-0 rounded-sm flex items-center justify-center overflow-hidden bg-white p-1">
+<img src="../img/cnu-logo.svg" alt="首都师范大学" class="w-full h-full object-contain">
 </div>
 <div>
 <h4 class="font-headline font-bold text-base mb-1">首都师范大学</h4>
@@ -521,18 +522,14 @@ Six Centuries of Guarding the Great Wall
 <ul class="space-y-4 text-sm text-gray-400">
 <li><a class="hover:text-white transition-colors" href="#">交通指南</a></li>
 <li><a class="hover:text-white transition-colors" href="#">游客须知</a></li>
-<li><a class="hover:text-white transition-colors" href="#">联系我们</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
-<p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队</p>
+<p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队 · 任济坤</p>
 <p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
-<div class="flex gap-12">
-<a class="hover:text-white transition-colors" href="#">微信公众号</a>
-<a class="hover:text-white transition-colors" href="#">小红书</a>
-</div>
 </div>
 </footer>
 
