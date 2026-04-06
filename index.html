@@ -498,7 +498,7 @@
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50 hero-nav">
     <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
         <a href="/" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
-        <div class="hidden md:flex gap-16 items-center"><a class="text-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a></div>
+        <div class="hidden md:flex gap-16 items-center"><a class="text-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a><a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="/guardian">守护者 Guardian</a><a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="/booking">预约 Booking</a></div>
         <div class="flex items-center gap-8">
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
@@ -507,7 +507,7 @@
             </button>
         </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl"><a class="block text-[#851217] font-medium font-headline py-3" href="/">首页 Home</a></div></nav>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl"><a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="/">首页 Home</a><a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="/guardian">守护者 Guardian</a><a class="block text-[#1b1c1c]/60 font-headline py-3" href="/booking">预约 Booking</a></div></nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
 <!-- Hero Branding Section -->
 <header class="mb-24 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-center relative">
@@ -629,6 +629,8 @@
 </div>
 </section>
 
+<!-- 背景纹理渐变过渡 -->
+<div class="h-32 -mb-32 relative z-10 pointer-events-none" style="background:linear-gradient(to bottom, transparent, #fbf9f8)"></div>
 <!-- Section 1.5A: Three Tourism Routes -->
 <section class="mb-24 md:mb-48">
 <div class="mb-16 md:mb-24 fade-in">
@@ -805,49 +807,32 @@
 <div class="lg:col-span-7 space-y-16 fade-in-right">
 <!-- 3D Carousel Character Sheet -->
 <style>
-@keyframes carouselSpin {
-  0%,15%   { transform: rotateY(0deg); }
-  33%,48%  { transform: rotateY(-120deg); }
-  66%,81%  { transform: rotateY(-240deg); }
+@keyframes ipSpin {
+  0%,12%   { transform: rotateY(0deg); }
+  33%,45%  { transform: rotateY(-120deg); }
+  66%,78%  { transform: rotateY(-240deg); }
   100%     { transform: rotateY(-360deg); }
 }
-.carousel-scene { perspective: 1000px; }
-.carousel-ring {
-  transform-style: preserve-3d;
-  animation: carouselSpin 12s cubic-bezier(0.45,0.05,0.55,0.95) infinite;
-}
-.carousel-ring:hover { animation-play-state: paused; }
-.carousel-cell {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-.carousel-cell img { filter: drop-shadow(0 16px 32px rgba(27,28,28,0.2)); }
 </style>
-<div class="relative p-6 md:p-12 bg-[#faf9f7] rounded-sm shadow-[0_32px_80px_-16px_rgba(27,28,28,0.08)] overflow-hidden">
-<div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/3 to-transparent pointer-events-none"></div>
-<div class="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-tertiary/3 to-transparent pointer-events-none"></div>
-<h4 class="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-variant/60 mb-6 text-center relative">三视图技术分析 Technical 3-View Analysis</h4>
-<!-- 3D Carousel -->
-<div class="carousel-scene mx-auto" style="height: 360px; max-width: 320px;">
-<div class="carousel-ring relative w-full h-full" style="transform-origin: center center -160px;">
-<!-- 正面 Front -->
-<div class="carousel-cell absolute inset-0 flex flex-col items-center justify-center" style="transform: rotateY(0deg) translateZ(160px);">
-<img src="img/ip-front.png" alt="正面 Full Frontal" class="h-64 object-contain mb-4"/>
-<p class="text-[10px] font-black tracking-widest uppercase text-tertiary/70">Full Frontal</p>
+<div style="position:relative; padding:32px 24px; background:#faf9f7; border-radius:2px; box-shadow:0 32px 80px -16px rgba(27,28,28,0.08); display:flex; flex-direction:column; align-items:center;">
+<h4 style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5em; color:rgba(27,28,28,0.35); margin-bottom:16px; text-align:center;">三视图技术分析 Technical 3-View Analysis</h4>
+<div style="height:420px; width:100%; display:flex; justify-content:center; align-items:center; perspective:1000px; perspective-origin:center center;">
+<div style="position:relative; width:280px; height:380px; transform-style:preserve-3d; animation:ipSpin 12s cubic-bezier(0.42,0,0.58,1) infinite;" onmouseenter="this.style.animationPlayState='paused'" onmouseleave="this.style.animationPlayState='running'">
+<div style="position:absolute; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotateY(0deg) translateZ(200px); backface-visibility:hidden;">
+<img src="./img/ip-front.png" style="height:310px; filter:drop-shadow(0 24px 48px rgba(27,28,28,0.3));" alt=""/>
+<p style="font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase; color:rgba(89,61,0,0.5); margin-top:16px;">Full Frontal</p>
 </div>
-<!-- 侧面 Side -->
-<div class="carousel-cell absolute inset-0 flex flex-col items-center justify-center" style="transform: rotateY(120deg) translateZ(160px);">
-<img src="img/ip-side.png" alt="侧面 Side Profile" class="h-64 object-contain mb-4"/>
-<p class="text-[10px] font-black tracking-widest uppercase text-tertiary/70">Side Profile</p>
+<div style="position:absolute; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotateY(120deg) translateZ(200px); backface-visibility:hidden;">
+<img src="./img/ip-side.png" style="height:310px; filter:drop-shadow(0 24px 48px rgba(27,28,28,0.3));" alt=""/>
+<p style="font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase; color:rgba(89,61,0,0.5); margin-top:16px;">Side Profile</p>
 </div>
-<!-- 背面 Back -->
-<div class="carousel-cell absolute inset-0 flex flex-col items-center justify-center" style="transform: rotateY(240deg) translateZ(160px);">
-<img src="img/ip-back.png" alt="背面 Full Back" class="h-64 object-contain mb-4"/>
-<p class="text-[10px] font-black tracking-widest uppercase text-tertiary/70">Full Back</p>
+<div style="position:absolute; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; transform:rotateY(240deg) translateZ(200px); backface-visibility:hidden;">
+<img src="./img/ip-back.png" style="height:310px; filter:drop-shadow(0 24px 48px rgba(27,28,28,0.3));" alt=""/>
+<p style="font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase; color:rgba(89,61,0,0.5); margin-top:16px;">Full Back</p>
 </div>
 </div>
 </div>
-<p class="text-[10px] text-on-surface-variant/40 text-center mt-4 italic">悬停暂停旋转</p>
+<p style="font-size:10px; color:rgba(27,28,28,0.25); text-align:center; margin-top:4px; font-style:italic;">悬停暂停旋转</p>
 </div>
 <!-- Expressions -->
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -986,10 +971,9 @@
 <div class="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center">
 <span class="material-symbols-outlined text-white/80 text-lg">school</span>
 </div>
-<span class="text-white/60 text-[11px] font-bold tracking-[0.4em] uppercase">Capital Normal University · Challenge Cup</span>
+<span class="text-white/60 text-[11px] font-bold tracking-[0.4em] uppercase">Challenge Cup · Team Project</span>
 </div>
-<h2 class="text-4xl md:text-6xl font-headline font-extrabold text-white mb-4 leading-[1.1]">首都师范大学</h2>
-<p class="text-2xl md:text-3xl font-headline text-white/70 mb-10">挑战杯参赛团队</p>
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold text-white mb-4 leading-[1.1]">挑战杯参赛团队</h2>
 <div class="h-px w-20 bg-primary mb-10"></div>
 <p class="text-lg text-white/80 font-headline leading-relaxed mb-12 max-w-2xl">「让长城文化成为乡村振兴的新动力」<br/><span class="text-white/50 text-base">"青振京郊"乡村振兴专项赛 · 项目编号17</span></p>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8">
@@ -1032,23 +1016,23 @@
 <div class="space-y-6">
 <h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
 <ul class="space-y-4 text-sm text-gray-400">
-<li><a class="hover:text-white transition-colors" href="#">设计哲学</a></li>
-<li><a class="hover:text-white transition-colors" href="#">壁画地图</a></li>
-<li><a class="hover:text-white transition-colors" href="#">文化档案馆</a></li>
+<li><a class="hover:text-white transition-colors" href="explore/design-philosophy.html">设计哲学</a></li>
+<li><a class="hover:text-white transition-colors" href="explore/mural-map.html">壁画地图</a></li>
+<li><a class="hover:text-white transition-colors" href="explore/cultural-archive.html">文化档案馆</a></li>
 </ul>
 </div>
 <div class="space-y-6">
 <h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
 <ul class="space-y-4 text-sm text-gray-400">
-<li><a class="hover:text-white transition-colors" href="#">交通指南</a></li>
-<li><a class="hover:text-white transition-colors" href="#">游客须知</a></li>
+<li><a class="hover:text-white transition-colors" href="info/transport.html">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="info/visitor-guide.html">游客须知</a></li>
 <li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
-<p>© 2026 四色香屯 · 首都师范大学挑战杯团队 · 任济坤</p>
+<p>© 2026 四色香屯 · 挑战杯团队 · 任济坤</p>
 <p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
 </div>
 </footer>

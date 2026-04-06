@@ -99,6 +99,242 @@
         border-radius: 0.25rem;
     }
 </style>
+<!-- Chat Widget Styles -->
+<style>
+  #xiangtun-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Manrope', sans-serif;
+  }
+  /* Toggle Button */
+  #xiangtun-chat-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(133,18,23,0.35), 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+  #xiangtun-chat-toggle:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15);
+  }
+  /* Panel */
+  #xiangtun-chat-panel {
+    display: none;
+    width: 400px;
+    max-height: 580px;
+    background: rgba(251,249,248,0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-radius: 16px;
+    box-shadow:
+      0 24px 80px rgba(27,28,28,0.12),
+      0 8px 32px rgba(133,18,23,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 72px;
+    right: 0;
+    animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes chatSlideUp {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  #xiangtun-chat-panel.open { display: flex; }
+  /* Header */
+  #xiangtun-chat-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  #xiangtun-chat-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+  }
+  #xiangtun-chat-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #xiangtun-chat-header > * { position: relative; z-index: 1; }
+  #xiangtun-chat-header h4 {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  #xiangtun-chat-header p {
+    margin: 2px 0 0;
+    font-size: 11px;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+  #xiangtun-chat-header .chat-avatar {
+    font-size: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  #xiangtun-chat-header .chat-close {
+    margin-left: auto;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  #xiangtun-chat-header .chat-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+  }
+  /* Messages */
+  #xiangtun-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 360px;
+    min-height: 200px;
+    background: linear-gradient(180deg, rgba(245,243,243,0.3) 0%, transparent 30%);
+  }
+  #xiangtun-chat-messages::-webkit-scrollbar { width: 4px; }
+  #xiangtun-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  #xiangtun-chat-messages::-webkit-scrollbar-thumb { background: rgba(133,18,23,0.15); border-radius: 4px; }
+  .chat-msg {
+    max-width: 82%;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: break-word;
+    animation: msgFadeIn 0.3s ease both;
+  }
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg.bot {
+    align-self: flex-start;
+    background: rgba(245,243,243,0.8);
+    color: #1b1c1c;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    border-radius: 16px 2px 16px 16px;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.2);
+  }
+  .chat-msg.bot.typing::after {
+    content: '';
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
+  }
+  .chat-msg.bot.typing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '●  ●  ●';
+    animation: typingPulse 1.4s ease-in-out infinite;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #851217;
+    opacity: 0.5;
+  }
+  @keyframes typingPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  /* Input Area */
+  #xiangtun-chat-input-area {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(251,249,248,0.8);
+    backdrop-filter: blur(8px);
+  }
+  #xiangtun-chat-input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid rgba(140,113,110,0.2);
+    border-radius: 0;
+    padding: 10px 4px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s;
+    color: #1b1c1c;
+  }
+  #xiangtun-chat-input::placeholder { color: rgba(88,65,63,0.4); }
+  #xiangtun-chat-input:focus {
+    border-color: #851217;
+  }
+  #xiangtun-chat-send {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.25);
+    flex-shrink: 0;
+  }
+  #xiangtun-chat-send:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(133,18,23,0.35);
+  }
+  #xiangtun-chat-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  @media (max-width: 480px) {
+    #xiangtun-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      bottom: 68px;
+      max-height: 70vh;
+    }
+  }
+</style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-surface-container-high selection:text-on-surface overflow-x-hidden paper-texture">
 
@@ -106,7 +342,7 @@
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
     <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
         <a href="/" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
-        <div class="hidden md:flex gap-16 items-center"><a class="text-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a></div>
+        <div class="hidden md:flex gap-16 items-center"><a class="text-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a><a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="/guardian">守护者 Guardian</a><a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="/booking">预约 Booking</a></div>
         <div class="flex items-center gap-8">
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
@@ -115,7 +351,7 @@
             </button>
         </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl"><a class="block text-[#851217] font-medium font-headline py-3" href="/">首页 Home</a></div></nav>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl"><a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="/">首页 Home</a><a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="/guardian">守护者 Guardian</a><a class="block text-[#1b1c1c]/60 font-headline py-3" href="/booking">预约 Booking</a></div></nav>
 
 <!-- Hero Section -->
 <header class="stone-gradient pt-24 md:pt-44 pb-12 md:pb-40 px-4 md:px-12 relative overflow-hidden">
@@ -681,8 +917,8 @@
         <div class="space-y-6">
             <h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
             <ul class="space-y-4 text-sm text-gray-400">
-                <li><a class="hover:text-white transition-colors" href="#">交通指南</a></li>
-                <li><a class="hover:text-white transition-colors" href="#">游客须知</a></li>
+                <li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li>
+                <li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li>
                 <li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
             </ul>
         </div>
