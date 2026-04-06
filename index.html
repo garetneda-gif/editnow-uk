@@ -369,11 +369,16 @@
             </p>
 </div>
 <div class="lg:col-span-5 flex flex-col items-center fade-in-right">
-<div class="relative w-full aspect-square max-w-md bg-white p-8 md:p-16 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] rounded-sm silk-overlay border border-outline-variant/20">
-<div class="w-full h-full flex items-center justify-center p-8 border border-outline-variant/10">
+<div class="relative w-full aspect-square max-w-md rounded-sm" style="transform: perspective(800px) rotateY(-4deg) rotateX(2deg); transform-origin: center center;">
+<div class="absolute inset-0 rounded-sm p-[3px] bg-gradient-to-br from-[#851217] via-[#593d00] via-50% via-[#3b6934] to-[#1b1c1c] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)]">
+<div class="w-full h-full bg-white rounded-sm"></div>
+</div>
+<div class="relative z-10 w-full h-full p-8 md:p-16 silk-overlay">
+<div class="w-full h-full flex items-center justify-center p-8">
 <img class="w-full h-full object-contain mix-blend-multiply" data-alt="minimalist logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC38khLWDGqN-_7VWleMT-UQfoInM0m9avKgQ28yoS6n31gTPPKVM9kDvOC0D5BCqFvdSqvZ8UaJCq2DC2SNSTQZuXBqi5R6RDZgL1knuOFW796mZUGYeFK3WsnLP5riFFBlSMVVTnaMFQVuodUDyOmz968wN0VKPhk9-3QQdukCTOYBMsybo-Lizjekvk7zC9u-WVX7QqtpFwZFlXWBjymFs25_ZdESzli8Q0Wa_7Sdd6zOYDPJ4lA1ZlFz1olrBfvycQswZ51t1I"/>
 </div>
-<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl border border-outline-variant/10">
+</div>
+<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl z-20 border-l-2 border-primary">
 <h2 class="text-3xl font-headline font-black text-primary mb-1">四色香屯</h2>
 <p class="text-[10px] font-body text-on-surface-variant tracking-[0.3em] uppercase">Visual Identity MMXXIV</p>
 </div>
@@ -575,42 +580,38 @@
 <p class="text-sm font-headline italic opacity-60 mt-3">三条路线、十二个坐标——从辽代铁炉到明代敌台，从龙吟溪谷到西星口营地</p>
 <div class="h-1 w-24 bg-primary mt-6"></div>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center" style="perspective: 800px;">
 <!-- Map Container -->
-<div class="lg:col-span-8">
-<div class="relative overflow-hidden shadow-[0_32px_64px_-12px_rgba(27,28,28,0.25)]" style="height: 520px;">
+<div class="lg:col-span-7">
+<div class="relative overflow-hidden rounded-sm" style="height: 520px; transform: rotateY(6deg); transform-origin: left center; box-shadow: 24px 24px 64px -8px rgba(27,28,28,0.4), -4px 0 24px -8px rgba(27,28,28,0.1);">
 <div id="xiangtun-map" class="w-full h-full"></div>
 <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(27,28,28,0.15)]"></div>
-<div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1b1c1c]/30 to-transparent pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#1b1c1c]/40 to-transparent pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-[#1b1c1c]/10 to-transparent pointer-events-none"></div>
 </div>
 </div>
 <!-- Route Toggle Panel -->
-<div class="lg:col-span-4 flex flex-col bg-[#1b1c1c]">
-<div class="p-6 lg:p-8 flex-1 flex flex-col">
-<h4 class="text-[10px] font-black tracking-[0.4em] uppercase text-white/40 mb-6 lg:mb-8">路线切换 Route Selector</h4>
-<div class="flex flex-row lg:flex-col gap-2 flex-1">
-<button onclick="focusRoute('grey')" class="route-btn flex-1 lg:flex-none relative overflow-hidden rounded-sm p-5 lg:p-6 text-left text-white transition-all duration-500 hover:translate-x-1 group border border-white/5 hover:border-white/15 bg-white/5 hover:bg-white/10" data-route="grey">
-<div class="absolute top-0 left-0 w-1 h-full bg-white/30 group-hover:bg-white transition-colors duration-300"></div>
-<p class="text-[10px] font-bold tracking-widest uppercase opacity-40 mb-1.5 pl-3">ROUTE 01</p>
-<p class="font-headline font-bold text-sm lg:text-base pl-3">灰色长城</p>
-<p class="text-[11px] opacity-40 mt-1 hidden lg:block pl-3">六百年石语</p>
+<div class="lg:col-span-5 flex flex-col gap-4" style="transform: rotateY(-4deg); transform-origin: right center;">
+<button onclick="focusRoute('grey')" class="route-btn relative overflow-hidden rounded-sm p-5 lg:p-7 text-left text-white transition-all duration-500 group bg-gradient-to-br from-[#2a2b2b] to-[#1b1c1c] hover:-translate-y-1" style="box-shadow: 14px 14px 44px -8px rgba(27,28,28,0.45);" data-route="grey">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-white/60 to-white/15 group-hover:from-white group-hover:to-white/40 transition-all duration-300"></div>
+<div class="absolute top-0 right-0 w-40 h-full bg-gradient-to-l from-white/[0.03] to-transparent pointer-events-none"></div>
+<p class="text-[10px] font-bold tracking-widest uppercase text-white/35 mb-1.5 pl-4">ROUTE 01</p>
+<p class="font-headline font-bold text-lg pl-4">灰色长城</p>
+<p class="text-[11px] text-white/35 mt-1 pl-4">六百年石语</p>
 </button>
-<button onclick="focusRoute('red')" class="route-btn flex-1 lg:flex-none relative overflow-hidden rounded-sm p-5 lg:p-6 text-left text-white transition-all duration-500 hover:translate-x-1 group border border-white/5 hover:border-primary/40 bg-white/5 hover:bg-primary/15" data-route="red">
-<div class="absolute top-0 left-0 w-1 h-full bg-primary/40 group-hover:bg-primary transition-colors duration-300"></div>
-<p class="text-[10px] font-bold tracking-widest uppercase opacity-40 mb-1.5 pl-3">ROUTE 02</p>
-<p class="font-headline font-bold text-sm lg:text-base pl-3">红色研学</p>
-<p class="text-[11px] opacity-40 mt-1 hidden lg:block pl-3">烽火传承</p>
+<button onclick="focusRoute('red')" class="route-btn relative overflow-hidden rounded-sm p-5 lg:p-7 text-left text-white transition-all duration-500 group bg-gradient-to-br from-[#851217] to-[#5a0c10] hover:-translate-y-1" style="box-shadow: 14px 14px 44px -8px rgba(133,18,23,0.45);" data-route="red">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-white/60 to-white/15 group-hover:from-white group-hover:to-white/40 transition-all duration-300"></div>
+<div class="absolute top-0 right-0 w-40 h-full bg-gradient-to-l from-white/[0.05] to-transparent pointer-events-none"></div>
+<p class="text-[10px] font-bold tracking-widest uppercase text-white/45 mb-1.5 pl-4">ROUTE 02</p>
+<p class="font-headline font-bold text-lg pl-4">红色研学</p>
+<p class="text-[11px] text-white/40 mt-1 pl-4">烽火传承</p>
 </button>
-<button onclick="focusRoute('green')" class="route-btn flex-1 lg:flex-none relative overflow-hidden rounded-sm p-5 lg:p-6 text-left text-white transition-all duration-500 hover:translate-x-1 group border border-white/5 hover:border-secondary/40 bg-white/5 hover:bg-secondary/15" data-route="green">
-<div class="absolute top-0 left-0 w-1 h-full bg-secondary/40 group-hover:bg-secondary transition-colors duration-300"></div>
-<p class="text-[10px] font-bold tracking-widest uppercase opacity-40 mb-1.5 pl-3">ROUTE 03</p>
-<p class="font-headline font-bold text-sm lg:text-base pl-3">绿色生态</p>
-<p class="text-[11px] opacity-40 mt-1 hidden lg:block pl-3">天然氧吧</p>
-</button>
-</div>
-</div>
-<button onclick="focusRoute('all')" class="route-btn text-white/60 hover:text-white p-4 lg:p-5 text-center text-[11px] font-bold tracking-[0.3em] uppercase border-t border-white/10 hover:bg-white/5 transition-all duration-300">
-<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">layers</span>显示全部路线</span>
+<button onclick="focusRoute('green')" class="route-btn relative overflow-hidden rounded-sm p-5 lg:p-7 text-left text-white transition-all duration-500 group bg-gradient-to-br from-[#3b6934] to-[#1e3a19] hover:-translate-y-1" style="box-shadow: 14px 14px 44px -8px rgba(59,105,52,0.45);" data-route="green">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-white/60 to-white/15 group-hover:from-white group-hover:to-white/40 transition-all duration-300"></div>
+<div class="absolute top-0 right-0 w-40 h-full bg-gradient-to-l from-white/[0.05] to-transparent pointer-events-none"></div>
+<p class="text-[10px] font-bold tracking-widest uppercase text-white/45 mb-1.5 pl-4">ROUTE 03</p>
+<p class="font-headline font-bold text-lg pl-4">绿色生态</p>
+<p class="text-[11px] text-white/40 mt-1 pl-4">天然氧吧</p>
 </button>
 </div>
 </div>
@@ -654,19 +655,19 @@
 <div class="grid grid-cols-3 gap-4 md:gap-10 relative">
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] bg-white p-4 rounded-sm shadow-[0_4px_24px_-4px_rgba(27,28,28,0.06)] group-hover:shadow-[0_12px_32px_-4px_rgba(133,18,23,0.12)] transition-all duration-700 overflow-hidden mb-6 border border-[#e8e6e4] group-hover:border-primary/20">
-<div class="w-full h-full bg-gradient-to-br from-[#593d00]/15 to-[#851217]/8 flex items-center justify-center rounded-sm"><span class="material-symbols-outlined text-on-surface/15 group-hover:text-primary/25 transition-colors duration-500" style="font-size:56px">nature_people</span></div>
+<img class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVwLnOvuuPfUzNkC7aGpBeQwLq-gQPVk95W0qWW6lei9S4QE6Bp7XemyaVTDwku70gW9QgmzHIuFiKCfJGpDiz6iOofskbBGyPb7Y1-F0s-D7BEUDPx8tOvlfVtouN29RzcuACAAS1pLRD9eNyiL9VxihsDrvn8inFv0DrH3_dFdgw6HQ77JCMrQhjDC3l4V0BQ2RgZPU4hleLk3erAtREgmOhMnvqae5nTEGU4ysefiGFJwDxaYNDtlJmwg1FuIFITvHIqq8U7oM" alt="板栗守护灵正面"/>
 </div>
 <p class="text-[10px] font-black text-center tracking-widest uppercase opacity-40 group-hover:opacity-70 transition-opacity">I. 正面 Aspect</p>
 </div>
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] bg-white p-4 rounded-sm shadow-[0_4px_24px_-4px_rgba(27,28,28,0.06)] group-hover:shadow-[0_12px_32px_-4px_rgba(59,105,52,0.12)] transition-all duration-700 overflow-hidden mb-6 border border-[#e8e6e4] group-hover:border-secondary/20">
-<div class="w-full h-full bg-gradient-to-br from-[#3b6934]/15 to-[#593d00]/8 flex items-center justify-center rounded-sm"><span class="material-symbols-outlined text-on-surface/15 group-hover:text-secondary/25 transition-colors duration-500" style="font-size:56px">shield</span></div>
+<img class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuZe6GCzSVdhsOmSqZuJjNXVtRoFnPP7prOxDIRKz5A_FRdfBroUPg8kgVRzzZ1-_zMEtouW_n39BYV0YvXzGo69YL_S4iWhXjjcNToMOAzhtzMbcst0n3RGcJsu4mpPR1E_LqtlXa9Up9KjaweAekSZH9-ua6uwtde6so7tkY_hud-0rmnSGaBdUBszOQOJPymFu8N6kCqVe4AdZ2tSu0xMBBEolBRHcpoiBkjnT0ZB1QMNmqE4LfVPkKwPmidrQnxmugLwHNH40" alt="板栗守护灵侧面"/>
 </div>
 <p class="text-[10px] font-black text-center tracking-widest uppercase opacity-40 group-hover:opacity-70 transition-opacity">II. 侧面 Profile</p>
 </div>
 <div class="group cursor-pointer">
 <div class="aspect-[3/4] bg-white p-4 rounded-sm shadow-[0_4px_24px_-4px_rgba(27,28,28,0.06)] group-hover:shadow-[0_12px_32px_-4px_rgba(89,61,0,0.12)] transition-all duration-700 overflow-hidden mb-6 border border-[#e8e6e4] group-hover:border-tertiary/20">
-<div class="w-full h-full bg-gradient-to-br from-[#1b1c1c]/15 to-[#593d00]/8 flex items-center justify-center rounded-sm"><span class="material-symbols-outlined text-on-surface/15 group-hover:text-tertiary/25 transition-colors duration-500" style="font-size:56px">globe</span></div>
+<img class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzVikDP90FkveoIHaCdKa4p0WnMluiubmGLRRAuAIDExMESDKdRimfL2qUN93rtd5rI3pgmvI2BCcofs1v-r6UHqWhAHKOp5wjCuxM1IoeIbG6v5l8a8OsuS1VFzF7DgpVHx69Y5eCT3lNjmHqfKhDg4T5HUvUrDdfn5286Qoc8ylgwQu-hg1P2DQ5qukGmXjNW72Tb3kCBQLnGWH8LVUl9ZtOi8JnZ7v5RwzTg10huLtpZdMb39kHhVJLFBNGYJnS57ggHAK1bj0" alt="板栗守护灵背面"/>
 </div>
 <p class="text-[10px] font-black text-center tracking-widest uppercase opacity-40 group-hover:opacity-70 transition-opacity">III. 背面 Detail</p>
 </div>
