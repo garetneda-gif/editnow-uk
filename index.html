@@ -13,6 +13,8 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -92,6 +94,43 @@
         }
         .silk-overlay {
             background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .route-card {
+            opacity: 0;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.7s ease;
+        }
+        .route-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 80px -10px rgba(0,0,0,0.25);
+        }
+        .route-card .card-cta {
+            transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+        }
+        .route-card .card-cta:hover {
+            background: rgba(255,255,255,1);
+            color: #1b1c1c;
+            border-color: #fff;
+        }
+        .route-btn {
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .route-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .route-btn.active {
+            outline: 3px solid #fff;
+            outline-offset: 3px;
+        }
+        #xiangtun-map { z-index: 0; }
+        .leaflet-popup-content-wrapper {
+            border-radius: 4px !important;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
         }
     </style>
 <!-- Live2D Chat Styles -->
@@ -351,6 +390,143 @@
 </div>
 </div>
 </section>
+
+<!-- Section 1.5A: Three Tourism Routes -->
+<section class="mb-24 md:mb-48">
+<div class="mb-16 md:mb-24">
+<div class="flex items-center gap-4 mb-6">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Cultural Routes | 文旅导览</span>
+</div>
+<h2 class="text-3xl md:text-5xl lg:text-6xl font-headline font-extrabold tracking-tight">历史之门：<span class="italic font-normal">三条文旅路线</span></h2>
+<p class="text-sm font-headline italic opacity-60 mt-3 max-w-lg">Three Heritage Routes Awaiting Your Discovery</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+<!-- Card 1: Grey Great Wall (Large) -->
+<a href="routes/grey-greatwall.html" class="route-card lg:col-span-8 bg-gradient-to-br from-[#1b1c1c] to-[#303030] rounded-sm overflow-hidden min-h-[400px] relative flex items-stretch group/card shadow-xl">
+<div class="flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-between z-10 relative">
+<div>
+<p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 01 | 灰色长城</p>
+<h3 class="text-4xl md:text-5xl font-headline font-extrabold text-white mb-6 tracking-tight">六百年石语</h3>
+<p class="text-white/70 leading-relaxed max-w-md text-sm md:text-base">国家文物局首批研究性修缮试点。3号、4号敌台与400米墙体，见证明代军事防御的严密布局。</p>
+</div>
+<div class="mt-8">
+<span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">探索路线 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+<div class="hidden md:flex items-center justify-center w-1/3 relative">
+<!-- Abstract Great Wall Silhouette -->
+<div class="relative w-full h-full flex items-end justify-center pb-16 opacity-[0.08]">
+<div class="absolute bottom-16 left-[10%] w-[15%] h-[60%] bg-white" style="clip-path: polygon(10% 100%, 90% 100%, 80% 0%, 20% 0%);"></div>
+<div class="absolute bottom-16 left-[28%] w-[12%] h-[80%] bg-white" style="clip-path: polygon(5% 100%, 95% 100%, 85% 0%, 15% 0%);"></div>
+<div class="absolute bottom-16 left-[43%] w-[18%] h-[50%] bg-white" style="clip-path: polygon(10% 100%, 90% 100%, 80% 0%, 20% 0%);"></div>
+<div class="absolute bottom-16 left-[64%] w-[14%] h-[70%] bg-white" style="clip-path: polygon(5% 100%, 95% 100%, 85% 0%, 15% 0%);"></div>
+<div class="absolute bottom-16 left-[5%] right-[10%] h-[30%] bg-white" style="clip-path: polygon(0% 100%, 100% 100%, 95% 40%, 90% 0%, 85% 40%, 75% 0%, 70% 40%, 60% 0%, 55% 40%, 45% 0%, 40% 40%, 30% 0%, 25% 40%, 15% 0%, 10% 40%, 5% 0%);"></div>
+</div>
+<span class="material-symbols-outlined absolute text-white/[0.04] text-[200px] select-none">castle</span>
+</div>
+</a>
+
+<!-- Card 2: Red Study Route -->
+<a href="routes/red-study.html" class="route-card lg:col-span-4 bg-gradient-to-br from-[#851217] to-[#a62c2b] rounded-sm overflow-hidden min-h-[400px] relative flex flex-col justify-between p-8 md:p-10 group/card shadow-xl">
+<div class="z-10 relative">
+<p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 02 | 红色研学</p>
+<h3 class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-4 tracking-tight">烽火传承</h3>
+<p class="text-white/70 leading-relaxed text-sm">重走长城抗战路，聆听历史的回响</p>
+</div>
+<div class="z-10 mt-8">
+<span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">探索路线 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+<span class="absolute bottom-0 right-4 text-[200px] font-headline font-black text-white opacity-[0.05] leading-none select-none">烽</span>
+</a>
+
+<!-- Card 3: Green Ecology Route -->
+<a href="routes/green-ecology.html" class="route-card lg:col-span-6 bg-gradient-to-br from-[#3b6934] to-[#23501e] rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
+<div class="flex-1 p-8 md:p-10 flex flex-col justify-between z-10">
+<div>
+<p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 03 | 绿色生态</p>
+<h3 class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-4 tracking-tight">天然氧吧</h3>
+<p class="text-white/70 leading-relaxed text-sm max-w-xs">95%林木覆盖率，四面环山的世外桃源</p>
+</div>
+<div class="mt-6">
+<span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">探索路线 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+<div class="hidden md:flex items-center justify-center w-1/4">
+<span class="material-symbols-outlined text-white/[0.08] text-[120px] select-none">forest</span>
+</div>
+</a>
+
+<!-- Card 4: Xiangtun Story -->
+<a href="about/history.html" class="route-card lg:col-span-6 bg-gradient-to-br from-[#593d00] to-[#775300] rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
+<div class="flex-1 p-8 md:p-10 flex flex-col justify-between z-10">
+<div>
+<p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">STORY | 香屯故事</p>
+<h3 class="text-3xl md:text-4xl font-headline font-extrabold text-white mb-4 tracking-tight">六百年守望</h3>
+<p class="text-white/70 leading-relaxed text-sm max-w-xs">从辽代铁火到明长城，38户人家的传承故事</p>
+</div>
+<div class="mt-6">
+<span class="card-cta inline-flex items-center gap-2 border border-white/40 text-white px-6 py-3 rounded-sm text-sm font-bold tracking-wider uppercase">了解更多 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+<div class="hidden md:flex items-center justify-center w-1/4">
+<span class="material-symbols-outlined text-white/[0.08] text-[120px] select-none">history_edu</span>
+</div>
+</a>
+
+</div>
+</section>
+
+<!-- Section 1.5B: Interactive Tourism Route Map -->
+<section class="mb-24 md:mb-48">
+<div class="mb-16 md:mb-20">
+<div class="flex items-center gap-4 mb-6">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">INTERACTIVE MAP | 交互导览</span>
+</div>
+<h2 class="text-3xl md:text-5xl lg:text-6xl font-headline font-extrabold tracking-tight">探索香屯 · <span class="italic font-normal">全景路线图</span></h2>
+<p class="text-sm font-headline italic opacity-60 mt-3">点击路线，开启你的文化之旅</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Map Container -->
+<div class="lg:col-span-8">
+<div class="relative rounded-sm overflow-hidden border border-outline-variant/20" style="height: 500px;">
+<div id="xiangtun-map" class="w-full h-full"></div>
+</div>
+</div>
+<!-- Route Toggle Panel -->
+<div class="lg:col-span-4 flex flex-col gap-4 lg:gap-6">
+<div class="p-6 bg-surface-container rounded-sm border border-outline-variant/20">
+<h4 class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant mb-6">路线切换 Route Selector</h4>
+<div class="flex flex-row lg:flex-col gap-3">
+<button onclick="focusRoute('grey')" class="route-btn flex-1 lg:flex-none bg-gradient-to-r from-[#1b1c1c] to-[#303030] text-white rounded-sm p-4 lg:p-5 text-left" data-route="grey">
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-1">ROUTE 01</p>
+<p class="font-headline font-bold text-sm lg:text-base">灰色长城</p>
+<p class="text-[11px] opacity-60 mt-1 hidden lg:block">六百年石语</p>
+</button>
+<button onclick="focusRoute('red')" class="route-btn flex-1 lg:flex-none bg-gradient-to-r from-[#851217] to-[#a62c2b] text-white rounded-sm p-4 lg:p-5 text-left" data-route="red">
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-1">ROUTE 02</p>
+<p class="font-headline font-bold text-sm lg:text-base">红色研学</p>
+<p class="text-[11px] opacity-60 mt-1 hidden lg:block">烽火传承</p>
+</button>
+<button onclick="focusRoute('green')" class="route-btn flex-1 lg:flex-none bg-gradient-to-r from-[#3b6934] to-[#23501e] text-white rounded-sm p-4 lg:p-5 text-left" data-route="green">
+<p class="text-[10px] font-bold tracking-widest uppercase opacity-60 mb-1">ROUTE 03</p>
+<p class="font-headline font-bold text-sm lg:text-base">绿色生态</p>
+<p class="text-[11px] opacity-60 mt-1 hidden lg:block">天然氧吧</p>
+</button>
+</div>
+</div>
+<button onclick="focusRoute('all')" class="route-btn bg-surface-container-high text-on-surface rounded-sm p-4 text-center border border-outline-variant/20 text-sm font-bold tracking-wider uppercase hover:bg-surface-container-highest">
+显示全部路线
+</button>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant/60 mt-4 italic">路线坐标仅供示意，实际游览路线以现场指引为准</p>
+</section>
+
 <!-- Section 2: IP Character -->
 <section class="mb-24 md:mb-48">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
@@ -695,5 +871,166 @@
     container.scrollTop = container.scrollHeight;
     return div;
   }
+</script>
+
+<!-- Route Cards Animation & Map Initialization -->
+<script>
+// Intersection Observer for route card fade-in animations
+const routeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+        entry.target.style.opacity = '1';
+      }, index * 120);
+      routeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.route-card').forEach(card => {
+  card.style.opacity = '0';
+  routeObserver.observe(card);
+});
+
+// Leaflet Map
+(function() {
+  const mapEl = document.getElementById('xiangtun-map');
+  if (!mapEl) return;
+
+  const map = L.map('xiangtun-map', {
+    center: [40.555, 116.195],
+    zoom: 14,
+    zoomControl: true,
+    attributionControl: false
+  });
+
+  // Gaode satellite + annotation layers
+  L.tileLayer('https://webst0{s}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}', {
+    subdomains: '1234',
+    maxZoom: 18
+  }).addTo(map);
+  L.tileLayer('https://webst0{s}.is.autonavi.com/appmaptile?style=8&x={x}&y={y}&z={z}', {
+    subdomains: '1234',
+    maxZoom: 18
+  }).addTo(map);
+
+  // Custom marker factory
+  function createMarker(latlng, color, name, desc, time) {
+    const icon = L.divIcon({
+      className: '',
+      html: '<div style="width:16px;height:16px;background:' + color + ';border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>',
+      iconSize: [16, 16],
+      iconAnchor: [8, 8]
+    });
+    return L.marker(latlng, { icon: icon }).addTo(map)
+      .bindPopup('<div style="font-family:Manrope,sans-serif;min-width:200px;">' +
+        '<div style="font-size:10px;color:' + color + ';font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">● ' + time + '</div>' +
+        '<div style="font-family:Newsreader,serif;font-size:18px;font-weight:700;color:#1b1c1c;margin-bottom:6px;">' + name + '</div>' +
+        '<div style="font-size:13px;color:#58413f;line-height:1.5;">' + desc + '</div>' +
+      '</div>', { maxWidth: 280 });
+  }
+
+  // Routes data
+  const routes = {};
+
+  // Red Study Route (dashed)
+  const redCoords = [
+    [40.556, 116.193],
+    [40.558, 116.196],
+    [40.560, 116.198],
+    [40.557, 116.194]
+  ];
+  routes.red = {
+    line: L.polyline(redCoords, { color: '#851217', weight: 4, dashArray: '10 6', opacity: 0.9 }).addTo(map),
+    markers: [
+      createMarker(redCoords[0], '#851217', '陈列室', '香屯村红色历史陈列，革命先辈的故事在这里传承', '站点 01'),
+      createMarker(redCoords[1], '#851217', '长城遗址', '明长城西老星口段遗址，守护六百年的石砖记忆', '站点 02'),
+      createMarker(redCoords[2], '#851217', '西星口营地', '抗战时期的前沿阵地，英雄长眠之地', '站点 03'),
+      createMarker(redCoords[3], '#851217', '墙画', '村民手绘的红色记忆墙，生动再现烽火岁月', '站点 04')
+    ],
+    center: [40.5578, 116.1953],
+    zoom: 15
+  };
+
+  // Green Ecology Route (solid)
+  const greenCoords = [
+    [40.554, 116.191],
+    [40.552, 116.194],
+    [40.555, 116.193],
+    [40.559, 116.197]
+  ];
+  routes.green = {
+    line: L.polyline(greenCoords, { color: '#3b6934', weight: 4, opacity: 0.9 }).addTo(map),
+    markers: [
+      createMarker(greenCoords[0], '#3b6934', '板栗林', '百年板栗古树群，金秋时节果实累累', '站点 01'),
+      createMarker(greenCoords[1], '#3b6934', '龙吟溪谷', '山涧清流汇聚，天然负氧离子聚集地', '站点 02'),
+      createMarker(greenCoords[2], '#3b6934', '古村落', '明代建村至今，38户人家的世外桃源', '站点 03'),
+      createMarker(greenCoords[3], '#3b6934', '远眺台', '一览群山环绕，俯瞰长城蜿蜒', '站点 04')
+    ],
+    center: [40.555, 116.1938],
+    zoom: 15
+  };
+
+  // Grey Great Wall Route (thick solid)
+  const greyCoords = [
+    [40.560, 116.198],
+    [40.562, 116.200],
+    [40.563, 116.203],
+    [40.561, 116.206]
+  ];
+  routes.grey = {
+    line: L.polyline(greyCoords, { color: '#1b1c1c', weight: 5, opacity: 0.8 }).addTo(map),
+    markers: [
+      createMarker(greyCoords[0], '#1b1c1c', '西星口', '长城西星口入口，明代昌镇防御体系的关键节点', '站点 01'),
+      createMarker(greyCoords[1], '#1b1c1c', '3号敌台', '研究性修缮试点，保留原始砖石结构', '站点 02'),
+      createMarker(greyCoords[2], '#1b1c1c', '4号敌台', '保存最完整的敌台之一，见证军事防御智慧', '站点 03'),
+      createMarker(greyCoords[3], '#1b1c1c', '风景道', '400米墙体风景步道，沿长城脊线行走', '站点 04')
+    ],
+    center: [40.5615, 116.2018],
+    zoom: 15
+  };
+
+  // Focus route function
+  window.focusRoute = function(routeName) {
+    // Reset all button states
+    document.querySelectorAll('.route-btn').forEach(b => b.classList.remove('active'));
+
+    if (routeName === 'all') {
+      Object.values(routes).forEach(r => {
+        r.line.setStyle({ opacity: r.line.options.color === '#1b1c1c' ? 0.8 : 0.9 });
+        r.markers.forEach(m => m.setOpacity(1));
+      });
+      map.flyTo([40.555, 116.195], 14, { duration: 1.2 });
+    } else {
+      Object.keys(routes).forEach(key => {
+        const r = routes[key];
+        if (key === routeName) {
+          r.line.setStyle({ opacity: key === 'grey' ? 0.8 : 0.9 });
+          r.markers.forEach(m => m.setOpacity(1));
+        } else {
+          r.line.setStyle({ opacity: 0.15 });
+          r.markers.forEach(m => m.setOpacity(0.2));
+        }
+      });
+      const target = routes[routeName];
+      map.flyTo(target.center, target.zoom, { duration: 1.2 });
+      // Highlight active button
+      const btn = document.querySelector('.route-btn[data-route="' + routeName + '"]');
+      if (btn) btn.classList.add('active');
+    }
+  };
+
+  // Responsive map height
+  function adjustMapHeight() {
+    if (window.innerWidth < 768) {
+      mapEl.parentElement.style.height = '350px';
+    } else {
+      mapEl.parentElement.style.height = '500px';
+    }
+    map.invalidateSize();
+  }
+  window.addEventListener('resize', adjustMapHeight);
+  adjustMapHeight();
+})();
 </script>
 </body></html>
