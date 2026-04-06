@@ -177,6 +177,64 @@
         }
         /* 平滑滚动 */
         html { scroll-behavior: smooth; }
+
+        /* ===== 滚动进度条 ===== */
+        #scroll-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#851217,#a62c2b); z-index:10000; width:0%; pointer-events:none; }
+
+        /* ===== Hero 入场编排 ===== */
+        @keyframes heroSlideDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes heroFadeUp { from{opacity:0;transform:translateY(25px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes heroLineGrow { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+        @keyframes heroLogoIn { from{opacity:0;transform:scale(0.88) rotate(-2deg)} to{opacity:1;transform:scale(1) rotate(0)} }
+        .hero-nav { animation:heroSlideDown 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+        .hero-tag { opacity:0; animation:heroFadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+        .hero-tag .h-px { transform-origin:left; animation:heroLineGrow 0.5s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
+        .hero-title { opacity:0; animation:heroFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
+        .hero-desc { opacity:0; animation:heroFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.75s both; }
+        .hero-logo { opacity:0; animation:heroLogoIn 1s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
+
+        /* ===== 增强滚动进场 ===== */
+        .clip-reveal { clip-path:inset(100% 0 0 0); transition:clip-path 1s cubic-bezier(0.16,1,0.3,1); }
+        .clip-reveal.visible { clip-path:inset(0 0 0 0); }
+        .blur-in { opacity:0; filter:blur(10px); transform:translateY(15px); transition:opacity 0.8s ease, filter 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .blur-in.visible { opacity:1; filter:blur(0); transform:translateY(0); }
+
+        /* Stagger */
+        .stagger-item { opacity:0; transform:translateY(30px); transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); transition-delay:calc(var(--i,0) * 100ms); }
+        .stagger-item.visible { opacity:1; transform:translateY(0); }
+
+        /* 装饰线条自绘 */
+        .line-draw { transform:scaleX(0); transform-origin:left; transition:transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s; }
+        .line-draw.visible { transform:scaleX(1); }
+
+        /* 文字逐字动画 */
+        .char-reveal .char { display:inline-block; opacity:0; transform:translateY(18px); transition:opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .char-reveal.visible .char { opacity:1; transform:translateY(0); }
+
+        /* 3D 倾斜 */
+        .tilt-card { transform-style:preserve-3d; transition:transform 0.35s cubic-bezier(0.03,0.98,0.52,0.99); will-change:transform; }
+        .tilt-glare { position:absolute; inset:0; border-radius:inherit; background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.18) 0%, transparent 60%); opacity:0; transition:opacity 0.35s ease; pointer-events:none; z-index:2; }
+        .tilt-card:hover .tilt-glare { opacity:1; }
+
+        /* 导航链接下划线滑入 */
+        .nav-link { position:relative; }
+        .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:100%; height:2px; background:#851217; transform:scaleX(0); transform-origin:left; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+        .nav-link:hover::after { transform:scaleX(1); }
+
+        /* 地图 Marker 脉冲 */
+        @keyframes markerPulse { 0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(133,18,23,0.4)} 50%{transform:scale(1.15);box-shadow:0 0 0 10px transparent} }
+
+        /* Team glass cards */
+        .team-card { padding:16px 20px; border:1px solid rgba(255,255,255,0.06); border-radius:4px; background:rgba(255,255,255,0.03); backdrop-filter:blur(4px); transition:border-color 0.4s, background 0.4s, transform 0.3s, box-shadow 0.3s; }
+        .team-card:hover { border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.07); transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,0.2); }
+
+        /* Back to top */
+        #back-to-top { position:fixed; bottom:100px; right:32px; width:44px; height:44px; border-radius:50%; background:rgba(133,18,23,0.85); color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(20px) scale(0.8); transition:opacity 0.4s, transform 0.4s, background 0.3s; z-index:999; box-shadow:0 4px 24px rgba(133,18,23,0.3); backdrop-filter:blur(8px); pointer-events:none; }
+        #back-to-top.show { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+        #back-to-top:hover { background:#a62c2b; transform:translateY(-3px) scale(1.05); box-shadow:0 8px 32px rgba(133,18,23,0.4); }
+
+        /* Product cursor glow */
+        .product-glow { transition:background 0.3s ease !important; }
     </style>
 <!-- Live2D Chat Styles -->
 <style>
@@ -325,16 +383,17 @@
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+<div id="scroll-progress"></div>
 <!-- Top Navigation Bar -->
-<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50 hero-nav">
     <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
-        <a href="index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <a href="/" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
         <div class="hidden md:flex gap-16 items-center">
-            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">首页 Home</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="about/history.html">香屯故事 Story</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="routes/red-study.html">文旅路线 Routes</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="guardian/index.html">守护者 Guardian</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="booking/index.html">预约 Booking</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="about/history">香屯故事 Story</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="routes/red-study">文旅路线 Routes</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="guardian//">守护者 Guardian</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="booking//">预约 Booking</a>
         </div>
         <div class="flex items-center gap-8">
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
@@ -345,30 +404,30 @@
         </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
-        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">首页 Home</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="about/history.html">香屯故事 Story</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="routes/red-study.html">文旅路线 Routes</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian/index.html">守护者 Guardian</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="booking/index.html">预约 Booking</a>
+        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="/">首页 Home</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="about/history">香屯故事 Story</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="routes/red-study">文旅路线 Routes</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian//">守护者 Guardian</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="booking//">预约 Booking</a>
     </div>
 </nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
 <!-- Hero Branding Section -->
 <header class="mb-24 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-center relative">
-<div class="lg:col-span-7 fade-in">
-<div class="mb-6 flex items-center gap-4">
+<div class="lg:col-span-7">
+<div class="mb-6 flex items-center gap-4 hero-tag">
 <span class="h-px w-12 bg-primary"></span>
 <span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Heritage Revived | 长城文化振兴</span>
 </div>
-<h1 class="text-3xl md:text-5xl lg:text-7xl font-headline font-extrabold text-on-surface tracking-tight mb-10 leading-[1.1]">
+<h1 class="text-3xl md:text-5xl lg:text-7xl font-headline font-extrabold text-on-surface tracking-tight mb-10 leading-[1.1] hero-title">
                 四色香屯：<span class="text-primary">长城脚下的四色人间</span>
 <br/><span class="text-2xl md:text-4xl opacity-40 font-medium">Where the Great Wall Meets Village Life</span>
 </h1>
-<p class="text-xl text-on-surface-variant max-w-xl font-headline italic leading-relaxed opacity-90">
+<p class="text-xl text-on-surface-variant max-w-xl font-headline italic leading-relaxed opacity-90 hero-desc">
                 延庆、昌平、怀柔三区交界处，四面环山、一水中流。辽代铁炉的余烬尚温，明代戍卒的棋局犹在城砖之上。38户人家、74口人，守着3号敌台与400米城墙，守着考古发掘出的杏核与粮种——这是香屯，一座用传承红、板栗金、远山绿、玄石墨四色书写的活态长城史诗。
             </p>
 </div>
-<div class="lg:col-span-5 flex flex-col items-center fade-in-right">
+<div class="lg:col-span-5 flex flex-col items-center hero-logo">
 <div class="relative w-full aspect-square max-w-md rounded-sm" style="transform: perspective(800px) rotateY(-4deg) rotateX(2deg); transform-origin: center center;">
 <div class="absolute inset-0 rounded-sm p-[3px] bg-gradient-to-br from-[#851217] via-[#593d00] via-50% via-[#3b6934] to-[#1b1c1c] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)]">
 <div class="w-full h-full bg-white rounded-sm"></div>
@@ -395,7 +454,7 @@
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
 <!-- Red -->
-<div class="group scale-in" style="transition-delay: 0.1s">
+<div class="group stagger-item" style="--i:0">
 <div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#a8292f 0%,#851217 45%,#520b0e 100%)">
 <div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.1)"></div>
 <span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">R</span>
@@ -414,7 +473,7 @@
 </div>
 </div>
 <!-- Gold -->
-<div class="group scale-in" style="transition-delay: 0.2s">
+<div class="group stagger-item" style="--i:1">
 <div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#7a5a10 0%,#593D00 45%,#3a2700 100%)">
 <div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.1)"></div>
 <span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">G</span>
@@ -433,7 +492,7 @@
 </div>
 </div>
 <!-- Green -->
-<div class="group scale-in" style="transition-delay: 0.3s">
+<div class="group stagger-item" style="--i:2">
 <div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#4f8a46 0%,#3B6934 45%,#274822 100%)">
 <div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.1)"></div>
 <span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">M</span>
@@ -452,7 +511,7 @@
 </div>
 </div>
 <!-- Ink -->
-<div class="group scale-in" style="transition-delay: 0.4s">
+<div class="group stagger-item" style="--i:3">
 <div class="aspect-[3/4] mb-8 rounded-sm shadow-inner relative overflow-hidden transition-all duration-700 group-hover:shadow-2xl" style="background:linear-gradient(160deg,#3a3b3b 0%,#1B1C1C 45%,#0a0a0a 100%)">
 <div class="absolute top-[10%] left-[15%] w-3/5 h-2/5 rounded-full blur-3xl" style="background:rgba(255,255,255,0.08)"></div>
 <span class="absolute top-8 right-8 text-white font-headline text-8xl font-black opacity-[0.06] leading-none">S</span>
@@ -487,7 +546,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
 <!-- Card 1: Grey Great Wall (Large) -->
-<a href="routes/grey-greatwall.html" class="route-card lg:col-span-8 rounded-sm overflow-hidden min-h-[400px] relative flex items-stretch group/card shadow-xl">
+<a href="routes/grey-greatwall" class="route-card lg:col-span-8 rounded-sm overflow-hidden min-h-[400px] relative flex items-stretch group/card shadow-xl">
 <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80&fit=crop" alt="长城壮景" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#1b1c1c]/75"></div>
 <div class="flex-1 p-8 md:p-12 lg:p-16 flex flex-col justify-between z-10 relative">
@@ -514,7 +573,7 @@
 </a>
 
 <!-- Card 2: Red Study Route -->
-<a href="routes/red-study.html" class="route-card lg:col-span-4 rounded-sm overflow-hidden min-h-[400px] relative flex flex-col justify-between p-8 md:p-10 group/card shadow-xl">
+<a href="routes/red-study" class="route-card lg:col-span-4 rounded-sm overflow-hidden min-h-[400px] relative flex flex-col justify-between p-8 md:p-10 group/card shadow-xl">
 <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop" alt="中国古建筑" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#851217]/75"></div>
 <div class="z-10 relative">
@@ -529,7 +588,7 @@
 </a>
 
 <!-- Card 3: Green Ecology Route -->
-<a href="routes/green-ecology.html" class="route-card lg:col-span-6 rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
+<a href="routes/green-ecology" class="route-card lg:col-span-6 rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
 <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80&fit=crop" alt="山林绿色" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#3b6934]/75"></div>
 <div class="flex-1 p-8 md:p-10 flex flex-col justify-between z-10 relative">
@@ -548,7 +607,7 @@
 </a>
 
 <!-- Card 4: Xiangtun Story -->
-<a href="about/history.html" class="route-card lg:col-span-6 rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
+<a href="about/history" class="route-card lg:col-span-6 rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
 <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&q=80&fit=crop" alt="乡村秋景" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#593d00]/75"></div>
 <div class="flex-1 p-8 md:p-10 flex flex-col justify-between z-10 relative">
@@ -816,20 +875,26 @@
 <p class="text-2xl md:text-3xl font-headline text-white/70 mb-10">挑战杯参赛团队</p>
 <div class="h-px w-20 bg-primary mb-10"></div>
 <p class="text-lg text-white/80 font-headline leading-relaxed mb-12 max-w-2xl">「让长城文化成为乡村振兴的新动力」<br/><span class="text-white/50 text-base">"青振京郊"乡村振兴专项赛 · 项目编号17</span></p>
-<div class="flex flex-wrap gap-8 items-start">
-<div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8">
+<div class="border-l border-white/15 pl-5">
 <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">PROJECT LEADER</p>
-<p class="font-headline font-bold text-xl text-white">沈书诚</p>
+<p class="font-headline font-bold text-lg text-white">沈书诚</p>
 </div>
-<div class="w-px h-12 bg-white/15 hidden md:block"></div>
-<div>
+<div class="border-l border-white/15 pl-5">
+<p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">TEAM MEMBERS</p>
+<p class="font-headline font-bold text-lg text-white">任济坤 · 汪学军<br/>郭鹤羽 · 梁晋玮</p>
+</div>
+<div class="border-l border-white/15 pl-5">
+<p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">ADVISOR</p>
+<p class="font-headline font-bold text-lg text-white">田甜</p>
+</div>
+<div class="border-l border-white/15 pl-5">
 <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">PARTNER VILLAGE</p>
-<p class="font-headline font-bold text-xl text-white">香屯村 · 延庆区大庄科乡</p>
+<p class="font-headline font-bold text-lg text-white">香屯村 · 延庆区大庄科乡</p>
 </div>
-<div class="w-px h-12 bg-white/15 hidden md:block"></div>
-<div>
+<div class="border-l border-white/15 pl-5">
 <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">CONTACT</p>
-<p class="font-headline font-bold text-xl text-white">rjk2021@163.com</p>
+<p class="font-headline font-bold text-lg text-white">rjk2021@163.com</p>
 </div>
 </div>
 </div>
@@ -1148,23 +1213,128 @@ document.querySelectorAll('.route-card').forEach(card => {
 })();
 </script>
 <script>
-// 滚动渐入动画观察器
-const fadeObserver = new IntersectionObserver((entries) => {
+// ===== 滚动进度条 + 导航栏 =====
+window.addEventListener('scroll', () => {
+    const st = document.documentElement.scrollTop;
+    const sh = document.documentElement.scrollHeight - window.innerHeight;
+    if (sh > 0) document.getElementById('scroll-progress').style.width = (st / sh * 100) + '%';
+    document.querySelector('nav').classList.toggle('scrolled', st > 50);
+}, { passive: true });
+
+// ===== 统一 IntersectionObserver =====
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            fadeObserver.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
-    fadeObserver.observe(el);
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-in,.fade-in-left,.fade-in-right,.scale-in,.clip-reveal,.blur-in,.stagger-item,.line-draw,.char-reveal').forEach(el => {
+    revealObserver.observe(el);
 });
 
-// 导航栏滚动效果
-window.addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+// ===== 文字逐字拆分（短标题）=====
+document.querySelectorAll('section h2').forEach(h2 => {
+    if (h2.children.length === 0 && h2.textContent.trim().length <= 10) {
+        const text = h2.textContent.trim();
+        h2.textContent = '';
+        h2.classList.add('char-reveal');
+        [...text].forEach((ch, i) => {
+            const s = document.createElement('span');
+            s.className = 'char';
+            s.textContent = ch;
+            s.style.transitionDelay = (200 + i * 50) + 'ms';
+            h2.appendChild(s);
+        });
+        revealObserver.observe(h2);
+    }
 });
+
+// ===== 装饰线条自绘 =====
+document.querySelectorAll('.h-1.w-24, .h-px.w-32').forEach(line => {
+    line.classList.add('line-draw');
+    revealObserver.observe(line);
+});
+
+// ===== 壁画区域模糊进场 =====
+const mural = document.querySelector('.group.overflow-hidden.shadow-2xl.bg-white');
+if (mural) { mural.classList.add('blur-in'); revealObserver.observe(mural); }
+
+// ===== 3D 倾斜 — 色板卡片（桌面端）=====
+if (window.matchMedia('(pointer: fine)').matches && window.innerWidth > 768) {
+    document.querySelectorAll('.stagger-item > div:first-child').forEach(card => {
+        card.classList.add('tilt-card');
+        const glare = document.createElement('div');
+        glare.className = 'tilt-glare';
+        card.appendChild(glare);
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width;
+            const y = (e.clientY - r.top) / r.height;
+            card.style.transform = 'perspective(600px) rotateX(' + ((0.5-y)*10) + 'deg) rotateY(' + ((x-0.5)*10) + 'deg) scale(1.02)';
+            card.style.setProperty('--mx', (x*100)+'%');
+            card.style.setProperty('--my', (y*100)+'%');
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+}
+
+// ===== 视差 — Hero Logo（桌面端）=====
+if (window.innerWidth > 768) {
+    const logo = document.querySelector('.hero-logo');
+    if (logo) {
+        let pReady = false;
+        logo.addEventListener('animationend', () => {
+            logo.style.opacity = '1';
+            logo.style.transform = 'translateY(0)';
+            logo.style.animation = 'none';
+            pReady = true;
+        }, { once: true });
+        let tick = false;
+        window.addEventListener('scroll', () => {
+            if (!pReady || tick) return;
+            requestAnimationFrame(() => {
+                const y = window.scrollY;
+                if (y < window.innerHeight * 1.2) logo.style.transform = 'translateY(' + (y * 0.1) + 'px)';
+                tick = false;
+            });
+            tick = true;
+        }, { passive: true });
+    }
+}
+
+// ===== 地图 Marker 脉冲 =====
+setTimeout(() => {
+    document.querySelectorAll('.leaflet-marker-icon div').forEach(m => {
+        m.style.animation = 'markerPulse 2s ease-in-out infinite';
+    });
+}, 2500);
+
+// ===== Team cards removed (use grid layout instead) =====
+
+// ===== Back to top =====
+const btt = document.getElementById('back-to-top');
+if (btt) {
+    window.addEventListener('scroll', () => {
+        btt.classList.toggle('show', window.scrollY > window.innerHeight * 0.5);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// ===== Product card cursor glow（桌面端）=====
+if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.group.flex.flex-col > .bg-white').forEach(card => {
+        card.classList.add('product-glow');
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = ((e.clientX - r.left) / r.width * 100);
+            const y = ((e.clientY - r.top) / r.height * 100);
+            card.style.background = 'radial-gradient(circle at ' + x + '% ' + y + '%, rgba(133,18,23,0.04) 0%, white 60%)';
+        });
+        card.addEventListener('mouseleave', () => { card.style.background = ''; });
+    });
+}
 </script>
+<button id="back-to-top" aria-label="回到顶部"><span class="material-symbols-outlined" style="font-size:22px">keyboard_arrow_up</span></button>
 </body></html>
