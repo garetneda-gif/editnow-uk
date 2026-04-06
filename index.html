@@ -87,6 +87,151 @@
             background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
         }
     </style>
+<!-- Live2D Chat Styles -->
+<style>
+  #xiangtun-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Manrope', sans-serif;
+  }
+  #xiangtun-chat-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217 0%, #a62c2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(133,18,23,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  #xiangtun-chat-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 32px rgba(133,18,23,0.4);
+  }
+  #xiangtun-chat-panel {
+    display: none;
+    width: 380px;
+    max-height: 520px;
+    background: rgba(251,249,248,0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(224,191,188,0.3);
+    border-radius: 12px;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.12);
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 68px;
+    right: 0;
+  }
+  #xiangtun-chat-panel.open { display: flex; }
+  #xiangtun-chat-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #xiangtun-chat-header h4 {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  #xiangtun-chat-header p {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.8;
+  }
+  #xiangtun-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 340px;
+    min-height: 200px;
+  }
+  .chat-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+  .chat-msg.bot {
+    align-self: flex-start;
+    background: #f5f3f3;
+    color: #1b1c1c;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: #851217;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '●●●';
+    animation: blink 1.2s infinite;
+    letter-spacing: 3px;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  #xiangtun-chat-input-area {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(224,191,188,0.2);
+    background: rgba(251,249,248,0.6);
+  }
+  #xiangtun-chat-input {
+    flex: 1;
+    border: 1px solid rgba(224,191,188,0.4);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #xiangtun-chat-input:focus {
+    border-color: #851217;
+  }
+  #xiangtun-chat-send {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #851217;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  #xiangtun-chat-send:hover { background: #a62c2b; }
+  #xiangtun-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+  @media (max-width: 480px) {
+    #xiangtun-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      bottom: 64px;
+    }
+  }
+</style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
 <!-- Top Navigation Bar -->
@@ -395,4 +540,144 @@
 </div>
 </div>
 </footer>
+<!-- Live2D + Chat Widget -->
+<div id="xiangtun-chat">
+  <div id="xiangtun-chat-panel">
+    <div id="xiangtun-chat-header">
+      <div>
+        <span style="font-size:28px;">🏯</span>
+      </div>
+      <div>
+        <h4>香屯文化导游</h4>
+        <p>长城脚下的AI向导 · 有问必答</p>
+      </div>
+      <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:#fff;cursor:pointer;font-size:20px;">✕</button>
+    </div>
+    <div id="xiangtun-chat-messages">
+      <div class="chat-msg bot">你好！我是香屯文化导游 🏔️ 我了解香屯村的长城历史、四色文化、旅游路线和板栗林故事。有什么想了解的？</div>
+    </div>
+    <div id="xiangtun-chat-input-area">
+      <input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off" />
+      <button id="xiangtun-chat-send" onclick="sendMessage()">
+        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+      </button>
+    </div>
+  </div>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
+    <span class="material-symbols-outlined" style="font-size:26px;">chat</span>
+  </button>
+</div>
+
+<!-- oh-my-live2d -->
+<script src="https://unpkg.com/oh-my-live2d@latest"></script>
+<script>
+  // Live2D 看板娘
+  OML2D.loadOml2d({
+    models: [
+      {
+        path: 'https://model.oml2d.com/HK416-1-normal/model.json',
+        position: [0, 60],
+        scale: 0.08,
+        stageStyle: { height: 450 }
+      }
+    ],
+    tips: {
+      idleTips: {
+        wordTheDay: false,
+        message: [
+          '欢迎来到四色香屯！点右下角的聊天按钮和我聊天吧~',
+          '香屯村位于延庆区大庄科乡，长城脚下的古村落',
+          '传承红、板栗金、远山绿、玄石墨——这就是香屯的四色',
+          '想了解长城文化和乡村旅游路线吗？问我就好！'
+        ]
+      }
+    }
+  });
+
+  // Chat logic
+  const SYSTEM_PROMPT = `你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。
+
+你的知识背景：
+- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气
+- 明代为昌镇黄花路西老星口段长城，村民世代守护长城
+- 早在辽代，香屯就是"辽代首钢"的采矿地
+- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地
+- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"
+- 板栗是香屯特产，村中板栗林历史悠久
+- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目
+- 三条文旅路线：红色研学、绿色生态、灰色长城
+- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)
+
+交互原则：
+- 用亲切、生动的语言，像一位当地老乡在讲故事
+- 回答简洁（2-4句），但内容丰富有趣
+- 适当加入历史典故和文化细节
+- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访
+- 用中文回答`;
+
+  const API_URL = 'https://xiangtun-chat.editnow.uk/api/chat'; // Cloudflare Worker (to be deployed)
+  let chatHistory = [];
+
+  function toggleChat() {
+    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
+    document.getElementById('xiangtun-chat-input').focus();
+  }
+
+  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  async function sendMessage() {
+    const input = document.getElementById('xiangtun-chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    appendMessage(msg, 'user');
+    chatHistory.push({ role: 'user', content: msg });
+
+    const typingEl = appendMessage('', 'bot typing');
+    const sendBtn = document.getElementById('xiangtun-chat-send');
+    sendBtn.disabled = true;
+
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...chatHistory.slice(-10)
+          ]
+        })
+      });
+
+      if (!resp.ok) throw new Error('API error');
+      const data = await resp.json();
+      const reply = data.choices?.[0]?.message?.content || '抱歉，我暂时无法回答，请稍后再试~';
+
+      typingEl.remove();
+      appendMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typingEl.remove();
+      appendMessage('网络连接中断了，请检查网络后重试 🔄', 'bot');
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  function appendMessage(text, cls) {
+    const container = document.getElementById('xiangtun-chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + cls;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+</script>
 </body></html>
