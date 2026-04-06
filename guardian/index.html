@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>守护者计划 · Guardian Program | 四色香屯</title>
+<meta name="description" content="签署保护倡议、答题闯关、完成任务打卡，成为香屯长城荣誉守护者。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="守护者计划 · Guardian Program | 四色香屯">
+<meta property="og:description" content="长城需要每一个人的守护。签署倡议、答题闯关、完成任务，成为香屯长城荣誉守护者。">
+<meta property="og:url" content="https://stitch.editnow.uk/guardian/index.html">
+<meta property="og:locale" content="zh_CN">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+            background-size: 1200px 900px;
+            background-blend-mode: multiply;
+        }
+    .silk-overlay {
+        background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
+    }
+    /* 丝滑滚动渐入 */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .fade-in-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .fade-in-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+    /* 导航栏滚动变化 */
+    nav.scrolled {
+        background: rgba(251,249,248,0.95) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    html { scroll-behavior: smooth; }
+</style>
+<!-- Live2D Chat Styles -->
+<style>
+  #xiangtun-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Manrope', sans-serif;
+  }
+  #xiangtun-chat-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217 0%, #a62c2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(133,18,23,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  #xiangtun-chat-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 32px rgba(133,18,23,0.4);
+  }
+  #xiangtun-chat-panel {
+    display: none;
+    width: 380px;
+    max-height: 520px;
+    background: rgba(251,249,248,0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(224,191,188,0.3);
+    border-radius: 12px;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.12);
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 68px;
+    right: 0;
+  }
+  #xiangtun-chat-panel.open { display: flex; }
+  #xiangtun-chat-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #xiangtun-chat-header h4 {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  #xiangtun-chat-header p {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.8;
+  }
+  #xiangtun-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 340px;
+    min-height: 200px;
+  }
+  .chat-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+  .chat-msg.bot {
+    align-self: flex-start;
+    background: #f5f3f3;
+    color: #1b1c1c;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: #851217;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '●●●';
+    animation: blink 1.2s infinite;
+    letter-spacing: 3px;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  #xiangtun-chat-input-area {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(224,191,188,0.2);
+    background: rgba(251,249,248,0.6);
+  }
+  #xiangtun-chat-input {
+    flex: 1;
+    border: 1px solid rgba(224,191,188,0.4);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #xiangtun-chat-input:focus {
+    border-color: #851217;
+  }
+  #xiangtun-chat-send {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #851217;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  #xiangtun-chat-send:hover { background: #a62c2b; }
+  #xiangtun-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+  @media (max-width: 480px) {
+    #xiangtun-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      bottom: 64px;
+    }
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-16 items-center">
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../about/history.html">香屯故事 Story</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../routes/red-study.html">文旅路线 Routes</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">守护者 Guardian</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约 Booking</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../about/history.html">香屯故事 Story</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../routes/red-study.html">文旅路线 Routes</a>
+        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">守护者 Guardian</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="../booking/index.html">预约 Booking</a>
+    </div>
+</nav>
+
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
+
+<!-- ============================================ -->
+<!-- HERO SECTION                                 -->
+<!-- ============================================ -->
+<header class="mb-24 md:mb-48 relative">
+<div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+<div class="max-w-3xl flex-1">
+<div class="mb-6 flex items-center gap-4">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Guardian Program | 守护者计划</span>
+</div>
+<h1 class="text-3xl md:text-5xl lg:text-8xl font-headline font-extrabold text-on-surface tracking-tight mb-8 leading-[1.05]">
+守护者计划<span class="text-primary italic"> ·</span><br/>
+<span class="text-primary">Guardian Program</span>
+</h1>
+<div class="h-1 w-24 bg-primary mt-8 mb-10"></div>
+<p class="text-base md:text-lg text-on-surface-variant leading-[1.9] max-w-2xl">
+长城需要每一个人的守护。签署倡议、答题闯关、完成任务，成为香屯长城荣誉守护者。
+</p>
+</div>
+
+<!-- 积分卡 -->
+<div class="w-full lg:w-80 flex-shrink-0 fade-in">
+<div class="bg-surface-container-low p-8 rounded-sm silk-overlay">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">shield</span>
+<div>
+<p id="hero-level" class="text-sm font-bold text-primary tracking-wider uppercase">新访客</p>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase">Guardian Level</p>
+</div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">累计积分</span>
+<span id="hero-points" class="text-3xl font-headline font-black text-primary">0</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-sm overflow-hidden">
+<div id="hero-progress" class="h-full bg-primary rounded-sm transition-all duration-500" style="width: 0%"></div>
+</div>
+<p id="hero-next" class="text-[10px] text-on-surface-variant mt-2 tracking-wider">距离下一等级还需 50 积分</p>
+</div>
+<div class="flex gap-3 flex-wrap">
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(133,18,23,0.08); color: #851217;" id="badge-pledge" title="签署倡议后点亮">倡议</span>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(59,105,52,0.08); color: #3b6934;" id="badge-quiz" title="完成答题后点亮">答题</span>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(89,61,0,0.08); color: #593d00;" id="badge-task" title="完成任务后点亮">任务</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute top-0 right-0 hidden lg:block opacity-[0.03] text-[20rem] font-headline font-black text-on-surface leading-none select-none" aria-hidden="true">
+护
+</div>
+</header>
+
+<!-- ============================================ -->
+<!-- PLEDGE SECTION                               -->
+<!-- ============================================ -->
+<section class="mb-24 md:mb-48 fade-in" id="pledge-section">
+<div class="flex flex-col items-center mb-20 text-center">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Protection Pledge</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">保护倡议书</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Sign the Pledge, Guard the Wall</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<div class="max-w-4xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
+<!-- 倡议内容 -->
+<div class="flex-1">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-sm silk-overlay">
+<p class="text-sm text-on-surface-variant mb-8 leading-relaxed font-headline italic">
+我郑重承诺，作为香屯长城的守护者：
+</p>
+<ul class="space-y-5" id="pledge-list">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="text-sm text-on-surface leading-relaxed">不攀爬未开放长城段落，遵守长城保护法规</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="text-sm text-on-surface leading-relaxed">不在长城及周边区域乱扔垃圾，践行"无痕旅行"</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="text-sm text-on-surface leading-relaxed">不破坏长城沿线植被和生态环境</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="text-sm text-on-surface leading-relaxed">积极向身边人宣传长城保护知识</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span>
+<span class="text-sm text-on-surface leading-relaxed">发现破坏长城行为及时举报（电话：12359）</span>
+</li>
+</ul>
+
+<div class="mt-10 pt-8" style="border-top: 2px solid rgba(224,191,188,0.15);">
+<div class="mb-6">
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-3 block">签署人姓名</label>
+<input type="text" id="pledge-name" placeholder="请输入您的姓名" class="w-full bg-transparent border-b-2 border-outline-variant/30 focus:border-primary outline-none py-3 text-base font-body text-on-surface placeholder:text-on-surface-variant/40 transition-colors"/>
+</div>
+<label class="flex items-start gap-3 cursor-pointer mb-8">
+<input type="checkbox" id="pledge-agree" class="mt-1 w-4 h-4 accent-[#851217]"/>
+<span class="text-sm text-on-surface-variant leading-relaxed">我已阅读并同意以上所有倡议条款，愿意成为香屯长城守护者</span>
+</label>
+<button id="pledge-btn" onclick="signPledge()" class="bg-primary text-on-primary px-8 py-3 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-primary-container transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+签署倡议 +30积分
+</button>
+<p class="mt-6 text-[10px] text-on-surface-variant tracking-wider">
+已有 <span id="pledge-count" class="font-bold text-primary">0</span> 人签署倡议
+</p>
+</div>
+</div>
+</div>
+
+<!-- 证书预览 -->
+<div class="lg:w-96 flex-shrink-0">
+<div id="cert-preview" class="bg-surface-container-low p-6 rounded-sm text-center" style="display:none;">
+<h4 class="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-4">您的守护者证书</h4>
+<canvas id="cert-canvas" width="800" height="600" class="w-full rounded-sm" style="box-shadow: 0 24px 32px rgba(133,18,23,0.04);"></canvas>
+<button onclick="downloadCert()" class="mt-6 bg-surface-container-high text-on-surface px-6 py-2.5 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-surface-container-highest transition-colors duration-300 flex items-center gap-2 mx-auto">
+<span class="material-symbols-outlined text-lg">download</span>
+下载证书
+</button>
+</div>
+<div id="cert-placeholder" class="bg-surface-container-low p-10 rounded-sm text-center">
+<span class="material-symbols-outlined text-6xl text-on-surface-variant/20 mb-4 block">workspace_premium</span>
+<p class="text-sm text-on-surface-variant/60 font-headline italic">签署倡议后，此处将生成您的专属守护者证书</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- QUIZ SECTION                                 -->
+<!-- ============================================ -->
+<section class="mb-24 md:mb-48 fade-in" id="quiz-section">
+<div class="flex flex-col items-center mb-20 text-center">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Knowledge Quiz</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">知识问答</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Test Your Knowledge, Earn Points</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<div class="max-w-3xl mx-auto">
+<!-- 答题开始界面 -->
+<div id="quiz-start" class="bg-surface-container-low p-10 md:p-14 rounded-sm text-center silk-overlay">
+<span class="material-symbols-outlined text-6xl text-primary mb-6 block">quiz</span>
+<h3 class="text-2xl font-headline font-bold mb-4">准备好了吗？</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-3 max-w-md mx-auto">
+共 15 题知识库，每次随机抽取 10 题。涵盖长城保护法规、生态知识、香屯文化三大类别。
+</p>
+<p class="text-sm text-on-surface-variant mb-8">每题正确 <span class="font-bold text-primary">+5 积分</span>，满分 50 分</p>
+<button onclick="startQuiz()" class="bg-primary text-on-primary px-8 py-3 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-primary-container transition-colors duration-300">
+开始答题
+</button>
+</div>
+
+<!-- 答题中界面 -->
+<div id="quiz-active" style="display:none;">
+<div class="flex justify-between items-center mb-8">
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">
+第 <span id="quiz-current">1</span> / 10 题
+</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-secondary">stars</span>
+<span id="quiz-score-live" class="text-sm font-bold text-secondary">0</span>
+<span class="text-xs text-on-surface-variant">分</span>
+</div>
+</div>
+<div class="w-full h-1 bg-surface-container-high rounded-sm mb-10 overflow-hidden">
+<div id="quiz-progress" class="h-full bg-primary rounded-sm transition-all duration-300" style="width:10%"></div>
+</div>
+<div id="quiz-question-area">
+<!-- 动态填充 -->
+</div>
+</div>
+
+<!-- 答题结束界面 -->
+<div id="quiz-result" style="display:none;" class="bg-surface-container-low p-10 md:p-14 rounded-sm text-center silk-overlay">
+<span class="material-symbols-outlined text-6xl text-secondary mb-6 block">emoji_events</span>
+<h3 class="text-2xl font-headline font-bold mb-4">答题完成</h3>
+<p class="text-lg text-on-surface mb-2">
+你答对了 <span id="quiz-correct" class="font-bold text-primary text-2xl">0</span> / 10 题
+</p>
+<p class="text-sm text-on-surface-variant mb-8">
+获得 <span id="quiz-earned" class="font-bold text-primary">0</span> 积分
+</p>
+<button onclick="startQuiz()" class="bg-primary text-on-primary px-8 py-3 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-primary-container transition-colors duration-300">
+再来一轮
+</button>
+</div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- TASK CHECKIN SECTION                         -->
+<!-- ============================================ -->
+<section class="mb-16 md:mb-32 fade-in" id="task-section">
+<div class="flex flex-col items-center mb-20 text-center">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Task Checkin</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">任务打卡</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Visit, Discover, Protect</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 任务 1 -->
+<div class="bg-surface-container-low p-8 md:p-10 rounded-sm group hover:bg-surface-container-high transition-colors duration-500 task-card" data-task="trash-station" data-lat="40.4412" data-lng="116.1835" data-radius="80">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl text-tertiary">delete</span>
+<div>
+<h4 class="font-headline font-bold text-base">游客驿站垃圾箱打卡</h4>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase mt-1">Waste Station Checkin</p>
+</div>
+</div>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(89,61,0,0.08); color: #593d00;">+20分</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+前往游客驿站旁的分类垃圾箱，开启定位完成打卡。守护长城环境，从自己做起。
+</p>
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-on-surface-variant tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+需要到达现场（80m范围内）
+</span>
+<button onclick="checkinTask(this)" class="task-btn bg-tertiary text-on-tertiary px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase hover:opacity-90 transition-opacity">
+打卡
+</button>
+</div>
+</div>
+
+<!-- 任务 2 -->
+<div class="bg-surface-container-low p-8 md:p-10 rounded-sm group hover:bg-surface-container-high transition-colors duration-500 task-card" data-task="viewpoint" data-lat="40.4438" data-lng="116.1858" data-radius="60">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl text-secondary">landscape</span>
+<div>
+<h4 class="font-headline font-bold text-base">安全观景台打卡</h4>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase mt-1">Viewpoint Checkin</p>
+</div>
+</div>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(59,105,52,0.08); color: #3b6934;">+20分</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+登上安全观景台远眺长城全貌，开启定位完成打卡。在安全区域欣赏长城之美。
+</p>
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-on-surface-variant tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+需要到达现场（60m范围内）
+</span>
+<button onclick="checkinTask(this)" class="task-btn bg-secondary text-on-secondary px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase hover:opacity-90 transition-opacity">
+打卡
+</button>
+</div>
+</div>
+
+<!-- 任务 3 -->
+<div class="bg-surface-container-low p-8 md:p-10 rounded-sm group hover:bg-surface-container-high transition-colors duration-500 task-card" data-task="old-tree" data-lat="40.4405" data-lng="116.1820" data-radius="50">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl text-secondary">park</span>
+<div>
+<h4 class="font-headline font-bold text-base">百年板栗古树打卡</h4>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase mt-1">Ancient Tree Checkin</p>
+</div>
+</div>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(59,105,52,0.08); color: #3b6934;">+20分</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+寻找村中百年板栗古树，开启定位完成打卡。板栗是香屯的金色名片。
+</p>
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-on-surface-variant tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+需要到达现场（50m范围内）
+</span>
+<button onclick="checkinTask(this)" class="task-btn bg-secondary text-on-secondary px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase hover:opacity-90 transition-opacity">
+打卡
+</button>
+</div>
+</div>
+
+<!-- 任务 4 -->
+<div class="bg-surface-container-low p-8 md:p-10 rounded-sm group hover:bg-surface-container-high transition-colors duration-500 task-card" data-task="share-pledge">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl text-primary">share</span>
+<div>
+<h4 class="font-headline font-bold text-base">分享保护承诺</h4>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase mt-1">Share Your Pledge</p>
+</div>
+</div>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background: rgba(133,18,23,0.08); color: #851217;">+10分</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+将您的守护者承诺分享给朋友或社交媒体，让更多人加入保护长城的行动。
+</p>
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-on-surface-variant tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">wifi_off</span>
+无需定位，随时可完成
+</span>
+<button onclick="shareTask(this)" class="task-btn bg-primary text-on-primary px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase hover:opacity-90 transition-opacity">
+分享
+</button>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
+<div class="max-w-xs">
+<a href="../index.html" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+通过现代视觉叙事，守护长城板栗林色彩遗产。
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="../index.html">首页</a></li>
+<li><a class="hover:text-white transition-colors" href="../about/history.html">香屯故事</a></li>
+<li><a class="hover:text-white transition-colors" href="../routes/red-study.html">文旅路线</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="#">游客须知</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队 · 任济坤</p>
+<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<!-- Chat Widget -->
+<div id="xiangtun-chat">
+  <div id="xiangtun-chat-panel">
+    <div id="xiangtun-chat-header">
+      <div>
+        <span style="font-size:28px;">🏯</span>
+      </div>
+      <div>
+        <h4>香屯小卒</h4>
+        <p>长城脚下的AI小兵 · 有问必答</p>
+      </div>
+      <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:#fff;cursor:pointer;font-size:20px;">✕</button>
+    </div>
+    <div id="xiangtun-chat-messages">
+      <div class="chat-msg bot">你好！我是香屯小卒 🏔️ 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div>
+    </div>
+    <div id="xiangtun-chat-input-area">
+      <input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off" />
+      <button id="xiangtun-chat-send" onclick="sendMessage()">
+        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+      </button>
+    </div>
+  </div>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
+    <span class="material-symbols-outlined" style="font-size:26px;">chat</span>
+  </button>
+</div>
+
+<!-- Chat Logic -->
+<script>
+  const SYSTEM_PROMPT = `你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。
+
+你的知识背景：
+- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气
+- 明代为昌镇黄花路西老星口段长城，村民世代守护长城
+- 早在辽代，香屯就是"辽代首钢"的采矿地
+- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地
+- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"
+- 板栗是香屯特产，村中板栗林历史悠久
+- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目
+- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事
+- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)
+
+交互原则：
+- 用亲切、生动的语言，像一位当地老乡在讲故事
+- 回答简洁（2-4句），但内容丰富有趣
+- 适当加入历史典故和文化细节
+- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访
+- 用中文回答`;
+
+  const API_URL = 'https://xiangtun-chat.garetneda.workers.dev/api/chat';
+  let chatHistory = [];
+
+  function toggleChat() {
+    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
+    document.getElementById('xiangtun-chat-input').focus();
+  }
+
+  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  async function sendMessage() {
+    const input = document.getElementById('xiangtun-chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    appendMessage(msg, 'user');
+    chatHistory.push({ role: 'user', content: msg });
+
+    const typingEl = appendMessage('', 'bot typing');
+    const sendBtn = document.getElementById('xiangtun-chat-send');
+    sendBtn.disabled = true;
+
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...chatHistory.slice(-10)
+          ]
+        })
+      });
+
+      if (!resp.ok) throw new Error('API error');
+      const data = await resp.json();
+      const reply = data.choices?.[0]?.message?.content || '抱歉，我暂时无法回答，请稍后再试~';
+
+      typingEl.remove();
+      appendMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typingEl.remove();
+      appendMessage('网络连接中断了，请检查网络后重试', 'bot');
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  function appendMessage(text, cls) {
+    const container = document.getElementById('xiangtun-chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + cls;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+</script>
+
+<!-- Guardian Page Logic -->
+<script>
+// =============================================
+// 积分系统
+// =============================================
+function getPointsData() {
+  try {
+    const raw = localStorage.getItem('xiangtun_points');
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return { points: 0, history: [] };
+}
+
+function savePointsData(data) {
+  localStorage.setItem('xiangtun_points', JSON.stringify(data));
+}
+
+function addPoints(amount, reason) {
+  const data = getPointsData();
+  data.points += amount;
+  data.history.push({ amount, reason, time: new Date().toISOString() });
+  savePointsData(data);
+  updateHeroCard();
+  return data;
+}
+
+function getLevelInfo(points) {
+  if (points >= 300) return { name: '荣誉守护者', next: null, progress: 100 };
+  if (points >= 150) return { name: '守护使者', next: 300, progress: ((points - 150) / 150) * 100 };
+  if (points >= 50) return { name: '守护学徒', next: 150, progress: ((points - 50) / 100) * 100 };
+  return { name: '新访客', next: 50, progress: (points / 50) * 100 };
+}
+
+function updateHeroCard() {
+  const data = getPointsData();
+  const level = getLevelInfo(data.points);
+
+  document.getElementById('hero-level').textContent = level.name;
+  document.getElementById('hero-points').textContent = data.points;
+  document.getElementById('hero-progress').style.width = level.progress + '%';
+
+  if (level.next) {
+    document.getElementById('hero-next').textContent = '距离下一等级还需 ' + (level.next - data.points) + ' 积分';
+  } else {
+    document.getElementById('hero-next').textContent = '已达最高等级';
+  }
+
+  // 更新徽章状态
+  const hasPledge = data.history.some(h => h.reason === '签署保护倡议');
+  const hasQuiz = data.history.some(h => h.reason && h.reason.startsWith('知识问答'));
+  const hasTask = data.history.some(h => h.reason && (h.reason.includes('打卡') || h.reason.includes('分享')));
+
+  if (hasPledge) document.getElementById('badge-pledge').style.background = 'rgba(133,18,23,0.25)';
+  if (hasQuiz) document.getElementById('badge-quiz').style.background = 'rgba(59,105,52,0.25)';
+  if (hasTask) document.getElementById('badge-task').style.background = 'rgba(89,61,0,0.25)';
+}
+
+// =============================================
+// 签署倡议
+// =============================================
+const pledgeNameInput = document.getElementById('pledge-name');
+const pledgeAgreeInput = document.getElementById('pledge-agree');
+const pledgeBtn = document.getElementById('pledge-btn');
+
+function updatePledgeBtn() {
+  pledgeBtn.disabled = !(pledgeNameInput.value.trim() && pledgeAgreeInput.checked);
+}
+pledgeNameInput.addEventListener('input', updatePledgeBtn);
+pledgeAgreeInput.addEventListener('change', updatePledgeBtn);
+
+function getPledgeCount() {
+  return parseInt(localStorage.getItem('xiangtun_pledge_count') || '0', 10);
+}
+
+function incrementPledgeCount() {
+  const count = getPledgeCount() + 1;
+  localStorage.setItem('xiangtun_pledge_count', String(count));
+  return count;
+}
+
+function initPledgeCount() {
+  document.getElementById('pledge-count').textContent = getPledgeCount();
+}
+
+function signPledge() {
+  const name = pledgeNameInput.value.trim();
+  if (!name || !pledgeAgreeInput.checked) return;
+
+  // 检查是否已签署
+  const data = getPointsData();
+  if (data.history.some(h => h.reason === '签署保护倡议')) {
+    alert('您已签署过倡议，无法重复签署。');
+    return;
+  }
+
+  addPoints(30, '签署保护倡议');
+  const count = incrementPledgeCount();
+  document.getElementById('pledge-count').textContent = count;
+
+  // 禁用表单
+  pledgeBtn.disabled = true;
+  pledgeBtn.textContent = '已签署';
+  pledgeNameInput.disabled = true;
+  pledgeAgreeInput.disabled = true;
+
+  // 生成证书
+  generateCert(name);
+}
+
+function generateCert(name) {
+  const canvas = document.getElementById('cert-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 800, H = 600;
+
+  // 背景
+  ctx.fillStyle = '#fbf9f8';
+  ctx.fillRect(0, 0, W, H);
+
+  // 边框（Heritage Red 双线）
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 6;
+  ctx.strokeRect(24, 24, W - 48, H - 48);
+  ctx.lineWidth = 2;
+  ctx.strokeRect(36, 36, W - 72, H - 72);
+
+  // 装饰角标
+  const cornerSize = 20;
+  ctx.fillStyle = '#851217';
+  [[40, 40], [W - 40 - cornerSize, 40], [40, H - 40 - cornerSize], [W - 40 - cornerSize, H - 40 - cornerSize]].forEach(([x, y]) => {
+    ctx.fillRect(x, y, cornerSize, cornerSize);
+  });
+
+  // 标题
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 36px Newsreader, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('香屯长城守护者证书', W / 2, 120);
+
+  // 英文副标题
+  ctx.fillStyle = '#58413f';
+  ctx.font = 'italic 16px Newsreader, serif';
+  ctx.fillText('Xiangtun Great Wall Guardian Certificate', W / 2, 152);
+
+  // 分割线
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(200, 175);
+  ctx.lineTo(600, 175);
+  ctx.stroke();
+
+  // 正文
+  ctx.fillStyle = '#1b1c1c';
+  ctx.font = '18px Manrope, sans-serif';
+  ctx.fillText('兹证明', W / 2, 220);
+
+  // 签署人名字
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 40px Newsreader, serif';
+  ctx.fillText(name, W / 2, 275);
+
+  // 承诺内容
+  ctx.fillStyle = '#1b1c1c';
+  ctx.font = '15px Manrope, sans-serif';
+  const lines = [
+    '已郑重签署《香屯长城保护倡议书》',
+    '承诺不攀爬未开放长城、不乱扔垃圾、不破坏植被',
+    '积极宣传保护知识、发现破坏行为及时举报',
+    '正式成为香屯长城守护者'
+  ];
+  lines.forEach((line, i) => {
+    ctx.fillText(line, W / 2, 325 + i * 28);
+  });
+
+  // 日期
+  const now = new Date();
+  const dateStr = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+  ctx.fillStyle = '#58413f';
+  ctx.font = 'italic 14px Newsreader, serif';
+  ctx.fillText('签署日期：' + dateStr, W / 2, 470);
+
+  // 盖章效果
+  ctx.save();
+  ctx.translate(620, 480);
+  ctx.rotate(-0.15);
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(0, 0, 45, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 14px Newsreader, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('四色', 0, -8);
+  ctx.fillText('香屯', 0, 12);
+  ctx.restore();
+
+  // 底部
+  ctx.fillStyle = '#58413f';
+  ctx.font = '11px Manrope, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('四色香屯 · 首都师范大学挑战杯团队', W / 2, 560);
+
+  // 显示证书
+  document.getElementById('cert-placeholder').style.display = 'none';
+  document.getElementById('cert-preview').style.display = 'block';
+}
+
+function downloadCert() {
+  const canvas = document.getElementById('cert-canvas');
+  const link = document.createElement('a');
+  link.download = '香屯长城守护者证书.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// =============================================
+// 知识问答
+// =============================================
+const allQuestions = [
+  // 长城保护法规（5题）
+  {
+    category: '长城保护法规',
+    question: '《长城保护条例》是哪一年颁布实施的？',
+    options: ['2003年', '2006年', '2010年', '2015年'],
+    answer: 1,
+    explanation: '《长城保护条例》于2006年12月1日起施行，是我国专门保护长城的行政法规。'
+  },
+  {
+    category: '长城保护法规',
+    question: '根据《长城保护条例》，以下哪种行为是被明确禁止的？',
+    options: ['在长城上拍照留念', '在长城墙体上刻画涂鸦', '沿长城徒步旅行', '在长城附近露营'],
+    answer: 1,
+    explanation: '《长城保护条例》明确禁止在长城上刻画、涂污、张贴等损毁长城的行为。'
+  },
+  {
+    category: '长城保护法规',
+    question: '发现长城遭到破坏，应该拨打哪个举报电话？',
+    options: ['110', '119', '12345', '12359'],
+    answer: 3,
+    explanation: '12359是全国文物违法举报电话，发现长城遭到破坏可拨打此电话举报。'
+  },
+  {
+    category: '长城保护法规',
+    question: '《北京市长城保护管理办法》规定，在长城保护范围内禁止取土取石的范围是多少？',
+    options: ['长城两侧各50米', '长城两侧各100米', '长城两侧各200米', '长城两侧各500米'],
+    answer: 3,
+    explanation: '根据北京市相关规定，长城两侧各500米范围内禁止取土取石等破坏行为。'
+  },
+  {
+    category: '长城保护法规',
+    question: '香屯村所在的长城段属于哪个防御体系？',
+    options: ['蓟镇', '昌镇', '宣府镇', '大同镇'],
+    answer: 1,
+    explanation: '香屯村的长城属于明代昌镇黄花路西老星口段，是昌镇防御体系的一部分。'
+  },
+  // 生态知识（5题）
+  {
+    category: '生态知识',
+    question: '香屯村的林木覆盖率约为多少？',
+    options: ['65%', '75%', '85%', '95%'],
+    answer: 3,
+    explanation: '香屯村林木覆盖率高达95%，是延庆区绿化率最高的村庄之一，2007年被评为"北京市最美乡村"。'
+  },
+  {
+    category: '生态知识',
+    question: '以下哪种植物是香屯村的标志性特产？',
+    options: ['核桃', '板栗', '柿子', '山楂'],
+    answer: 1,
+    explanation: '板栗是香屯村最具代表性的特产，村中板栗林历史悠久，秋天满山金黄，是"板栗金"色彩的来源。'
+  },
+  {
+    category: '生态知识',
+    question: '长城沿线生态保护中，"最小干预原则"是指什么？',
+    options: ['不做任何修缮', '尽量少修改原有结构和材料', '只用现代材料替换', '完全恢复原貌'],
+    answer: 1,
+    explanation: '"最小干预原则"是文物保护的核心理念，指在修缮中尽量保留原有结构和材料，只做必要的加固和保护。'
+  },
+  {
+    category: '生态知识',
+    question: '"无痕旅行"（Leave No Trace）的核心原则不包括以下哪项？',
+    options: ['带走所有垃圾', '不采摘野花野果', '在岩石上刻写到此一游', '在指定区域活动'],
+    answer: 2,
+    explanation: '"无痕旅行"倡导游客不留下任何人为痕迹，在岩石上刻写显然违反了这一原则。'
+  },
+  {
+    category: '生态知识',
+    question: '香屯村的地理特征可以概括为？',
+    options: ['一马平川', '四面环山、一水中流', '临海而居', '高原草甸'],
+    answer: 1,
+    explanation: '香屯村地处延庆、昌平、怀柔三区交界处，四面环山、一水中流，被形容为"藏风聚气"的风水宝地。'
+  },
+  // 香屯文化（5题）
+  {
+    category: '香屯文化',
+    question: '香屯村行政上隶属于北京市哪个区？',
+    options: ['昌平区', '怀柔区', '延庆区', '密云区'],
+    answer: 2,
+    explanation: '香屯村行政上属于北京市延庆区大庄科乡，地处延庆、昌平、怀柔三区交界处。'
+  },
+  {
+    category: '香屯文化',
+    question: '"四色香屯"品牌中的"传承红"代表什么？',
+    options: ['板栗的颜色', '长城砖石的颜色', '辽代冶铁炉火与革命红色血脉', '秋天枫叶的颜色'],
+    answer: 2,
+    explanation: '"传承红"（#851217）象征辽代冶铁炉火、抗日烽火和长城守护者世代相传的热血，是品牌的核心色彩。'
+  },
+  {
+    category: '香屯文化',
+    question: '2021-2024年间，香屯村长城段进行了什么重要项目？',
+    options: ['商业开发', '研究性修缮试点', '全段重建', '旅游索道建设'],
+    answer: 1,
+    explanation: '国家文物局首批批复明长城大庄科段研究性修缮试点，以考古先行、最小干预为核心。香港黄廷方基金会捐赠1000万元。'
+  },
+  {
+    category: '香屯文化',
+    question: '香屯村早在哪个朝代就有人类活动的记录？',
+    options: ['唐代', '宋代', '辽代', '元代'],
+    answer: 2,
+    explanation: '早在辽代（916-1125年），香屯一带就是"辽代首钢"的采矿地，是北京地区最早的冶铁遗址之一。'
+  },
+  {
+    category: '香屯文化',
+    question: '在研究性修缮中重新发现的、消失了380多年的历史地名是什么？',
+    options: ['大庄科', '香屯口', '西星口', '黄花路'],
+    answer: 2,
+    explanation: '在2021-2024年的研究性修缮中，考古团队重新发现了消失380多年的历史地名"西星口"。'
+  }
+];
+
+let currentQuiz = [];
+let currentQuizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz() {
+  currentQuiz = shuffleArray(allQuestions).slice(0, 10);
+  currentQuizIndex = 0;
+  quizScore = 0;
+  quizAnswered = false;
+
+  document.getElementById('quiz-start').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'none';
+  document.getElementById('quiz-active').style.display = 'block';
+  document.getElementById('quiz-score-live').textContent = '0';
+
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = currentQuiz[currentQuizIndex];
+  const area = document.getElementById('quiz-question-area');
+
+  document.getElementById('quiz-current').textContent = currentQuizIndex + 1;
+  document.getElementById('quiz-progress').style.width = ((currentQuizIndex + 1) / 10 * 100) + '%';
+
+  quizAnswered = false;
+
+  const categoryColors = {
+    '长城保护法规': { bg: 'rgba(133,18,23,0.08)', color: '#851217' },
+    '生态知识': { bg: 'rgba(59,105,52,0.08)', color: '#3b6934' },
+    '香屯文化': { bg: 'rgba(89,61,0,0.08)', color: '#593d00' }
+  };
+  const cc = categoryColors[q.category] || categoryColors['香屯文化'];
+
+  area.innerHTML = `
+    <div class="bg-surface-container-low p-8 md:p-10 rounded-sm silk-overlay">
+      <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm mb-6" style="background:${cc.bg};color:${cc.color};">${q.category}</span>
+      <h3 class="text-lg md:text-xl font-headline font-bold mb-8 leading-relaxed">${q.question}</h3>
+      <div class="space-y-3" id="quiz-options">
+        ${q.options.map((opt, i) => `
+          <button onclick="selectAnswer(${i})" class="quiz-option w-full text-left p-4 rounded-xl bg-surface-container-high/50 hover:bg-surface-container-high text-sm text-on-surface leading-relaxed transition-colors duration-200 flex items-center gap-3" data-index="${i}">
+            <span class="w-7 h-7 flex-shrink-0 rounded-sm flex items-center justify-center text-xs font-bold bg-surface-container-highest text-on-surface-variant">${'ABCD'[i]}</span>
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+      <div id="quiz-explanation" class="mt-6" style="display:none;">
+        <div class="p-4 rounded-xl" style="background:rgba(59,105,52,0.06);">
+          <p class="text-sm text-on-surface leading-relaxed">${q.explanation}</p>
+        </div>
+        <button onclick="nextQuestion()" class="mt-6 bg-primary text-on-primary px-6 py-2.5 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-primary-container transition-colors duration-300">
+          ${currentQuizIndex < 9 ? '下一题' : '查看结果'}
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function selectAnswer(selected) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+
+  const q = currentQuiz[currentQuizIndex];
+  const correct = q.answer;
+  const options = document.querySelectorAll('.quiz-option');
+
+  options.forEach((btn, i) => {
+    btn.style.pointerEvents = 'none';
+    if (i === correct) {
+      btn.style.background = 'rgba(59,105,52,0.15)';
+      btn.style.outline = '2px solid #3b6934';
+    }
+    if (i === selected && selected !== correct) {
+      btn.style.background = 'rgba(186,26,26,0.1)';
+      btn.style.outline = '2px solid #ba1a1a';
+    }
+  });
+
+  if (selected === correct) {
+    quizScore++;
+    document.getElementById('quiz-score-live').textContent = quizScore * 5;
+  }
+
+  document.getElementById('quiz-explanation').style.display = 'block';
+}
+
+function nextQuestion() {
+  currentQuizIndex++;
+  if (currentQuizIndex >= 10) {
+    finishQuiz();
+    return;
+  }
+  renderQuestion();
+}
+
+function finishQuiz() {
+  document.getElementById('quiz-active').style.display = 'none';
+  document.getElementById('quiz-result').style.display = 'block';
+  document.getElementById('quiz-correct').textContent = quizScore;
+  document.getElementById('quiz-earned').textContent = quizScore * 5;
+
+  if (quizScore > 0) {
+    addPoints(quizScore * 5, '知识问答 — 答对' + quizScore + '题');
+  }
+}
+
+// =============================================
+// 任务打卡
+// =============================================
+function getCompletedTasks() {
+  try {
+    return JSON.parse(localStorage.getItem('xiangtun_tasks') || '[]');
+  } catch (e) { return []; }
+}
+
+function saveCompletedTask(taskId) {
+  const tasks = getCompletedTasks();
+  if (!tasks.includes(taskId)) {
+    tasks.push(taskId);
+    localStorage.setItem('xiangtun_tasks', JSON.stringify(tasks));
+  }
+}
+
+function initTasks() {
+  const completed = getCompletedTasks();
+  document.querySelectorAll('.task-card').forEach(card => {
+    const taskId = card.dataset.task;
+    if (completed.includes(taskId)) {
+      markTaskDone(card);
+    }
+  });
+}
+
+function markTaskDone(card) {
+  card.style.opacity = '0.5';
+  const btn = card.querySelector('.task-btn');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = '已完成';
+    btn.style.opacity = '0.4';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+
+// Haversine 公式计算两点距离（米）
+function haversineDistance(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const toRad = d => d * Math.PI / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function checkinTask(btnEl) {
+  const card = btnEl.closest('.task-card');
+  const taskId = card.dataset.task;
+
+  if (getCompletedTasks().includes(taskId)) {
+    alert('该任务已完成');
+    return;
+  }
+
+  const targetLat = parseFloat(card.dataset.lat);
+  const targetLng = parseFloat(card.dataset.lng);
+  const radius = parseFloat(card.dataset.radius);
+
+  if (!navigator.geolocation) {
+    alert('您的浏览器不支持地理定位功能，无法完成打卡。');
+    return;
+  }
+
+  btnEl.disabled = true;
+  btnEl.textContent = '定位中...';
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const dist = haversineDistance(pos.coords.latitude, pos.coords.longitude, targetLat, targetLng);
+      if (dist <= radius) {
+        saveCompletedTask(taskId);
+        addPoints(20, taskId + ' 打卡');
+        markTaskDone(card);
+        alert('打卡成功！+20 积分');
+      } else {
+        alert('您距离目标位置约 ' + Math.round(dist) + ' 米，需要在 ' + radius + ' 米范围内才能打卡。请靠近后再试。');
+        btnEl.disabled = false;
+        btnEl.textContent = '打卡';
+      }
+    },
+    (err) => {
+      let msg = '定位失败';
+      if (err.code === 1) msg = '请允许浏览器获取您的位置信息后重试';
+      else if (err.code === 2) msg = '无法获取位置信息，请检查GPS是否开启';
+      else if (err.code === 3) msg = '定位超时，请在开阔区域重试';
+      alert(msg);
+      btnEl.disabled = false;
+      btnEl.textContent = '打卡';
+    },
+    { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+  );
+}
+
+function shareTask(btnEl) {
+  const card = btnEl.closest('.task-card');
+  const taskId = card.dataset.task;
+
+  if (getCompletedTasks().includes(taskId)) {
+    alert('该任务已完成');
+    return;
+  }
+
+  const shareData = {
+    title: '我签署了香屯长城保护倡议',
+    text: '长城需要每一个人的守护。我已成为香屯长城守护者，你也来加入吧！',
+    url: window.location.href
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData).then(() => {
+      saveCompletedTask(taskId);
+      addPoints(10, '分享保护承诺');
+      markTaskDone(card);
+      alert('分享成功！+10 积分');
+    }).catch(() => {});
+  } else {
+    // 降级：复制到剪贴板
+    const text = shareData.text + ' ' + shareData.url;
+    navigator.clipboard.writeText(text).then(() => {
+      saveCompletedTask(taskId);
+      addPoints(10, '分享保护承诺');
+      markTaskDone(card);
+      alert('分享链接已复制到剪贴板！+10 积分');
+    }).catch(() => {
+      alert('分享失败，请手动复制页面链接分享给朋友。');
+    });
+  }
+}
+
+// =============================================
+// 检查是否已签署倡议（页面加载时恢复状态）
+// =============================================
+function initPledgeState() {
+  const data = getPointsData();
+  if (data.history.some(h => h.reason === '签署保护倡议')) {
+    pledgeBtn.disabled = true;
+    pledgeBtn.textContent = '已签署';
+    pledgeNameInput.disabled = true;
+    pledgeAgreeInput.disabled = true;
+  }
+}
+
+// =============================================
+// 初始化
+// =============================================
+updateHeroCard();
+initPledgeCount();
+initPledgeState();
+initTasks();
+</script>
+
+<!-- 滚动渐入动画 & 导航栏滚动效果 -->
+<script>
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+    fadeObserver.observe(el);
+});
+
+window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>

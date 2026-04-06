@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>预约游览 · 错峰体验长城之美 | 四色香屯</title>
+<meta name="description" content="提前预约入园时段，错峰游览大庄科段明长城，让每个人都有舒适的体验。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="预约游览 · 错峰体验长城之美 | 四色香屯">
+<meta property="og:description" content="提前预约入园时段，错峰游览，让长城不再拥挤。">
+<meta property="og:url" content="https://stitch.editnow.uk/booking/index.html">
+<meta property="og:locale" content="zh_CN">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+        background-size: 1200px 900px;
+        background-blend-mode: multiply;
+    }
+    .silk-overlay {
+        background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
+    }
+    /* 丝滑滚动渐入 */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .fade-in-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .fade-in-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+    /* 导航栏滚动变化 */
+    nav.scrolled {
+        background: rgba(251,249,248,0.95) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    /* 平滑滚动 */
+    html { scroll-behavior: smooth; }
+    /* 时段卡片选中态 */
+    .slot-card {
+        transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+        cursor: pointer;
+    }
+    .slot-card:hover:not(.slot-full) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(133,18,23,0.08);
+    }
+    .slot-card.selected {
+        box-shadow: 0 0 0 2px #851217, 0 8px 32px rgba(133,18,23,0.12);
+    }
+    .slot-card.slot-full {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+    /* 表单输入下划线风格 */
+    .field-underline {
+        border: none;
+        border-bottom: 2px solid #e0bfbc;
+        border-radius: 0;
+        background: transparent;
+        padding: 12px 0;
+        font-size: 1rem;
+        font-family: 'Manrope', sans-serif;
+        color: #1b1c1c;
+        outline: none;
+        transition: border-color 0.3s;
+        width: 100%;
+    }
+    .field-underline:focus {
+        border-bottom-color: #851217;
+    }
+    .field-underline::placeholder {
+        color: #8c716e;
+    }
+    /* 凭证卡片 */
+    .voucher-card {
+        background: linear-gradient(135deg, #fbf9f8 0%, #f5f3f3 100%);
+        box-shadow: 0 16px 48px rgba(133,18,23,0.08);
+    }
+    /* 伪二维码图案 */
+    .qr-pattern {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 2px;
+        width: 120px;
+        height: 120px;
+    }
+    .qr-cell {
+        border-radius: 1px;
+    }
+    /* 日期卡片 */
+    .date-tab {
+        transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+    }
+    .date-tab:hover {
+        background: #eae8e7;
+    }
+    .date-tab.active {
+        background: #851217;
+        color: #fff;
+    }
+</style>
+<!-- Live2D Chat Styles -->
+<style>
+  #xiangtun-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Manrope', sans-serif;
+  }
+  #xiangtun-chat-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217 0%, #a62c2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(133,18,23,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  #xiangtun-chat-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 32px rgba(133,18,23,0.4);
+  }
+  #xiangtun-chat-panel {
+    display: none;
+    width: 380px;
+    max-height: 520px;
+    background: rgba(251,249,248,0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(224,191,188,0.3);
+    border-radius: 12px;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.12);
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 68px;
+    right: 0;
+  }
+  #xiangtun-chat-panel.open { display: flex; }
+  #xiangtun-chat-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #xiangtun-chat-header h4 {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  #xiangtun-chat-header p {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.8;
+  }
+  #xiangtun-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 340px;
+    min-height: 200px;
+  }
+  .chat-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+  .chat-msg.bot {
+    align-self: flex-start;
+    background: #f5f3f3;
+    color: #1b1c1c;
+    border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: #851217;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '●●●';
+    animation: blink 1.2s infinite;
+    letter-spacing: 3px;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  #xiangtun-chat-input-area {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(224,191,188,0.2);
+    background: rgba(251,249,248,0.6);
+  }
+  #xiangtun-chat-input {
+    flex: 1;
+    border: 1px solid rgba(224,191,188,0.4);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #xiangtun-chat-input:focus {
+    border-color: #851217;
+  }
+  #xiangtun-chat-send {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #851217;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  #xiangtun-chat-send:hover { background: #a62c2b; }
+  #xiangtun-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+  @media (max-width: 480px) {
+    #xiangtun-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      bottom: 64px;
+    }
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-16 items-center">
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../about/history.html">香屯故事 Story</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../routes/red-study.html">文旅路线 Routes</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者 Guardian</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">预约 Booking</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../about/history.html">香屯故事 Story</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../routes/red-study.html">文旅路线 Routes</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者 Guardian</a>
+        <a class="block text-[#851217] font-medium font-headline py-3" href="index.html">预约 Booking</a>
+    </div>
+</nav>
+
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
+
+<!-- ============================================ -->
+<!-- HERO SECTION                                 -->
+<!-- ============================================ -->
+<header class="mb-24 md:mb-40 relative">
+<div class="max-w-4xl">
+<div class="mb-6 flex items-center gap-4">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Reservation | 预约入园</span>
+</div>
+<h1 class="text-3xl md:text-5xl lg:text-8xl font-headline font-extrabold text-on-surface tracking-tight mb-8 leading-[1.05]">
+预约游览<span class="text-primary italic"> ·</span><br/>
+<span class="text-primary font-normal italic text-2xl md:text-4xl lg:text-5xl">Reservation</span>
+</h1>
+<div class="h-1 w-24 bg-primary mt-8 mb-10"></div>
+<p class="text-base md:text-lg text-on-surface-variant leading-[1.9] max-w-2xl mb-8">
+提前预约入园时段，错峰游览，让长城不再拥挤，让每个人都有舒适的体验。
+</p>
+<div class="inline-flex items-center gap-3 px-4 py-2 bg-tertiary-fixed/30 rounded-sm">
+<span class="material-symbols-outlined text-tertiary text-lg">info</span>
+<span class="text-sm text-on-tertiary-fixed-variant font-medium">本系统为演示原型，数据为模拟数据</span>
+</div>
+</div>
+<div class="absolute top-0 right-0 hidden lg:block opacity-[0.03] text-[20rem] font-headline font-black text-on-surface leading-none select-none" aria-hidden="true">
+约
+</div>
+</header>
+
+<!-- ============================================ -->
+<!-- CAPACITY & BOOKING SECTION                   -->
+<!-- ============================================ -->
+<section class="mb-24 md:mb-48 fade-in">
+<div class="flex flex-col items-center mb-16 text-center">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Capacity</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">承载量一览</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Real-time Availability for the Coming Week</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<!-- Date Tabs -->
+<div id="date-tabs" class="flex flex-wrap justify-center gap-3 mb-12">
+</div>
+
+<!-- Slot Cards for Selected Date -->
+<div id="slot-display" class="max-w-3xl mx-auto">
+</div>
+
+<!-- ============================================ -->
+<!-- BOOKING FORM                                 -->
+<!-- ============================================ -->
+<div id="booking-form-wrapper" class="max-w-xl mx-auto mt-20 hidden fade-in">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-sm">
+<h3 class="text-2xl font-headline font-bold mb-2">填写预约信息</h3>
+<p id="form-slot-summary" class="text-sm text-on-surface-variant mb-10"></p>
+
+<div class="space-y-8">
+<div>
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-2 block">游览人数</label>
+<input id="input-visitors" type="number" min="1" max="10" value="1" placeholder="1-10 人" class="field-underline" />
+</div>
+<div>
+<label class="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-2 block">联系电话</label>
+<input id="input-phone" type="tel" placeholder="请输入手机号码" class="field-underline" />
+</div>
+</div>
+
+<button id="btn-submit" onclick="submitBooking()" class="mt-12 w-full py-4 bg-primary text-on-primary font-bold text-sm tracking-widest uppercase rounded-xl hover:bg-primary-container transition-colors duration-300">
+确认预约
+</button>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- VOUCHER RESULT                               -->
+<!-- ============================================ -->
+<div id="voucher-wrapper" class="max-w-xl mx-auto mt-20 hidden fade-in">
+<div class="voucher-card p-8 md:p-12 rounded-sm relative overflow-hidden">
+<div class="silk-overlay absolute inset-0 pointer-events-none"></div>
+<div class="relative z-10">
+
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-secondary text-3xl">check_circle</span>
+<h3 class="text-2xl font-headline font-bold text-secondary">预约成功</h3>
+</div>
+
+<div class="grid grid-cols-2 gap-y-6 gap-x-8 mb-10">
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant block mb-1">预约编号</span>
+<span id="v-code" class="text-base font-bold text-on-surface font-headline"></span>
+</div>
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant block mb-1">游览日期</span>
+<span id="v-date" class="text-base font-bold text-on-surface font-headline"></span>
+</div>
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant block mb-1">时段</span>
+<span id="v-period" class="text-base font-bold text-on-surface font-headline"></span>
+</div>
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant block mb-1">人数</span>
+<span id="v-visitors" class="text-base font-bold text-on-surface font-headline"></span>
+</div>
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant block mb-1">联系电话</span>
+<span id="v-phone" class="text-base font-bold text-on-surface font-headline"></span>
+</div>
+</div>
+
+<!-- QR Pattern -->
+<div class="flex flex-col items-center pt-8" style="border-top: 2px dashed #e0bfbc;">
+<canvas id="qr-canvas" width="140" height="140"></canvas>
+<p class="text-xs text-on-surface-variant mt-4">入园时出示此凭证</p>
+</div>
+
+<div class="mt-8 flex items-center gap-3 px-4 py-3 bg-tertiary-fixed/20 rounded-sm">
+<span class="material-symbols-outlined text-tertiary text-lg">photo_camera</span>
+<span class="text-sm text-on-tertiary-fixed-variant">请截图保存此凭证，入园时需出示</span>
+</div>
+
+</div>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
+<div class="max-w-xs">
+<a href="../index.html" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+通过现代视觉叙事，守护长城板栗林色彩遗产。
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="../index.html">首页</a></li>
+<li><a class="hover:text-white transition-colors" href="../about/history.html">香屯故事</a></li>
+<li><a class="hover:text-white transition-colors" href="../routes/red-study.html">文旅路线</a></li>
+<li><a class="hover:text-white transition-colors" href="../guardian/index.html">守护者</a></li>
+<li><a class="hover:text-white transition-colors" href="index.html">预约游览</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="#">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="#">游客须知</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队 · 任济坤</p>
+<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<!-- Chat Widget -->
+<div id="xiangtun-chat">
+  <div id="xiangtun-chat-panel">
+    <div id="xiangtun-chat-header">
+      <div>
+        <span style="font-size:28px;">🏯</span>
+      </div>
+      <div>
+        <h4>香屯小卒</h4>
+        <p>长城脚下的AI小兵 · 有问必答</p>
+      </div>
+      <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:#fff;cursor:pointer;font-size:20px;">✕</button>
+    </div>
+    <div id="xiangtun-chat-messages">
+      <div class="chat-msg bot">你好！我是香屯小卒 🏔️ 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div>
+    </div>
+    <div id="xiangtun-chat-input-area">
+      <input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off" />
+      <button id="xiangtun-chat-send" onclick="sendMessage()">
+        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+      </button>
+    </div>
+  </div>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
+    <span class="material-symbols-outlined" style="font-size:26px;">chat</span>
+  </button>
+</div>
+
+<!-- Chat Logic -->
+<script>
+  const SYSTEM_PROMPT = `你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。
+
+你的知识背景：
+- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气
+- 明代为昌镇黄花路西老星口段长城，村民世代守护长城
+- 早在辽代，香屯就是"辽代首钢"的采矿地
+- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地
+- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"
+- 板栗是香屯特产，村中板栗林历史悠久
+- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目
+- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事
+- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)
+
+交互原则：
+- 用亲切、生动的语言，像一位当地老乡在讲故事
+- 回答简洁（2-4句），但内容丰富有趣
+- 适当加入历史典故和文化细节
+- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访
+- 用中文回答`;
+
+  const API_URL = 'https://xiangtun-chat.garetneda.workers.dev/api/chat';
+  let chatHistory = [];
+
+  function toggleChat() {
+    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
+    document.getElementById('xiangtun-chat-input').focus();
+  }
+
+  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  async function sendMessage() {
+    const input = document.getElementById('xiangtun-chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    appendMessage(msg, 'user');
+    chatHistory.push({ role: 'user', content: msg });
+
+    const typingEl = appendMessage('', 'bot typing');
+    const sendBtn = document.getElementById('xiangtun-chat-send');
+    sendBtn.disabled = true;
+
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...chatHistory.slice(-10)
+          ]
+        })
+      });
+
+      if (!resp.ok) throw new Error('API error');
+      const data = await resp.json();
+      const reply = data.choices?.[0]?.message?.content || '抱歉，我暂时无法回答，请稍后再试~';
+
+      typingEl.remove();
+      appendMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typingEl.remove();
+      appendMessage('网络连接中断了，请检查网络后重试 🔄', 'bot');
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  function appendMessage(text, cls) {
+    const container = document.getElementById('xiangtun-chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + cls;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+</script>
+
+<!-- Booking System Logic -->
+<script>
+// Mock data
+const bookingSlots = [
+  { date: '2026-04-07', morning: { capacity: 200, booked: 45 }, afternoon: { capacity: 200, booked: 120 } },
+  { date: '2026-04-08', morning: { capacity: 200, booked: 78 }, afternoon: { capacity: 200, booked: 95 } },
+  { date: '2026-04-09', morning: { capacity: 200, booked: 32 }, afternoon: { capacity: 200, booked: 68 } },
+  { date: '2026-04-10', morning: { capacity: 200, booked: 150 }, afternoon: { capacity: 200, booked: 188 } },
+  { date: '2026-04-11', morning: { capacity: 200, booked: 190 }, afternoon: { capacity: 200, booked: 200 } },
+  { date: '2026-04-12', morning: { capacity: 200, booked: 12 }, afternoon: { capacity: 200, booked: 55 } },
+  { date: '2026-04-13', morning: { capacity: 200, booked: 88 }, afternoon: { capacity: 200, booked: 145 } },
+];
+
+const WEEKDAYS = ['日', '一', '二', '三', '四', '五', '六'];
+
+let selectedDate = null;
+let selectedPeriod = null;
+
+function getStatusColor(booked, capacity) {
+  const ratio = booked / capacity;
+  if (ratio >= 1) return { bg: '#ba1a1a', label: '已满', colorClass: 'bg-error' };
+  if (ratio >= 0.8) return { bg: '#851217', label: '紧张', colorClass: 'bg-primary' };
+  if (ratio >= 0.5) return { bg: '#593d00', label: '适中', colorClass: 'bg-tertiary' };
+  return { bg: '#3b6934', label: '宽松', colorClass: 'bg-secondary' };
+}
+
+function getBarColor(booked, capacity) {
+  const ratio = booked / capacity;
+  if (ratio >= 1) return '#ba1a1a';
+  if (ratio >= 0.8) return '#851217';
+  if (ratio >= 0.5) return '#593d00';
+  return '#3b6934';
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return `${d.getMonth() + 1}/${d.getDate()} 周${WEEKDAYS[d.getDay()]}`;
+}
+
+function formatDateShort(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return `${d.getMonth() + 1}月${d.getDate()}日`;
+}
+
+function renderDateTabs() {
+  const container = document.getElementById('date-tabs');
+  container.innerHTML = '';
+  bookingSlots.forEach((slot, i) => {
+    const d = new Date(slot.date + 'T00:00:00');
+    const weekday = `周${WEEKDAYS[d.getDay()]}`;
+    const dayNum = d.getDate();
+    const isActive = selectedDate === slot.date;
+
+    const tab = document.createElement('button');
+    tab.className = `date-tab flex flex-col items-center px-5 py-4 rounded-sm ${isActive ? 'active' : 'bg-surface-container-low text-on-surface'}`;
+    tab.innerHTML = `
+      <span class="text-[10px] font-bold tracking-wider uppercase opacity-70">${weekday}</span>
+      <span class="text-2xl font-headline font-bold mt-1">${dayNum}</span>
+      <span class="text-[10px] mt-1 opacity-60">${d.getMonth() + 1}月</span>
+    `;
+    tab.onclick = () => {
+      selectedDate = slot.date;
+      selectedPeriod = null;
+      hideForm();
+      hideVoucher();
+      renderDateTabs();
+      renderSlots();
+    };
+    container.appendChild(tab);
+  });
+}
+
+function renderSlots() {
+  const container = document.getElementById('slot-display');
+  if (!selectedDate) {
+    container.innerHTML = '<p class="text-center text-on-surface-variant text-sm italic font-headline">请先选择日期</p>';
+    return;
+  }
+
+  const slot = bookingSlots.find(s => s.date === selectedDate);
+  if (!slot) return;
+
+  const periods = [
+    { key: 'morning', label: '上午', time: '8:00 — 12:00', data: slot.morning },
+    { key: 'afternoon', label: '下午', time: '13:00 — 17:00', data: slot.afternoon },
+  ];
+
+  container.innerHTML = `
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      ${periods.map(p => {
+        const ratio = p.data.booked / p.data.capacity;
+        const pct = Math.round(ratio * 100);
+        const isFull = p.data.booked >= p.data.capacity;
+        const status = getStatusColor(p.data.booked, p.data.capacity);
+        const barColor = getBarColor(p.data.booked, p.data.capacity);
+        const isSelected = selectedPeriod === p.key;
+        const remaining = p.data.capacity - p.data.booked;
+
+        return `
+          <div class="slot-card p-8 rounded-sm ${isFull ? 'slot-full bg-surface-container-high' : 'bg-surface-container-low'} ${isSelected ? 'selected' : ''}"
+               onclick="${isFull ? '' : `selectSlot('${p.key}')`}">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="text-xl font-headline font-bold">${p.label}</h4>
+                <p class="text-sm text-on-surface-variant mt-1">${p.time}</p>
+              </div>
+              <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm"
+                    style="background: ${status.bg}20; color: ${status.bg};">
+                ${status.label}
+              </span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full h-3 bg-surface-container-high rounded-sm overflow-hidden mb-4">
+              <div class="h-full rounded-sm transition-all duration-700 ease-out"
+                   style="width: ${pct}%; background: ${barColor};"></div>
+            </div>
+
+            <div class="flex justify-between text-sm">
+              <span class="text-on-surface-variant">已预约 <strong class="text-on-surface">${p.data.booked}</strong> / ${p.data.capacity}</span>
+              <span class="${isFull ? 'text-error font-bold' : 'text-secondary'}">${isFull ? '名额已满' : `剩余 ${remaining} 人`}</span>
+            </div>
+
+            ${isFull ? '' : `
+              <div class="mt-6 text-center">
+                <span class="text-xs text-primary font-bold tracking-wider uppercase ${isSelected ? '' : 'opacity-60'}">
+                  ${isSelected ? '✓ 已选择此时段' : '点击选择此时段'}
+                </span>
+              </div>
+            `}
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+function selectSlot(period) {
+  selectedPeriod = period;
+  renderSlots();
+  showForm();
+  hideVoucher();
+}
+
+function showForm() {
+  const wrapper = document.getElementById('booking-form-wrapper');
+  wrapper.classList.remove('hidden');
+  setTimeout(() => wrapper.classList.add('visible'), 20);
+
+  const periodLabel = selectedPeriod === 'morning' ? '上午 8:00-12:00' : '下午 13:00-17:00';
+  document.getElementById('form-slot-summary').textContent = `${formatDate(selectedDate)} · ${periodLabel}`;
+  document.getElementById('input-visitors').value = 1;
+  document.getElementById('input-phone').value = '';
+}
+
+function hideForm() {
+  const wrapper = document.getElementById('booking-form-wrapper');
+  wrapper.classList.add('hidden');
+  wrapper.classList.remove('visible');
+}
+
+function hideVoucher() {
+  const wrapper = document.getElementById('voucher-wrapper');
+  wrapper.classList.add('hidden');
+  wrapper.classList.remove('visible');
+}
+
+function submitBooking() {
+  const visitors = parseInt(document.getElementById('input-visitors').value);
+  const phone = document.getElementById('input-phone').value.trim();
+
+  if (!visitors || visitors < 1 || visitors > 10) {
+    alert('请输入 1-10 的游览人数');
+    return;
+  }
+  if (!/^1\d{10}$/.test(phone)) {
+    alert('请输入有效的11位手机号码');
+    return;
+  }
+
+  const slot = bookingSlots.find(s => s.date === selectedDate);
+  const periodData = slot[selectedPeriod];
+  if (periodData.booked + visitors > periodData.capacity) {
+    alert('剩余名额不足，请减少人数或选择其他时段');
+    return;
+  }
+
+  // Generate voucher
+  const code = 'XT-' + Date.now();
+  const periodLabel = selectedPeriod === 'morning' ? '上午 8:00-12:00' : '下午 13:00-17:00';
+  const maskedPhone = phone.substring(0, 3) + '****' + phone.substring(7);
+
+  document.getElementById('v-code').textContent = code;
+  document.getElementById('v-date').textContent = formatDate(selectedDate);
+  document.getElementById('v-period').textContent = periodLabel;
+  document.getElementById('v-visitors').textContent = visitors + ' 人';
+  document.getElementById('v-phone').textContent = maskedPhone;
+
+  // Update mock data
+  periodData.booked += visitors;
+  renderSlots();
+
+  // Hide form, show voucher
+  hideForm();
+  const voucherWrapper = document.getElementById('voucher-wrapper');
+  voucherWrapper.classList.remove('hidden');
+  setTimeout(() => voucherWrapper.classList.add('visible'), 20);
+
+  // Draw QR-style pattern on canvas
+  drawQRPattern(code);
+
+  // Scroll to voucher
+  setTimeout(() => voucherWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
+}
+
+function drawQRPattern(data) {
+  const canvas = document.getElementById('qr-canvas');
+  const ctx = canvas.getContext('2d');
+  const size = 140;
+  const cellCount = 21;
+  const cellSize = size / cellCount;
+
+  ctx.clearRect(0, 0, size, size);
+
+  // Generate deterministic pattern from data string
+  let hash = 0;
+  for (let i = 0; i < data.length; i++) {
+    hash = ((hash << 5) - hash + data.charCodeAt(i)) | 0;
+  }
+
+  function seededRandom(seed) {
+    const x = Math.sin(seed) * 10000;
+    return x - Math.floor(x);
+  }
+
+  // Draw background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, size, size);
+
+  // Draw finder patterns (3 corners, like real QR codes)
+  function drawFinder(x, y) {
+    const s = cellSize;
+    // Outer dark
+    ctx.fillStyle = '#1b1c1c';
+    ctx.fillRect(x * s, y * s, 7 * s, 7 * s);
+    // Inner white
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect((x + 1) * s, (y + 1) * s, 5 * s, 5 * s);
+    // Center dark
+    ctx.fillStyle = '#851217';
+    ctx.fillRect((x + 2) * s, (y + 2) * s, 3 * s, 3 * s);
+  }
+
+  drawFinder(0, 0);
+  drawFinder(cellCount - 7, 0);
+  drawFinder(0, cellCount - 7);
+
+  // Draw timing patterns
+  ctx.fillStyle = '#1b1c1c';
+  for (let i = 8; i < cellCount - 8; i++) {
+    if (i % 2 === 0) {
+      ctx.fillRect(i * cellSize, 6 * cellSize, cellSize, cellSize);
+      ctx.fillRect(6 * cellSize, i * cellSize, cellSize, cellSize);
+    }
+  }
+
+  // Draw data modules
+  let seed = Math.abs(hash);
+  for (let row = 0; row < cellCount; row++) {
+    for (let col = 0; col < cellCount; col++) {
+      // Skip finder & timing areas
+      if ((row < 8 && col < 8) || (row < 8 && col >= cellCount - 8) || (row >= cellCount - 8 && col < 8)) continue;
+      if (row === 6 || col === 6) continue;
+
+      seed++;
+      if (seededRandom(seed) > 0.52) {
+        ctx.fillStyle = seededRandom(seed + 1) > 0.7 ? '#851217' : '#1b1c1c';
+        ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+      }
+    }
+  }
+
+  // Add center logo area
+  const logoSize = 5;
+  const logoStart = Math.floor((cellCount - logoSize) / 2);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(logoStart * cellSize - 1, logoStart * cellSize - 1, logoSize * cellSize + 2, logoSize * cellSize + 2);
+  ctx.fillStyle = '#851217';
+  ctx.font = `bold ${cellSize * 3}px "Newsreader", serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('屯', size / 2, size / 2 + 1);
+}
+
+// Initialize
+renderDateTabs();
+document.getElementById('slot-display').innerHTML = '<p class="text-center text-on-surface-variant text-sm italic font-headline py-8">请选择日期查看可预约时段</p>';
+</script>
+
+<!-- Scroll Animations & Nav Effect -->
+<script>
+// 滚动渐入动画观察器
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+    fadeObserver.observe(el);
+});
+
+// 导航栏滚动效果
+window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>
