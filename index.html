@@ -235,8 +235,27 @@
 
         /* Product cursor glow */
         .product-glow { transition:background 0.3s ease !important; }
+
+        /* ===== Hero card 张力 ===== */
+        @keyframes heroFloat {
+            0%,100% { transform:perspective(800px) rotateY(-4deg) rotateX(2deg) translateY(0) }
+            25% { transform:perspective(800px) rotateY(-3.5deg) rotateX(2.5deg) translateY(-6px) }
+            50% { transform:perspective(800px) rotateY(-2.5deg) rotateX(1deg) translateY(-14px) }
+            75% { transform:perspective(800px) rotateY(-4.5deg) rotateX(1.5deg) translateY(-6px) }
+        }
+        @keyframes borderShimmer {
+            0%,100% { filter:brightness(1) saturate(1) }
+            50% { filter:brightness(1.3) saturate(1.3) }
+        }
+        @keyframes nameSlideIn {
+            from { opacity:0; transform:translate(24px,16px) }
+            to { opacity:1; transform:translate(0,0) }
+        }
+        .hero-card-float { animation:heroFloat 6s ease-in-out 1.5s infinite both; }
+        .hero-border-shimmer { animation:borderShimmer 3s ease-in-out 2s infinite; }
+        .hero-name-card { animation:nameSlideIn 0.8s cubic-bezier(0.16,1,0.3,1) 1.2s both; }
     </style>
-<!-- Live2D Chat Styles -->
+<!-- Chat Widget Styles -->
 <style>
   #xiangtun-chat {
     position: fixed;
@@ -245,139 +264,230 @@
     z-index: 9999;
     font-family: 'Manrope', sans-serif;
   }
+  /* Toggle Button */
   #xiangtun-chat-toggle {
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #851217 0%, #a62c2b 100%);
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%);
     color: #fff;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 24px rgba(133,18,23,0.3);
+    box-shadow: 0 8px 32px rgba(133,18,23,0.35), 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
   }
   #xiangtun-chat-toggle:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 32px rgba(133,18,23,0.4);
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15);
   }
+  /* Panel */
   #xiangtun-chat-panel {
     display: none;
-    width: 380px;
-    max-height: 520px;
-    background: rgba(251,249,248,0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(224,191,188,0.3);
-    border-radius: 12px;
-    box-shadow: 0 16px 64px rgba(0,0,0,0.12);
+    width: 400px;
+    max-height: 580px;
+    background: rgba(251,249,248,0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-radius: 16px;
+    box-shadow:
+      0 24px 80px rgba(27,28,28,0.12),
+      0 8px 32px rgba(133,18,23,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.6);
     flex-direction: column;
     overflow: hidden;
     position: absolute;
-    bottom: 68px;
+    bottom: 72px;
     right: 0;
+    animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes chatSlideUp {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
   #xiangtun-chat-panel.open { display: flex; }
+  /* Header */
   #xiangtun-chat-header {
-    padding: 16px 20px;
-    background: linear-gradient(135deg, #851217, #a62c2b);
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%);
     color: #fff;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
   }
+  #xiangtun-chat-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+  }
+  #xiangtun-chat-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #xiangtun-chat-header > * { position: relative; z-index: 1; }
   #xiangtun-chat-header h4 {
     margin: 0;
     font-family: 'Newsreader', serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
+    letter-spacing: 0.02em;
   }
   #xiangtun-chat-header p {
-    margin: 0;
+    margin: 2px 0 0;
     font-size: 11px;
-    opacity: 0.8;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
   }
+  #xiangtun-chat-header .chat-avatar {
+    font-size: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  #xiangtun-chat-header .chat-close {
+    margin-left: auto;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  #xiangtun-chat-header .chat-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+  }
+  /* Messages */
   #xiangtun-chat-messages {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-height: 340px;
+    gap: 14px;
+    max-height: 360px;
     min-height: 200px;
+    background: linear-gradient(180deg, rgba(245,243,243,0.3) 0%, transparent 30%);
   }
+  #xiangtun-chat-messages::-webkit-scrollbar { width: 4px; }
+  #xiangtun-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  #xiangtun-chat-messages::-webkit-scrollbar-thumb { background: rgba(133,18,23,0.15); border-radius: 4px; }
   .chat-msg {
-    max-width: 85%;
-    padding: 10px 14px;
-    border-radius: 12px;
+    max-width: 82%;
+    padding: 12px 16px;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
     word-break: break-word;
+    animation: msgFadeIn 0.3s ease both;
+  }
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .chat-msg.bot {
     align-self: flex-start;
-    background: #f5f3f3;
+    background: rgba(245,243,243,0.8);
     color: #1b1c1c;
-    border-bottom-left-radius: 4px;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
   .chat-msg.user {
     align-self: flex-end;
-    background: #851217;
+    background: linear-gradient(135deg, #851217, #a62c2b);
     color: #fff;
-    border-bottom-right-radius: 4px;
+    border-radius: 16px 2px 16px 16px;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.2);
   }
   .chat-msg.bot.typing::after {
-    content: '●●●';
-    animation: blink 1.2s infinite;
-    letter-spacing: 3px;
+    content: '';
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
   }
-  @keyframes blink {
+  .chat-msg.bot.typing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '●  ●  ●';
+    animation: typingPulse 1.4s ease-in-out infinite;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #851217;
+    opacity: 0.5;
+  }
+  @keyframes typingPulse {
     0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+    50% { opacity: 0.8; }
   }
+  /* Input Area */
   #xiangtun-chat-input-area {
     display: flex;
-    gap: 8px;
-    padding: 12px 16px;
-    border-top: 1px solid rgba(224,191,188,0.2);
-    background: rgba(251,249,248,0.6);
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(251,249,248,0.8);
+    backdrop-filter: blur(8px);
   }
   #xiangtun-chat-input {
     flex: 1;
-    border: 1px solid rgba(224,191,188,0.4);
-    border-radius: 8px;
-    padding: 8px 12px;
+    border: none;
+    border-bottom: 2px solid rgba(140,113,110,0.2);
+    border-radius: 0;
+    padding: 10px 4px;
     font-size: 14px;
     font-family: 'Manrope', sans-serif;
-    background: #fff;
+    background: transparent;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.3s;
+    color: #1b1c1c;
   }
+  #xiangtun-chat-input::placeholder { color: rgba(88,65,63,0.4); }
   #xiangtun-chat-input:focus {
     border-color: #851217;
   }
   #xiangtun-chat-send {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: #851217;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217, #a62c2b);
     color: #fff;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.25);
+    flex-shrink: 0;
   }
-  #xiangtun-chat-send:hover { background: #a62c2b; }
-  #xiangtun-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+  #xiangtun-chat-send:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(133,18,23,0.35);
+  }
+  #xiangtun-chat-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
   @media (max-width: 480px) {
     #xiangtun-chat-panel {
       width: calc(100vw - 32px);
       right: -8px;
-      bottom: 64px;
+      bottom: 68px;
+      max-height: 70vh;
     }
   }
 </style>
@@ -388,13 +498,7 @@
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50 hero-nav">
     <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
         <a href="/" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
-        <div class="hidden md:flex gap-16 items-center">
-            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="/about/history">香屯故事 Story</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="/routes/red-study">文旅路线 Routes</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="guardian//">守护者 Guardian</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide nav-link" href="booking//">预约 Booking</a>
-        </div>
+        <div class="hidden md:flex gap-16 items-center"><a class="text-[#851217] font-medium pb-1 font-headline tracking-wide" href="/">首页 Home</a></div>
         <div class="flex items-center gap-8">
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
@@ -403,14 +507,7 @@
             </button>
         </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
-        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="/">首页 Home</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="/about/history">香屯故事 Story</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="/routes/red-study">文旅路线 Routes</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian//">守护者 Guardian</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="booking//">预约 Booking</a>
-    </div>
-</nav>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl"><a class="block text-[#851217] font-medium font-headline py-3" href="/">首页 Home</a></div></nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
 <!-- Hero Branding Section -->
 <header class="mb-24 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-center relative">
@@ -428,8 +525,8 @@
             </p>
 </div>
 <div class="lg:col-span-5 flex flex-col items-center hero-logo">
-<div class="relative w-full aspect-square max-w-md rounded-sm" style="transform: perspective(800px) rotateY(-4deg) rotateX(2deg); transform-origin: center center;">
-<div class="absolute inset-0 rounded-sm p-[3px] bg-gradient-to-br from-[#851217] via-[#593d00] via-50% via-[#3b6934] to-[#1b1c1c] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)]">
+<div class="relative w-full aspect-square max-w-md rounded-sm hero-card-float" style="transform-origin: center center;">
+<div class="absolute inset-0 rounded-sm p-[3px] bg-gradient-to-br from-[#851217] via-[#593d00] via-50% via-[#3b6934] to-[#1b1c1c] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] hero-border-shimmer">
 <div class="w-full h-full bg-white rounded-sm"></div>
 </div>
 <div class="relative z-10 w-full h-full p-8 md:p-16 silk-overlay">
@@ -437,7 +534,7 @@
 <img class="w-full h-full object-contain mix-blend-multiply" data-alt="minimalist logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC38khLWDGqN-_7VWleMT-UQfoInM0m9avKgQ28yoS6n31gTPPKVM9kDvOC0D5BCqFvdSqvZ8UaJCq2DC2SNSTQZuXBqi5R6RDZgL1knuOFW796mZUGYeFK3WsnLP5riFFBlSMVVTnaMFQVuodUDyOmz968wN0VKPhk9-3QQdukCTOYBMsybo-Lizjekvk7zC9u-WVX7QqtpFwZFlXWBjymFs25_ZdESzli8Q0Wa_7Sdd6zOYDPJ4lA1ZlFz1olrBfvycQswZ51t1I"/>
 </div>
 </div>
-<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl z-20 border-l-2 border-primary">
+<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl z-20 border-l-2 border-primary hero-name-card">
 <h2 class="text-3xl font-headline font-black text-primary mb-1">四色香屯</h2>
 <p class="text-[10px] font-body text-on-surface-variant tracking-[0.3em] uppercase">Visual Identity MMXXIV</p>
 </div>
@@ -959,14 +1056,12 @@
 <div id="xiangtun-chat">
   <div id="xiangtun-chat-panel">
     <div id="xiangtun-chat-header">
-      <div>
-        <span style="font-size:28px;">🏯</span>
-      </div>
+      <div class="chat-avatar">🏯</div>
       <div>
         <h4>香屯小卒</h4>
-        <p>长城脚下的AI小兵 · 有问必答</p>
+        <p>长城脚下的 AI 小兵 · 有问必答</p>
       </div>
-      <button onclick="toggleChat()" style="margin-left:auto;background:none;border:none;color:#fff;cursor:pointer;font-size:20px;">✕</button>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
     </div>
     <div id="xiangtun-chat-messages">
       <div class="chat-msg bot">你好！我是香屯小卒 🏔️ 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div>
@@ -979,7 +1074,7 @@
     </div>
   </div>
   <button id="xiangtun-chat-toggle" onclick="toggleChat()">
-    <span class="material-symbols-outlined" style="font-size:26px;">chat</span>
+    <span class="material-symbols-outlined" style="font-size:28px;">chat</span>
   </button>
 </div>
 

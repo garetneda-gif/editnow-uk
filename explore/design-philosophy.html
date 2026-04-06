@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>设计哲学 · Heritage Modernist | 四色香屯</title>
+<meta name="description" content="四色香屯品牌的设计理念——Heritage Modernist 风格，传承红、板栗金、远山绿、玄石墨四色的由来与含义。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="设计哲学 · Heritage Modernist | 四色香屯">
+<meta property="og:description" content="以现代视觉叙事守护长城板栗林色彩遗产，探索四色香屯的设计语言。">
+<meta property="og:url" content="https://stitch.editnow.uk/explore/design-philosophy">
+<meta property="og:locale" content="zh_CN">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+        background-size: 1200px 900px;
+        background-blend-mode: multiply;
+    }
+    .silk-overlay {
+        background: linear-gradient(135deg, rgba(251,249,248,0.4) 0%, rgba(251,249,248,0) 50%, rgba(251,249,248,0.4) 100%);
+    }
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .fade-in-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .fade-in-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+    nav.scrolled {
+        background: rgba(251,249,248,0.95) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    html { scroll-behavior: smooth; }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-16 items-center">
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../about/history.html">香屯故事 Story</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../routes/red-study.html">文旅路线 Routes</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者 Guardian</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约 Booking</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../about/history.html">香屯故事 Story</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../routes/red-study.html">文旅路线 Routes</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者 Guardian</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="../booking/index.html">预约 Booking</a>
+    </div>
+</nav>
+
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
+
+<!-- HERO SECTION -->
+<header class="mb-24 md:mb-48 relative">
+<div class="max-w-4xl">
+<div class="mb-6 flex items-center gap-4">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">Design Philosophy | 设计语言</span>
+</div>
+<h1 class="text-3xl md:text-5xl lg:text-8xl font-headline font-extrabold text-on-surface tracking-tight mb-8 leading-[1.05]">
+设计哲学<span class="text-primary italic"> ·</span><br/>
+<span class="text-primary">Heritage Modernist</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant font-headline italic leading-relaxed opacity-80 mb-4">
+The Digital Calligrapher
+</p>
+<div class="h-1 w-24 bg-primary mt-8 mb-10"></div>
+<p class="text-base md:text-lg text-on-surface-variant leading-[1.9] max-w-2xl">
+我们拒绝冰冷的模板化界面，追求一种"高端编辑式"的视觉体验。如同传统中国山水画讲究"山水"之间的平衡——历史的厚重由磐石般的字体和石灰色调表达，流动的生命力则通过水墨渐变和大量留白传递。四种颜色，四重底蕴，一个村庄的完整色谱。
+</p>
+</div>
+<div class="absolute top-0 right-0 hidden lg:block opacity-[0.03] text-[20rem] font-headline font-black text-on-surface leading-none select-none" aria-hidden="true">
+色
+</div>
+</header>
+
+<!-- SECTION 1: Four Colors -->
+<section class="mb-24 md:mb-48">
+<div class="flex flex-col items-center mb-20 text-center fade-in">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Four Colors</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">四色的由来</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Pigments Extracted from Soil, Fruit, and Mineral</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+<!-- Heritage Red -->
+<div class="md:col-span-7 bg-surface-container-low p-8 md:p-12 rounded-lg fade-in-left">
+<div class="flex items-center gap-6 mb-6">
+<div class="w-16 h-16 rounded-lg flex-shrink-0" style="background: #851217;"></div>
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-surface">传承红</h3>
+<p class="text-sm text-on-surface-variant font-label">#851217 · Heritage Red</p>
+</div>
+</div>
+<p class="text-on-surface-variant leading-[1.9]">
+系统的脉搏色。源自辽代冶铁炉火映红山谷的意象——香屯一带的铁矿开采可追溯至辽代（916-1125年），千年炉火为这片四面环山的土地写下第一行文明的注脚。传承红是品牌最高层级的视觉标识，用于关键品牌时刻与核心行动召唤，承载着"红色研学"路线中革命精神的传承。
+</p>
+</div>
+<!-- Chestnut Gold -->
+<div class="md:col-span-5 bg-surface-container-low p-8 md:p-12 rounded-lg fade-in-right">
+<div class="flex items-center gap-6 mb-6">
+<div class="w-16 h-16 rounded-lg flex-shrink-0" style="background: #593d00;"></div>
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-surface">板栗金</h3>
+<p class="text-sm text-on-surface-variant font-label">#593d00 · Chestnut Gold</p>
+</div>
+</div>
+<p class="text-on-surface-variant leading-[1.9]">
+丰收之色。香屯村四周板栗林环绕，秋日漫山金黄。这一暖调用作强调色和"高亮"标记，如同传统书画中的印章——小巧而醒目，点缀在信息的关键节点上。
+</p>
+</div>
+<!-- Mountain Green -->
+<div class="md:col-span-5 bg-surface-container-low p-8 md:p-12 rounded-lg fade-in-left">
+<div class="flex items-center gap-6 mb-6">
+<div class="w-16 h-16 rounded-lg flex-shrink-0" style="background: #3b6934;"></div>
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-surface">远山绿</h3>
+<p class="text-sm text-on-surface-variant font-label">#3b6934 · Mountain Green</p>
+</div>
+</div>
+<p class="text-on-surface-variant leading-[1.9]">
+自然环境的代言色。四面环山、一水中流的香屯村，山林叠翠是最深刻的底色。远山绿承载着"绿色生态"路线的精神内核，用于表达生长、成功与生态和谐的内容。
+</p>
+</div>
+<!-- Ink Black -->
+<div class="md:col-span-7 bg-surface-container-low p-8 md:p-12 rounded-lg fade-in-right">
+<div class="flex items-center gap-6 mb-6">
+<div class="w-16 h-16 rounded-lg flex-shrink-0" style="background: #1b1c1c;"></div>
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-surface">玄石墨</h3>
+<p class="text-sm text-on-surface-variant font-label">#1b1c1c · Stone Ink</p>
+</div>
+</div>
+<p class="text-on-surface-variant leading-[1.9]">
+基底色。我们从不使用纯黑 #000000——所有"黑色"文字统一采用这一经暖调调和的深灰。它如同年代久远的宣纸底色，赋予界面一种岁月沉淀的质感。配合 #fbf9f8 的"石纸"背景，形成从石到墨的完整灰阶，让内容如同书写在传统宣纸上。
+</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2: Design Principles -->
+<section class="mb-24 md:mb-48">
+<div class="flex flex-col items-center mb-20 text-center fade-in">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Principles</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">设计原则</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">Where Heritage Meets Modern Craft</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start">
+<div class="lg:col-span-5 fade-in-left">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-lg">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block">brush</span>
+<h3 class="text-xl font-headline font-bold mb-4">不对称编辑式排版</h3>
+<p class="text-on-surface-variant leading-[1.9] mb-6">
+打破"居中对齐一切"的惯性。元素以不均匀的宽裕边距自由"漂浮"，模仿传统卷轴画的布局节奏——正如古人构图，从不追求左右对称，而是在虚实之间创造韵律。
+</p>
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block mt-10">layers</span>
+<h3 class="text-xl font-headline font-bold mb-4">"无线"分层法则</h3>
+<p class="text-on-surface-variant leading-[1.9]">
+禁止使用 1px 边框分割内容。所有层次边界通过背景色差实现——如同层叠的宣纸，每一层用微妙的色调差异定义自身的重要性。深浅交替，而非线条围隔。
+</p>
+</div>
+</div>
+<div class="lg:col-span-7 space-y-12 fade-in-right">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-lg">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block">text_fields</span>
+<h3 class="text-xl font-headline font-bold mb-4">高对比度字体配对</h3>
+<p class="text-on-surface-variant leading-[1.9]">
+Newsreader（衬线体）承载历史叙事的重量，如碑文铭刻般权威；Manrope（无衬线体）处理功能性信息，确保品牌虽然"旧世界"，阅读体验却是"新世界"。大尺寸衬线标题与小号无衬线标签之间的极端反差，创造编辑杂志般的视觉张力。
+</p>
+</div>
+<div class="bg-surface-container-low p-8 md:p-12 rounded-lg">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block">landscape</span>
+<h3 class="text-xl font-headline font-bold mb-4">环境光阴影</h3>
+<p class="text-on-surface-variant leading-[1.9]">
+传统投射阴影对这个系统来说过于沉重。我们使用 24-32px 模糊、4% 透明度的"环境光"阴影，阴影颜色取自主题色调而非纯黑——如同自然光透过窗棂在宣纸上留下的柔和光影。每个浮动元素都像是被一盏隐形的灯笼从上方温柔照亮。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3: Creative North Star -->
+<section class="mb-24 md:mb-48">
+<div class="bg-surface-container-low rounded-lg p-8 md:p-16 fade-in">
+<div class="max-w-3xl mx-auto text-center">
+<span class="inline-block px-4 py-2 text-[10px] font-bold tracking-widest uppercase rounded-sm mb-8" style="background: rgba(89,61,0,0.08); color: #593d00;">Creative North Star</span>
+<h2 class="text-3xl md:text-5xl font-headline font-bold mb-8">数字书法家</h2>
+<p class="text-on-surface-variant leading-[1.9] text-lg mb-8">
+"四色香屯"的创意北极星是<em class="font-headline text-on-surface not-italic font-semibold">数字书法家</em>。这个意象将传统与现代融为一体：我们用像素代替笔墨，用交互代替纸卷，但追求的始终是同一种境界——在"山"的厚重与"水"的灵动之间找到完美的平衡。
+</p>
+<p class="text-on-surface-variant leading-[1.9]">
+我们用纸质纹理（paper-texture）作为每一页的底色，用丝绸般的光泽覆层（silk-overlay）赋予页面一层隐约的绸缎质感。水墨渐变从传承红流向主题深红，模拟墨汁在湿润宣纸上洇开的痕迹。所有这些微妙的视觉层次叠加在一起，让每一屏都成为一幅值得细读的"数字画卷"。
+</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
+<div class="max-w-xs">
+<a href="../index.html" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+通过现代视觉叙事，守护长城板栗林色彩遗产。
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="design-philosophy.html">设计哲学</a></li>
+<li><a class="hover:text-white transition-colors" href="mural-map.html">壁画地图</a></li>
+<li><a class="hover:text-white transition-colors" href="cultural-archive.html">文化档案馆</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 · 首都师范大学挑战杯团队 · 任济坤</p>
+<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-in,.fade-in-left,.fade-in-right,.scale-in').forEach(el => {
+    revealObserver.observe(el);
+});
+</script>
+</body>
+</html>
