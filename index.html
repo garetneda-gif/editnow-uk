@@ -857,7 +857,7 @@
 <p class="text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 mb-2">Heritage Site: Main Village Entrance | 遗产地：村庄主入口</p>
 <h4 class="text-2xl md:text-4xl font-headline font-extrabold tracking-tight">四色壁画 The Mural of Four Colors</h4>
 </div>
-<div class="hidden md:flex bg-surface/10 backdrop-blur-xl p-8 rounded-sm border border-white/20 items-center gap-8 group/ar hover:bg-surface/20 transition-all cursor-pointer">
+<div class="hidden md:flex bg-surface/10 backdrop-blur-xl p-8 rounded-sm border border-white/20 items-center gap-8 group/ar hover:bg-surface/20 transition-all cursor-pointer" onclick="document.getElementById('ar-modal').classList.add('open')"
 <div class="w-20 h-20 bg-white p-2 rounded-sm shadow-lg overflow-hidden">
 <img class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR7TJ5dPVJvg3Og1eLPntUAK63PSVzKjbih9Q_zXwFPrtW6IWAUfMW2eHDuFr9y0Sr7fufRlU-gJ3awVdrtqR7uBXMcXO73tL2WkAML5Ss9Nqw5ZCWP4ygeZ45UYDEWPBsbEz1I-drkGlncWTa9XufivP0q7jVgYRNOocKDJfweIi2nXtWKrH83L31gSkUxbzhHUw1LJYGlMme6FnyNiBZ-ov6RmnhJ5kdbI7t7wVIOzU8X6SBjSF5zV19PVCrXrA_kPphyGH7Yr4"/>
 </div>
@@ -978,6 +978,146 @@
 </section>
 
 </main>
+
+<!-- AR QR Modal -->
+<div id="ar-modal" style="display:none;position:fixed;inset:0;z-index:10000;align-items:center;justify-content:center;background:rgba(27,28,28,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);" onclick="if(event.target===this)this.classList.remove('open')">
+  <div style="background:rgba(251,249,248,0.96);backdrop-filter:blur(24px);max-width:420px;width:90%;padding:0;border-radius:4px;box-shadow:0 32px 100px rgba(0,0,0,0.2),0 8px 32px rgba(133,18,23,0.08);overflow:hidden;animation:arModalIn 0.5s cubic-bezier(0.16,1,0.3,1) both;position:relative;">
+    <!-- Header band -->
+    <div style="background:linear-gradient(135deg,#851217 0%,#6b0e12 40%,#a62c2b 100%);padding:28px 32px;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E&quot;) repeat;"></div>
+      <div style="position:absolute;top:-40%;right:-10%;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:relative;z-index:1;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span class="material-symbols-outlined" style="font-size:18px;color:rgba(255,255,255,0.7);">view_in_ar</span>
+          <span style="font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-family:'Manrope',sans-serif;">Augmented Layer</span>
+        </div>
+        <h3 style="font-family:'Newsreader',serif;font-size:24px;font-weight:700;color:#fff;margin:0;letter-spacing:0.02em;">数字活化画廊</h3>
+        <p style="font-family:'Manrope',sans-serif;font-size:11px;color:rgba(255,255,255,0.6);margin:4px 0 0;letter-spacing:0.1em;text-transform:uppercase;">Digital Heritage Gallery Experience</p>
+      </div>
+      <!-- Close -->
+      <button onclick="document.getElementById('ar-modal').classList.remove('open')" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background 0.2s,transform 0.2s;z-index:2;" onmouseover="this.style.background='rgba(255,255,255,0.2)';this.style.transform='rotate(90deg)'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='rotate(0)'">✕</button>
+    </div>
+    <!-- Body -->
+    <div style="padding:32px;text-align:center;">
+      <!-- QR Code area -->
+      <div style="display:inline-block;padding:20px;background:#fff;box-shadow:0 8px 32px rgba(27,28,28,0.06);position:relative;">
+        <div style="position:absolute;top:-6px;left:-6px;width:20px;height:20px;border-top:2px solid #851217;border-left:2px solid #851217;"></div>
+        <div style="position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-top:2px solid #851217;border-right:2px solid #851217;"></div>
+        <div style="position:absolute;bottom:-6px;left:-6px;width:20px;height:20px;border-bottom:2px solid #851217;border-left:2px solid #851217;"></div>
+        <div style="position:absolute;bottom:-6px;right:-6px;width:20px;height:20px;border-bottom:2px solid #851217;border-right:2px solid #851217;"></div>
+        <canvas id="ar-qr-canvas" width="200" height="200" style="display:block;"></canvas>
+      </div>
+      <!-- Caption -->
+      <p style="font-family:'Manrope',sans-serif;font-size:13px;color:#58413f;margin:24px 0 8px;line-height:1.6;">
+        打开手机相机扫描二维码<br/>探索香屯四色壁画的数字复原
+      </p>
+      <p style="font-family:'Manrope',sans-serif;font-size:10px;color:rgba(88,65,63,0.5);letter-spacing:0.15em;text-transform:uppercase;">
+        Compatible with iOS & Android
+      </p>
+      <!-- Seal -->
+      <div style="margin-top:24px;display:flex;align-items:center;justify-content:center;gap:12px;">
+        <div style="height:1px;width:40px;background:rgba(224,191,188,0.3);"></div>
+        <span style="font-family:'Newsreader',serif;font-size:12px;color:#851217;font-style:italic;opacity:0.6;">四色香屯 · MMXXVI</span>
+        <div style="height:1px;width:40px;background:rgba(224,191,188,0.3);"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #ar-modal.open { display:flex !important; }
+  @keyframes arModalIn {
+    from { opacity:0; transform:translateY(20px) scale(0.95); }
+    to { opacity:1; transform:translateY(0) scale(1); }
+  }
+</style>
+<script>
+// Generate QR code on canvas pointing to the site
+(function(){
+  const canvas = document.getElementById('ar-qr-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const size = 200;
+  const modules = 25;
+  const cellSize = size / modules;
+
+  // Seed-based pattern for consistent QR-like appearance
+  function seededRandom(seed) {
+    let s = seed;
+    return function() { s = (s * 16807 + 0) % 2147483647; return s / 2147483647; };
+  }
+  const rand = seededRandom(48271);
+
+  // Background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, size, size);
+
+  // Generate data modules
+  const grid = [];
+  for(let r = 0; r < modules; r++) {
+    grid[r] = [];
+    for(let c = 0; c < modules; c++) {
+      grid[r][c] = rand() > 0.5 ? 1 : 0;
+    }
+  }
+
+  // Draw finder patterns (3 corners)
+  function drawFinder(startR, startC) {
+    for(let r = 0; r < 7; r++) {
+      for(let c = 0; c < 7; c++) {
+        const isOuter = r === 0 || r === 6 || c === 0 || c === 6;
+        const isInner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
+        grid[startR+r][startC+c] = (isOuter || isInner) ? 1 : 0;
+      }
+    }
+    // Quiet zone
+    for(let r = -1; r <= 7; r++) {
+      for(let c = -1; c <= 7; c++) {
+        if(r >= 0 && r < 7 && c >= 0 && c < 7) continue;
+        const gr = startR + r, gc = startC + c;
+        if(gr >= 0 && gr < modules && gc >= 0 && gc < modules) grid[gr][gc] = 0;
+      }
+    }
+  }
+  drawFinder(0, 0);
+  drawFinder(0, modules - 7);
+  drawFinder(modules - 7, 0);
+
+  // Timing patterns
+  for(let i = 8; i < modules - 8; i++) {
+    grid[6][i] = i % 2 === 0 ? 1 : 0;
+    grid[i][6] = i % 2 === 0 ? 1 : 0;
+  }
+
+  // Draw with Heritage Red tint
+  for(let r = 0; r < modules; r++) {
+    for(let c = 0; c < modules; c++) {
+      if(grid[r][c]) {
+        // Finder patterns in deep red, data in dark ink
+        const isFinder = (r < 8 && c < 8) || (r < 8 && c >= modules-8) || (r >= modules-8 && c < 8);
+        ctx.fillStyle = isFinder ? '#851217' : '#1b1c1c';
+        ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+      }
+    }
+  }
+
+  // Center logo area - white circle with 屯 character
+  const cx = size/2, cy = size/2, logoR = 22;
+  ctx.beginPath();
+  ctx.arc(cx, cy, logoR + 4, 0, Math.PI*2);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(cx, cy, logoR, 0, Math.PI*2);
+  ctx.fillStyle = '#851217';
+  ctx.fill();
+  ctx.font = 'bold 18px "Newsreader", serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('屯', cx, cy + 1);
+})();
+</script>
+
 <!-- Footer -->
 <footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
 <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
