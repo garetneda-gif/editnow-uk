@@ -84,113 +84,499 @@
     }
 </script>
 <style>
+    html { scroll-behavior: smooth; zoom: 0.67; }
     .material-symbols-outlined {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
     }
     .paper-texture {
-            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
-            background-size: 1200px 900px;
-            background-blend-mode: multiply;
-        }
-    /* 丝滑滚动渐入 */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+        background-size: 1200px 900px;
+        background-blend-mode: multiply;
     }
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
+
+    /* ========================================== */
+    /* HERO                                       */
+    /* ========================================== */
+    .market-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(180deg, #1b1c1c 0%, #2a1d00 25%, #593d00 50%, #a07020 70%, #fbf9f8 100%);
     }
-    .scale-in {
-        opacity: 0;
-        transform: scale(0.95);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    .market-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(89,61,0,0.4) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(133,18,23,0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(245,189,88,0.15) 0%, transparent 40%);
+      z-index: 1;
     }
-    .scale-in.visible {
-        opacity: 1;
-        transform: scale(1);
+    .market-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(245,189,88,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+      z-index: 1;
     }
-    /* 导航栏滚动变化 */
-    nav.scrolled {
-        background: rgba(251,249,248,0.95) !important;
-        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    .hero-content { position: relative; z-index: 10; text-align: center; }
+
+    /* Floating energy particles */
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+      8% { opacity: 0.8; }
+      50% { opacity: 0.6; }
+      90% { opacity: 0.2; }
+      100% { transform: translateY(-20vh) scale(1.2) rotate(360deg); opacity: 0; }
     }
-    html { scroll-behavior: smooth; zoom: 0.67; }
-    /* ink-tag */
-    .ink-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      font-size: 11px;
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(245,189,88,0.6);
+      animation: float-up linear infinite;
+      box-shadow: 0 0 16px rgba(245,189,88,0.5), 0 0 32px rgba(245,189,88,0.2);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Hero title glow */
+    .hero-title {
+      font-family: 'Newsreader', serif;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 40px rgba(245,189,88,0.5), 0 0 80px rgba(245,189,88,0.2), 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .hero-subtitle {
+      color: rgba(255,255,255,0.7);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Typewriter effect */
+    @keyframes typewriter-blink {
+      0%, 100% { border-color: rgba(245,189,88,0.8); }
+      50% { border-color: transparent; }
+    }
+    .typewriter-cursor {
+      border-right: 3px solid rgba(245,189,88,0.8);
+      animation: typewriter-blink 1s ease-in-out infinite;
+      padding-right: 4px;
+    }
+
+    /* Scroll indicator bounce */
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(12px); opacity: 1; }
+    }
+    .scroll-indicator {
+      animation: scroll-bounce 2s ease-in-out infinite;
+    }
+
+    /* Energy coin pulse */
+    @keyframes coin-pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245,189,88,0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px 8px rgba(245,189,88,0.15); }
+    }
+    .coin-display {
+      animation: coin-pulse 3s ease-in-out infinite;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(245,189,88,0.3);
+    }
+
+    /* ========================================== */
+    /* STATS BAR                                  */
+    /* ========================================== */
+    .stat-glass {
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-glass::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #851217, #593d00, #3b6934);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .stat-glass:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(89,61,0,0.15), 0 4px 16px rgba(0,0,0,0.05);
+    }
+    .stat-glass:hover::before { opacity: 1; }
+    .stat-num {
+      font-family: 'Newsreader', serif;
+      font-size: 3.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #851217, #593d00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ========================================== */
+    /* HOW IT WORKS STEPS                         */
+    /* ========================================== */
+    .step-card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      flex: 1;
+      min-width: 160px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(89,61,0,0.12);
+    }
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    .step-icon .material-symbols-outlined {
+      font-size: 28px;
+    }
+
+    /* ========================================== */
+    /* PREMIUM PILL TABS                          */
+    /* ========================================== */
+    .market-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 6px;
+      background: rgba(89,61,0,0.06);
+      border-radius: 16px;
+      width: fit-content;
+      margin: 0 auto;
+    }
+    .market-tab {
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      background: rgba(255,222,170,0.3);
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #8c716e;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      font-family: 'Manrope', sans-serif;
+    }
+    .market-tab.active {
+      background: linear-gradient(135deg, #593d00, #775300);
+      color: white;
+      box-shadow: 0 8px 24px rgba(89,61,0,0.25);
+    }
+    .market-tab:not(.active):hover {
+      background: rgba(89,61,0,0.1);
       color: #593d00;
     }
-    /* Product card */
+    .tab-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .market-tab.active .tab-count {
+      background: rgba(255,255,255,0.25);
+      color: white;
+    }
+    .market-tab:not(.active) .tab-count {
+      background: rgba(89,61,0,0.1);
+      color: #593d00;
+    }
+
+    /* ========================================== */
+    /* PRODUCT CARDS                              */
+    /* ========================================== */
     .product-card {
-      transition: background-color 0.5s ease;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.04);
     }
     .product-card:hover {
-      background-color: #eae8e7;
+      transform: translateY(-10px);
+      box-shadow: 0 28px 56px rgba(0,0,0,0.12), 0 8px 24px rgba(89,61,0,0.08);
     }
-    .product-card.redeemed {
-      opacity: 0.6;
+    .product-card .card-image {
       position: relative;
+      overflow: hidden;
     }
-    .product-card.redeemed::after {
-      content: '已兑换';
+    .product-card .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover .card-image img {
+      transform: scale(1.08);
+    }
+    .product-card .card-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      pointer-events: none;
+    }
+    .cost-badge {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      z-index: 5;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #593d00;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+    .category-badge {
       position: absolute;
       top: 16px;
-      right: 16px;
-      background: #851217;
+      left: 16px;
+      z-index: 5;
+      background: rgba(133,18,23,0.92);
       color: white;
-      padding: 4px 12px;
+      padding: 5px 14px;
+      border-radius: 6px;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      border-radius: 2px;
+      backdrop-filter: blur(4px);
+    }
+    .product-card.redeemed {
+      opacity: 0.55;
+    }
+    .product-card.redeemed .card-image::before {
+      content: '已兑换';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      background: #851217;
+      color: white;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      border-radius: 6px;
       transform: rotate(3deg);
     }
-    /* Modal */
+
+    /* Redeem button */
+    .redeem-btn {
+      background: linear-gradient(135deg, #593d00, #775300);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Manrope', sans-serif;
+    }
+    .redeem-btn:hover {
+      box-shadow: 0 0 24px rgba(89,61,0,0.4), 0 8px 20px rgba(89,61,0,0.2);
+      transform: translateY(-2px);
+    }
+    .redeem-btn:disabled {
+      background: #e4e2e2;
+      color: #8c716e;
+      box-shadow: none;
+      cursor: default;
+      transform: none;
+    }
+    .redeem-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+      transition: transform 0.6s;
+      transform: translateX(-100%);
+    }
+    .redeem-btn:not(:disabled):hover::after {
+      transform: translateX(100%);
+    }
+    .redeem-btn-disabled {
+      background: #e4e2e2;
+      color: #8c716e;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: default;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* ========================================== */
+    /* MODAL — Premium glass effect               */
+    /* ========================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(27,28,28,0.5);
-      backdrop-filter: blur(12px);
+      background: rgba(27,28,28,0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 9000;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .modal-overlay.active {
       opacity: 1;
       pointer-events: auto;
     }
     .modal-card {
-      background: #fbf9f8;
-      max-width: 480px;
+      background: rgba(251,249,248,0.95);
+      backdrop-filter: blur(24px);
+      max-width: 520px;
       width: calc(100% - 32px);
-      padding: 40px;
-      border-radius: 4px;
-      box-shadow: 0 32px 64px rgba(27,28,28,0.08);
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
+      padding: 44px;
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(27,28,28,0.15), 0 0 0 1px rgba(255,255,255,0.3) inset;
+      transform: translateY(30px) scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* ========================================== */
+    /* STAGGER FADE-IN FOR CARDS                  */
+    /* ========================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
       transform: translateY(0);
     }
-    /* Tab styling */
-    .tab-btn { cursor: pointer; border: none; transition: all 0.3s; }
-    .tab-btn.active { background: rgba(89,61,0,0.15); color: #593d00; }
-    .tab-btn:not(.active) { background: rgba(89,61,0,0.05); color: #8c716e; }
-    .tab-btn:hover:not(.active) { background: rgba(89,61,0,0.1); }
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .card-stagger {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-stagger.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Nav scroll */
+    nav.scrolled {
+      background: rgba(251,249,248,0.95) !important;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+
+    /* Focus visible for accessibility */
+    :focus-visible {
+      outline: 2px solid #593d00;
+      outline-offset: 2px;
+    }
+
+    /* Confetti animation */
+    @keyframes confetti-fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      z-index: 9999;
+      animation: confetti-fall linear forwards;
+      pointer-events: none;
+    }
+
+    /* Section divider */
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #851217, #593d00);
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+
+    /* Noise overlay */
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
 </style>
 <!-- Chat Widget Styles -->
 <style>
@@ -201,7 +587,6 @@
     z-index: 9999;
     font-family: 'Manrope', sans-serif;
   }
-  /* Toggle Button */
   #xiangtun-chat-toggle {
     width: 60px;
     height: 60px;
@@ -220,7 +605,6 @@
     transform: scale(1.1) translateY(-2px);
     box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15);
   }
-  /* Panel */
   #xiangtun-chat-panel {
     display: none;
     width: 400px;
@@ -245,7 +629,6 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
   #xiangtun-chat-panel.open { display: flex; }
-  /* Header */
   #xiangtun-chat-header {
     padding: 20px 24px;
     background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%);
@@ -310,7 +693,6 @@
     background: rgba(255,255,255,0.2);
     transform: rotate(90deg);
   }
-  /* Messages */
   #xiangtun-chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -374,7 +756,6 @@
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.8; }
   }
-  /* Input Area */
   #xiangtun-chat-input-area {
     display: flex;
     gap: 10px;
@@ -396,9 +777,7 @@
     color: #1b1c1c;
   }
   #xiangtun-chat-input::placeholder { color: rgba(88,65,63,0.4); }
-  #xiangtun-chat-input:focus {
-    border-color: #851217;
-  }
+  #xiangtun-chat-input:focus { border-color: #851217; }
   #xiangtun-chat-send {
     width: 42px;
     height: 42px;
@@ -430,6 +809,11 @@
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+
+<!-- Noise overlay -->
+<div class="noise-overlay"></div>
+
+<!-- Page Loader -->
 <div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
   <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
   <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;">
@@ -466,51 +850,153 @@
 </div>
 </nav>
 
-<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
+<!-- ============================================ -->
+<!-- HERO SECTION — Dramatic full-width           -->
+<!-- ============================================ -->
+<section class="market-hero" id="hero">
+  <!-- Floating energy particles (generated via CSS) -->
+  <div class="particle" style="left:5%;width:4px;height:4px;animation-duration:12s;animation-delay:0s;"></div>
+  <div class="particle" style="left:10%;width:7px;height:7px;animation-duration:15s;animation-delay:1.2s;"></div>
+  <div class="particle" style="left:18%;width:5px;height:5px;animation-duration:10s;animation-delay:3s;"></div>
+  <div class="particle" style="left:25%;width:8px;height:8px;animation-duration:18s;animation-delay:0.5s;"></div>
+  <div class="particle" style="left:32%;width:4px;height:4px;animation-duration:14s;animation-delay:2.5s;"></div>
+  <div class="particle" style="left:38%;width:6px;height:6px;animation-duration:11s;animation-delay:4s;"></div>
+  <div class="particle" style="left:45%;width:9px;height:9px;animation-duration:16s;animation-delay:1s;"></div>
+  <div class="particle" style="left:52%;width:5px;height:5px;animation-duration:13s;animation-delay:3.5s;"></div>
+  <div class="particle" style="left:58%;width:7px;height:7px;animation-duration:19s;animation-delay:0.8s;"></div>
+  <div class="particle" style="left:65%;width:4px;height:4px;animation-duration:10s;animation-delay:2s;"></div>
+  <div class="particle" style="left:72%;width:8px;height:8px;animation-duration:17s;animation-delay:4.5s;"></div>
+  <div class="particle" style="left:78%;width:5px;height:5px;animation-duration:12s;animation-delay:1.5s;"></div>
+  <div class="particle" style="left:83%;width:6px;height:6px;animation-duration:14s;animation-delay:3.2s;"></div>
+  <div class="particle" style="left:88%;width:4px;height:4px;animation-duration:20s;animation-delay:0.3s;"></div>
+  <div class="particle" style="left:93%;width:7px;height:7px;animation-duration:11s;animation-delay:2.8s;"></div>
+  <div class="particle" style="left:15%;width:3px;height:3px;animation-duration:9s;animation-delay:5s;"></div>
+  <div class="particle" style="left:48%;width:10px;height:10px;animation-duration:22s;animation-delay:1.8s;"></div>
+  <div class="particle" style="left:75%;width:3px;height:3px;animation-duration:8s;animation-delay:6s;"></div>
+
+  <div class="hero-content px-4">
+    <!-- Animated energy coin counter -->
+    <div class="coin-display inline-flex items-center gap-3 px-6 py-3 rounded-full mb-10" style="border-radius:9999px;">
+      <span class="material-symbols-outlined" style="font-size:24px;color:#f5bd58;">bolt</span>
+      <span style="color:#f5bd58;font-family:'Newsreader',serif;font-weight:800;font-size:24px;" id="hero-balance">0</span>
+      <span style="color:rgba(255,255,255,0.6);font-size:12px;font-weight:700;letter-spacing:0.1em;">能量币可用</span>
+    </div>
+
+    <h3 class="text-xs font-bold tracking-[0.5em] uppercase mb-6" style="color:rgba(245,189,88,0.7);">Energy Market</h3>
+    <h1 class="hero-title text-5xl md:text-8xl lg:text-9xl leading-[0.9] mb-8">能量集市</h1>
+    <p class="hero-subtitle text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-headline italic mb-4" id="hero-tagline"></p>
+    <div style="height:3px;width:80px;background:linear-gradient(90deg,rgba(245,189,88,0.8),rgba(133,18,23,0.6));border-radius:2px;margin:0 auto;"></div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator mt-16" style="cursor:pointer;" onclick="document.getElementById('stats-section').scrollIntoView({behavior:'smooth'})">
+      <p style="color:rgba(255,255,255,0.5);font-size:12px;font-weight:700;letter-spacing:0.15em;margin-bottom:8px;">开始探索</p>
+      <span class="material-symbols-outlined" style="color:rgba(245,189,88,0.7);font-size:32px;">expand_more</span>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================ -->
-<!-- HERO SECTION                                 -->
+<!-- STATS BAR — Animated counters                -->
 <!-- ============================================ -->
-<section class="mb-16 md:mb-32 fade-in">
-<div class="flex flex-col items-center text-center mb-16">
-<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Energy Market</h3>
-<h1 class="text-4xl md:text-7xl font-headline font-extrabold leading-[0.95] mb-6" style="color:#593d00">能量集市</h1>
-<p class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed font-headline italic">
-守护长城，收获能量。用你的行动兑换来自香屯的特色体验。
-</p>
-<div class="h-1 w-24 bg-tertiary mt-8"></div>
-</div>
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 -mt-16 relative z-10 mb-16 md:mb-24" id="stats-section">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    <div class="stat-glass fade-in">
+      <span class="stat-num" data-target="9">0</span>
+      <span class="text-sm font-bold text-on-surface-variant tracking-wide">精选好物</span>
+    </div>
+    <div class="stat-glass fade-in">
+      <span class="stat-num" data-target="3">0</span>
+      <span class="text-sm font-bold text-on-surface-variant tracking-wide">品类体验</span>
+    </div>
+    <div class="stat-glass fade-in">
+      <span class="stat-num" data-target="105">0</span>
+      <span class="text-sm font-bold text-on-surface-variant tracking-wide">最高可获能量币</span>
+    </div>
+    <div class="stat-glass fade-in">
+      <span class="stat-num" data-target="15">0</span>
+      <span class="text-sm font-bold text-on-surface-variant tracking-wide">最低兑换门槛</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- HOW IT WORKS                                 -->
+<!-- ============================================ -->
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 py-16 md:py-24 text-center fade-in">
+  <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">How It Works</h3>
+  <p class="text-2xl md:text-3xl font-headline font-bold mb-12" style="color:#593d00;">守护即收获</p>
+  <div class="section-divider mb-16"></div>
+  <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 max-w-4xl mx-auto">
+    <div class="step-card">
+      <div class="step-icon" style="background:rgba(133,18,23,0.08);">
+        <span class="material-symbols-outlined" style="color:#851217;">shield</span>
+      </div>
+      <p class="font-bold mt-4 text-on-surface">完成守护任务</p>
+      <p class="text-xs text-on-surface-variant mt-1">签署倡议 · 答题 · 打卡</p>
+    </div>
+    <span class="material-symbols-outlined text-tertiary text-2xl hidden md:block" style="opacity:0.5;">arrow_forward</span>
+    <span class="material-symbols-outlined text-tertiary text-2xl md:hidden" style="opacity:0.5;">arrow_downward</span>
+    <div class="step-card">
+      <div class="step-icon" style="background:rgba(89,61,0,0.08);">
+        <span class="material-symbols-outlined" style="color:#593d00;">bolt</span>
+      </div>
+      <p class="font-bold mt-4 text-on-surface">赚取能量币</p>
+      <p class="text-xs text-on-surface-variant mt-1">每个行动都有回报</p>
+    </div>
+    <span class="material-symbols-outlined text-tertiary text-2xl hidden md:block" style="opacity:0.5;">arrow_forward</span>
+    <span class="material-symbols-outlined text-tertiary text-2xl md:hidden" style="opacity:0.5;">arrow_downward</span>
+    <div class="step-card">
+      <div class="step-icon" style="background:rgba(59,105,52,0.08);">
+        <span class="material-symbols-outlined" style="color:#3b6934;">redeem</span>
+      </div>
+      <p class="font-bold mt-4 text-on-surface">兑换特色体验</p>
+      <p class="text-xs text-on-surface-variant mt-1">品尝 · 收藏 · 纪念</p>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================ -->
 <!-- PRODUCT TABS + GRID                          -->
 <!-- ============================================ -->
-<section class="mb-16 md:mb-32">
-<div class="flex gap-3 mb-12 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0" role="tablist">
-<button role="tab" aria-selected="true" class="tab-btn active ink-tag whitespace-nowrap" onclick="switchTab('goods')">
-<span class="material-symbols-outlined text-sm align-middle mr-1">park</span>金色良品
-</button>
-<button role="tab" aria-selected="false" class="tab-btn ink-tag whitespace-nowrap" onclick="switchTab('creative')">
-<span class="material-symbols-outlined text-sm align-middle mr-1">palette</span>四色文创
-</button>
-<button role="tab" aria-selected="false" class="tab-btn ink-tag whitespace-nowrap" onclick="switchTab('meal')">
-<span class="material-symbols-outlined text-sm align-middle mr-1">restaurant</span>戍边餐预订
-</button>
-</div>
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32">
+  <div class="text-center mb-12 fade-in">
+    <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Collections</h3>
+    <p class="text-2xl md:text-3xl font-headline font-bold mb-8" style="color:#593d00;">精选体验</p>
+    <div class="section-divider mb-12"></div>
+  </div>
 
-<div id="product-grid"></div>
+  <!-- Premium pill tabs -->
+  <div class="mb-12 flex justify-center fade-in" role="tablist" id="tab-container">
+    <div class="market-tabs">
+      <button role="tab" aria-selected="true" class="market-tab active" data-tab="goods" onclick="switchTab('goods')">
+        <span class="material-symbols-outlined" style="font-size:18px;">park</span>
+        <span>金色良品</span>
+        <span class="tab-count">3</span>
+      </button>
+      <button role="tab" aria-selected="false" class="market-tab" data-tab="creative" onclick="switchTab('creative')">
+        <span class="material-symbols-outlined" style="font-size:18px;">palette</span>
+        <span>四色文创</span>
+        <span class="tab-count">3</span>
+      </button>
+      <button role="tab" aria-selected="false" class="market-tab" data-tab="meal" onclick="switchTab('meal')">
+        <span class="material-symbols-outlined" style="font-size:18px;">restaurant</span>
+        <span>戍边餐预订</span>
+        <span class="tab-count">3</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="product-grid"></div>
 </section>
 
 <!-- ============================================ -->
 <!-- REDEEM MODAL                                 -->
 <!-- ============================================ -->
 <div class="modal-overlay" id="redeem-modal">
-<div class="modal-card" role="dialog" aria-modal="true">
-<div id="modal-content"></div>
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <div id="modal-content"></div>
+  </div>
 </div>
-</div>
-
-</main>
 
 <!-- Footer -->
 <footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
@@ -666,49 +1152,57 @@
 
 <!-- Market Page Logic -->
 <script>
-// Product data
+// Product data with working picsum.photos images
 var PRODUCTS = [
   // 金色良品
   { id: 'chestnut-tea', category: 'goods', name: '板栗茶礼盒', cost: 30, icon: 'eco',
+    badge: '人气之选',
     story: '精选香屯村百年板栗林中的野生板栗，经传统工艺烘焙研磨，配以延庆高山泉水冲泡。每一杯都带着长城脚下泥土的芬芳。',
-    gradient: 'linear-gradient(135deg, #593d00 0%, #775300 100%)' },
+    image: 'https://picsum.photos/seed/chestnut/800/600' },
   { id: 'apricot-tea', category: 'goods', name: '杏皮茶', cost: 20, icon: 'local_cafe',
+    badge: '轻松入门',
     story: '大庄科乡的杏树在春天开出漫山遍野的花海。每年七月，村民采摘成熟的山杏，晾晒杏皮，制成这一杯酸甜可口的传统饮品。',
-    gradient: 'linear-gradient(135deg, #8b5e00 0%, #b8860b 100%)' },
+    image: 'https://picsum.photos/seed/apricot/800/600' },
   { id: 'walnut-set', category: 'goods', name: '核桃伴手礼', cost: 40, icon: 'nutrition',
+    badge: '匠心之作',
     story: '延庆山核桃以皮薄仁大闻名。村里的老核桃树有些已有两百多年历史，见证了长城脚下的岁月变迁。',
-    gradient: 'linear-gradient(135deg, #3e2723 0%, #5d4037 100%)' },
+    image: 'https://picsum.photos/seed/walnut/800/600' },
   // 四色文创
   { id: 'mug-fourcolor', category: 'creative', name: '四色马克杯', cost: 50, icon: 'coffee',
+    badge: '限定文创',
     story: '传承红、远山绿、板栗金、玄石墨 — 四种属于香屯的颜色，烧制在景德镇手工陶瓷杯上。每个杯子都是独一无二的。',
-    gradient: 'linear-gradient(135deg, #851217 0%, #3b6934 50%, #593d00 100%)' },
+    image: 'https://picsum.photos/seed/ceramic/800/600' },
   { id: 'postcard-set', category: 'creative', name: '长城明信片套装', cost: 15, icon: 'mail',
+    badge: '轻松入门',
     story: '6 张手绘明信片，记录了大庄科段长城四季的不同面貌。从春天的杏花长城到冬日的雪覆敌台。',
-    gradient: 'linear-gradient(135deg, #851217 0%, #58413f 100%)' },
+    image: 'https://picsum.photos/seed/greatwall/800/600' },
   { id: 'badge-guardian', category: 'creative', name: '守护者徽章', cost: 25, icon: 'shield',
+    badge: '守护象征',
     story: '金属珐琅工艺，正面是香屯村标志性的圆形敌台剪影，背面刻有"长城守护者"字样。佩戴它，你就是长城的守护人。',
-    gradient: 'linear-gradient(135deg, #593d00 0%, #851217 100%)' },
+    image: 'https://picsum.photos/seed/badge/800/600' },
   // 戍边餐
   { id: 'meal-spring', category: 'meal', name: '春季戍边餐', cost: 60, icon: 'dinner_dining',
+    badge: '时令限定',
     story: '以明代戍边将士的饮食为灵感，用延庆本地时令食材重新演绎。春季餐包含香椿炒蛋、山野菜拼盘、板栗焖鸡和自酿米酒。',
-    gradient: 'linear-gradient(135deg, #3b6934 0%, #2e7d32 100%)' },
+    image: 'https://picsum.photos/seed/feast/800/600' },
   { id: 'meal-chestnut', category: 'meal', name: '板栗宴', cost: 80, icon: 'restaurant_menu',
+    badge: '招牌体验',
     story: '板栗是香屯村的灵魂食材。板栗宴从板栗小米粥开始，经过板栗烧肉、糖炒栗子，到板栗蛋糕收尾——一场完整的板栗风味之旅。',
-    gradient: 'linear-gradient(135deg, #593d00 0%, #8d6e00 100%)' },
+    image: 'https://picsum.photos/seed/banquet/800/600' },
   { id: 'meal-lunchbox', category: 'meal', name: '长城便当', cost: 30, icon: 'takeout_dining',
+    badge: '徒步必备',
     story: '专为长城徒步者设计的便携餐盒。杂粮饭团、酱牛肉、腌黄瓜、山楂糕——补充能量又不添负担。环保餐盒可带走做纪念。',
-    gradient: 'linear-gradient(135deg, #58413f 0%, #795548 100%)' }
+    image: 'https://picsum.photos/seed/bento/800/600' }
 ];
 
+var CATEGORY_NAMES = { goods: '金色良品', creative: '四色文创', meal: '戍边餐' };
 var currentTab = 'goods';
 
 function switchTab(category) {
   currentTab = category;
-  var buttons = document.querySelectorAll('.tab-btn');
+  var buttons = document.querySelectorAll('.market-tab');
   buttons.forEach(function(btn) {
-    var isActive = btn.textContent.includes(
-      category === 'goods' ? '金色良品' : category === 'creative' ? '四色文创' : '戍边餐'
-    );
+    var isActive = btn.getAttribute('data-tab') === category;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
@@ -735,79 +1229,97 @@ function renderProducts() {
   }
 
   grid.innerHTML = '';
-  // Asymmetric grid: first item larger
   var container = document.createElement('div');
-  container.className = 'grid grid-cols-1 md:grid-cols-3 gap-6';
+  container.className = 'grid grid-cols-1 md:grid-cols-3 gap-8';
 
   items.forEach(function(product, idx) {
     var isRedeemed = redemptions.some(function(r) { return r.productId === product.id; });
     var canAfford = balance >= product.cost;
 
     var card = document.createElement('div');
-    card.className = 'product-card bg-surface-container-low rounded-sm overflow-hidden' + (isRedeemed ? ' redeemed' : '');
+    card.className = 'product-card card-stagger' + (isRedeemed ? ' redeemed' : '');
+    card.style.transitionDelay = (idx * 0.1) + 's';
     if (idx === 0) card.className += ' md:col-span-2 md:row-span-2';
 
-    // Image placeholder with gradient
+    // Card image container
     var imgDiv = document.createElement('div');
-    imgDiv.className = idx === 0 ? 'h-48 md:h-72 flex items-center justify-center' : 'h-40 flex items-center justify-center';
-    imgDiv.style.background = product.gradient;
-    var icon = document.createElement('span');
-    icon.className = 'material-symbols-outlined text-white/40';
-    icon.style.fontSize = idx === 0 ? '80px' : '48px';
-    icon.textContent = product.icon;
-    imgDiv.appendChild(icon);
+    imgDiv.className = 'card-image';
+    imgDiv.style.height = idx === 0 ? '280px' : '220px';
+    if (window.innerWidth >= 768 && idx === 0) imgDiv.style.height = '380px';
+
+    var img = document.createElement('img');
+    img.src = product.image;
+    img.alt = product.name;
+    img.loading = 'lazy';
+    imgDiv.appendChild(img);
+
+    // Category badge on image
+    var catBadge = document.createElement('div');
+    catBadge.className = 'category-badge';
+    catBadge.textContent = product.badge || CATEGORY_NAMES[product.category];
+    imgDiv.appendChild(catBadge);
+
+    // Cost badge floating on image
+    var costBadge = document.createElement('div');
+    costBadge.className = 'cost-badge';
+    costBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size:16px;color:#593d00;">bolt</span> ' + product.cost;
+    imgDiv.appendChild(costBadge);
+
     card.appendChild(imgDiv);
 
-    // Content
+    // Content below image
     var content = document.createElement('div');
-    content.className = 'p-6 md:p-8';
+    content.style.padding = '24px';
 
     var nameEl = document.createElement('h3');
-    nameEl.className = 'font-headline font-bold text-lg mb-2';
+    nameEl.style.cssText = 'font-family:Newsreader,serif;font-weight:700;font-size:1.15rem;margin-bottom:8px;color:#1b1c1c;';
     nameEl.textContent = product.name;
     content.appendChild(nameEl);
 
     var storyEl = document.createElement('p');
-    storyEl.className = 'text-sm text-on-surface-variant leading-relaxed mb-6';
-    storyEl.textContent = product.story;
+    storyEl.style.cssText = 'font-size:13px;color:#58413f;line-height:1.8;margin-bottom:20px;';
+    if (idx === 0) {
+      storyEl.textContent = product.story;
+    } else {
+      storyEl.textContent = product.story.length > 60 ? product.story.substring(0, 60) + '...' : product.story;
+    }
     content.appendChild(storyEl);
 
-    // Bottom row: cost tag + button
+    // Button row
     var row = document.createElement('div');
-    row.className = 'flex items-center justify-between';
+    row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;';
 
-    var tag = document.createElement('span');
-    tag.className = 'ink-tag';
-    tag.innerHTML = '<span class="material-symbols-outlined align-middle" style="font-size:14px">bolt</span> ' + product.cost + ' 能量币';
+    var costLabel = document.createElement('span');
+    costLabel.style.cssText = 'font-size:12px;color:#8c716e;font-weight:600;';
+    costLabel.textContent = product.cost + ' 能量币';
 
     var btn = document.createElement('button');
     if (isRedeemed) {
-      btn.className = 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant cursor-default';
+      btn.className = 'redeem-btn-disabled';
       btn.textContent = '已兑换';
       btn.disabled = true;
     } else if (!canAfford) {
-      btn.className = 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant cursor-default';
-      btn.textContent = '还需 ' + (product.cost - balance) + ' 能量币';
+      btn.className = 'redeem-btn-disabled';
+      btn.textContent = '还需 ' + (product.cost - balance) + ' 币';
       btn.disabled = true;
     } else {
-      btn.className = 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase bg-tertiary text-on-tertiary hover:opacity-90 transition-opacity';
+      btn.className = 'redeem-btn';
       btn.textContent = '兑换体验';
       btn.onclick = function() { openRedeemModal(product); };
     }
 
-    row.appendChild(tag);
+    row.appendChild(costLabel);
     row.appendChild(btn);
     content.appendChild(row);
 
     // Insufficient balance hint
     if (!canAfford && !isRedeemed) {
       var hint = document.createElement('p');
-      hint.className = 'text-xs text-on-surface-variant mt-3';
-      hint.innerHTML = '';
+      hint.style.cssText = 'font-size:11px;color:#8c716e;margin-top:12px;';
       var hintLink = document.createElement('a');
       hintLink.href = '../guardian/index.html';
-      hintLink.className = 'text-primary hover:underline';
-      hintLink.textContent = '完成守护任务赚取能量币 \u2192';
+      hintLink.style.cssText = 'color:#851217;font-weight:600;';
+      hintLink.textContent = '完成守护任务赚取能量币 →';
       hint.appendChild(hintLink);
       content.appendChild(hint);
     }
@@ -817,6 +1329,14 @@ function renderProducts() {
   });
 
   grid.appendChild(container);
+
+  // Trigger stagger fade-in
+  requestAnimationFrame(function() {
+    var cards = grid.querySelectorAll('.card-stagger');
+    cards.forEach(function(c, i) {
+      setTimeout(function() { c.classList.add('visible'); }, i * 100);
+    });
+  });
 }
 
 // ---- Modal ----
@@ -830,42 +1350,46 @@ function openRedeemModal(product) {
   content.innerHTML = '';
 
   var title = document.createElement('h3');
-  title.className = 'font-headline font-bold text-2xl mb-2';
+  title.style.cssText = 'font-family:Newsreader,serif;font-weight:700;font-size:1.6rem;margin-bottom:6px;color:#1b1c1c;';
   title.textContent = '确认兑换';
   content.appendChild(title);
 
   var sub = document.createElement('p');
-  sub.className = 'text-sm text-on-surface-variant mb-8';
+  sub.style.cssText = 'font-size:14px;color:#58413f;margin-bottom:28px;';
   sub.textContent = '将消耗 ' + product.cost + ' 能量币兑换以下体验：';
   content.appendChild(sub);
 
   var card = document.createElement('div');
-  card.className = 'bg-surface-container-low p-6 rounded-sm mb-8';
+  card.style.cssText = 'background:rgba(89,61,0,0.04);padding:24px;border-radius:16px;margin-bottom:28px;border:1px solid rgba(89,61,0,0.08);';
   var h4 = document.createElement('h4');
-  h4.className = 'font-headline font-bold mb-2';
+  h4.style.cssText = 'font-family:Newsreader,serif;font-weight:700;margin-bottom:8px;color:#1b1c1c;';
   h4.textContent = product.name;
   card.appendChild(h4);
   var desc = document.createElement('p');
-  desc.className = 'text-sm text-on-surface-variant leading-relaxed';
+  desc.style.cssText = 'font-size:13px;color:#58413f;line-height:1.8;';
   desc.textContent = product.story;
   card.appendChild(desc);
   content.appendChild(card);
 
-  var balanceInfo = document.createElement('p');
-  balanceInfo.className = 'text-sm mb-8';
+  var balanceInfo = document.createElement('div');
+  balanceInfo.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(245,189,88,0.08);border-radius:12px;margin-bottom:28px;font-size:14px;';
   var bal = EnergyStore.getBalance();
-  balanceInfo.textContent = '当前余额：' + bal + ' 能量币 \u2192 兑换后：' + (bal - product.cost) + ' 能量币';
+  balanceInfo.innerHTML = '<span style="color:#58413f;">当前余额 <strong style="color:#593d00;">' + bal + '</strong></span><span style="color:#58413f;">兑换后 <strong style="color:#593d00;">' + (bal - product.cost) + '</strong></span>';
   content.appendChild(balanceInfo);
 
   var btnRow = document.createElement('div');
-  btnRow.className = 'flex gap-4';
+  btnRow.style.cssText = 'display:flex;gap:12px;';
+
   var cancelBtn = document.createElement('button');
-  cancelBtn.className = 'flex-1 py-3 rounded-xl text-sm font-bold tracking-wider bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors';
+  cancelBtn.style.cssText = 'flex:1;padding:14px;border-radius:14px;font-size:14px;font-weight:700;background:#eae8e7;color:#1b1c1c;border:none;cursor:pointer;font-family:Manrope,sans-serif;transition:background 0.2s;';
   cancelBtn.textContent = '取消';
   cancelBtn.onclick = closeModal;
+  cancelBtn.onmouseenter = function() { this.style.background = '#e4e2e2'; };
+  cancelBtn.onmouseleave = function() { this.style.background = '#eae8e7'; };
 
   var confirmBtn = document.createElement('button');
-  confirmBtn.className = 'flex-1 py-3 rounded-xl text-sm font-bold tracking-wider bg-tertiary text-on-tertiary hover:opacity-90 transition-opacity';
+  confirmBtn.className = 'redeem-btn';
+  confirmBtn.style.cssText += 'flex:1;padding:14px;border-radius:14px;font-size:14px;';
   confirmBtn.textContent = '确认兑换';
   confirmBtn.id = 'confirm-redeem-btn';
   confirmBtn.onclick = confirmRedeem;
@@ -875,11 +1399,7 @@ function openRedeemModal(product) {
   content.appendChild(btnRow);
 
   modal.classList.add('active');
-
-  // Focus trap
   confirmBtn.focus();
-
-  // Esc to close
   document.addEventListener('keydown', modalKeyHandler);
 }
 
@@ -919,13 +1439,33 @@ function confirmRedeem() {
     time: new Date().toISOString()
   });
 
+  // Confetti!
+  launchConfetti();
+
   // Show voucher in modal
   showVoucher(product, redemptionId);
 
-  // Update nav balance
+  // Update balances
   updateNavBalance();
-  // Re-render products
+  updateHeroBalance();
   renderProducts();
+}
+
+function launchConfetti() {
+  var colors = ['#851217', '#593d00', '#3b6934', '#f5bd58', '#ffdeaa', '#ffdad7'];
+  for (var i = 0; i < 40; i++) {
+    var piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.width = (Math.random() * 8 + 5) + 'px';
+    piece.style.height = (Math.random() * 8 + 5) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+    piece.style.animationDelay = (Math.random() * 0.5) + 's';
+    document.body.appendChild(piece);
+    setTimeout(function() { piece.remove(); }, 4000);
+  }
 }
 
 function showVoucher(product, redemptionId) {
@@ -933,36 +1473,36 @@ function showVoucher(product, redemptionId) {
   content.innerHTML = '';
 
   var title = document.createElement('h3');
-  title.className = 'font-headline font-bold text-2xl mb-2 text-secondary';
+  title.style.cssText = 'font-family:Newsreader,serif;font-weight:700;font-size:1.6rem;margin-bottom:6px;color:#3b6934;';
   title.textContent = '兑换成功！';
   content.appendChild(title);
 
   var sub = document.createElement('p');
-  sub.className = 'text-sm text-on-surface-variant mb-8';
+  sub.style.cssText = 'font-size:14px;color:#58413f;margin-bottom:28px;';
   sub.textContent = '请凭此凭证到香屯村服务中心领取体验';
   content.appendChild(sub);
 
-  // Voucher card (mimicking guardian certificate style)
+  // Voucher card
   var voucher = document.createElement('div');
-  voucher.className = 'relative p-8 mb-8';
-  voucher.style.cssText = 'border: 3px double #851217; background: #fbf9f8;';
+  voucher.className = 'relative';
+  voucher.style.cssText = 'padding:32px;margin-bottom:28px;border:3px double #851217;background:linear-gradient(135deg,#fbf9f8,#fff8f0);border-radius:16px;overflow:hidden;';
 
   // Corner decorations
   var corners = ['top:8px;left:8px', 'top:8px;right:8px', 'bottom:8px;left:8px', 'bottom:8px;right:8px'];
   corners.forEach(function(pos) {
     var corner = document.createElement('div');
-    corner.style.cssText = 'position:absolute;width:12px;height:12px;background:#851217;' + pos;
+    corner.style.cssText = 'position:absolute;width:10px;height:10px;background:#851217;border-radius:2px;' + pos;
     voucher.appendChild(corner);
   });
 
   var vTitle = document.createElement('div');
-  vTitle.className = 'text-center mb-6';
+  vTitle.style.cssText = 'text-align:center;margin-bottom:20px;';
   var vH = document.createElement('h4');
-  vH.className = 'font-headline font-bold text-xl text-primary';
+  vH.style.cssText = 'font-family:Newsreader,serif;font-weight:700;font-size:1.2rem;color:#851217;';
   vH.textContent = '能量兑换凭证';
   vTitle.appendChild(vH);
   var vSub = document.createElement('p');
-  vSub.className = 'text-xs text-on-surface-variant tracking-widest uppercase mt-1';
+  vSub.style.cssText = 'font-size:10px;color:#8c716e;letter-spacing:0.2em;text-transform:uppercase;margin-top:4px;';
   vSub.textContent = 'Energy Redemption Voucher';
   vTitle.appendChild(vSub);
   voucher.appendChild(vTitle);
@@ -970,17 +1510,17 @@ function showVoucher(product, redemptionId) {
   var info = [
     ['商品', product.name],
     ['凭证编号', redemptionId],
-    ['消耗能量币', product.cost + ' \u26A1'],
+    ['消耗能量币', product.cost + ' ⚡'],
     ['兑换时间', new Date().toLocaleString('zh-CN')]
   ];
   info.forEach(function(pair) {
     var row = document.createElement('div');
-    row.className = 'flex justify-between text-sm py-2';
+    row.style.cssText = 'display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(133,18,23,0.08);';
     var label = document.createElement('span');
-    label.className = 'text-on-surface-variant';
+    label.style.color = '#8c716e';
     label.textContent = pair[0];
     var val = document.createElement('span');
-    val.className = 'font-bold';
+    val.style.cssText = 'font-weight:700;color:#1b1c1c;';
     val.textContent = pair[1];
     row.appendChild(label);
     row.appendChild(val);
@@ -989,43 +1529,115 @@ function showVoucher(product, redemptionId) {
 
   // Seal
   var seal = document.createElement('div');
-  seal.className = 'text-center mt-6';
-  seal.style.cssText = 'color: #851217; opacity: 0.3; font-size: 48px; font-weight: 900; font-family: Newsreader, serif; letter-spacing: 0.2em; transform: rotate(-8deg);';
+  seal.style.cssText = 'text-align:center;margin-top:20px;color:#851217;opacity:0.15;font-size:48px;font-weight:900;font-family:Newsreader,serif;letter-spacing:0.2em;transform:rotate(-8deg);';
   seal.textContent = '四色香屯';
   voucher.appendChild(seal);
 
   content.appendChild(voucher);
 
   var closeBtn = document.createElement('button');
-  closeBtn.className = 'w-full py-3 rounded-xl text-sm font-bold tracking-wider bg-primary text-on-primary hover:opacity-90 transition-opacity';
+  closeBtn.className = 'redeem-btn';
+  closeBtn.style.cssText += 'width:100%;padding:14px;border-radius:14px;font-size:14px;background:linear-gradient(135deg,#3b6934,#4d8a44);';
   closeBtn.textContent = '完成';
   closeBtn.onclick = closeModal;
   content.appendChild(closeBtn);
 }
 
-// ---- Nav balance ----
+// ---- Nav & Hero balance ----
 function updateNavBalance() {
   var el = document.getElementById('nav-balance');
   if (el) el.textContent = EnergyStore.getBalance();
 }
 
+function updateHeroBalance() {
+  var el = document.getElementById('hero-balance');
+  if (el) {
+    var target = EnergyStore.getBalance();
+    var current = parseInt(el.textContent) || 0;
+    if (current === target) return;
+    var duration = 800;
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      el.textContent = Math.floor(current + (target - current) * progress);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+}
+
+// ---- Typewriter tagline ----
+function typewriterEffect() {
+  var text = '守护长城，收获能量。用你的行动兑换来自香屯的特色体验。';
+  var el = document.getElementById('hero-tagline');
+  if (!el) return;
+  el.innerHTML = '';
+  el.classList.add('typewriter-cursor');
+  var i = 0;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 60 + Math.random() * 40);
+    } else {
+      el.classList.remove('typewriter-cursor');
+    }
+  }
+  type();
+}
+
+// ---- Animated counters (scroll-triggered) ----
+var countersAnimated = false;
+function animateCounters() {
+  if (countersAnimated) return;
+  countersAnimated = true;
+  document.querySelectorAll('.stat-num').forEach(function(el) {
+    var target = parseInt(el.getAttribute('data-target'));
+    var duration = 1500;
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  });
+}
+
 // ---- Init ----
-window.addEventListener('energy-changed', function() { updateNavBalance(); });
+window.addEventListener('energy-changed', function() {
+  updateNavBalance();
+  updateHeroBalance();
+});
 
 document.addEventListener('DOMContentLoaded', function() {
   updateNavBalance();
+  updateHeroBalance();
   renderProducts();
+  typewriterEffect();
 
-  // Scroll fade-in
+  // Scroll fade-in + counter trigger
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        // Trigger counters when stats section becomes visible
+        if (entry.target.classList.contains('stat-glass')) {
+          animateCounters();
+        }
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in, .scale-in').forEach(function(el) { observer.observe(el); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in, .scale-in, .stat-glass').forEach(function(el) {
+    observer.observe(el);
+  });
 
   // Nav scroll effect
   window.addEventListener('scroll', function() {
@@ -1035,6 +1647,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<!-- Page Loader -->
 <script>
 (function(){
   var bar=document.getElementById('loader-bar');
@@ -1051,6 +1665,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 </script>
+
+<!-- Dark Mode -->
 <script>
 function toggleDarkMode(){
   document.documentElement.classList.toggle('dark');
@@ -1069,3 +1685,4 @@ function toggleDarkMode(){
 </script>
 </body>
 </html>
+<!-- v2 -->
