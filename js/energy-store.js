@@ -68,6 +68,8 @@
      */
     getData: function () {
       var data = safeRead(POINTS_KEY) || { points: 0, history: [] };
+      if (!Array.isArray(data.history)) data.history = [];
+      if (typeof data.points !== 'number') data.points = 0;
       data = migrate(data);
       return { coins: data.points, history: data.history };
     },
@@ -90,6 +92,8 @@
     earn: function (amount, reason) {
       // 原子操作：每次先重新读取
       var data = safeRead(POINTS_KEY) || { points: 0, history: [] };
+      if (!Array.isArray(data.history)) data.history = [];
+      if (typeof data.points !== 'number') data.points = 0;
       var oldLevel = this.getLevelInfo(data.points).name;
 
       data.points += Math.abs(amount);
@@ -132,6 +136,8 @@
       var cost = Math.abs(amount);
       // 原子操作：每次先重新读取
       var data = safeRead(POINTS_KEY) || { points: 0, history: [] };
+      if (!Array.isArray(data.history)) data.history = [];
+      if (typeof data.points !== 'number') data.points = 0;
 
       if (data.points < cost) return false;
 
@@ -210,11 +216,12 @@
           totalEarned += entry.amount;
           // 归类来源
           var src = '其他';
-          if (entry.reason.includes('签署')) src = '签署倡议';
-          else if (entry.reason.includes('知识问答')) src = '知识问答';
-          else if (entry.reason.includes('打卡')) src = '任务打卡';
-          else if (entry.reason.includes('分享')) src = '分享传播';
-          else if (entry.reason.includes('预约')) src = '预约游览';
+          var reason = entry.reason || '';
+          if (reason.includes('签署')) src = '签署倡议';
+          else if (reason.includes('知识问答')) src = '知识问答';
+          else if (reason.includes('打卡')) src = '任务打卡';
+          else if (reason.includes('分享')) src = '分享传播';
+          else if (reason.includes('预约')) src = '预约游览';
           earnSources[src] = (earnSources[src] || 0) + entry.amount;
         }
       }

@@ -94,9 +94,6 @@
         background-size: 1200px 900px;
         background-blend-mode: multiply;
     }
-    . {
-        /* removed */
-    }
     .fade-in {
         opacity: 0;
         transform: translateY(30px);
@@ -143,18 +140,6 @@
         border-radius: 4px !important;
         box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
     }
-    html.transitioning * { transition: background-color 0.3s, color 0.3s, border-color 0.3s !important; }
-    html.dark { background: #1b1c1c; }
-    html.dark body { background: #1b1c1c; color: #e4e2e2; }
-    html.dark .paper-texture { background-image: none; background-color: #1b1c1c; }
-    html.dark nav { background: rgba(27,28,28,0.9) !important; }
-    html.dark .bg-surface, html.dark .bg-\[\#fbf9f8\] { background-color: #1b1c1c !important; }
-    html.dark .bg-surface-container-low { background-color: #2a2a2a !important; }
-    html.dark .bg-surface-container-high, html.dark .bg-\[\#eae8e7\] { background-color: #333333 !important; }
-    html.dark .text-on-surface, html.dark .text-\[\#1b1c1c\] { color: #e4e2e2 !important; }
-    html.dark .text-on-surface-variant { color: #b0a5a3 !important; }
-    html.dark footer { background: #111111 !important; }
-    html.dark #page-loader { background: #1b1c1c !important; }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
@@ -178,7 +163,7 @@
         </div>
         <div class="flex items-center gap-6">
             <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
-            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="toggleDarkMode()" id="dark-mode-icon">dark_mode</span>
+
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
             <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <span class="material-symbols-outlined">menu</span>
@@ -504,24 +489,6 @@ if(window.matchMedia('(pointer:fine)').matches){
   });
 })();
 </script>
-<script>
-function toggleDarkMode(){
-  document.documentElement.classList.add('transitioning');
-  document.documentElement.classList.toggle('dark');
-  var isDark=document.documentElement.classList.contains('dark');
-  localStorage.setItem('xiangtun-dark',isDark?'1':'0');
-  var icon=document.getElementById('dark-mode-icon');
-  if(icon)icon.textContent=isDark?'light_mode':'dark_mode';
-  setTimeout(function(){document.documentElement.classList.remove('transitioning');},350);
-}
-(function(){
-  if(localStorage.getItem('xiangtun-dark')==='1'){
-    document.documentElement.classList.add('dark');
-    var icon=document.getElementById('dark-mode-icon');
-    if(icon)icon.textContent='light_mode';
-  }
-})();
-</script>
 <script src="../js/energy-store.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -535,3 +502,4 @@ window.addEventListener('energy-changed', function() {
 </script>
 </body>
 </html>
+<!-- v2 -->

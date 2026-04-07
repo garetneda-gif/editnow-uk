@@ -19,8 +19,7 @@ export default {
     if (url.pathname === '/debug') {
       return jsonResponse({
         hasApiKey: !!env.LLM_API_KEY,
-        apiKeyPrefix: env.LLM_API_KEY ? env.LLM_API_KEY.substring(0, 6) + '...' : 'NOT SET',
-        apiUrl: env.LLM_API_URL || 'default: deepseek',
+        hasApiUrl: !!env.LLM_API_URL,
       });
     }
 
@@ -64,7 +63,8 @@ export default {
       const text = await resp.text();
 
       if (!resp.ok) {
-        return jsonResponse({ error: 'LLM API error', status: resp.status, detail: text }, 502);
+        console.error('[Worker] LLM API error:', resp.status, text);
+        return jsonResponse({ error: 'LLM API error', status: resp.status }, 502);
       }
 
       return new Response(text, {
@@ -74,7 +74,8 @@ export default {
         },
       });
     } catch (err) {
-      return jsonResponse({ error: 'Internal error', detail: err.message, stack: err.stack }, 500);
+      console.error('[Worker] Unexpected error:', err);
+      return jsonResponse({ error: 'Internal error' }, 500);
     }
   },
 };
