@@ -1196,13 +1196,12 @@ function renderProducts() {
     var card = document.createElement('div');
     card.className = 'product-card card-stagger' + (isRedeemed ? ' redeemed' : '');
     card.style.transitionDelay = (idx * 0.1) + 's';
-    if (idx === 0) card.className += ' md:col-span-2';
+    // All cards equal width in 3-column grid
 
     // Card image container
     var imgDiv = document.createElement('div');
     imgDiv.className = 'card-image';
-    imgDiv.style.height = idx === 0 ? '240px' : '200px';
-    if (window.innerWidth >= 768 && idx === 0) imgDiv.style.height = '280px';
+    imgDiv.style.height = '220px';
 
     var img = document.createElement('img');
     img.src = product.image;
