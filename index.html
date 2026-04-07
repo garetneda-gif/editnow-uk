@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN"><head>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
 <meta charset="utf-8"/>
 <title>四色香屯 | 长城脚下的文旅品牌 - 北京延庆大庄科乡</title>
 <meta name="description" content="四色香屯：传承红、板栗金、远山绿、玄石墨。探索北京延庆区大庄科乡香屯村的长城文化、红色研学、绿色生态文旅路线与香屯故事。">
@@ -15,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -254,6 +256,24 @@
         .hero-card-float { animation:heroFloat 6s ease-in-out 1.5s infinite both; }
         .hero-border-shimmer { animation:borderShimmer 3s ease-in-out 2s infinite; }
         .hero-name-card { animation:nameSlideIn 0.8s cubic-bezier(0.16,1,0.3,1) 1.2s both; }
+
+        /* ===== 壁画侧边面板 ===== */
+        #mural-panel-overlay { position:fixed; inset:0; background:rgba(27,28,28,0.45); backdrop-filter:blur(2px); z-index:9998; opacity:0; pointer-events:none; transition:opacity 0.35s ease; }
+        #mural-panel-overlay.open { opacity:1; pointer-events:auto; }
+        #mural-panel { position:fixed; top:0; right:0; width:min(480px,90vw); height:100vh; background:rgba(251,249,248,0.97); backdrop-filter:blur(20px); z-index:9999; transform:translateX(100%); transition:transform 0.45s cubic-bezier(0.16,1,0.3,1); overflow-y:auto; box-shadow:-8px 0 48px rgba(0,0,0,0.12); }
+        #mural-panel.open { transform:translateX(0); }
+        #mural-panel::-webkit-scrollbar { width:4px; }
+        #mural-panel::-webkit-scrollbar-thumb { background:rgba(133,18,23,0.15); border-radius:2px; }
+        .mural-color-tag { display:inline-flex; align-items:center; gap:6px; padding:3px 12px 3px 8px; border-radius:2px; font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; }
+        .mural-quote { position:relative; padding:20px 24px; margin:16px 0; border-left:3px solid #593d00; background:rgba(89,61,0,0.04); font-family:Newsreader,serif; font-style:italic; font-size:14px; line-height:1.9; color:#58413f; }
+        .mural-quote::before { content:'\201C'; position:absolute; top:8px; left:8px; font-size:36px; color:rgba(89,61,0,0.15); line-height:1; font-family:Newsreader,serif; }
+        .mural-stat { display:flex; flex-direction:column; align-items:center; padding:12px 0; }
+        .mural-stat-num { font-family:Newsreader,serif; font-size:28px; font-weight:800; color:#851217; }
+        .mural-stat-label { font-size:10px; color:#58413f; text-transform:uppercase; letter-spacing:0.2em; margin-top:2px; }
+        @keyframes muralDash { to { stroke-dashoffset:0; } }
+        .mural-walk-line { stroke-dasharray:12 8; stroke-dashoffset:200; animation:muralDash 2s linear forwards; }
+        .mural-marker-square { transition:transform 0.3s ease, box-shadow 0.3s ease; cursor:pointer; }
+        .mural-marker-square:hover { transform:scale(1.15); box-shadow:0 6px 20px rgba(89,61,0,0.4) !important; }
     </style>
 <!-- Chat Widget Styles -->
 <style>
@@ -490,20 +510,43 @@
       max-height: 70vh;
     }
   }
+    html.transitioning * { transition: background-color 0.3s, color 0.3s, border-color 0.3s !important; }
+    html.dark { background: #1b1c1c; }
+    html.dark body { background: #1b1c1c; color: #e4e2e2; }
+    html.dark .paper-texture { background-image: none; background-color: #1b1c1c; }
+    html.dark nav { background: rgba(27,28,28,0.9) !important; }
+    html.dark .bg-surface, html.dark .bg-\[\#fbf9f8\] { background-color: #1b1c1c !important; }
+    html.dark .bg-surface-container-low { background-color: #2a2a2a !important; }
+    html.dark .bg-surface-container-high, html.dark .bg-\[\#eae8e7\] { background-color: #333333 !important; }
+    html.dark .text-on-surface, html.dark .text-\[\#1b1c1c\] { color: #e4e2e2 !important; }
+    html.dark .text-on-surface-variant { color: #b0a5a3 !important; }
+    html.dark footer { background: #111111 !important; }
+    html.dark #page-loader { background: #1b1c1c !important; }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+<div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
+  <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
+  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;">
+    <div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+  </div>
+</div>
+<canvas id="particle-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
 <div id="scroll-progress"></div>
 <!-- Top Navigation Bar -->
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50 hero-nav">
     <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
         <a href="/" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
-        <div class="hidden md:flex gap-16 items-center">
+        <div class="hidden md:flex gap-10 items-center">
             <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">首页 Home</a>
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="guardian/index.html">守护者 Guardian</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="market/index.html">集市 Market</a>
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="booking/index.html">预约 Booking</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="user/index.html">个人 Me</a>
         </div>
         <div class="flex items-center gap-8">
+            <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="toggleDarkMode()" id="dark-mode-icon">dark_mode</span>
             <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
             <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <span class="material-symbols-outlined">menu</span>
@@ -513,7 +556,9 @@
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
         <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">首页 Home</a>
         <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian/index.html">守护者 Guardian</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="booking/index.html">预约 Booking</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="market/index.html">集市 Market</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="booking/index.html">预约 Booking</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="user/index.html">个人 Me</a>
     </div>
 </nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
@@ -531,6 +576,7 @@
 <p class="text-xl text-on-surface-variant max-w-xl font-headline italic leading-relaxed opacity-90 hero-desc">
                 延庆、昌平、怀柔三区交界处，四面环山、一水中流。辽代铁炉的余烬尚温，明代戍卒的棋局犹在城砖之上。38户人家、74口人，守着3号敌台与400米城墙，守着考古发掘出的杏核与粮种——这是香屯，一座用传承红、板栗金、远山绿、玄石墨四色书写的活态长城史诗。
             </p>
+<p id="typewriter-text" class="text-base text-primary font-body font-bold tracking-wider mt-6 hero-desc" style="min-height:1.5em;"></p>
 </div>
 <div class="lg:col-span-5 flex flex-col items-center hero-logo">
 <div class="relative w-full aspect-square max-w-md rounded-sm hero-card-float" style="transform-origin: center center;">
@@ -542,7 +588,7 @@
 <img class="w-full h-full object-contain mix-blend-multiply" data-alt="minimalist logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC38khLWDGqN-_7VWleMT-UQfoInM0m9avKgQ28yoS6n31gTPPKVM9kDvOC0D5BCqFvdSqvZ8UaJCq2DC2SNSTQZuXBqi5R6RDZgL1knuOFW796mZUGYeFK3WsnLP5riFFBlSMVVTnaMFQVuodUDyOmz968wN0VKPhk9-3QQdukCTOYBMsybo-Lizjekvk7zC9u-WVX7QqtpFwZFlXWBjymFs25_ZdESzli8Q0Wa_7Sdd6zOYDPJ4lA1ZlFz1olrBfvycQswZ51t1I"/>
 </div>
 </div>
-<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl z-20 border border-outline-variant/20 border-l-[3px] border-l-primary hero-name-card">
+<div class="absolute -bottom-8 -right-8 bg-surface p-8 shadow-xl z-20 border-[1.5px] border-on-surface/15 border-l-[3px] border-l-primary hero-name-card">
 <h2 class="text-3xl font-headline font-black text-primary mb-1">四色香屯</h2>
 <p class="text-[10px] font-body text-on-surface-variant tracking-[0.3em] uppercase">Visual Identity MMXXIV</p>
 </div>
@@ -771,9 +817,81 @@
 <p class="font-headline font-bold text-sm pl-3">绿色生态</p>
 <p class="text-[10px] text-white/35 mt-0.5 pl-3">天然氧吧</p>
 </button>
+<button onclick="focusRoute('mural')" class="route-btn relative overflow-hidden rounded-sm px-5 py-4 text-left text-white transition-all duration-300 group backdrop-blur-md hover:-translate-y-0.5" style="background:rgba(89,61,0,0.80); box-shadow:0 8px 32px -4px rgba(89,61,0,0.3);" data-route="mural">
+<div class="absolute top-0 left-0 w-1 h-full bg-white/40 group-hover:bg-white/70 transition-all"></div>
+<div class="flex items-center gap-2 pl-3 mb-1">
+<span class="material-symbols-outlined text-white/50" style="font-size:14px;">brush</span>
+<p class="text-[9px] font-bold tracking-widest uppercase text-white/40">MURAL TRAIL</p>
+</div>
+<p class="font-headline font-bold text-sm pl-3">壁画寻踪</p>
+<p class="text-[10px] text-white/35 mt-0.5 pl-3">墙上的长城</p>
+</button>
 </div>
 </div>
 <p class="text-[11px] text-on-surface-variant/60 mt-6 italic">路线坐标仅供示意，实际游览路线以现场指引为准</p>
+</section>
+
+<!-- Mural Side Panel Overlay -->
+<div id="mural-panel-overlay" onclick="closeMuralPanel()"></div>
+<div id="mural-panel">
+<div class="sticky top-0 bg-[#fbf9f8]/95 backdrop-blur-xl z-10 px-8 py-5 flex items-center justify-between border-b border-outline-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">brush</span>
+<span class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant">壁画详情 Mural Detail</span>
+</div>
+<button onclick="closeMuralPanel()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<div id="mural-panel-content" class="px-8 py-8">
+</div>
+</div>
+
+<!-- Section: Data Stats Counter -->
+<section class="mb-24 md:mb-48 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-[#851217]/[0.03] via-transparent to-[#3b6934]/[0.03]"></div>
+<div class="relative z-10">
+<div class="flex flex-col items-center mb-16 text-center fade-in">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Data</h3>
+<h2 class="text-3xl md:text-5xl font-headline font-bold">香屯数据</h2>
+<p class="text-sm font-headline italic opacity-60 mt-2">The Numbers Behind the Heritage</p>
+<div class="h-1 w-24 bg-primary mt-6"></div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 max-w-5xl mx-auto">
+  <div class="text-center fade-in" style="transition-delay: 0.1s;">
+    <div class="text-5xl md:text-7xl font-headline font-black text-primary mb-3">
+      <span class="counter-num" data-target="95">0</span><span class="text-3xl md:text-4xl">%</span>
+    </div>
+    <div class="h-px w-16 bg-primary/30 mx-auto mb-3"></div>
+    <p class="text-sm font-bold text-on-surface tracking-wide">林木覆盖率</p>
+    <p class="text-xs text-on-surface-variant mt-1 italic">Forest Coverage</p>
+  </div>
+  <div class="text-center fade-in" style="transition-delay: 0.2s;">
+    <div class="text-5xl md:text-7xl font-headline font-black text-tertiary mb-3">
+      <span class="counter-num" data-target="600">0</span><span class="text-3xl md:text-4xl">+</span>
+    </div>
+    <div class="h-px w-16 bg-tertiary/30 mx-auto mb-3"></div>
+    <p class="text-sm font-bold text-on-surface tracking-wide">年长城历史</p>
+    <p class="text-xs text-on-surface-variant mt-1 italic">Years of Great Wall History</p>
+  </div>
+  <div class="text-center fade-in" style="transition-delay: 0.3s;">
+    <div class="text-5xl md:text-7xl font-headline font-black text-secondary mb-3">
+      <span class="counter-num" data-target="1000">0</span><span class="text-3xl md:text-4xl">亩</span>
+    </div>
+    <div class="h-px w-16 bg-secondary/30 mx-auto mb-3"></div>
+    <p class="text-sm font-bold text-on-surface tracking-wide">文旅规划面积</p>
+    <p class="text-xs text-on-surface-variant mt-1 italic">Planned Tourism Area</p>
+  </div>
+  <div class="text-center fade-in" style="transition-delay: 0.4s;">
+    <div class="text-5xl md:text-7xl font-headline font-black text-on-surface mb-3">
+      <span class="counter-num" data-target="4">0</span><span class="text-3xl md:text-4xl">条</span>
+    </div>
+    <div class="h-px w-16 bg-on-surface/30 mx-auto mb-3"></div>
+    <p class="text-sm font-bold text-on-surface tracking-wide">主题游览路线</p>
+    <p class="text-xs text-on-surface-variant mt-1 italic">Heritage Trails</p>
+  </div>
+</div>
+</div>
 </section>
 
 <!-- Section 2: IP Character -->
@@ -855,16 +973,17 @@
 <p class="text-[10px] font-bold tracking-[0.4em] uppercase opacity-70 mb-2">Heritage Site: Main Village Entrance | 遗产地：村庄主入口</p>
 <h4 class="text-2xl md:text-4xl font-headline font-extrabold tracking-tight">四色壁画 The Mural of Four Colors</h4>
 </div>
-<div class="hidden md:flex bg-surface/10 backdrop-blur-xl p-8 rounded-sm border border-white/20 items-center gap-8 group/ar hover:bg-surface/20 transition-all cursor-pointer" onclick="document.getElementById('ar-modal').classList.add('open')">
-<div class="w-20 h-20 bg-white p-2 rounded-sm shadow-lg overflow-hidden">
-<img class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR7TJ5dPVJvg3Og1eLPntUAK63PSVzKjbih9Q_zXwFPrtW6IWAUfMW2eHDuFr9y0Sr7fufRlU-gJ3awVdrtqR7uBXMcXO73tL2WkAML5Ss9Nqw5ZCWP4ygeZ45UYDEWPBsbEz1I-drkGlncWTa9XufivP0q7jVgYRNOocKDJfweIi2nXtWKrH83L31gSkUxbzhHUw1LJYGlMme6FnyNiBZ-ov6RmnhJ5kdbI7t7wVIOzU8X6SBjSF5zV19PVCrXrA_kPphyGH7Yr4"/>
+<div class="hidden md:flex items-center gap-5 cursor-pointer group/ar" onclick="document.getElementById('ar-modal').classList.add('open')">
+<div class="bg-white/95 backdrop-blur-sm p-2.5 rounded-[3px] shadow-lg">
+<canvas id="ar-qr-thumb" width="64" height="64" class="block"></canvas>
 </div>
-<div class="text-white">
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-sm">view_in_ar</span>
-<span class="text-[10px] font-black tracking-widest uppercase">Augmented layer | 增强现实</span>
+<div class="text-white drop-shadow-md">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="material-symbols-outlined text-xs opacity-70">view_in_ar</span>
+<span class="text-[9px] font-black tracking-[0.25em] uppercase opacity-70">Augmented Layer</span>
 </div>
-<p class="text-xs font-bold leading-tight uppercase opacity-90">扫码体验<br/>数字活化画廊 Experience</p>
+<p class="text-[13px] font-headline font-bold leading-snug">扫码体验数字活化画廊</p>
+<p class="text-[9px] tracking-[0.15em] uppercase opacity-50 mt-1">Scan to Explore</p>
 </div>
 </div>
 </div>
@@ -968,7 +1087,7 @@
 </div>
 <div class="border-l border-white/15 pl-5">
 <p class="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">CONTACT</p>
-<p class="font-headline font-bold text-lg text-white">rjk2021@163.com</p>
+<p class="font-headline font-bold text-lg text-white">support@editnow.uk</p>
 </div>
 </div>
 </div>
@@ -1029,68 +1148,28 @@
   }
 </style>
 <script>
-// Generate QR code on canvas pointing to the site
+// Generate real scannable QR code pointing to the site
 (function(){
   const canvas = document.getElementById('ar-qr-canvas');
-  if(!canvas) return;
+  if(!canvas || typeof qrcode === 'undefined') return;
   const ctx = canvas.getContext('2d');
   const size = 200;
-  const modules = 25;
-  const cellSize = size / modules;
 
-  // Seed-based pattern for consistent QR-like appearance
-  function seededRandom(seed) {
-    let s = seed;
-    return function() { s = (s * 16807 + 0) % 2147483647; return s / 2147483647; };
-  }
-  const rand = seededRandom(48271);
+  // Generate real QR code
+  const qr = qrcode(0, 'M');
+  qr.addData('https://stitch.editnow.uk');
+  qr.make();
+  const modules = qr.getModuleCount();
+  const cellSize = size / modules;
 
   // Background
   ctx.fillStyle = '#ffffff';
   ctx.fillRect(0, 0, size, size);
 
-  // Generate data modules
-  const grid = [];
-  for(let r = 0; r < modules; r++) {
-    grid[r] = [];
-    for(let c = 0; c < modules; c++) {
-      grid[r][c] = rand() > 0.5 ? 1 : 0;
-    }
-  }
-
-  // Draw finder patterns (3 corners)
-  function drawFinder(startR, startC) {
-    for(let r = 0; r < 7; r++) {
-      for(let c = 0; c < 7; c++) {
-        const isOuter = r === 0 || r === 6 || c === 0 || c === 6;
-        const isInner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
-        grid[startR+r][startC+c] = (isOuter || isInner) ? 1 : 0;
-      }
-    }
-    // Quiet zone
-    for(let r = -1; r <= 7; r++) {
-      for(let c = -1; c <= 7; c++) {
-        if(r >= 0 && r < 7 && c >= 0 && c < 7) continue;
-        const gr = startR + r, gc = startC + c;
-        if(gr >= 0 && gr < modules && gc >= 0 && gc < modules) grid[gr][gc] = 0;
-      }
-    }
-  }
-  drawFinder(0, 0);
-  drawFinder(0, modules - 7);
-  drawFinder(modules - 7, 0);
-
-  // Timing patterns
-  for(let i = 8; i < modules - 8; i++) {
-    grid[6][i] = i % 2 === 0 ? 1 : 0;
-    grid[i][6] = i % 2 === 0 ? 1 : 0;
-  }
-
-  // Draw with Heritage Red tint
+  // Draw QR modules with Heritage Red finder patterns
   for(let r = 0; r < modules; r++) {
     for(let c = 0; c < modules; c++) {
-      if(grid[r][c]) {
-        // Finder patterns in deep red, data in dark ink
+      if(qr.isDark(r, c)) {
         const isFinder = (r < 8 && c < 8) || (r < 8 && c >= modules-8) || (r >= modules-8 && c < 8);
         ctx.fillStyle = isFinder ? '#851217' : '#1b1c1c';
         ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
@@ -1098,7 +1177,7 @@
     }
   }
 
-  // Center logo area - white circle with 屯 character
+  // Center logo - white circle with 屯 character
   const cx = size/2, cy = size/2, logoR = 22;
   ctx.beginPath();
   ctx.arc(cx, cy, logoR + 4, 0, Math.PI*2);
@@ -1113,6 +1192,30 @@
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText('屯', cx, cy + 1);
+
+  // Thumbnail QR for the mural card
+  const thumb = document.getElementById('ar-qr-thumb');
+  if(thumb) {
+    const tc = thumb.getContext('2d');
+    const ts = 64, tCell = ts / modules;
+    tc.fillStyle = '#ffffff';
+    tc.fillRect(0, 0, ts, ts);
+    for(let r = 0; r < modules; r++) {
+      for(let c = 0; c < modules; c++) {
+        if(qr.isDark(r, c)) {
+          const isFinder = (r < 8 && c < 8) || (r < 8 && c >= modules-8) || (r >= modules-8 && c < 8);
+          tc.fillStyle = isFinder ? '#851217' : '#1b1c1c';
+          tc.fillRect(c * tCell, r * tCell, tCell, tCell);
+        }
+      }
+    }
+    const tcx = ts/2, tcy = ts/2, tR = 7;
+    tc.beginPath(); tc.arc(tcx, tcy, tR + 2, 0, Math.PI*2); tc.fillStyle = '#fff'; tc.fill();
+    tc.beginPath(); tc.arc(tcx, tcy, tR, 0, Math.PI*2); tc.fillStyle = '#851217'; tc.fill();
+    tc.font = 'bold 7px "Newsreader", serif'; tc.fillStyle = '#fff';
+    tc.textAlign = 'center'; tc.textBaseline = 'middle';
+    tc.fillText('屯', tcx, tcy + 0.5);
+  }
 })();
 </script>
 
@@ -1132,6 +1235,10 @@
 <li><a class="hover:text-white transition-colors" href="explore/design-philosophy.html">设计哲学</a></li>
 <li><a class="hover:text-white transition-colors" href="explore/mural-map.html">壁画地图</a></li>
 <li><a class="hover:text-white transition-colors" href="explore/cultural-archive.html">文化档案馆</a></li>
+<li><a class="hover:text-white transition-colors" href="guardian/index.html">守护者</a></li>
+<li><a class="hover:text-white transition-colors" href="market/index.html">能量集市</a></li>
+<li><a class="hover:text-white transition-colors" href="booking/index.html">预约游览</a></li>
+<li><a class="hover:text-white transition-colors" href="user/index.html">个人中心</a></li>
 </ul>
 </div>
 <div class="space-y-6">
@@ -1139,7 +1246,7 @@
 <ul class="space-y-4 text-sm text-gray-400">
 <li><a class="hover:text-white transition-colors" href="info/transport.html">交通指南</a></li>
 <li><a class="hover:text-white transition-colors" href="info/visitor-guide.html">游客须知</a></li>
-<li><a class="hover:text-white transition-colors" href="mailto:rjk2021@163.com">联系我们</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:support@editnow.uk">联系我们</a></li>
 </ul>
 </div>
 </div>
@@ -1381,35 +1488,175 @@ document.querySelectorAll('.route-card').forEach(card => {
     zoom: 15
   };
 
-  // Focus route function
+  // ===== Mural Trail Route =====
+  var muralData = [
+    { id:1, lat:40.4928, lng:116.2885, title:'长城雄关', titleEn:'The Great Wall Fortress',
+      color:'#851217', colorName:'传承红', colorTag:'red', size:'3.2m × 8m', location:'村口广场东侧墙面',
+      story:'这是五幅壁画中面积最大的一幅。画面以大庄科段明长城3号、4号敌台为原型，描绘了夕阳映照下城墙如火龙盘踞山脊的壮观景象。师生们在实地写生时发现，傍晚时分的长城城砖会呈现出一种独特的赤红色——这成为了整幅壁画的色调基础。',
+      story2:'壁画采用了"散点透视"的中国传统绘画手法，将3号和4号敌台的多个角度融合在同一画面中，让观者仿佛站在山巅俯瞰整个防御体系。城墙的砌筑纹理取自实地拓印，每一块城砖都有六百年历史的真实肌理。',
+      quote:'第一次登上3号敌台时，我们所有人都沉默了。夕阳下的城墙不是灰色的，而是燃烧着的红。那一刻我知道，这幅画的底色找到了。',
+      quoteAuthor:'—— 创作组组长',
+      history:'大庄科段明长城始建于明弘治年间（1488-1505），属昌镇黄花路管辖。3号、4号敌台是该段保存最完整的军事建筑，见证了明代北方防御体系的建筑智慧。',
+      nextDist:'120m', nextTime:'约2分钟' },
+    { id:2, lat:40.4923, lng:116.2892, title:'戍边将士', titleEn:'Soldiers of the Frontier',
+      color:'#593d00', colorName:'板栗金', colorTag:'gold', size:'2.5m × 6m', location:'东香路中段民居外墙',
+      story:'这幅壁画再现了明代昌镇黄花路守军的日常生活场景。不同于传统的"威武将军"形象，画面展现的是戍边生活中最朴实的一面：将士们在城楼上下棋、烹饪、修缮兵器，呈现一种"战与和"交织的边关日常。',
+      story2:'画中的棋盘采用了考古出土的"老虎吃猪"棋局样式——这种双人博弈棋在明代长城驻军中极为流行。画面右下角还隐藏着出土的粮食作物元素（杏核、板栗壳），暗示着守军与周边村庄的物资往来。',
+      quote:'我们在冶铁遗址旁捡到一枚"老虎吃猪"的棋子残片。四百年前的士兵也会无聊，也会想家，也会在城楼上和战友下一局棋打发时间。这种"人味"是我最想画进去的。',
+      quoteAuthor:'—— 壁画主笔',
+      history:'明代长城驻军实行"班军制"，士兵轮流值守。考古发掘中出土的棋盘、陶器、粮食遗存，为还原真实的戍边生活提供了珍贵的物质证据。',
+      nextDist:'80m', nextTime:'约1分钟' },
+    { id:3, lat:40.4920, lng:116.2888, title:'四季山色', titleEn:'Four Seasons Landscape',
+      color:'#3b6934', colorName:'远山绿', colorTag:'green', size:'2.8m × 12m', location:'主街道西侧连墙',
+      story:'这是唯一一幅横跨两户人家外墙的壁画，全长12米，是一幅名副其实的长卷。画面以"四色"为线索，将香屯村的四季风光串联成一幅无缝衔接的全景图：春日的山桃花海、盛夏的翠绿山谷、金秋的板栗丰收、隆冬的皑皑白雪。',
+      story2:'两户人家的墙面之间有约30厘米的缝隙，师生们巧妙地将这道缝隙设计成画面中的一条山涧溪流，让建筑结构本身成为壁画叙事的一部分。四季的色彩过渡采用了渐变晕染技法，站在不同位置观看会感受到不同的季节氛围。',
+      quote:'两家人主动把院墙让给我们连通着画，说"这条巷子走了几十年了，第一次觉得它好看"。那一刻我觉得，这才是壁画真正的意义——不是我们画了什么，是村子因此多了什么。',
+      quoteAuthor:'—— 指导教师',
+      history:'香屯村地处燕山南麓，海拔约400-600米，四季分明。村庄周围遍布百年板栗树，秋季板栗丰收是全村最重要的经济活动，也是"板栗金"这一品牌色的来源。',
+      nextDist:'200m', nextTime:'约3分钟' },
+    { id:4, lat:40.4926, lng:116.2895, title:'铁火初燃', titleEn:'The First Iron Flame',
+      color:'#1b1c1c', colorName:'玄石墨', colorTag:'grey', size:'2m × 4m', location:'冶铁遗址旁民居墙面',
+      story:'这幅壁画是对辽代冶铁遗址的想象复原。考古发现，香屯村附近的大庄科矿冶遗址群是北京地区迄今发现的规模最大的辽代冶铁遗存，被学者誉为"辽代首钢"。壁画以浓烈的灰黑色调描绘了千年前炉火通明、铁水奔流的冶炼场景。',
+      story2:'画面中央是一座按考古复原的竖炉，周围是忙碌的冶铁工匠。师生们特意在画面背景中加入了现代香屯村的轮廓线，形成"千年炉火映照今日村庄"的时空对话效果。壁画使用了含铁矿粉的特殊颜料，在特定光线下会呈现出微微的金属光泽。',
+      quote:'我们用了含铁矿粉的颜料，阳光照上去真的会闪。一千年前这片土地就在冶铁，现在铁的光芒又回到了墙上。',
+      quoteAuthor:'—— 材料研究员',
+      history:'大庄科矿冶遗址群经北京大学考古队发掘，发现了完整的辽代冶铁炉遗存，包括竖炉、铁渣堆、矿石加工区等，是研究中国古代冶金技术的重要遗址。',
+      nextDist:'150m', nextTime:'约2分钟' },
+    { id:5, lat:40.4918, lng:116.2883, title:'西星口营地', titleEn:'Camp Xixingkou',
+      color:'#851217', colorName:'传承红', colorTag:'red', size:'3m × 5m', location:'村北坡道民居墙面',
+      story:'这是五幅壁画中唯一面向未来的作品。"西星口"是香屯村附近一个已经荒废的历史地名，曾是明长城防御体系中的一个关口。壁画将这个沉寂的名字重新点亮，描绘了一个长城脚下的理想营地愿景。',
+      story2:'画面融合了历史遗存与现代设计：古老的关口废墟上生长出轻盈的帐篷和观星平台，远处的敌台化身为文化灯塔，长城步道两侧是星空下的营火聚会。整幅壁画的视觉中心是一群仰望星空的年轻人——他们既可以是四百年前的戍边少年，也可以是今天的文旅游客。',
+      quote:'我们想画一个"如果"——如果古人能看到今天的香屯，如果今天的年轻人能和古人坐在同一段城墙上看星星。这幅画不是历史，是一封写给未来的信。',
+      quoteAuthor:'—— 概念设计师',
+      history:'"西星口"见载于明代《昌镇图说》，是黄花路防区的重要关口之一。随着军事功能消失，关口逐渐湮没于荒草之中。重新启用这个地名，是文化振兴中"让沉默的地名重新开口说话"的一次尝试。',
+      nextDist:null, nextTime:null }
+  ];
+
+  function createMuralMarker(mural) {
+    var icon = L.divIcon({
+      className: '',
+      html: '<div class="mural-marker-square" style="background:'+mural.color+';color:#fff;width:34px;height:34px;border-radius:4px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.25);border:2px solid rgba(255,255,255,0.6);"><span class="material-symbols-outlined" style="font-size:18px;">brush</span></div>',
+      iconSize: [34, 34], iconAnchor: [17, 34], popupAnchor: [0, -38]
+    });
+    var marker = L.marker([mural.lat, mural.lng], { icon: icon });
+    marker.on('click', function() { openMuralPanel(mural); });
+    return marker;
+  }
+
+  var muralCoords = muralData.map(function(m) { return [m.lat, m.lng]; });
+  var muralMarkers = muralData.map(function(m) { return createMuralMarker(m); });
+  var muralLine = L.polyline(muralCoords, { color: '#593d00', weight: 3, dashArray: '10 8', opacity: 0.7 });
+
+  var muralDistLabels = [];
+  for (var di = 0; di < muralCoords.length - 1; di++) {
+    (function(i) {
+      var midLat = (muralCoords[i][0] + muralCoords[i+1][0]) / 2;
+      var midLng = (muralCoords[i][1] + muralCoords[i+1][1]) / 2;
+      muralDistLabels.push(L.marker([midLat, midLng], {
+        icon: L.divIcon({
+          className: '',
+          html: '<div style="background:rgba(89,61,0,0.85);color:#fff;padding:2px 8px;border-radius:2px;font-size:10px;font-family:Manrope,sans-serif;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.2);">'+muralData[i].nextDist+' · '+muralData[i].nextTime+'</div>',
+          iconSize: [0, 0], iconAnchor: [0, 0]
+        })
+      }));
+    })(di);
+  }
+
+  routes.mural = { line: muralLine, markers: muralMarkers, distLabels: muralDistLabels, center: [40.4923, 116.2889], zoom: 17, isMural: true };
+
+  // Focus route (extended for mural)
   window.focusRoute = function(routeName) {
-    // Reset all button states
-    document.querySelectorAll('.route-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.route-btn').forEach(function(b) { b.classList.remove('active'); });
+    muralMarkers.forEach(function(m) { map.removeLayer(m); });
+    map.removeLayer(muralLine);
+    muralDistLabels.forEach(function(l) { map.removeLayer(l); });
 
     if (routeName === 'all') {
-      Object.values(routes).forEach(r => {
-        r.line.setStyle({ opacity: r.line.options.color === '#1b1c1c' ? 0.8 : 0.9 });
-        r.markers.forEach(m => m.setOpacity(1));
+      ['red','green','grey'].forEach(function(key) {
+        routes[key].line.setStyle({ opacity: key === 'grey' ? 0.8 : 0.9 });
+        routes[key].markers.forEach(function(m) { m.setOpacity(1); });
       });
       map.flyTo([40.555, 116.195], 14, { duration: 1.2 });
+    } else if (routeName === 'mural') {
+      ['red','green','grey'].forEach(function(key) {
+        routes[key].line.setStyle({ opacity: 0.1 });
+        routes[key].markers.forEach(function(m) { m.setOpacity(0.1); });
+      });
+      muralLine.addTo(map);
+      muralMarkers.forEach(function(m) { m.addTo(map); });
+      muralDistLabels.forEach(function(l) { l.addTo(map); });
+      map.flyTo(routes.mural.center, routes.mural.zoom, { duration: 1.5 });
+      var mbtn = document.querySelector('.route-btn[data-route="mural"]');
+      if (mbtn) mbtn.classList.add('active');
     } else {
-      Object.keys(routes).forEach(key => {
-        const r = routes[key];
+      ['red','green','grey'].forEach(function(key) {
+        var r = routes[key];
         if (key === routeName) {
           r.line.setStyle({ opacity: key === 'grey' ? 0.8 : 0.9 });
-          r.markers.forEach(m => m.setOpacity(1));
+          r.markers.forEach(function(m) { m.setOpacity(1); });
         } else {
           r.line.setStyle({ opacity: 0.15 });
-          r.markers.forEach(m => m.setOpacity(0.2));
+          r.markers.forEach(function(m) { m.setOpacity(0.2); });
         }
       });
-      const target = routes[routeName];
-      map.flyTo(target.center, target.zoom, { duration: 1.2 });
-      // Highlight active button
-      const btn = document.querySelector('.route-btn[data-route="' + routeName + '"]');
-      if (btn) btn.classList.add('active');
+      map.flyTo(routes[routeName].center, routes[routeName].zoom, { duration: 1.2 });
+      var rbtn = document.querySelector('.route-btn[data-route="'+routeName+'"]');
+      if (rbtn) rbtn.classList.add('active');
     }
   };
+
+  // ===== Mural Side Panel =====
+  var colorBg = { red:'rgba(133,18,23,0.08)', gold:'rgba(89,61,0,0.08)', green:'rgba(59,105,52,0.08)', grey:'rgba(27,28,28,0.08)' };
+
+  window.openMuralPanel = function(mural) {
+    var panel = document.getElementById('mural-panel');
+    var overlay = document.getElementById('mural-panel-overlay');
+    var content = document.getElementById('mural-panel-content');
+    var h = parseFloat(mural.size);
+    var w = parseFloat(mural.size.split('\u00d7')[1]);
+    var area = (h * w).toFixed(1);
+
+    var nextHtml = mural.nextDist
+      ? '<div class="flex items-center gap-3 mt-8 p-4 bg-surface-container-low rounded-sm"><span class="material-symbols-outlined text-tertiary">directions_walk</span><div><p class="text-xs font-bold text-on-surface">距下一幅壁画</p><p class="text-sm text-on-surface-variant">'+mural.nextDist+' · '+mural.nextTime+'</p></div><span class="material-symbols-outlined text-on-surface-variant/40 ml-auto">arrow_forward</span></div>'
+      : '<div class="flex items-center gap-3 mt-8 p-4 rounded-sm" style="background:rgba(133,18,23,0.05);"><span class="material-symbols-outlined text-primary">flag</span><p class="text-xs font-bold text-primary uppercase tracking-widest">壁画寻踪终点 · Trail End</p></div>';
+
+    content.innerHTML =
+      '<div class="mb-6">'+
+        '<div class="flex items-center gap-3 mb-4">'+
+          '<span class="mural-color-tag" style="background:'+colorBg[mural.colorTag]+';color:'+mural.color+';"><span style="width:8px;height:8px;border-radius:2px;background:'+mural.color+';display:inline-block;"></span>'+mural.colorName+'</span>'+
+          '<span class="text-[10px] text-on-surface-variant/50 font-bold tracking-widest">壁画 0'+mural.id+'</span>'+
+        '</div>'+
+        '<h2 class="text-2xl md:text-3xl font-headline font-extrabold text-on-surface mb-1">'+mural.title+'</h2>'+
+        '<p class="text-sm font-headline italic text-on-surface-variant/60">'+mural.titleEn+'</p>'+
+      '</div>'+
+      '<div class="grid grid-cols-3 gap-4 mb-8 py-5 border-y border-outline-variant/20">'+
+        '<div class="mural-stat"><span class="mural-stat-num">'+h+'m</span><span class="mural-stat-label">高度</span></div>'+
+        '<div class="mural-stat"><span class="mural-stat-num">'+w+'m</span><span class="mural-stat-label">宽度</span></div>'+
+        '<div class="mural-stat"><span class="mural-stat-num">'+area+'m\u00b2</span><span class="mural-stat-label">面积</span></div>'+
+      '</div>'+
+      '<div class="flex items-center gap-2 mb-6 text-xs text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:16px;">location_on</span>'+mural.location+'</div>'+
+      '<div class="mb-8"><h3 class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant mb-4">创作故事 The Story</h3>'+
+        '<p class="text-[13px] text-on-surface-variant leading-[1.9] mb-4">'+mural.story+'</p>'+
+        '<p class="text-[13px] text-on-surface-variant leading-[1.9]">'+mural.story2+'</p></div>'+
+      '<div class="mb-8"><h3 class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant mb-4">创作者手记 Creator\'s Note</h3>'+
+        '<div class="mural-quote"><p class="relative z-10">'+mural.quote+'</p>'+
+        '<p class="text-xs text-on-surface-variant/50 mt-3 not-italic">'+mural.quoteAuthor+'</p></div></div>'+
+      '<div class="mb-6"><h3 class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant mb-4">历史关联 Historical Context</h3>'+
+        '<div class="p-4 bg-surface-container-low rounded-sm" style="border-left:3px solid '+mural.color+';"><p class="text-[13px] text-on-surface-variant leading-[1.9]">'+mural.history+'</p></div></div>'+
+      nextHtml;
+
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeMuralPanel = function() {
+    document.getElementById('mural-panel').classList.remove('open');
+    document.getElementById('mural-panel-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMuralPanel(); });
 
   // Responsive map height
   function adjustMapHeight() {
@@ -1549,4 +1796,196 @@ if (window.matchMedia('(pointer: fine)').matches) {
 }
 </script>
 <button id="back-to-top" aria-label="回到顶部"><span class="material-symbols-outlined" style="font-size:22px">keyboard_arrow_up</span></button>
+
+<!-- Particle System -->
+<script>
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [], mouseX = -999, mouseY = -999;
+  const isMobile = window.innerWidth < 768;
+  const COUNT = isMobile ? 40 : 80;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  if (!isMobile) {
+    window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+  }
+
+  function Particle() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.size = Math.random() * 2.5 + 0.8;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3 - 0.1;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.color = Math.random() > 0.6 ? '#593d00' : (Math.random() > 0.5 ? '#851217' : '#3b6934');
+  }
+
+  for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      // Mouse repulsion
+      if (!isMobile) {
+        const dx = p.x - mouseX, dy = p.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          const force = (120 - dist) / 120 * 1.5;
+          p.x += (dx / dist) * force;
+          p.y += (dy / dist) * force;
+        }
+      }
+      p.x += p.speedX;
+      p.y += p.speedY;
+      // Wrap around
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+      // Draw
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(animate);
+  }
+  // Only run when page is visible
+  let running = false;
+  const startParticles = () => { if (!running) { running = true; animate(); } };
+  if (document.visibilityState === 'visible') startParticles();
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') startParticles();
+    else running = false;
+  });
+})();
+</script>
+
+<!-- Counter Animation -->
+<script>
+(function() {
+  const counters = document.querySelectorAll('.counter-num');
+  if (!counters.length) return;
+
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = target > 100 ? 2000 : 1200;
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.round(easeOutExpo(progress) * target);
+      el.textContent = value;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(c => counterObserver.observe(c));
+})();
+</script>
+
+<!-- Typewriter Effect -->
+<script>
+(function() {
+  const el = document.getElementById('typewriter-text');
+  if (!el) return;
+  const text = '守护长城 · 振兴乡村 · 传承文化';
+  let i = 0;
+
+  function type() {
+    if (i <= text.length) {
+      el.innerHTML = text.substring(0, i) + '<span style="border-right:2px solid #851217;padding-right:2px;animation:blink 0.8s infinite;">&#8203;</span>';
+      i++;
+      setTimeout(type, 80 + Math.random() * 40);
+    } else {
+      // Remove cursor after done
+      setTimeout(() => { el.innerHTML = text; }, 1500);
+    }
+  }
+
+  // Start after hero animations finish
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(type, 1200);
+        heroObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  heroObserver.observe(el);
+})();
+</script>
+<style>@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }</style>
+<script>
+// Magnetic button hover effect (desktop only)
+if(window.matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.card-cta, .route-btn, button[onclick*="submit"], a.bg-primary, button.bg-primary').forEach(function(btn){
+    btn.style.transition='transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94)';
+    btn.addEventListener('mousemove',function(e){
+      var r=btn.getBoundingClientRect();
+      var x=e.clientX-r.left-r.width/2;
+      var y=e.clientY-r.top-r.height/2;
+      btn.style.transform='translate('+x*0.15+'px,'+y*0.15+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){
+      btn.style.transform='';
+    });
+  });
+}
+</script>
+<script>
+(function(){
+  var bar=document.getElementById('loader-bar');
+  var loader=document.getElementById('page-loader');
+  if(!bar||!loader)return;
+  bar.style.width='70%';
+  window.addEventListener('load',function(){
+    bar.style.width='100%';
+    setTimeout(function(){
+      loader.style.opacity='0';
+      loader.style.transform='translateY(-20px)';
+      setTimeout(function(){loader.remove();},400);
+    },200);
+  });
+})();
+</script>
+<script>
+function toggleDarkMode(){
+  document.documentElement.classList.add('transitioning');
+  document.documentElement.classList.toggle('dark');
+  var isDark=document.documentElement.classList.contains('dark');
+  localStorage.setItem('xiangtun-dark',isDark?'1':'0');
+  var icon=document.getElementById('dark-mode-icon');
+  if(icon)icon.textContent=isDark?'light_mode':'dark_mode';
+  setTimeout(function(){document.documentElement.classList.remove('transitioning');},350);
+}
+(function(){
+  if(localStorage.getItem('xiangtun-dark')==='1'){
+    document.documentElement.classList.add('dark');
+    var icon=document.getElementById('dark-mode-icon');
+    if(icon)icon.textContent='light_mode';
+  }
+})();
+</script>
 </body></html>
