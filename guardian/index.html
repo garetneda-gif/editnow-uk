@@ -1331,28 +1331,6 @@ function generateCert(name) {
   ctx.fillText('\u8bc1\u4e66\u7f16\u53f7\uff1a' + certId, W - 60, 430);
 
   // ---- 盖章 ----
-  // 弧形文字辅助函数
-  function drawArcText(ctx, str, radius, startAngle, endAngle, isTop) {
-    ctx.save();
-    ctx.fillStyle = 'rgba(133,18,23,0.75)';
-    ctx.font = 'bold 8px Manrope, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    const totalAngle = endAngle - startAngle;
-    const step = totalAngle / (str.length - 1 || 1);
-    for (let i = 0; i < str.length; i++) {
-      const angle = startAngle + step * i;
-      ctx.save();
-      ctx.rotate(angle);
-      ctx.translate(0, -radius);
-      if (isTop) { ctx.rotate(0); }
-      else { ctx.rotate(Math.PI); }
-      ctx.fillText(str[i], 0, 0);
-      ctx.restore();
-    }
-    ctx.restore();
-  }
-
   ctx.save();
   ctx.translate(W - 120, 500);
   ctx.rotate(-0.1);
@@ -1360,31 +1338,50 @@ function generateCert(name) {
   // 外圈
   ctx.strokeStyle = sColor;
   ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.arc(0, 0, 40, 0, Math.PI * 2);
-  ctx.stroke();
+  ctx.beginPath(); ctx.arc(0, 0, 40, 0, Math.PI * 2); ctx.stroke();
   // 内圈
   ctx.lineWidth = 0.8;
-  ctx.beginPath();
-  ctx.arc(0, 0, 34, 0, Math.PI * 2);
-  ctx.stroke();
+  ctx.beginPath(); ctx.arc(0, 0, 34, 0, Math.PI * 2); ctx.stroke();
   // 五角星
   ctx.fillStyle = sColor;
   ctx.beginPath();
   for (let i = 0; i < 5; i++) {
-    const outerA = (i * 2 * Math.PI / 5) - Math.PI / 2;
-    const innerA = outerA + Math.PI / 5;
-    const oR = 10, iR = 4;
-    if (i === 0) ctx.moveTo(Math.cos(outerA) * oR, Math.sin(outerA) * oR);
-    else ctx.lineTo(Math.cos(outerA) * oR, Math.sin(outerA) * oR);
-    ctx.lineTo(Math.cos(innerA) * iR, Math.sin(innerA) * iR);
+    const oA = (i * 2 * Math.PI / 5) - Math.PI / 2;
+    const iA = oA + Math.PI / 5;
+    ctx[i === 0 ? 'moveTo' : 'lineTo'](Math.cos(oA) * 10, Math.sin(oA) * 10);
+    ctx.lineTo(Math.cos(iA) * 4, Math.sin(iA) * 4);
   }
-  ctx.closePath();
-  ctx.fill();
-  // 上弧文字：从左到右沿顶部
-  drawArcText(ctx, 'FOUR COLORS OF XIANGTUN', 28, -Math.PI * 0.82, Math.PI * 0.82, true);
-  // 下弧文字：从左到右沿底部
-  drawArcText(ctx, 'GUARDIAN PROGRAM', 28, Math.PI * 1.22, Math.PI * 0.78 + Math.PI, false);
+  ctx.closePath(); ctx.fill();
+  // 上弧文字
+  ctx.fillStyle = sColor;
+  ctx.font = 'bold 7px Manrope, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  var topStr = 'FOUR COLORS OF XIANGTUN';
+  var topSpan = Math.PI * 1.1;
+  var topStart = -Math.PI / 2 - topSpan / 2;
+  for (var ti = 0; ti < topStr.length; ti++) {
+    var a = topStart + (ti / (topStr.length - 1)) * topSpan;
+    ctx.save();
+    ctx.rotate(a + Math.PI / 2);
+    ctx.translate(0, -29);
+    ctx.fillText(topStr[ti], 0, 0);
+    ctx.restore();
+  }
+  // 下弧文字
+  ctx.font = 'bold 7px Manrope, sans-serif';
+  var btmStr = 'GUARDIAN PROGRAM';
+  var btmSpan = Math.PI * 0.8;
+  var btmStart = Math.PI / 2 + btmSpan / 2;
+  for (var bi = 0; bi < btmStr.length; bi++) {
+    var b = btmStart - (bi / (btmStr.length - 1)) * btmSpan;
+    ctx.save();
+    ctx.rotate(b - Math.PI / 2);
+    ctx.translate(0, 29);
+    ctx.rotate(Math.PI);
+    ctx.fillText(btmStr[bi], 0, 0);
+    ctx.restore();
+  }
   ctx.restore();
 
   // ---- 左下品牌 ----
