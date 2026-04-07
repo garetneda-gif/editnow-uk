@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-180.png">
+<meta charset="utf-8"/>
+<title>个人中心 · My Account | 四色香屯</title>
+<meta name="description" content="查看能量币余额、守护者等级、预约记录和兑换历史。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="个人中心 · My Account | 四色香屯">
+<meta property="og:description" content="查看能量币余额、守护者等级、预约记录和兑换历史。">
+<meta property="og:url" content="https://stitch.editnow.uk/user/">
+<meta property="og:locale" content="zh_CN">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+            background-size: 1200px 900px;
+            background-blend-mode: multiply;
+        }
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+    nav.scrolled {
+        background: rgba(251,249,248,0.95) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    html { scroll-behavior: smooth; zoom: 0.67; }
+    .user-tab { cursor:pointer; padding:8px 16px; font-size:13px; font-weight:700; letter-spacing:0.05em; border:none; background:transparent; color:#8c716e; transition:all 0.3s; border-bottom:2px solid transparent; }
+    .user-tab.active { color:#851217; border-bottom-color:#851217; }
+    .user-tab:hover:not(.active) { color:#58413f; }
+    .history-earn { color:#3b6934; }
+    .history-spend { color:#851217; }
+    .collapsible-header { cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+    .collapsible-header .material-symbols-outlined { transition:transform 0.3s; }
+    .collapsible-header.open .material-symbols-outlined { transform:rotate(180deg); }
+    .collapsible-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+    .collapsible-body.open { max-height:2000px; }
+</style>
+<!-- Chat Widget Styles -->
+<style>
+  #xiangtun-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Manrope', sans-serif;
+  }
+  /* Toggle Button */
+  #xiangtun-chat-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(133,18,23,0.35), 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+  #xiangtun-chat-toggle:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15);
+  }
+  /* Panel */
+  #xiangtun-chat-panel {
+    display: none;
+    width: 400px;
+    max-height: 580px;
+    background: rgba(251,249,248,0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-radius: 16px;
+    box-shadow:
+      0 24px 80px rgba(27,28,28,0.12),
+      0 8px 32px rgba(133,18,23,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 72px;
+    right: 0;
+    animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes chatSlideUp {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  #xiangtun-chat-panel.open { display: flex; }
+  /* Header */
+  #xiangtun-chat-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  #xiangtun-chat-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+  }
+  #xiangtun-chat-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #xiangtun-chat-header > * { position: relative; z-index: 1; }
+  #xiangtun-chat-header h4 {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  #xiangtun-chat-header p {
+    margin: 2px 0 0;
+    font-size: 11px;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+  #xiangtun-chat-header .chat-avatar {
+    font-size: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  #xiangtun-chat-header .chat-close {
+    margin-left: auto;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  #xiangtun-chat-header .chat-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+  }
+  /* Messages */
+  #xiangtun-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 360px;
+    min-height: 200px;
+    background: linear-gradient(180deg, rgba(245,243,243,0.3) 0%, transparent 30%);
+  }
+  #xiangtun-chat-messages::-webkit-scrollbar { width: 4px; }
+  #xiangtun-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  #xiangtun-chat-messages::-webkit-scrollbar-thumb { background: rgba(133,18,23,0.15); border-radius: 4px; }
+  .chat-msg {
+    max-width: 82%;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: break-word;
+    animation: msgFadeIn 0.3s ease both;
+  }
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg.bot {
+    align-self: flex-start;
+    background: rgba(245,243,243,0.8);
+    color: #1b1c1c;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    border-radius: 16px 2px 16px 16px;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.2);
+  }
+  .chat-msg.bot.typing::after {
+    content: '';
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
+  }
+  .chat-msg.bot.typing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '\25CF  \25CF  \25CF';
+    animation: typingPulse 1.4s ease-in-out infinite;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #851217;
+    opacity: 0.5;
+  }
+  @keyframes typingPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  /* Input Area */
+  #xiangtun-chat-input-area {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(251,249,248,0.8);
+    backdrop-filter: blur(8px);
+  }
+  #xiangtun-chat-input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid rgba(140,113,110,0.2);
+    border-radius: 0;
+    padding: 10px 4px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s;
+    color: #1b1c1c;
+  }
+  #xiangtun-chat-input::placeholder { color: rgba(88,65,63,0.4); }
+  #xiangtun-chat-input:focus {
+    border-color: #851217;
+  }
+  #xiangtun-chat-send {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.25);
+    flex-shrink: 0;
+  }
+  #xiangtun-chat-send:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(133,18,23,0.35);
+  }
+  #xiangtun-chat-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  @media (max-width: 480px) {
+    #xiangtun-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      bottom: 68px;
+      max-height: 70vh;
+    }
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+<div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
+  <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
+  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;">
+    <div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+  </div>
+</div>
+
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-16 items-center">
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者 Guardian</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约 Booking</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市 Market</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">个人 Me</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <span class="flex items-center gap-1 text-[#593d00] text-sm font-bold"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity">search</span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者 Guardian</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约 Booking</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市 Market</a>
+        <a class="block text-[#851217] font-medium font-headline py-3" href="index.html">个人 Me</a>
+    </div>
+</nav>
+
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
+
+<!-- Hero Section -->
+<section class="mb-12 md:mb-20 fade-in">
+<div class="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+<!-- Left: Level card -->
+<div class="flex-1 w-full">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">My Account</h3>
+<h1 class="text-4xl md:text-6xl font-headline font-extrabold leading-[0.95] mb-4">个人中心</h1>
+<p class="text-on-surface-variant font-headline italic mb-8">你的守护之旅，一切尽在掌握</p>
+</div>
+<!-- Right: Balance card -->
+<div class="bg-surface-container-low p-8 md:p-10 rounded-sm w-full md:w-80 flex-shrink-0">
+<div class="text-center">
+<span class="material-symbols-outlined text-tertiary mb-2" style="font-size:32px" id="level-icon">person</span>
+<p class="text-xs text-on-surface-variant tracking-widest uppercase mb-1" id="user-level">新访客</p>
+<p class="text-5xl font-headline font-extrabold text-tertiary mb-2" id="user-balance">0</p>
+<p class="text-xs text-on-surface-variant">能量币</p>
+<div class="mt-4 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full transition-all duration-500" id="user-progress" style="width:0%"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2" id="user-next-level">距离下一等级还需 50 能量币</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Tab Navigation -->
+<section class="mb-16 md:mb-32">
+<div class="flex gap-2 mb-10 border-b border-outline-variant/20 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0" role="tablist">
+<button role="tab" aria-selected="true" class="user-tab active whitespace-nowrap" onclick="switchUserTab('coins')">
+<span class="material-symbols-outlined text-sm align-middle mr-1">bolt</span>我的能量币
+</button>
+<button role="tab" aria-selected="false" class="user-tab whitespace-nowrap" onclick="switchUserTab('records')">
+<span class="material-symbols-outlined text-sm align-middle mr-1">receipt_long</span>我的记录
+</button>
+<button role="tab" aria-selected="false" class="user-tab whitespace-nowrap" onclick="switchUserTab('guardian')">
+<span class="material-symbols-outlined text-sm align-middle mr-1">shield</span>守护者档案
+</button>
+</div>
+<div id="tab-content"></div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
+<div class="max-w-xs">
+<a href="/" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+通过现代视觉叙事，守护长城板栗林色彩遗产。
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="/">首页</a></li>
+<li><a class="hover:text-white transition-colors" href="../guardian/index.html">守护者计划</a></li>
+<li><a class="hover:text-white transition-colors" href="../market/index.html">能量集市</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="../booking/index.html">预约游览</a></li>
+<li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 &middot; 挑战杯团队 &middot; 任济坤</p>
+<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<!-- Chat Widget -->
+<div id="xiangtun-chat">
+  <div id="xiangtun-chat-panel">
+    <div id="xiangtun-chat-header">
+      <div class="chat-avatar">&#127983;</div>
+      <div>
+        <h4>香屯小卒</h4>
+        <p>长城脚下的 AI 小兵 &middot; 有问必答</p>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">&#10005;</button>
+    </div>
+    <div id="xiangtun-chat-messages">
+      <div class="chat-msg bot">你好！我是香屯小卒 &#127956;&#65039; 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div>
+    </div>
+    <div id="xiangtun-chat-input-area">
+      <input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off" />
+      <button id="xiangtun-chat-send" onclick="sendMessage()">
+        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+      </button>
+    </div>
+  </div>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
+    <span class="material-symbols-outlined" style="font-size:28px;">chat</span>
+  </button>
+</div>
+
+<!-- Chat Knowledge Base -->
+<script src="../js/chat-knowledge.js"></script>
+<!-- Chat Logic -->
+<script>
+  var SYSTEM_PROMPT = '你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。\n\n你的知识背景：\n- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气\n- 明代为昌镇黄花路西老星口段长城，村民世代守护长城\n- 早在辽代，香屯就是"辽代首钢"的采矿地\n- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地\n- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"\n- 板栗是香屯特产，村中板栗林历史悠久\n- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目\n- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事\n- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)\n\n交互原则：\n- 用亲切、生动的语言，像一位当地老乡在讲故事\n- 回答简洁（2-4句），但内容丰富有趣\n- 适当加入历史典故和文化细节\n- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访\n- 用中文回答';
+
+  var API_URL = 'https://xiangtun-chat.garetneda.workers.dev/api/chat';
+  var chatHistory = [];
+
+  function toggleChat() {
+    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
+    document.getElementById('xiangtun-chat-input').focus();
+  }
+
+  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  function sendMessage() {
+    var input = document.getElementById('xiangtun-chat-input');
+    var msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    appendMessage(msg, 'user');
+    chatHistory.push({ role: 'user', content: msg });
+
+    var typingEl = appendMessage('', 'bot typing');
+    var sendBtn = document.getElementById('xiangtun-chat-send');
+    sendBtn.disabled = true;
+
+    fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT }
+        ].concat(chatHistory.slice(-10))
+      })
+    }).then(function(resp) {
+      if (!resp.ok) throw new Error('API error');
+      return resp.json();
+    }).then(function(data) {
+      var reply = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '抱歉，我暂时无法回答，请稍后再试~';
+      typingEl.remove();
+      appendMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    }).catch(function() {
+      typingEl.remove();
+      appendMessage('网络连接中断了，请检查网络后重试', 'bot');
+    }).finally(function() {
+      sendBtn.disabled = false;
+    });
+  }
+
+  function appendMessage(text, cls) {
+    var container = document.getElementById('xiangtun-chat-messages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + cls;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+</script>
+
+<!-- Energy Store -->
+<script src="../js/energy-store.js"></script>
+
+<!-- User Center Page Logic -->
+<script>
+var currentUserTab = 'coins';
+
+function switchUserTab(tab) {
+  currentUserTab = tab;
+  document.querySelectorAll('.user-tab').forEach(function(btn) {
+    var isActive = (tab === 'coins' && btn.textContent.includes('能量币')) ||
+                   (tab === 'records' && btn.textContent.includes('记录')) ||
+                   (tab === 'guardian' && btn.textContent.includes('守护者'));
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  renderTabContent();
+}
+
+function renderTabContent() {
+  var container = document.getElementById('tab-content');
+  container.innerHTML = '';
+  if (currentUserTab === 'coins') renderCoinsTab(container);
+  else if (currentUserTab === 'records') renderRecordsTab(container);
+  else if (currentUserTab === 'guardian') renderGuardianTab(container);
+}
+
+function renderCoinsTab(container) {
+  var data = EnergyStore.getData();
+  if (data.history.length === 0) {
+    renderEmptyState(container, 'savings', '还没有能量币记录', '去守护者页开始你的第一个任务！', '../guardian/index.html');
+    return;
+  }
+
+  var table = document.createElement('div');
+  table.className = 'space-y-3';
+
+  var sorted = data.history.slice().sort(function(a, b) { return new Date(b.time) - new Date(a.time); });
+
+  sorted.forEach(function(entry) {
+    var row = document.createElement('div');
+    row.className = 'flex items-center justify-between py-4 px-6 bg-surface-container-low rounded-sm';
+
+    var left = document.createElement('div');
+    var reason = document.createElement('p');
+    reason.className = 'text-sm font-medium';
+    reason.textContent = entry.reason;
+    left.appendChild(reason);
+
+    var time = document.createElement('p');
+    time.className = 'text-xs text-on-surface-variant mt-1';
+    time.textContent = new Date(entry.time).toLocaleString('zh-CN');
+    left.appendChild(time);
+
+    var amount = document.createElement('span');
+    amount.className = 'font-bold text-lg ' + (entry.amount > 0 ? 'history-earn' : 'history-spend');
+    amount.textContent = (entry.amount > 0 ? '+' : '') + entry.amount;
+
+    row.appendChild(left);
+    row.appendChild(amount);
+    table.appendChild(row);
+  });
+
+  container.appendChild(table);
+}
+
+function renderRecordsTab(container) {
+  var bookings = EnergyStore.getBookings();
+  var redemptions = EnergyStore.getRedemptions();
+
+  renderCollapsible(container, '我的预约', 'event', bookings, function(item) {
+    return item.routeName + ' \u00B7 ' + item.date + ' ' + (item.period === 'morning' ? '上午' : '下午');
+  }, function(item) {
+    return '预约编号: ' + item.id + ' \u00B7 ' + item.visitors + '人 \u00B7 ' + new Date(item.time).toLocaleString('zh-CN');
+  }, '暂无预约记录', '预约一次游览即可获得 15 能量币', '../booking/index.html');
+
+  renderCollapsible(container, '我的兑换', 'redeem', redemptions, function(item) {
+    return item.productName;
+  }, function(item) {
+    return '凭证: ' + item.id + ' \u00B7 消耗 ' + item.cost + ' 能量币 \u00B7 ' + new Date(item.time).toLocaleString('zh-CN');
+  }, '暂无兑换记录', '去能量集市看看有什么可以兑换', '../market/index.html');
+}
+
+function renderCollapsible(container, title, icon, items, primaryFn, secondaryFn, emptyTitle, emptyHint, emptyLink) {
+  var section = document.createElement('div');
+  section.className = 'mb-8';
+
+  var header = document.createElement('div');
+  header.className = 'collapsible-header open';
+  header.innerHTML = '<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">' + icon + '</span><h3 class="font-headline font-bold text-lg">' + title + ' (' + items.length + ')</h3></div><span class="material-symbols-outlined text-on-surface-variant">expand_more</span>';
+
+  var body = document.createElement('div');
+  body.className = 'collapsible-body open';
+
+  header.onclick = function() {
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  };
+  section.appendChild(header);
+
+  if (items.length === 0) {
+    var empty = document.createElement('div');
+    empty.className = 'text-center py-10 bg-surface-container-low rounded-sm';
+    var emptyIcon = document.createElement('span');
+    emptyIcon.className = 'material-symbols-outlined text-4xl text-outline-variant mb-3 block';
+    emptyIcon.textContent = icon;
+    empty.appendChild(emptyIcon);
+    var emptyP = document.createElement('p');
+    emptyP.className = 'text-sm text-on-surface-variant mb-2';
+    emptyP.textContent = emptyTitle;
+    empty.appendChild(emptyP);
+    var emptyA = document.createElement('a');
+    emptyA.href = emptyLink;
+    emptyA.className = 'text-sm text-primary hover:underline';
+    emptyA.textContent = emptyHint + ' \u2192';
+    empty.appendChild(emptyA);
+    body.appendChild(empty);
+  } else {
+    var list = document.createElement('div');
+    list.className = 'space-y-3';
+    items.sort(function(a, b) { return new Date(b.time) - new Date(a.time); }).forEach(function(item) {
+      var card = document.createElement('div');
+      card.className = 'bg-surface-container-low p-5 rounded-sm';
+      var p1 = document.createElement('p');
+      p1.className = 'font-medium text-sm';
+      p1.textContent = primaryFn(item);
+      card.appendChild(p1);
+      var p2 = document.createElement('p');
+      p2.className = 'text-xs text-on-surface-variant mt-1';
+      p2.textContent = secondaryFn(item);
+      card.appendChild(p2);
+      list.appendChild(card);
+    });
+    body.appendChild(list);
+  }
+
+  section.appendChild(body);
+  container.appendChild(section);
+}
+
+function renderGuardianTab(container) {
+  var data = EnergyStore.getData();
+  var level = EnergyStore.getLevelInfo(data.coins);
+
+  var levelCard = document.createElement('div');
+  levelCard.className = 'bg-surface-container-low p-8 rounded-sm mb-8 text-center';
+
+  var iconEl = document.createElement('span');
+  iconEl.className = 'material-symbols-outlined text-primary mb-3';
+  iconEl.style.fontSize = '48px';
+  iconEl.textContent = level.icon;
+  levelCard.appendChild(iconEl);
+
+  var levelName = document.createElement('h3');
+  levelName.className = 'font-headline font-bold text-2xl mb-2';
+  levelName.textContent = level.name;
+  levelCard.appendChild(levelName);
+
+  var totalEarned = 0;
+  data.history.forEach(function(h) { if (h.amount > 0) totalEarned += h.amount; });
+  var stats = document.createElement('p');
+  stats.className = 'text-sm text-on-surface-variant';
+  stats.textContent = '累计赚取 ' + totalEarned + ' 能量币';
+  levelCard.appendChild(stats);
+
+  container.appendChild(levelCard);
+
+  var badgeSection = document.createElement('div');
+  badgeSection.className = 'mb-8';
+  var badgeTitle = document.createElement('h4');
+  badgeTitle.className = 'font-headline font-bold text-lg mb-4';
+  badgeTitle.textContent = '徽章成就';
+  badgeSection.appendChild(badgeTitle);
+
+  var hasPledge = data.history.some(function(h) { return h.reason === '签署保护倡议'; });
+  var hasQuiz = data.history.some(function(h) { return h.reason && h.reason.indexOf('知识问答') === 0; });
+  var hasTask = data.history.some(function(h) { return h.reason && (h.reason.indexOf('打卡') !== -1 || h.reason.indexOf('分享') !== -1); });
+
+  var badges = [
+    { name: '签署倡议', icon: 'handshake', earned: hasPledge, color: '#851217' },
+    { name: '知识达人', icon: 'school', earned: hasQuiz, color: '#3b6934' },
+    { name: '行动派', icon: 'hiking', earned: hasTask, color: '#593d00' }
+  ];
+
+  var badgeGrid = document.createElement('div');
+  badgeGrid.className = 'grid grid-cols-3 gap-4';
+  badges.forEach(function(badge) {
+    var el = document.createElement('div');
+    el.className = 'text-center p-6 rounded-sm ' + (badge.earned ? 'bg-surface-container-low' : 'bg-surface-container-low opacity-30');
+    var icon = document.createElement('span');
+    icon.className = 'material-symbols-outlined mb-2';
+    icon.style.cssText = 'font-size:32px;color:' + (badge.earned ? badge.color : '#8c716e');
+    icon.textContent = badge.icon;
+    el.appendChild(icon);
+    var name = document.createElement('p');
+    name.className = 'text-xs font-bold tracking-wider';
+    name.textContent = badge.name;
+    el.appendChild(name);
+    badgeGrid.appendChild(el);
+  });
+  badgeSection.appendChild(badgeGrid);
+  container.appendChild(badgeSection);
+
+  if (data.history.length === 0) {
+    renderEmptyState(container, 'shield', '签署保护倡议，开启你的守护之旅', '前往守护者页面', '../guardian/index.html');
+  }
+}
+
+function renderEmptyState(container, icon, title, linkText, linkHref) {
+  var el = document.createElement('div');
+  el.className = 'text-center py-16';
+  var iconEl = document.createElement('span');
+  iconEl.className = 'material-symbols-outlined text-6xl text-outline-variant mb-4 block';
+  iconEl.textContent = icon;
+  el.appendChild(iconEl);
+  var p = document.createElement('p');
+  p.className = 'text-on-surface-variant font-headline italic mb-4';
+  p.textContent = title;
+  el.appendChild(p);
+  var a = document.createElement('a');
+  a.href = linkHref;
+  a.className = 'inline-block px-6 py-2 bg-primary text-on-primary rounded-xl text-sm font-bold tracking-wider hover:opacity-90 transition-opacity';
+  a.textContent = linkText + ' \u2192';
+  el.appendChild(a);
+  container.appendChild(el);
+}
+
+function updateUserHero() {
+  var data = EnergyStore.getData();
+  var level = EnergyStore.getLevelInfo(data.coins);
+  document.getElementById('user-balance').textContent = data.coins;
+  document.getElementById('user-level').textContent = level.name;
+  document.getElementById('level-icon').textContent = level.icon;
+  document.getElementById('user-progress').style.width = level.progress + '%';
+  if (level.next) {
+    document.getElementById('user-next-level').textContent = '距离下一等级还需 ' + (level.next - data.coins) + ' 能量币';
+  } else {
+    document.getElementById('user-next-level').textContent = '已达最高等级';
+  }
+}
+
+function updateNavBalance() {
+  var el = document.getElementById('nav-balance');
+  if (el) el.textContent = EnergyStore.getBalance();
+}
+
+window.addEventListener('energy-changed', function() {
+  updateNavBalance();
+  updateUserHero();
+  renderTabContent();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  updateNavBalance();
+  updateUserHero();
+  renderTabContent();
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in, .scale-in').forEach(function(el) { observer.observe(el); });
+
+  window.addEventListener('scroll', function() {
+    var nav = document.querySelector('nav');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+});
+</script>
+
+<!-- Page Loader -->
+<script>
+(function(){
+  var bar=document.getElementById('loader-bar');
+  var loader=document.getElementById('page-loader');
+  if(!bar||!loader)return;
+  bar.style.width='70%';
+  window.addEventListener('load',function(){
+    bar.style.width='100%';
+    setTimeout(function(){
+      loader.style.opacity='0';
+      loader.style.transform='translateY(-20px)';
+      setTimeout(function(){loader.remove();},400);
+    },200);
+  });
+})();
+</script>
+</body>
+</html>

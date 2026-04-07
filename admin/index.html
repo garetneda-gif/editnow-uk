@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-180.png">
+<meta charset="utf-8"/>
+<title>管理仪表板 · Admin Dashboard | 四色香屯</title>
+<meta name="description" content="四色香屯管理仪表板 — 村委会/运营方数据一览。">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="robots" content="noindex, nofollow">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+        background-size: 1200px 900px;
+        background-blend-mode: multiply;
+    }
+    /* 丝滑滚动渐入 */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    html { scroll-behavior: smooth; zoom: 0.67; }
+
+    /* Login overlay */
+    .login-overlay {
+        position: fixed; inset: 0; z-index: 9999;
+        background: #fbf9f8;
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.5s ease;
+    }
+    .login-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    /* Stat card */
+    .stat-card {
+        background: #f5f3f3;
+        padding: 24px;
+        border-radius: 2px;
+        text-align: center;
+    }
+    .stat-card .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        font-family: 'Newsreader', serif;
+    }
+
+    /* CSS bar chart */
+    .bar-chart { display: flex; align-items: flex-end; gap: 12px; height: 160px; padding-top: 8px; }
+    .bar-chart .bar {
+        flex: 1;
+        border-radius: 2px 2px 0 0;
+        position: relative;
+        min-height: 4px;
+        transition: height 0.6s ease;
+    }
+    .bar-chart .bar-label {
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        color: #58413f;
+        white-space: nowrap;
+    }
+    .bar-chart .bar-value {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        font-weight: 700;
+        color: #1b1c1c;
+    }
+
+    /* CSS pie chart (conic-gradient) */
+    .pie-chart {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        position: relative;
+    }
+    .pie-legend { list-style: none; padding: 0; }
+    .pie-legend li {
+        display: flex; align-items: center; gap: 8px;
+        font-size: 13px; color: #58413f;
+        margin-bottom: 8px;
+    }
+    .pie-legend .dot {
+        width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* Table */
+    .admin-table { width: 100%; border-collapse: collapse; }
+    .admin-table th {
+        text-align: left;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #8c716e;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(224,191,188,0.2);
+    }
+    .admin-table td {
+        font-size: 14px;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(224,191,188,0.1);
+        color: #1b1c1c;
+    }
+</style>
+</head>
+<body class="font-body bg-background text-on-background paper-texture min-h-screen">
+
+<!-- 管理导航栏 -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+<div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+<a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">管理仪表板 Admin Dashboard</span>
+<a href="../index.html" class="text-sm text-primary hover:underline">&larr; 返回首页</a>
+</div>
+</nav>
+
+<!-- 登录遮罩 -->
+<div class="login-overlay" id="login-overlay">
+<div class="text-center max-w-sm w-full px-8">
+<span class="material-symbols-outlined text-primary mb-6 block" style="font-size:48px">admin_panel_settings</span>
+<h2 class="font-headline font-bold text-2xl mb-2">管理仪表板</h2>
+<p class="text-sm text-on-surface-variant mb-8">请输入管理密码</p>
+<input type="password" id="admin-password" placeholder="管理密码"
+  class="w-full px-4 py-3 bg-surface-container-low rounded-sm text-center text-lg tracking-widest border-none outline-none focus:ring-2 focus:ring-primary/20 mb-4"
+  onkeydown="if(event.key==='Enter')attemptLogin()">
+<button onclick="attemptLogin()" class="w-full py-3 bg-primary text-on-primary rounded-xl text-sm font-bold tracking-wider hover:opacity-90 transition-opacity">
+进入
+</button>
+<p id="login-error" class="text-xs text-error mt-4 hidden">密码错误</p>
+</div>
+</div>
+
+<!-- 仪表板主体（登录后显示） -->
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative" id="dashboard" style="display:none">
+
+<!-- Hero -->
+<section class="mb-12 fade-in">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Admin Dashboard</h3>
+<h1 class="text-4xl md:text-5xl font-headline font-extrabold leading-[0.95] mb-4">管理仪表板</h1>
+<p class="text-on-surface-variant font-headline italic">村委会 / 运营方数据一览</p>
+</section>
+
+<!-- 4 统计卡片 -->
+<section class="mb-12 md:mb-20 fade-in">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+<div class="stat-card">
+<span class="material-symbols-outlined text-tertiary mb-2" style="font-size:28px">bolt</span>
+<p class="stat-number text-tertiary" id="stat-coins">0</p>
+<p class="text-xs text-on-surface-variant tracking-wider uppercase mt-1">能量币总量</p>
+</div>
+<div class="stat-card">
+<span class="material-symbols-outlined text-secondary mb-2" style="font-size:28px">event</span>
+<p class="stat-number text-secondary" id="stat-bookings">0</p>
+<p class="text-xs text-on-surface-variant tracking-wider uppercase mt-1">预约总数</p>
+</div>
+<div class="stat-card">
+<span class="material-symbols-outlined text-primary mb-2" style="font-size:28px">redeem</span>
+<p class="stat-number text-primary" id="stat-redemptions">0</p>
+<p class="text-xs text-on-surface-variant tracking-wider uppercase mt-1">兑换总数</p>
+</div>
+<div class="stat-card">
+<span class="material-symbols-outlined text-[#58413f] mb-2" style="font-size:28px">handshake</span>
+<p class="stat-number text-[#58413f]" id="stat-pledges">0</p>
+<p class="text-xs text-on-surface-variant tracking-wider uppercase mt-1">签署人数</p>
+</div>
+</div>
+</section>
+
+<!-- 图表区域 -->
+<section class="mb-12 md:mb-20 fade-in">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 柱状图：能量币来源 -->
+<div class="bg-surface-container-low p-8 rounded-sm">
+<h3 class="font-headline font-bold text-lg mb-6">能量币来源分布</h3>
+<div class="bar-chart" id="source-chart"></div>
+<div class="h-6"></div>
+</div>
+<!-- 饼图：收支概况 -->
+<div class="bg-surface-container-low p-8 rounded-sm">
+<h3 class="font-headline font-bold text-lg mb-6">能量币收支概况</h3>
+<div class="flex items-center gap-8">
+<div class="pie-chart" id="pie-chart"></div>
+<ul class="pie-legend" id="pie-legend"></ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 最近预约 -->
+<section class="mb-12 md:mb-20 fade-in">
+<div class="bg-surface-container-low p-8 rounded-sm">
+<h3 class="font-headline font-bold text-lg mb-6">最近预约</h3>
+<div class="overflow-x-auto">
+<table class="admin-table" id="bookings-table">
+<thead><tr>
+<th>编号</th><th>路线</th><th>日期</th><th>时段</th><th>人数</th><th>电话</th><th>预约时间</th>
+</tr></thead>
+<tbody id="bookings-tbody"></tbody>
+</table>
+</div>
+<p class="text-xs text-on-surface-variant mt-4 text-center hidden" id="no-bookings">暂无预约记录</p>
+</div>
+</section>
+
+<!-- 最近兑换 -->
+<section class="mb-12 md:mb-20 fade-in">
+<div class="bg-surface-container-low p-8 rounded-sm">
+<h3 class="font-headline font-bold text-lg mb-6">最近兑换</h3>
+<div class="overflow-x-auto">
+<table class="admin-table" id="redemptions-table">
+<thead><tr>
+<th>凭证编号</th><th>商品</th><th>消耗能量币</th><th>兑换时间</th>
+</tr></thead>
+<tbody id="redemptions-tbody"></tbody>
+</table>
+</div>
+<p class="text-xs text-on-surface-variant mt-4 text-center hidden" id="no-redemptions">暂无兑换记录</p>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-12 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 &middot; 管理仪表板</p>
+<p>&ldquo;青振京郊&rdquo;乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<script src="../js/energy-store.js"></script>
+<script>
+// Login
+function attemptLogin() {
+  var pwd = document.getElementById('admin-password').value;
+  if (pwd === 'xiangtun2026') {
+    sessionStorage.setItem('xiangtun_admin', '1');
+    showDashboard();
+  } else {
+    document.getElementById('login-error').classList.remove('hidden');
+    document.getElementById('admin-password').value = '';
+    document.getElementById('admin-password').focus();
+  }
+}
+
+function showDashboard() {
+  document.getElementById('login-overlay').classList.add('hidden');
+  document.getElementById('dashboard').style.display = '';
+  loadDashboardData();
+}
+
+function loadDashboardData() {
+  var stats = EnergyStore.getStats();
+
+  // Stat cards
+  document.getElementById('stat-coins').textContent = stats.totalEarned;
+  document.getElementById('stat-bookings').textContent = stats.bookings;
+  document.getElementById('stat-redemptions').textContent = stats.redemptions;
+  document.getElementById('stat-pledges').textContent = stats.pledgeCount;
+
+  // Bar chart: earn sources
+  renderBarChart(stats.earnSources);
+
+  // Pie chart: earn vs spend
+  renderPieChart(stats.totalEarned, stats.totalSpent);
+
+  // Tables
+  renderBookingsTable();
+  renderRedemptionsTable();
+}
+
+function renderBarChart(sources) {
+  var chart = document.getElementById('source-chart');
+  chart.innerHTML = '';
+  var keys = Object.keys(sources);
+  if (keys.length === 0) {
+    chart.style.height = 'auto';
+    var p = document.createElement('p');
+    p.className = 'text-sm text-on-surface-variant text-center py-8';
+    p.textContent = '暂无数据';
+    chart.appendChild(p);
+    return;
+  }
+
+  var max = Math.max.apply(null, keys.map(function(k) { return sources[k]; }));
+  var colors = { '签署倡议': '#851217', '知识问答': '#3b6934', '任务打卡': '#593d00', '分享传播': '#58413f', '预约游览': '#775300', '其他': '#8c716e' };
+
+  keys.forEach(function(key) {
+    var bar = document.createElement('div');
+    bar.className = 'bar';
+    var pct = max > 0 ? (sources[key] / max) * 100 : 0;
+    bar.style.height = Math.max(pct, 3) + '%';
+    bar.style.background = colors[key] || '#8c716e';
+
+    var label = document.createElement('span');
+    label.className = 'bar-label';
+    label.textContent = key;
+    bar.appendChild(label);
+
+    var value = document.createElement('span');
+    value.className = 'bar-value';
+    value.textContent = sources[key];
+    bar.appendChild(value);
+
+    chart.appendChild(bar);
+  });
+}
+
+function renderPieChart(earned, spent) {
+  var pie = document.getElementById('pie-chart');
+  var legend = document.getElementById('pie-legend');
+  pie.innerHTML = '';
+  legend.innerHTML = '';
+
+  var total = earned + spent;
+  if (total === 0) {
+    pie.style.background = '#eae8e7';
+    var li = document.createElement('li');
+    li.textContent = '暂无数据';
+    legend.appendChild(li);
+    return;
+  }
+
+  var earnPct = (earned / total) * 100;
+  pie.style.background = 'conic-gradient(#3b6934 0% ' + earnPct + '%, #851217 ' + earnPct + '% 100%)';
+
+  var items = [
+    { color: '#3b6934', label: '赚取 ' + earned },
+    { color: '#851217', label: '消费 ' + spent }
+  ];
+  items.forEach(function(item) {
+    var li = document.createElement('li');
+    var dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.style.background = item.color;
+    li.appendChild(dot);
+    var text = document.createTextNode(item.label);
+    li.appendChild(text);
+    legend.appendChild(li);
+  });
+}
+
+function renderBookingsTable() {
+  var bookings = EnergyStore.getBookings();
+  var tbody = document.getElementById('bookings-tbody');
+  tbody.innerHTML = '';
+
+  if (bookings.length === 0) {
+    document.getElementById('no-bookings').classList.remove('hidden');
+    return;
+  }
+
+  bookings.sort(function(a, b) { return new Date(b.time) - new Date(a.time); }).slice(0, 20).forEach(function(b) {
+    var tr = document.createElement('tr');
+    var fields = [b.id, b.routeName || b.route, b.date, b.period === 'morning' ? '上午' : '下午', b.visitors, b.phone, new Date(b.time).toLocaleString('zh-CN')];
+    fields.forEach(function(val) {
+      var td = document.createElement('td');
+      td.textContent = val || '-';
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
+
+function renderRedemptionsTable() {
+  var redemptions = EnergyStore.getRedemptions();
+  var tbody = document.getElementById('redemptions-tbody');
+  tbody.innerHTML = '';
+
+  if (redemptions.length === 0) {
+    document.getElementById('no-redemptions').classList.remove('hidden');
+    return;
+  }
+
+  redemptions.sort(function(a, b) { return new Date(b.time) - new Date(a.time); }).slice(0, 20).forEach(function(r) {
+    var tr = document.createElement('tr');
+    var fields = [r.id, r.productName, r.cost + ' 能量币', new Date(r.time).toLocaleString('zh-CN')];
+    fields.forEach(function(val) {
+      var td = document.createElement('td');
+      td.textContent = val;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', function() {
+  if (sessionStorage.getItem('xiangtun_admin') === '1') {
+    showDashboard();
+  } else {
+    document.getElementById('admin-password').focus();
+  }
+
+  // Scroll observer
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+});
+</script>
+</body>
+</html>

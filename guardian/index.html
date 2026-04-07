@@ -1042,6 +1042,16 @@
 </script>
 
 <script src="../js/energy-store.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('nav-balance');
+  if (el && typeof EnergyStore !== 'undefined') el.textContent = EnergyStore.getBalance();
+});
+window.addEventListener('energy-changed', function() {
+  var el = document.getElementById('nav-balance');
+  if (el && typeof EnergyStore !== 'undefined') el.textContent = EnergyStore.getBalance();
+});
+</script>
 <!-- Guardian Page Logic -->
 <script>
 // =============================================

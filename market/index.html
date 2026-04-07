@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-180.png">
+<meta charset="utf-8"/>
+<title>能量集市 · Energy Market | 四色香屯</title>
+<meta name="description" content="用能量币兑换板栗茶、文创周边、戍边餐等特色体验，在守护中收获。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="能量集市 · Energy Market | 四色香屯">
+<meta property="og:description" content="用能量币兑换板栗茶、文创周边、戍边餐等特色体验，在守护中收获。">
+<meta property="og:url" content="https://stitch.editnow.uk/market/">
+<meta property="og:locale" content="zh_CN">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+            background-size: 1200px 900px;
+            background-blend-mode: multiply;
+        }
+    /* 丝滑滚动渐入 */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+    /* 导航栏滚动变化 */
+    nav.scrolled {
+        background: rgba(251,249,248,0.95) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    html { scroll-behavior: smooth; zoom: 0.67; }
+    /* ink-tag */
+    .ink-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      background: rgba(255,222,170,0.3);
+      color: #593d00;
+    }
+    /* Product card */
+    .product-card {
+      transition: background-color 0.5s ease;
+    }
+    .product-card:hover {
+      background-color: #eae8e7;
+    }
+    .product-card.redeemed {
+      opacity: 0.6;
+      position: relative;
+    }
+    .product-card.redeemed::after {
+      content: '已兑换';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #851217;
+      color: white;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transform: rotate(3deg);
+    }
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(27,28,28,0.5);
+      backdrop-filter: blur(12px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      background: #fbf9f8;
+      max-width: 480px;
+      width: calc(100% - 32px);
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 32px 64px rgba(27,28,28,0.08);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+    /* Tab styling */
+    .tab-btn { cursor: pointer; border: none; transition: all 0.3s; }
+    .tab-btn.active { background: rgba(89,61,0,0.15); color: #593d00; }
+    .tab-btn:not(.active) { background: rgba(89,61,0,0.05); color: #8c716e; }
+    .tab-btn:hover:not(.active) { background: rgba(89,61,0,0.1); }
+</style>
+<!-- Chat Widget Styles -->
+<style>
+  #xiangtun-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Manrope', sans-serif;
+  }
+  /* Toggle Button */
+  #xiangtun-chat-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(133,18,23,0.35), 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+  #xiangtun-chat-toggle:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15);
+  }
+  /* Panel */
+  #xiangtun-chat-panel {
+    display: none;
+    width: 400px;
+    max-height: 580px;
+    background: rgba(251,249,248,0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-radius: 16px;
+    box-shadow:
+      0 24px 80px rgba(27,28,28,0.12),
+      0 8px 32px rgba(133,18,23,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 72px;
+    right: 0;
+    animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes chatSlideUp {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  #xiangtun-chat-panel.open { display: flex; }
+  /* Header */
+  #xiangtun-chat-header {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  #xiangtun-chat-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+  }
+  #xiangtun-chat-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #xiangtun-chat-header > * { position: relative; z-index: 1; }
+  #xiangtun-chat-header h4 {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  #xiangtun-chat-header p {
+    margin: 2px 0 0;
+    font-size: 11px;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+  #xiangtun-chat-header .chat-avatar {
+    font-size: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  #xiangtun-chat-header .chat-close {
+    margin-left: auto;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  #xiangtun-chat-header .chat-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(90deg);
+  }
+  /* Messages */
+  #xiangtun-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 360px;
+    min-height: 200px;
+    background: linear-gradient(180deg, rgba(245,243,243,0.3) 0%, transparent 30%);
+  }
+  #xiangtun-chat-messages::-webkit-scrollbar { width: 4px; }
+  #xiangtun-chat-messages::-webkit-scrollbar-track { background: transparent; }
+  #xiangtun-chat-messages::-webkit-scrollbar-thumb { background: rgba(133,18,23,0.15); border-radius: 4px; }
+  .chat-msg {
+    max-width: 82%;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: break-word;
+    animation: msgFadeIn 0.3s ease both;
+  }
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .chat-msg.bot {
+    align-self: flex-start;
+    background: rgba(245,243,243,0.8);
+    color: #1b1c1c;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .chat-msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    border-radius: 16px 2px 16px 16px;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.2);
+  }
+  .chat-msg.bot.typing::after {
+    content: '';
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
+  }
+  .chat-msg.bot.typing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chat-msg.bot.typing::after {
+    content: '\25CF  \25CF  \25CF';
+    animation: typingPulse 1.4s ease-in-out infinite;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #851217;
+    opacity: 0.5;
+  }
+  @keyframes typingPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  /* Input Area */
+  #xiangtun-chat-input-area {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(251,249,248,0.8);
+    backdrop-filter: blur(8px);
+  }
+  #xiangtun-chat-input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid rgba(140,113,110,0.2);
+    border-radius: 0;
+    padding: 10px 4px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s;
+    color: #1b1c1c;
+  }
+  #xiangtun-chat-input::placeholder { color: rgba(88,65,63,0.4); }
+  #xiangtun-chat-input:focus {
+    border-color: #851217;
+  }
+  #xiangtun-chat-send {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #851217, #a62c2b);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(133,18,23,0.25);
+    flex-shrink: 0;
+  }
+  #xiangtun-chat-send:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(133,18,23,0.35);
+  }
+  #xiangtun-chat-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  @media (max-width: 480px) {
+    #xiangtun-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      bottom: 68px;
+      max-height: 70vh;
+    }
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+<div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
+  <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
+  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;">
+    <div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+  </div>
+</div>
+
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+<div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+<a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+<div class="hidden md:flex gap-12 items-center">
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者 Guardian</a>
+<a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">集市 Market</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约 Booking</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../user/index.html">个人 Me</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
+<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+<button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者 Guardian</a>
+<a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">集市 Market</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约 Booking</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3" href="../user/index.html">个人 Me</a>
+</div>
+</nav>
+
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
+
+<!-- ============================================ -->
+<!-- HERO SECTION                                 -->
+<!-- ============================================ -->
+<section class="mb-16 md:mb-32 fade-in">
+<div class="flex flex-col items-center text-center mb-16">
+<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Energy Market</h3>
+<h1 class="text-4xl md:text-7xl font-headline font-extrabold leading-[0.95] mb-6" style="color:#593d00">能量集市</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed font-headline italic">
+守护长城，收获能量。用你的行动兑换来自香屯的特色体验。
+</p>
+<div class="h-1 w-24 bg-tertiary mt-8"></div>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PRODUCT TABS + GRID                          -->
+<!-- ============================================ -->
+<section class="mb-16 md:mb-32">
+<div class="flex gap-3 mb-12 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0" role="tablist">
+<button role="tab" aria-selected="true" class="tab-btn active ink-tag whitespace-nowrap" onclick="switchTab('goods')">
+<span class="material-symbols-outlined text-sm align-middle mr-1">park</span>金色良品
+</button>
+<button role="tab" aria-selected="false" class="tab-btn ink-tag whitespace-nowrap" onclick="switchTab('creative')">
+<span class="material-symbols-outlined text-sm align-middle mr-1">palette</span>四色文创
+</button>
+<button role="tab" aria-selected="false" class="tab-btn ink-tag whitespace-nowrap" onclick="switchTab('meal')">
+<span class="material-symbols-outlined text-sm align-middle mr-1">restaurant</span>戍边餐预订
+</button>
+</div>
+
+<div id="product-grid"></div>
+</section>
+
+<!-- ============================================ -->
+<!-- REDEEM MODAL                                 -->
+<!-- ============================================ -->
+<div class="modal-overlay" id="redeem-modal">
+<div class="modal-card" role="dialog" aria-modal="true">
+<div id="modal-content"></div>
+</div>
+</div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
+<div class="max-w-xs">
+<a href="/" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+通过现代视觉叙事，守护长城板栗林色彩遗产。
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="/">首页</a></li>
+<li><a class="hover:text-white transition-colors" href="../guardian/index.html">守护者</a></li>
+<li><a class="hover:text-white transition-colors" href="index.html">能量集市</a></li>
+<li><a class="hover:text-white transition-colors" href="../booking/index.html">预约游览</a></li>
+<li><a class="hover:text-white transition-colors" href="../user/index.html">个人中心</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:support@editnow.uk">联系我们</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 · 挑战杯团队 · 任济坤</p>
+<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<!-- Chat Widget -->
+<div id="xiangtun-chat">
+  <div id="xiangtun-chat-panel">
+    <div id="xiangtun-chat-header">
+      <div class="chat-avatar">🏯</div>
+      <div>
+        <h4>香屯小卒</h4>
+        <p>长城脚下的 AI 小兵 · 有问必答</p>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div id="xiangtun-chat-messages">
+      <div class="chat-msg bot">你好！我是香屯小卒 🏔️ 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div>
+    </div>
+    <div id="xiangtun-chat-input-area">
+      <input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off" />
+      <button id="xiangtun-chat-send" onclick="sendMessage()">
+        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+      </button>
+    </div>
+  </div>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
+    <span class="material-symbols-outlined" style="font-size:28px;">chat</span>
+  </button>
+</div>
+
+<!-- Chat Logic -->
+<script>
+  const SYSTEM_PROMPT = `你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。
+
+你的知识背景：
+- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气
+- 明代为昌镇黄花路西老星口段长城，村民世代守护长城
+- 早在辽代，香屯就是"辽代首钢"的采矿地
+- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地
+- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"
+- 板栗是香屯特产，村中板栗林历史悠久
+- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目
+- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事
+- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)
+
+交互原则：
+- 用亲切、生动的语言，像一位当地老乡在讲故事
+- 回答简洁（2-4句），但内容丰富有趣
+- 适当加入历史典故和文化细节
+- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访
+- 用中文回答`;
+
+  const API_URL = 'https://xiangtun-chat.garetneda.workers.dev/api/chat';
+  let chatHistory = [];
+
+  function toggleChat() {
+    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
+    document.getElementById('xiangtun-chat-input').focus();
+  }
+
+  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  async function sendMessage() {
+    const input = document.getElementById('xiangtun-chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    appendMessage(msg, 'user');
+    chatHistory.push({ role: 'user', content: msg });
+
+    const typingEl = appendMessage('', 'bot typing');
+    const sendBtn = document.getElementById('xiangtun-chat-send');
+    sendBtn.disabled = true;
+
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...chatHistory.slice(-10)
+          ]
+        })
+      });
+
+      if (!resp.ok) throw new Error('API error');
+      const data = await resp.json();
+      const reply = data.choices?.[0]?.message?.content || '抱歉，我暂时无法回答，请稍后再试~';
+
+      typingEl.remove();
+      appendMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typingEl.remove();
+      appendMessage('网络连接中断了，请检查网络后重试', 'bot');
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  function appendMessage(text, cls) {
+    const container = document.getElementById('xiangtun-chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + cls;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+</script>
+
+<script src="../js/energy-store.js"></script>
+
+<!-- Market Page Logic -->
+<script>
+// Product data
+var PRODUCTS = [
+  // 金色良品
+  { id: 'chestnut-tea', category: 'goods', name: '板栗茶礼盒', cost: 30, icon: 'eco',
+    story: '精选香屯村百年板栗林中的野生板栗，经传统工艺烘焙研磨，配以延庆高山泉水冲泡。每一杯都带着长城脚下泥土的芬芳。',
+    gradient: 'linear-gradient(135deg, #593d00 0%, #775300 100%)' },
+  { id: 'apricot-tea', category: 'goods', name: '杏皮茶', cost: 20, icon: 'local_cafe',
+    story: '大庄科乡的杏树在春天开出漫山遍野的花海。每年七月，村民采摘成熟的山杏，晾晒杏皮，制成这一杯酸甜可口的传统饮品。',
+    gradient: 'linear-gradient(135deg, #8b5e00 0%, #b8860b 100%)' },
+  { id: 'walnut-set', category: 'goods', name: '核桃伴手礼', cost: 40, icon: 'nutrition',
+    story: '延庆山核桃以皮薄仁大闻名。村里的老核桃树有些已有两百多年历史，见证了长城脚下的岁月变迁。',
+    gradient: 'linear-gradient(135deg, #3e2723 0%, #5d4037 100%)' },
+  // 四色文创
+  { id: 'mug-fourcolor', category: 'creative', name: '四色马克杯', cost: 50, icon: 'coffee',
+    story: '传承红、远山绿、板栗金、玄石墨 — 四种属于香屯的颜色，烧制在景德镇手工陶瓷杯上。每个杯子都是独一无二的。',
+    gradient: 'linear-gradient(135deg, #851217 0%, #3b6934 50%, #593d00 100%)' },
+  { id: 'postcard-set', category: 'creative', name: '长城明信片套装', cost: 15, icon: 'mail',
+    story: '6 张手绘明信片，记录了大庄科段长城四季的不同面貌。从春天的杏花长城到冬日的雪覆敌台。',
+    gradient: 'linear-gradient(135deg, #851217 0%, #58413f 100%)' },
+  { id: 'badge-guardian', category: 'creative', name: '守护者徽章', cost: 25, icon: 'shield',
+    story: '金属珐琅工艺，正面是香屯村标志性的圆形敌台剪影，背面刻有"长城守护者"字样。佩戴它，你就是长城的守护人。',
+    gradient: 'linear-gradient(135deg, #593d00 0%, #851217 100%)' },
+  // 戍边餐
+  { id: 'meal-spring', category: 'meal', name: '春季戍边餐', cost: 60, icon: 'dinner_dining',
+    story: '以明代戍边将士的饮食为灵感，用延庆本地时令食材重新演绎。春季餐包含香椿炒蛋、山野菜拼盘、板栗焖鸡和自酿米酒。',
+    gradient: 'linear-gradient(135deg, #3b6934 0%, #2e7d32 100%)' },
+  { id: 'meal-chestnut', category: 'meal', name: '板栗宴', cost: 80, icon: 'restaurant_menu',
+    story: '板栗是香屯村的灵魂食材。板栗宴从板栗小米粥开始，经过板栗烧肉、糖炒栗子，到板栗蛋糕收尾——一场完整的板栗风味之旅。',
+    gradient: 'linear-gradient(135deg, #593d00 0%, #8d6e00 100%)' },
+  { id: 'meal-lunchbox', category: 'meal', name: '长城便当', cost: 30, icon: 'takeout_dining',
+    story: '专为长城徒步者设计的便携餐盒。杂粮饭团、酱牛肉、腌黄瓜、山楂糕——补充能量又不添负担。环保餐盒可带走做纪念。',
+    gradient: 'linear-gradient(135deg, #58413f 0%, #795548 100%)' }
+];
+
+var currentTab = 'goods';
+
+function switchTab(category) {
+  currentTab = category;
+  var buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach(function(btn) {
+    var isActive = btn.textContent.includes(
+      category === 'goods' ? '金色良品' : category === 'creative' ? '四色文创' : '戍边餐'
+    );
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  renderProducts();
+}
+
+function renderProducts() {
+  var grid = document.getElementById('product-grid');
+  var items = PRODUCTS.filter(function(p) { return p.category === currentTab; });
+  var redemptions = EnergyStore.getRedemptions();
+  var balance = EnergyStore.getBalance();
+
+  if (items.length === 0) {
+    grid.innerHTML = '';
+    var empty = document.createElement('div');
+    empty.className = 'text-center py-20';
+    empty.innerHTML = '<span class="material-symbols-outlined text-6xl text-outline-variant mb-4 block">inventory_2</span>';
+    var p = document.createElement('p');
+    p.className = 'text-on-surface-variant font-headline italic';
+    p.textContent = '暂无商品，敬请期待';
+    empty.appendChild(p);
+    grid.appendChild(empty);
+    return;
+  }
+
+  grid.innerHTML = '';
+  // Asymmetric grid: first item larger
+  var container = document.createElement('div');
+  container.className = 'grid grid-cols-1 md:grid-cols-3 gap-6';
+
+  items.forEach(function(product, idx) {
+    var isRedeemed = redemptions.some(function(r) { return r.productId === product.id; });
+    var canAfford = balance >= product.cost;
+
+    var card = document.createElement('div');
+    card.className = 'product-card bg-surface-container-low rounded-sm overflow-hidden' + (isRedeemed ? ' redeemed' : '');
+    if (idx === 0) card.className += ' md:col-span-2 md:row-span-2';
+
+    // Image placeholder with gradient
+    var imgDiv = document.createElement('div');
+    imgDiv.className = idx === 0 ? 'h-48 md:h-72 flex items-center justify-center' : 'h-40 flex items-center justify-center';
+    imgDiv.style.background = product.gradient;
+    var icon = document.createElement('span');
+    icon.className = 'material-symbols-outlined text-white/40';
+    icon.style.fontSize = idx === 0 ? '80px' : '48px';
+    icon.textContent = product.icon;
+    imgDiv.appendChild(icon);
+    card.appendChild(imgDiv);
+
+    // Content
+    var content = document.createElement('div');
+    content.className = 'p-6 md:p-8';
+
+    var nameEl = document.createElement('h3');
+    nameEl.className = 'font-headline font-bold text-lg mb-2';
+    nameEl.textContent = product.name;
+    content.appendChild(nameEl);
+
+    var storyEl = document.createElement('p');
+    storyEl.className = 'text-sm text-on-surface-variant leading-relaxed mb-6';
+    storyEl.textContent = product.story;
+    content.appendChild(storyEl);
+
+    // Bottom row: cost tag + button
+    var row = document.createElement('div');
+    row.className = 'flex items-center justify-between';
+
+    var tag = document.createElement('span');
+    tag.className = 'ink-tag';
+    tag.innerHTML = '<span class="material-symbols-outlined align-middle" style="font-size:14px">bolt</span> ' + product.cost + ' 能量币';
+
+    var btn = document.createElement('button');
+    if (isRedeemed) {
+      btn.className = 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant cursor-default';
+      btn.textContent = '已兑换';
+      btn.disabled = true;
+    } else if (!canAfford) {
+      btn.className = 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant cursor-default';
+      btn.textContent = '还需 ' + (product.cost - balance) + ' 能量币';
+      btn.disabled = true;
+    } else {
+      btn.className = 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase bg-tertiary text-on-tertiary hover:opacity-90 transition-opacity';
+      btn.textContent = '兑换体验';
+      btn.onclick = function() { openRedeemModal(product); };
+    }
+
+    row.appendChild(tag);
+    row.appendChild(btn);
+    content.appendChild(row);
+
+    // Insufficient balance hint
+    if (!canAfford && !isRedeemed) {
+      var hint = document.createElement('p');
+      hint.className = 'text-xs text-on-surface-variant mt-3';
+      hint.innerHTML = '';
+      var hintLink = document.createElement('a');
+      hintLink.href = '../guardian/index.html';
+      hintLink.className = 'text-primary hover:underline';
+      hintLink.textContent = '完成守护任务赚取能量币 \u2192';
+      hint.appendChild(hintLink);
+      content.appendChild(hint);
+    }
+
+    card.appendChild(content);
+    container.appendChild(card);
+  });
+
+  grid.appendChild(container);
+}
+
+// ---- Modal ----
+var currentModalProduct = null;
+
+function openRedeemModal(product) {
+  currentModalProduct = product;
+  var modal = document.getElementById('redeem-modal');
+  var content = document.getElementById('modal-content');
+
+  content.innerHTML = '';
+
+  var title = document.createElement('h3');
+  title.className = 'font-headline font-bold text-2xl mb-2';
+  title.textContent = '确认兑换';
+  content.appendChild(title);
+
+  var sub = document.createElement('p');
+  sub.className = 'text-sm text-on-surface-variant mb-8';
+  sub.textContent = '将消耗 ' + product.cost + ' 能量币兑换以下体验：';
+  content.appendChild(sub);
+
+  var card = document.createElement('div');
+  card.className = 'bg-surface-container-low p-6 rounded-sm mb-8';
+  var h4 = document.createElement('h4');
+  h4.className = 'font-headline font-bold mb-2';
+  h4.textContent = product.name;
+  card.appendChild(h4);
+  var desc = document.createElement('p');
+  desc.className = 'text-sm text-on-surface-variant leading-relaxed';
+  desc.textContent = product.story;
+  card.appendChild(desc);
+  content.appendChild(card);
+
+  var balanceInfo = document.createElement('p');
+  balanceInfo.className = 'text-sm mb-8';
+  var bal = EnergyStore.getBalance();
+  balanceInfo.textContent = '当前余额：' + bal + ' 能量币 \u2192 兑换后：' + (bal - product.cost) + ' 能量币';
+  content.appendChild(balanceInfo);
+
+  var btnRow = document.createElement('div');
+  btnRow.className = 'flex gap-4';
+  var cancelBtn = document.createElement('button');
+  cancelBtn.className = 'flex-1 py-3 rounded-xl text-sm font-bold tracking-wider bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors';
+  cancelBtn.textContent = '取消';
+  cancelBtn.onclick = closeModal;
+
+  var confirmBtn = document.createElement('button');
+  confirmBtn.className = 'flex-1 py-3 rounded-xl text-sm font-bold tracking-wider bg-tertiary text-on-tertiary hover:opacity-90 transition-opacity';
+  confirmBtn.textContent = '确认兑换';
+  confirmBtn.id = 'confirm-redeem-btn';
+  confirmBtn.onclick = confirmRedeem;
+
+  btnRow.appendChild(cancelBtn);
+  btnRow.appendChild(confirmBtn);
+  content.appendChild(btnRow);
+
+  modal.classList.add('active');
+
+  // Focus trap
+  confirmBtn.focus();
+
+  // Esc to close
+  document.addEventListener('keydown', modalKeyHandler);
+}
+
+function modalKeyHandler(e) {
+  if (e.key === 'Escape') closeModal();
+}
+
+function closeModal() {
+  document.getElementById('redeem-modal').classList.remove('active');
+  document.removeEventListener('keydown', modalKeyHandler);
+  currentModalProduct = null;
+}
+
+function confirmRedeem() {
+  if (!currentModalProduct) return;
+  var btn = document.getElementById('confirm-redeem-btn');
+  btn.disabled = true;
+  btn.textContent = '兑换中...';
+
+  var product = currentModalProduct;
+  var success = EnergyStore.spend(product.cost, '兑换：' + product.name);
+
+  if (!success) {
+    btn.disabled = false;
+    btn.textContent = '确认兑换';
+    alert('能量币不足，请先完成更多守护任务！');
+    return;
+  }
+
+  // Save redemption
+  var redemptionId = 'RDM-' + Date.now();
+  EnergyStore.addRedemption({
+    id: redemptionId,
+    productId: product.id,
+    productName: product.name,
+    cost: product.cost,
+    time: new Date().toISOString()
+  });
+
+  // Show voucher in modal
+  showVoucher(product, redemptionId);
+
+  // Update nav balance
+  updateNavBalance();
+  // Re-render products
+  renderProducts();
+}
+
+function showVoucher(product, redemptionId) {
+  var content = document.getElementById('modal-content');
+  content.innerHTML = '';
+
+  var title = document.createElement('h3');
+  title.className = 'font-headline font-bold text-2xl mb-2 text-secondary';
+  title.textContent = '兑换成功！';
+  content.appendChild(title);
+
+  var sub = document.createElement('p');
+  sub.className = 'text-sm text-on-surface-variant mb-8';
+  sub.textContent = '请凭此凭证到香屯村服务中心领取体验';
+  content.appendChild(sub);
+
+  // Voucher card (mimicking guardian certificate style)
+  var voucher = document.createElement('div');
+  voucher.className = 'relative p-8 mb-8';
+  voucher.style.cssText = 'border: 3px double #851217; background: #fbf9f8;';
+
+  // Corner decorations
+  var corners = ['top:8px;left:8px', 'top:8px;right:8px', 'bottom:8px;left:8px', 'bottom:8px;right:8px'];
+  corners.forEach(function(pos) {
+    var corner = document.createElement('div');
+    corner.style.cssText = 'position:absolute;width:12px;height:12px;background:#851217;' + pos;
+    voucher.appendChild(corner);
+  });
+
+  var vTitle = document.createElement('div');
+  vTitle.className = 'text-center mb-6';
+  var vH = document.createElement('h4');
+  vH.className = 'font-headline font-bold text-xl text-primary';
+  vH.textContent = '能量兑换凭证';
+  vTitle.appendChild(vH);
+  var vSub = document.createElement('p');
+  vSub.className = 'text-xs text-on-surface-variant tracking-widest uppercase mt-1';
+  vSub.textContent = 'Energy Redemption Voucher';
+  vTitle.appendChild(vSub);
+  voucher.appendChild(vTitle);
+
+  var info = [
+    ['商品', product.name],
+    ['凭证编号', redemptionId],
+    ['消耗能量币', product.cost + ' \u26A1'],
+    ['兑换时间', new Date().toLocaleString('zh-CN')]
+  ];
+  info.forEach(function(pair) {
+    var row = document.createElement('div');
+    row.className = 'flex justify-between text-sm py-2';
+    var label = document.createElement('span');
+    label.className = 'text-on-surface-variant';
+    label.textContent = pair[0];
+    var val = document.createElement('span');
+    val.className = 'font-bold';
+    val.textContent = pair[1];
+    row.appendChild(label);
+    row.appendChild(val);
+    voucher.appendChild(row);
+  });
+
+  // Seal
+  var seal = document.createElement('div');
+  seal.className = 'text-center mt-6';
+  seal.style.cssText = 'color: #851217; opacity: 0.3; font-size: 48px; font-weight: 900; font-family: Newsreader, serif; letter-spacing: 0.2em; transform: rotate(-8deg);';
+  seal.textContent = '四色香屯';
+  voucher.appendChild(seal);
+
+  content.appendChild(voucher);
+
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'w-full py-3 rounded-xl text-sm font-bold tracking-wider bg-primary text-on-primary hover:opacity-90 transition-opacity';
+  closeBtn.textContent = '完成';
+  closeBtn.onclick = closeModal;
+  content.appendChild(closeBtn);
+}
+
+// ---- Nav balance ----
+function updateNavBalance() {
+  var el = document.getElementById('nav-balance');
+  if (el) el.textContent = EnergyStore.getBalance();
+}
+
+// ---- Init ----
+window.addEventListener('energy-changed', function() { updateNavBalance(); });
+
+document.addEventListener('DOMContentLoaded', function() {
+  updateNavBalance();
+  renderProducts();
+
+  // Scroll fade-in
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in, .scale-in').forEach(function(el) { observer.observe(el); });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', function() {
+    var nav = document.querySelector('nav');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+});
+</script>
+<script>
+(function(){
+  var bar=document.getElementById('loader-bar');
+  var loader=document.getElementById('page-loader');
+  if(!bar||!loader)return;
+  bar.style.width='70%';
+  window.addEventListener('load',function(){
+    bar.style.width='100%';
+    setTimeout(function(){
+      loader.style.opacity='0';
+      loader.style.transform='translateY(-20px)';
+      setTimeout(function(){loader.remove();},400);
+    },200);
+  });
+})();
+</script>
+</body>
+</html>
