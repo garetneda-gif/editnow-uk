@@ -260,7 +260,7 @@
         /* ===== 壁画侧边面板 ===== */
         #mural-panel-overlay { position:fixed; inset:0; background:rgba(27,28,28,0.55); backdrop-filter:blur(6px); z-index:9998; opacity:0; pointer-events:none; transition:opacity 0.4s ease; }
         #mural-panel-overlay.open { opacity:1; pointer-events:auto; }
-        #mural-panel { position:fixed; top:0; right:0; width:min(520px,92vw); height:100vh; height:100dvh; background:#fbf9f8; z-index:9999; transform:translateX(100%); transition:transform 0.5s cubic-bezier(0.16,1,0.3,1); overflow-y:auto; box-shadow:-12px 0 60px rgba(0,0,0,0.18); }
+        #mural-panel { position:fixed; top:0; right:0; bottom:0; width:min(520px,92vw); background:#fbf9f8; z-index:9999; transform:translateX(100%); transition:transform 0.5s cubic-bezier(0.16,1,0.3,1); overflow-y:auto; box-shadow:-12px 0 60px rgba(0,0,0,0.18); }
         #mural-panel.open { transform:translateX(0); }
         #mural-panel::-webkit-scrollbar { width:3px; }
         #mural-panel::-webkit-scrollbar-track { background:transparent; }
@@ -861,38 +861,34 @@
 <p class="text-sm font-headline italic opacity-60 mt-2">The Numbers Behind the Heritage</p>
 <div class="h-1 w-24 bg-primary mt-6"></div>
 </div>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 max-w-5xl mx-auto">
-  <div class="text-center fade-in" style="transition-delay: 0.1s;">
-    <div class="text-5xl md:text-7xl font-headline font-black text-primary mb-3">
-      <span class="counter-num" data-target="95">0</span><span class="text-3xl md:text-4xl">%</span>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 max-w-5xl mx-auto px-4">
+  <div class="text-center fade-in bg-surface-container-low/60 backdrop-blur-sm p-6 md:p-8 rounded-sm" style="transition-delay: 0.1s;">
+    <div class="text-4xl md:text-5xl font-headline font-black text-primary mb-3 whitespace-nowrap">
+      <span class="counter-num" data-target="95">0</span><span class="text-2xl md:text-3xl align-top">%</span>
     </div>
-    <div class="h-px w-16 bg-primary/30 mx-auto mb-3"></div>
     <p class="text-sm font-bold text-on-surface tracking-wide">林木覆盖率</p>
-    <p class="text-xs text-on-surface-variant mt-1 italic">Forest Coverage</p>
+    <p class="text-[10px] text-on-surface-variant mt-1 tracking-widest uppercase">Forest Coverage</p>
   </div>
-  <div class="text-center fade-in" style="transition-delay: 0.2s;">
-    <div class="text-5xl md:text-7xl font-headline font-black text-tertiary mb-3">
-      <span class="counter-num" data-target="600">0</span><span class="text-3xl md:text-4xl">+</span>
+  <div class="text-center fade-in bg-surface-container-low/60 backdrop-blur-sm p-6 md:p-8 rounded-sm" style="transition-delay: 0.2s;">
+    <div class="text-4xl md:text-5xl font-headline font-black text-tertiary mb-3 whitespace-nowrap">
+      <span class="counter-num" data-target="600">0</span><span class="text-2xl md:text-3xl align-top">+</span>
     </div>
-    <div class="h-px w-16 bg-tertiary/30 mx-auto mb-3"></div>
     <p class="text-sm font-bold text-on-surface tracking-wide">年长城历史</p>
-    <p class="text-xs text-on-surface-variant mt-1 italic">Years of Great Wall History</p>
+    <p class="text-[10px] text-on-surface-variant mt-1 tracking-widest uppercase">Great Wall History</p>
   </div>
-  <div class="text-center fade-in" style="transition-delay: 0.3s;">
-    <div class="text-5xl md:text-7xl font-headline font-black text-secondary mb-3">
-      <span class="counter-num" data-target="1000">0</span><span class="text-3xl md:text-4xl">亩</span>
+  <div class="text-center fade-in bg-surface-container-low/60 backdrop-blur-sm p-6 md:p-8 rounded-sm" style="transition-delay: 0.3s;">
+    <div class="text-4xl md:text-5xl font-headline font-black text-secondary mb-3 whitespace-nowrap">
+      <span class="counter-num" data-target="1000">0</span><span class="text-2xl md:text-3xl align-top">亩</span>
     </div>
-    <div class="h-px w-16 bg-secondary/30 mx-auto mb-3"></div>
     <p class="text-sm font-bold text-on-surface tracking-wide">文旅规划面积</p>
-    <p class="text-xs text-on-surface-variant mt-1 italic">Planned Tourism Area</p>
+    <p class="text-[10px] text-on-surface-variant mt-1 tracking-widest uppercase">Planned Tourism Area</p>
   </div>
-  <div class="text-center fade-in" style="transition-delay: 0.4s;">
-    <div class="text-5xl md:text-7xl font-headline font-black text-on-surface mb-3">
-      <span class="counter-num" data-target="4">0</span><span class="text-3xl md:text-4xl">条</span>
+  <div class="text-center fade-in bg-surface-container-low/60 backdrop-blur-sm p-6 md:p-8 rounded-sm" style="transition-delay: 0.4s;">
+    <div class="text-4xl md:text-5xl font-headline font-black text-on-surface mb-3 whitespace-nowrap">
+      <span class="counter-num" data-target="4">0</span><span class="text-2xl md:text-3xl align-top">条</span>
     </div>
-    <div class="h-px w-16 bg-on-surface/30 mx-auto mb-3"></div>
     <p class="text-sm font-bold text-on-surface tracking-wide">主题游览路线</p>
-    <p class="text-xs text-on-surface-variant mt-1 italic">Heritage Trails</p>
+    <p class="text-[10px] text-on-surface-variant mt-1 tracking-widest uppercase">Heritage Trails</p>
   </div>
 </div>
 </div>
