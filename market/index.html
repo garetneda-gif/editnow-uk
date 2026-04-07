@@ -16,7 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
     tailwind.config = {
-        darkMode: "class",
         theme: {
             extend: {
                 "colors": {
@@ -166,7 +165,7 @@
     .coin-display {
       animation: coin-pulse 3s ease-in-out infinite;
       background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(20px);
+      backdrop-filter: none;
       border: 1px solid rgba(245,189,88,0.3);
     }
 
@@ -175,10 +174,10 @@
     /* ========================================== */
     .stat-glass {
       background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 16px;
+      border-radius: 2px;
       padding: 28px 20px;
       text-align: center;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
@@ -218,8 +217,8 @@
     /* ========================================== */
     .step-card {
       background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(16px);
-      border-radius: 16px;
+      backdrop-filter: none;
+      border-radius: 2px;
       padding: 28px 24px;
       text-align: center;
       flex: 1;
@@ -234,7 +233,7 @@
     .step-icon {
       width: 56px;
       height: 56px;
-      border-radius: 16px;
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -252,13 +251,13 @@
       gap: 6px;
       padding: 6px;
       background: rgba(89,61,0,0.06);
-      border-radius: 16px;
+      border-radius: 2px;
       width: fit-content;
       margin: 0 auto;
     }
     .market-tab {
       padding: 14px 32px;
-      border-radius: 12px;
+      border-radius: 2px;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -290,7 +289,7 @@
       justify-content: center;
       width: 22px;
       height: 22px;
-      border-radius: 50%;
+      border-radius: 2px;
       font-size: 11px;
       font-weight: 800;
     }
@@ -308,7 +307,7 @@
     /* ========================================== */
     .product-card {
       position: relative;
-      border-radius: 20px;
+      border-radius: 2px;
       overflow: hidden;
       background: #fff;
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
@@ -347,10 +346,10 @@
       bottom: 16px;
       right: 16px;
       z-index: 5;
-      background: rgba(255,255,255,0.95);
+      background: rgba(245,243,243,0.98);
       backdrop-filter: blur(8px);
       padding: 6px 16px;
-      border-radius: 20px;
+      border-radius: 2px;
       font-size: 13px;
       font-weight: 800;
       color: #593d00;
@@ -398,7 +397,7 @@
       background: linear-gradient(135deg, #593d00, #775300);
       color: white;
       padding: 10px 24px;
-      border-radius: 12px;
+      border-radius: 2px;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -438,7 +437,7 @@
       background: #e4e2e2;
       color: #8c716e;
       padding: 10px 24px;
-      border-radius: 12px;
+      border-radius: 2px;
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -454,8 +453,8 @@
       position: fixed;
       inset: 0;
       background: rgba(27,28,28,0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       z-index: 9000;
       display: flex;
       align-items: center;
@@ -470,12 +469,12 @@
     }
     .modal-card {
       background: rgba(251,249,248,0.95);
-      backdrop-filter: blur(24px);
+      backdrop-filter: none;
       max-width: 520px;
       width: calc(100% - 32px);
       padding: 44px;
-      border-radius: 24px;
-      box-shadow: 0 40px 80px rgba(27,28,28,0.15), 0 0 0 1px rgba(255,255,255,0.3) inset;
+      border-radius: 4px;
+      box-shadow: 0 40px 80px rgba(27,28,28,0.15), 0 0 0 1px rgba(224,191,188,0.15) inset;
       transform: translateY(30px) scale(0.95);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -573,7 +572,7 @@
   #xiangtun-chat-toggle {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    border-radius: 2px;
     background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%);
     color: #fff;
     border: none;
@@ -593,13 +592,13 @@
     width: 400px;
     max-height: 580px;
     background: rgba(251,249,248,0.92);
-    backdrop-filter: blur(24px) saturate(1.4);
-    -webkit-backdrop-filter: blur(24px) saturate(1.4);
-    border-radius: 16px;
+    backdrop-filter: none saturate(1.4);
+    -webkit-backdrop-filter: none saturate(1.4);
+    border-radius: 2px;
     box-shadow:
       0 24px 80px rgba(27,28,28,0.12),
       0 8px 32px rgba(133,18,23,0.08),
-      inset 0 1px 0 rgba(255,255,255,0.6);
+      inset 0 1px 0 rgba(245,243,243,0.95);
     flex-direction: column;
     overflow: hidden;
     position: absolute;
@@ -665,7 +664,7 @@
     cursor: pointer;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -713,7 +712,7 @@
     align-self: flex-end;
     background: linear-gradient(135deg, #851217, #a62c2b);
     color: #fff;
-    border-radius: 16px 2px 16px 16px;
+    border-radius: 2px 2px 16px 16px;
     box-shadow: 0 4px 16px rgba(133,18,23,0.2);
   }
   .chat-msg.bot.typing::after {
@@ -764,7 +763,7 @@
   #xiangtun-chat-send {
     width: 42px;
     height: 42px;
-    border-radius: 50%;
+    border-radius: 2px;
     background: linear-gradient(135deg, #851217, #a62c2b);
     color: #fff;
     border: none;
@@ -809,15 +808,14 @@
 <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
 <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
 <div class="hidden md:flex gap-12 items-center">
-<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
-<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者 Guardian</a>
-<a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">集市 Market</a>
-<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约 Booking</a>
-<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../user/index.html">个人 Me</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者</a>
+<a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">集市</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约</a>
+<a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../user/index.html">个人</a>
 </div>
 <div class="flex items-center gap-6">
 <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
-<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="toggleDarkMode()" id="dark-mode-icon">dark_mode</span>
 <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
 <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
 <span class="material-symbols-outlined">menu</span>
@@ -825,11 +823,11 @@
 </div>
 </div>
 <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
-<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
-<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者 Guardian</a>
-<a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">集市 Market</a>
-<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约 Booking</a>
-<a class="block text-[#1b1c1c]/60 font-headline py-3" href="../user/index.html">个人 Me</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者</a>
+<a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">集市</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约</a>
+<a class="block text-[#1b1c1c]/60 font-headline py-3" href="../user/index.html">个人</a>
 </div>
 </nav>
 
@@ -843,7 +841,7 @@
     <div class="coin-display inline-flex items-center gap-3 px-6 py-3 rounded-full mb-10" style="border-radius:9999px;">
       <span class="material-symbols-outlined" style="font-size:24px;color:#f5bd58;">bolt</span>
       <span style="color:#f5bd58;font-family:'Newsreader',serif;font-weight:800;font-size:24px;" id="hero-balance">0</span>
-      <span style="color:rgba(255,255,255,0.6);font-size:12px;font-weight:700;letter-spacing:0.1em;">能量币可用</span>
+      <span style="color:rgba(245,243,243,0.95);font-size:12px;font-weight:700;letter-spacing:0.1em;">能量币可用</span>
     </div>
 
     <h3 class="text-xs font-bold tracking-[0.5em] uppercase mb-6" style="color:rgba(245,189,88,0.7);">Energy Market</h3>
@@ -1632,23 +1630,6 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
-<!-- Dark Mode -->
-<script>
-function toggleDarkMode(){
-  document.documentElement.classList.toggle('dark');
-  var isDark=document.documentElement.classList.contains('dark');
-  localStorage.setItem('darkMode',isDark?'1':'0');
-  var icon=document.getElementById('dark-mode-icon');
-  if(icon)icon.textContent=isDark?'light_mode':'dark_mode';
-}
-(function(){
-  if(localStorage.getItem('darkMode')==='1'){
-    document.documentElement.classList.add('dark');
-    var icon=document.getElementById('dark-mode-icon');
-    if(icon)icon.textContent='light_mode';
-  }
-})();
-</script>
 <script src="../js/ambient-dust.js"></script>
 </body>
 </html>
