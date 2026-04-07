@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-180.png">
+<meta charset="utf-8"/>
+<title>数字活化画廊 · AR 体验 | 四色香屯</title>
+<meta name="description" content="四色香屯数字文化遗产 3D 画廊，AR 增强现实体验。">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Manrope',sans-serif;background:#faf9f7;color:#1b1c1c;min-height:100dvh;}
+
+  .header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(250,249,248,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(27,28,28,0.06);}
+  .header a{color:#1b1c1c;text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .header .title{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#851217;}
+
+  model-viewer{width:100%;height:55dvh;min-height:320px;margin-top:52px;background:#f5f3f0;--poster-color:#f5f3f0;}
+
+  /* Model selector tabs */
+  .tabs{display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid rgba(27,28,28,0.08);padding:0 16px;}
+  .tab{flex-shrink:0;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-bottom:3px solid transparent;color:rgba(27,28,28,0.4);transition:all 0.2s;white-space:nowrap;}
+  .tab.active{color:#851217;border-bottom-color:#851217;}
+  .tab:hover{color:#1b1c1c;}
+  .tab .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle;}
+
+  /* AR button */
+  .ar-btn{
+    display:flex;align-items:center;gap:8px;margin:16px auto;
+    background:#851217;color:#fff;border:none;padding:14px 28px;
+    font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
+    box-shadow:0 4px 16px rgba(133,18,23,0.25);transition:background 0.2s;
+  }
+  .ar-btn:hover{background:#a62c2b;}
+
+  /* Info card */
+  .info{padding:0 20px 80px;max-width:520px;margin:0 auto;}
+  .info-card{background:#fff;border:1px solid rgba(27,28,28,0.06);padding:24px;margin-top:20px;}
+  .info-card .color-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;}
+  .info-card h2{font-family:'Newsreader',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
+  .info-card .en{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(27,28,28,0.35);margin-bottom:16px;}
+  .info-card p{font-size:13px;line-height:1.8;color:#58413f;}
+
+  .footer-seal{text-align:center;padding:32px;font-family:'Newsreader',serif;font-size:12px;color:#851217;font-style:italic;opacity:0.4;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="../index.html">
+    <span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span>
+    <span style="font-size:12px;">首页</span>
+  </a>
+  <span class="title">数字活化画廊</span>
+  <div style="width:60px;"></div>
+</div>
+
+<model-viewer
+  id="mv"
+  src="../models/watchtower.glb"
+  ar
+  ar-modes="scene-viewer webxr quick-look"
+  camera-controls
+  touch-action="pan-y"
+  auto-rotate
+  shadow-intensity="1.2"
+  environment-image="neutral"
+  camera-orbit="45deg 65deg 12m"
+  min-camera-orbit="auto auto 5m"
+  max-camera-orbit="auto auto 25m"
+  alt="3D 模型"
+  ar-scale="auto"
+>
+  <button slot="ar-button" class="ar-btn" style="position:absolute;bottom:16px;right:16px;">
+    <span class="material-symbols-outlined" style="font-size:18px;">view_in_ar</span>
+    在 AR 中查看
+  </button>
+</model-viewer>
+
+<!-- Tab selector -->
+<div class="tabs" id="tabs">
+  <div class="tab active" data-idx="0"><span class="dot" style="background:#6b6b6b;"></span>长城敌台</div>
+  <div class="tab" data-idx="1"><span class="dot" style="background:#851217;"></span>烽火台</div>
+  <div class="tab" data-idx="2"><span class="dot" style="background:#593d00;"></span>百年板栗</div>
+  <div class="tab" data-idx="3"><span class="dot" style="background:#3b6934;"></span>村口牌楼</div>
+</div>
+
+<!-- AR button (outside model-viewer as fallback) -->
+<button class="ar-btn" id="ar-fallback" onclick="try{document.getElementById('mv').activateAR()}catch(e){alert('您的设备暂不支持 AR，请使用手机打开此页面。')}" style="display:none;">
+  <span class="material-symbols-outlined" style="font-size:18px;">view_in_ar</span>
+  在 AR 中查看
+</button>
+
+<!-- Info cards -->
+<div class="info">
+  <div class="info-card" id="info-0">
+    <div class="color-tag" style="background:rgba(107,107,107,0.1);color:#6b6b6b;">灰 · 长城古韵</div>
+    <h2>长城敌台</h2>
+    <p class="en">Great Wall Watchtower</p>
+    <p>以大庄科段明长城真实形制数字复原。砖红色塔身、青灰城墙基座、层叠垛口，再现五百年前戍边将士眺望山川的场景。大庄科段长城全长 4,057 米，空心敌台 13 座。</p>
+  </div>
+  <div class="info-card" id="info-1" style="display:none;">
+    <div class="color-tag" style="background:rgba(133,18,23,0.1);color:#851217;">红 · 革命传承</div>
+    <h2>烽火台</h2>
+    <p class="en">Beacon Tower</p>
+    <p>烽火台是长城防御体系的"眼睛"。狼烟一起，信号沿山脊传递百里。大庄科乡是平北抗日根据地的核心区域，红色革命精神与古长城烽火遥相呼应。</p>
+  </div>
+  <div class="info-card" id="info-2" style="display:none;">
+    <div class="color-tag" style="background:rgba(89,61,0,0.1);color:#593d00;">金 · 板栗丰收</div>
+    <h2>百年板栗树</h2>
+    <p class="en">Centennial Chestnut Tree</p>
+    <p>香屯村拥有千余株百年古栗树，是延庆板栗的核心产区。每年秋季，金黄的栗子铺满山坡，"板栗金"是四色香屯最温暖的底色。</p>
+  </div>
+  <div class="info-card" id="info-3" style="display:none;">
+    <div class="color-tag" style="background:rgba(59,105,52,0.1);color:#3b6934;">绿 · 生态山林</div>
+    <h2>村口牌楼</h2>
+    <p class="en">Village Gate</p>
+    <p>香屯村始建于明代天启年间（1623年），错落有致的石墙院落、石板台阶、古井石磨，一切都保留着古朴典雅的风貌。村口牌楼是进入这片世外桃源的门户。</p>
+  </div>
+</div>
+
+<div class="footer-seal">四色香屯 · MMXXVI</div>
+
+<script>
+var models = [
+  {src:'../models/watchtower.glb', orbit:'45deg 65deg 12m'},
+  {src:'../models/beacon.glb', orbit:'45deg 60deg 15m'},
+  {src:'../models/chestnut-tree.glb', orbit:'30deg 70deg 10m'},
+  {src:'../models/village-gate.glb', orbit:'0deg 65deg 14m'}
+];
+var mv = document.getElementById('mv');
+var tabs = document.querySelectorAll('.tab');
+var current = 0;
+
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    var idx = parseInt(this.dataset.idx);
+    if (idx === current) return;
+    tabs[current].classList.remove('active');
+    document.getElementById('info-'+current).style.display = 'none';
+    current = idx;
+    this.classList.add('active');
+    document.getElementById('info-'+idx).style.display = 'block';
+    mv.src = models[idx].src;
+    mv.cameraOrbit = models[idx].orbit;
+  });
+});
+
+// Fallback AR button
+mv.addEventListener('load', function() {
+  setTimeout(function() {
+    var slotBtn = mv.shadowRoot && mv.shadowRoot.querySelector('[part="default-ar-button"]');
+    var customSlot = mv.querySelector('[slot="ar-button"]');
+    if (customSlot && getComputedStyle(customSlot).display === 'none') {
+      document.getElementById('ar-fallback').style.display = 'flex';
+    }
+  }, 1500);
+});
+</script>
+
+<script src="../js/ambient-dust.js"></script>
+</body>
+</html>

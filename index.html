@@ -534,18 +534,17 @@
     <div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
   </div>
 </div>
-<canvas id="particle-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
 <div id="scroll-progress"></div>
 <!-- Top Navigation Bar -->
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50 hero-nav">
     <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
         <a href="/" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
         <div class="hidden md:flex gap-10 items-center">
-            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">首页 Home</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="guardian/index.html">守护者 Guardian</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="market/index.html">集市 Market</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="booking/index.html">预约 Booking</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="user/index.html">个人 Me</a>
+            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">首页</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="guardian/index.html">守护者</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="market/index.html">集市</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="booking/index.html">预约</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="user/index.html">个人</a>
         </div>
         <div class="flex items-center gap-6">
             <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
@@ -557,11 +556,11 @@
         </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
-        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">首页 Home</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian/index.html">守护者 Guardian</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="market/index.html">集市 Market</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="booking/index.html">预约 Booking</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="user/index.html">个人 Me</a>
+        <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">首页</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="guardian/index.html">守护者</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="market/index.html">集市</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="booking/index.html">预约</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3" href="user/index.html">个人</a>
     </div>
 </nav>
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
@@ -1827,79 +1826,6 @@ if (window.matchMedia('(pointer: fine)').matches) {
 </script>
 <button id="back-to-top" aria-label="回到顶部"><span class="material-symbols-outlined" style="font-size:22px">keyboard_arrow_up</span></button>
 
-<!-- Particle System -->
-<script>
-(function() {
-  const canvas = document.getElementById('particle-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, particles = [], mouseX = -999, mouseY = -999;
-  const isMobile = window.innerWidth < 768;
-  const COUNT = isMobile ? 40 : 80;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  if (!isMobile) {
-    window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-  }
-
-  function Particle() {
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
-    this.size = Math.random() * 2.5 + 0.8;
-    this.speedX = (Math.random() - 0.5) * 0.3;
-    this.speedY = (Math.random() - 0.5) * 0.3 - 0.1;
-    this.opacity = Math.random() * 0.4 + 0.1;
-    this.color = Math.random() > 0.6 ? '#593d00' : (Math.random() > 0.5 ? '#851217' : '#3b6934');
-  }
-
-  for (let i = 0; i < COUNT; i++) particles.push(new Particle());
-
-  function animate() {
-    ctx.clearRect(0, 0, w, h);
-    particles.forEach(p => {
-      // Mouse repulsion
-      if (!isMobile) {
-        const dx = p.x - mouseX, dy = p.y - mouseY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const force = (120 - dist) / 120 * 1.5;
-          p.x += (dx / dist) * force;
-          p.y += (dy / dist) * force;
-        }
-      }
-      p.x += p.speedX;
-      p.y += p.speedY;
-      // Wrap around
-      if (p.x < -10) p.x = w + 10;
-      if (p.x > w + 10) p.x = -10;
-      if (p.y < -10) p.y = h + 10;
-      if (p.y > h + 10) p.y = -10;
-      // Draw
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.opacity;
-      ctx.fill();
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(animate);
-  }
-  // Only run when page is visible
-  let running = false;
-  const startParticles = () => { if (!running) { running = true; animate(); } };
-  if (document.visibilityState === 'visible') startParticles();
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') startParticles();
-    else running = false;
-  });
-})();
-</script>
 
 <!-- Counter Animation -->
 <script>
@@ -2011,4 +1937,5 @@ window.addEventListener('energy-changed', function() {
   if (el && typeof EnergyStore !== 'undefined') el.textContent = EnergyStore.getBalance();
 });
 </script>
+<script src="js/ambient-dust.js"></script>
 </body></html><!-- v2 -->
