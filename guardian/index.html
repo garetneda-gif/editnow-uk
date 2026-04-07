@@ -586,10 +586,10 @@
 <div class="h-1 w-24 bg-primary mt-6"></div>
 </div>
 
-<div class="max-w-4xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
+<div class="max-w-4xl mx-auto flex flex-col lg:flex-row lg:items-stretch gap-12 lg:gap-16">
 <!-- 倡议内容 -->
-<div class="flex-1">
-<div class="bg-surface-container-low p-8 md:p-12 rounded-sm">
+<div class="flex-1 flex flex-col">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-sm flex-1">
 <p class="text-sm text-on-surface-variant mb-8 leading-relaxed font-headline italic">
 我郑重承诺，作为香屯长城的守护者：
 </p>
@@ -636,8 +636,8 @@
 </div>
 
 <!-- 证书预览 -->
-<div class="lg:w-96 flex-shrink-0">
-<div id="cert-preview" class="bg-surface-container-low p-6 rounded-sm text-center" style="display:none;">
+<div class="lg:w-96 flex-shrink-0 flex flex-col">
+<div id="cert-preview" class="bg-surface-container-low p-6 rounded-sm text-center flex-1 flex flex-col justify-center" style="display:none;">
 <h4 class="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-4">您的守护者证书</h4>
 <canvas id="cert-canvas" width="800" height="600" class="w-full rounded-sm" style="box-shadow: 0 24px 32px rgba(133,18,23,0.04);"></canvas>
 <button onclick="downloadCert()" class="mt-6 bg-surface-container-high text-on-surface px-6 py-2.5 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-surface-container-highest transition-colors duration-300 flex items-center gap-2 mx-auto">
@@ -645,9 +645,13 @@
 下载证书
 </button>
 </div>
-<div id="cert-placeholder" class="bg-surface-container-low p-10 rounded-sm text-center">
-<span class="material-symbols-outlined text-6xl text-on-surface-variant/20 mb-4 block">workspace_premium</span>
-<p class="text-sm text-on-surface-variant/60 font-headline italic">签署倡议后，此处将生成您的专属守护者证书</p>
+<div id="cert-placeholder" class="bg-surface-container-low p-10 rounded-sm text-center flex-1 flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-7xl text-on-surface-variant/10 mb-6 block">workspace_premium</span>
+<p class="text-sm text-on-surface-variant/40 font-headline italic leading-relaxed max-w-[14rem]">签署倡议后<br/>此处将生成您的<br/>专属守护者证书</p>
+<div class="mt-8 flex items-center gap-2 text-on-surface-variant/20">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="text-[10px] tracking-widest uppercase">填写左侧表单开始</span>
+</div>
 </div>
 </div>
 </div>
@@ -2019,3 +2023,4 @@ function toggleDarkMode(){
 <canvas id="guardian-confetti" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 </body>
 </html>
+<!-- v2 -->
