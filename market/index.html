@@ -450,6 +450,7 @@
 </div>
 <div class="flex items-center gap-6">
 <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
+<span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="toggleDarkMode()" id="dark-mode-icon">dark_mode</span>
 <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
 <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
 <span class="material-symbols-outlined">menu</span>
@@ -1048,6 +1049,22 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(function(){loader.remove();},400);
     },200);
   });
+})();
+</script>
+<script>
+function toggleDarkMode(){
+  document.documentElement.classList.toggle('dark');
+  var isDark=document.documentElement.classList.contains('dark');
+  localStorage.setItem('darkMode',isDark?'1':'0');
+  var icon=document.getElementById('dark-mode-icon');
+  if(icon)icon.textContent=isDark?'light_mode':'dark_mode';
+}
+(function(){
+  if(localStorage.getItem('darkMode')==='1'){
+    document.documentElement.classList.add('dark');
+    var icon=document.getElementById('dark-mode-icon');
+    if(icon)icon.textContent='light_mode';
+  }
 })();
 </script>
 </body>
