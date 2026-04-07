@@ -83,7 +83,7 @@
     }
 </script>
 <style>
-    html { scroll-behavior: smooth; zoom: 0.67; }
+    html { scroll-behavior: smooth; } @media (min-width: 768px) { html { zoom: 0.67; } }
     .material-symbols-outlined {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
     }
@@ -590,6 +590,7 @@
   #xiangtun-chat-panel {
     display: none;
     width: 400px;
+    max-width: calc(100vw - 32px);
     max-height: 580px;
     background: rgba(251,249,248,0.92);
     backdrop-filter: none saturate(1.4);

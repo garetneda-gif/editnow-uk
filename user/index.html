@@ -15,875 +15,281 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                "colors": {
-                    "error": "#ba1a1a",
-                    "secondary": "#3b6934",
-                    "tertiary": "#593d00",
-                    "secondary-fixed": "#bcf0ae",
-                    "on-error-container": "#93000a",
-                    "on-secondary-fixed": "#002201",
-                    "surface-container-low": "#f5f3f3",
-                    "surface-container-highest": "#e4e2e2",
-                    "on-secondary": "#ffffff",
-                    "primary-fixed-dim": "#ffb3ad",
-                    "error-container": "#ffdad6",
-                    "surface-variant": "#e4e2e2",
-                    "on-tertiary-fixed": "#271900",
-                    "primary-fixed": "#ffdad7",
-                    "on-surface-variant": "#58413f",
-                    "outline-variant": "#e0bfbc",
-                    "inverse-primary": "#ffb3ad",
-                    "on-background": "#1b1c1c",
-                    "on-secondary-fixed-variant": "#23501e",
-                    "surface-container-high": "#eae8e7",
-                    "tertiary-fixed-dim": "#f5bd58",
-                    "tertiary-fixed": "#ffdeaa",
-                    "surface-container-lowest": "#ffffff",
-                    "on-tertiary-container": "#ffc868",
-                    "inverse-on-surface": "#f2f0f0",
-                    "on-tertiary-fixed-variant": "#5f4100",
-                    "on-secondary-container": "#3f6d38",
-                    "surface-dim": "#dbdad9",
-                    "on-primary-container": "#ffc2bd",
-                    "inverse-surface": "#303030",
-                    "on-primary": "#ffffff",
-                    "surface-bright": "#fbf9f8",
-                    "primary-container": "#a62c2b",
-                    "on-primary-fixed": "#410004",
-                    "surface-container": "#efeded",
-                    "tertiary-container": "#775300",
-                    "on-surface": "#1b1c1c",
-                    "on-tertiary": "#ffffff",
-                    "secondary-fixed-dim": "#a1d494",
-                    "secondary-container": "#b9eeab",
-                    "outline": "#8c716e",
-                    "surface": "#fbf9f8",
-                    "primary": "#851217",
-                    "surface-tint": "#ad312f",
-                    "on-error": "#ffffff",
-                    "on-primary-fixed-variant": "#8b181b",
-                    "background": "#fbf9f8"
-                },
-                "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-                },
-                "fontFamily": {
-                    "headline": ["Newsreader", "serif"],
-                    "body": ["Manrope", "sans-serif"],
-                    "label": ["Manrope", "sans-serif"]
-                }
-            },
-        },
-    }
+tailwind.config={darkMode:"class",theme:{extend:{colors:{error:"#ba1a1a",secondary:"#3b6934",tertiary:"#593d00","secondary-fixed":"#bcf0ae","on-error-container":"#93000a","on-secondary-fixed":"#002201","surface-container-low":"#f5f3f3","surface-container-highest":"#e4e2e2","on-secondary":"#ffffff","primary-fixed-dim":"#ffb3ad","error-container":"#ffdad6","surface-variant":"#e4e2e2","on-tertiary-fixed":"#271900","primary-fixed":"#ffdad7","on-surface-variant":"#58413f","outline-variant":"#e0bfbc","inverse-primary":"#ffb3ad","on-background":"#1b1c1c","on-secondary-fixed-variant":"#23501e","surface-container-high":"#eae8e7","tertiary-fixed-dim":"#f5bd58","tertiary-fixed":"#ffdeaa","surface-container-lowest":"#ffffff","on-tertiary-container":"#ffc868","inverse-on-surface":"#f2f0f0","on-tertiary-fixed-variant":"#5f4100","on-secondary-container":"#3f6d38","surface-dim":"#dbdad9","on-primary-container":"#ffc2bd","inverse-surface":"#303030","on-primary":"#ffffff","surface-bright":"#fbf9f8","primary-container":"#a62c2b","on-primary-fixed":"#410004","surface-container":"#efeded","tertiary-container":"#775300","on-surface":"#1b1c1c","on-tertiary":"#ffffff","secondary-fixed-dim":"#a1d494","secondary-container":"#b9eeab",outline:"#8c716e",surface:"#fbf9f8",primary:"#851217","surface-tint":"#ad312f","on-error":"#ffffff","on-primary-fixed-variant":"#8b181b",background:"#fbf9f8"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}}}};
 </script>
 <style>
-    .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
-    }
-    .paper-texture {
-            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
-            background-size: 1200px 900px;
-            background-blend-mode: multiply;
-        }
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .scale-in {
-        opacity: 0;
-        transform: scale(0.95);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .scale-in.visible {
-        opacity: 1;
-        transform: scale(1);
-    }
-    nav.scrolled {
-        background: rgba(251,249,248,0.95) !important;
-        box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-    }
-    html { scroll-behavior: smooth; zoom: 0.67; }
-    .user-tab { cursor:pointer; padding:8px 16px; font-size:13px; font-weight:700; letter-spacing:0.05em; border:none; background:transparent; color:#8c716e; transition:all 0.3s; border-bottom:2px solid transparent; }
-    .user-tab.active { color:#851217; border-bottom-color:#851217; }
-    .user-tab:hover:not(.active) { color:#58413f; }
-    .history-earn { color:#3b6934; }
-    .history-spend { color:#851217; }
-    .collapsible-header { cursor:pointer; display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
-    .collapsible-header .material-symbols-outlined { transition:transform 0.3s; }
-    .collapsible-header.open .material-symbols-outlined { transform:rotate(180deg); }
-    .collapsible-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
-    .collapsible-body.open { max-height:2000px; }
+html{scroll-behavior:smooth} @media(min-width:768px){html{zoom:0.67}}
+.material-symbols-outlined{font-variation-settings:"FILL" 0,"wght" 400,"GRAD" 0,"opsz" 24}
+.paper-texture{background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);background-size:1200px 900px;background-blend-mode:multiply}
+
+/* HERO */
+.user-hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(180deg,#1b1c1c 0%,#3a0d10 20%,#851217 45%,#b84040 65%,#e0a090 82%,#fbf9f8 100%)}
+html.dark .user-hero{background:linear-gradient(180deg,#1b1c1c 0%,#2a0a0c 25%,#3d1517 50%,#2a0a0c 80%,#1b1c1c 100%)}
+.user-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 35%,rgba(133,18,23,0.4) 0%,transparent 55%),radial-gradient(circle at 75% 55%,rgba(89,61,0,0.2) 0%,transparent 45%),radial-gradient(circle at 50% 15%,rgba(255,180,170,0.1) 0%,transparent 35%);z-index:1}
+.user-hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='120' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60V30h15V15h15v15h15V15h15v15h15V15h15v15h15V60' fill='none' stroke='rgba(255,255,255,0.035)' stroke-width='1.5'/%3E%3C/svg%3E") repeat;z-index:1}
+.hero-content{position:relative;z-index:10;text-align:center}
+@keyframes float-up{0%{transform:translateY(100vh) scale(0) rotate(0deg);opacity:0}8%{opacity:.7}50%{opacity:.5}90%{opacity:.15}100%{transform:translateY(-20vh) scale(1.2) rotate(360deg);opacity:0}}
+.particle{position:absolute;border-radius:50%;background:rgba(255,180,170,0.5);animation:float-up linear infinite;box-shadow:0 0 12px rgba(255,180,170,0.4),0 0 24px rgba(133,18,23,0.15);z-index:2;pointer-events:none}
+@keyframes ring-pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,180,170,0.4),0 0 30px rgba(133,18,23,0.2)}50%{box-shadow:0 0 0 12px rgba(255,180,170,0),0 0 50px rgba(133,18,23,0.3)}}
+.avatar-ring{width:100px;height:100px;border-radius:50%;background:conic-gradient(from 0deg,#851217,#593d00,#3b6934,#1b1c1c,#851217);display:flex;align-items:center;justify-content:center;margin:0 auto;animation:ring-pulse 3s ease-in-out infinite}
+.avatar-inner{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#2a0a0c,#4a1518);display:flex;align-items:center;justify-content:center;color:#fff}
+@keyframes scroll-bounce{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(10px);opacity:1}}
+.scroll-indicator{animation:scroll-bounce 2s ease-in-out infinite}
+
+/* STATS — Heritage Modernist paper layers */
+.stat-glass{background:#fbf9f8;box-shadow:0 24px 32px rgba(27,28,28,0.04);padding:28px 20px;text-align:center;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease;position:relative;overflow:hidden}
+html.dark .stat-glass{background:#252525;box-shadow:0 24px 32px rgba(0,0,0,0.15)}
+.stat-glass:hover{transform:translateY(-3px);box-shadow:0 28px 40px rgba(27,28,28,0.06)}
+.stat-num{font-family:'Newsreader',serif;font-weight:900;background:linear-gradient(135deg,#851217,#593d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block}
+html.dark .stat-num{background:linear-gradient(135deg,#ffb3ad,#f5bd58);-webkit-background-clip:text;background-clip:text}
+.stat-glass-lg{padding:36px 28px}
+.stat-glass-lg .stat-num{font-size:4rem;margin-bottom:8px}
+.stat-glass-sm .stat-num{font-size:2.2rem;margin-bottom:6px}
+.progress-ring{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:16px auto 0}
+.progress-ring-inner{width:64px;height:64px;border-radius:50%;background:#fbf9f8;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:800;font-size:14px;color:#851217}
+html.dark .progress-ring-inner{background:#252525;color:#ffb3ad}
+.stagger-item{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.stagger-item.visible{opacity:1;transform:translateY(0)}
+
+/* TABS */
+.user-tabs{display:flex;gap:6px;padding:6px;background:#f5f3f3;width:fit-content;margin:0 auto}
+html.dark .user-tabs{background:#252525}
+.user-tab{padding:14px 28px;border-radius:12px;font-size:14px;font-weight:700;letter-spacing:.05em;cursor:pointer;border:none;background:transparent;color:#8c716e;transition:all .4s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:8px;white-space:nowrap;font-family:'Manrope',sans-serif}
+.user-tab.active{background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;box-shadow:0 8px 24px rgba(133,18,23,0.25)}
+.user-tab:not(.active):hover{background:rgba(133,18,23,0.1);color:#851217}
+.tab-count{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:800}
+.user-tab.active .tab-count{background:rgba(255,255,255,0.25);color:#fff}
+.user-tab:not(.active) .tab-count{background:rgba(133,18,23,0.1);color:#851217}
+
+/* HISTORY CARDS */
+.history-card{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#f5f3f3;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;border-left:3px solid transparent}
+html.dark .history-card{background:#252525}
+.history-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.history-card.earn{border-left-color:#3b6934}
+.history-card.spend{border-left-color:#851217}
+.history-amount{font-family:'Newsreader',serif;font-weight:800;font-size:1.3rem}
+.history-amount.earn{background:linear-gradient(135deg,#3b6934,#5a9950);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.history-amount.spend{background:linear-gradient(135deg,#851217,#c44040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.collapsible-header{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.collapsible-header .material-symbols-outlined{transition:transform .3s}
+.collapsible-header.open .material-symbols-outlined{transform:rotate(180deg)}
+.collapsible-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.collapsible-body.open{max-height:2000px}
+
+/* BADGES */
+@keyframes badge-pulse{0%,100%{box-shadow:0 0 0 0 var(--badge-color-a)}50%{box-shadow:0 0 0 10px var(--badge-color-b)}}
+.badge-circle{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.badge-circle.earned{animation:badge-pulse 2.5s ease-in-out infinite}
+.badge-circle:hover{transform:scale(1.1)}
+.badge-circle.locked{background:#e4e2e2 !important;opacity:.4}
+html.dark .badge-circle.locked{background:#333 !important}
+.ink-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;border:2px solid currentColor;transform:rotate(-3deg);opacity:.85}
+[data-tip]{position:relative}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(27,28,28,0.92);color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap;z-index:20;pointer-events:none;animation:tooltip-in .2s ease}
+@keyframes tooltip-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* LEVEL TIMELINE */
+.level-timeline{display:flex;align-items:center;justify-content:center;gap:0;padding:20px 0;overflow-x:auto}
+.level-node{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0}
+.level-dot{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform .4s}
+.level-dot.reached{background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;filter:drop-shadow(0 0 10px rgba(133,18,23,0.3))}
+.level-dot.current{animation:ring-pulse 2s ease-in-out infinite;transform:scale(1.15)}
+.level-dot.future{background:#e4e2e2;color:#8c716e}
+html.dark .level-dot.future{background:#333;color:#666}
+.level-connector{width:60px;height:2px;flex-shrink:0}
+.level-connector.solid{background:linear-gradient(90deg,#851217,#a62c2b)}
+.level-connector.dashed{background:repeating-linear-gradient(90deg,#e0bfbc 0 6px,transparent 6px 12px)}
+html.dark .level-connector.dashed{background:repeating-linear-gradient(90deg,#444 0 6px,transparent 6px 12px)}
+.wall-divider{width:100%;height:24px;margin:40px 0;opacity:.08}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px rgba(0,0,0,0.06)}
+@media(prefers-reduced-motion:reduce){.particle,.scroll-indicator{animation:none !important}.avatar-ring,.badge-circle.earned,.level-dot.current{animation:none !important}.stagger-item,.fade-in{transition:none !important;opacity:1 !important;transform:none !important}}
 </style>
 <!-- Chat Widget Styles -->
 <style>
-  #xiangtun-chat {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 9999;
-    font-family: 'Manrope', sans-serif;
-  }
-  /* Toggle Button */
-  #xiangtun-chat-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 32px rgba(133,18,23,0.35), 0 2px 8px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
-  }
-  #xiangtun-chat-toggle:hover {
-    transform: scale(1.1) translateY(-2px);
-    box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15);
-  }
-  /* Panel */
-  #xiangtun-chat-panel {
-    display: none;
-    width: 400px;
-    max-height: 580px;
-    background: rgba(251,249,248,0.92);
-    backdrop-filter: blur(24px) saturate(1.4);
-    -webkit-backdrop-filter: blur(24px) saturate(1.4);
-    border-radius: 16px;
-    box-shadow:
-      0 24px 80px rgba(27,28,28,0.12),
-      0 8px 32px rgba(133,18,23,0.08),
-      inset 0 1px 0 rgba(255,255,255,0.6);
-    flex-direction: column;
-    overflow: hidden;
-    position: absolute;
-    bottom: 72px;
-    right: 0;
-    animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;
-  }
-  @keyframes chatSlideUp {
-    from { opacity: 0; transform: translateY(16px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  #xiangtun-chat-panel.open { display: flex; }
-  /* Header */
-  #xiangtun-chat-header {
-    padding: 20px 24px;
-    background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    position: relative;
-    overflow: hidden;
-  }
-  #xiangtun-chat-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
-    opacity: 0.5;
-  }
-  #xiangtun-chat-header::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  #xiangtun-chat-header > * { position: relative; z-index: 1; }
-  #xiangtun-chat-header h4 {
-    margin: 0;
-    font-family: 'Newsreader', serif;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  #xiangtun-chat-header p {
-    margin: 2px 0 0;
-    font-size: 11px;
-    opacity: 0.7;
-    letter-spacing: 0.05em;
-  }
-  #xiangtun-chat-header .chat-avatar {
-    font-size: 32px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-  }
-  #xiangtun-chat-header .chat-close {
-    margin-left: auto;
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: background 0.2s, transform 0.2s;
-  }
-  #xiangtun-chat-header .chat-close:hover {
-    background: rgba(255,255,255,0.2);
-    transform: rotate(90deg);
-  }
-  /* Messages */
-  #xiangtun-chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-height: 360px;
-    min-height: 200px;
-    background: linear-gradient(180deg, rgba(245,243,243,0.3) 0%, transparent 30%);
-  }
-  #xiangtun-chat-messages::-webkit-scrollbar { width: 4px; }
-  #xiangtun-chat-messages::-webkit-scrollbar-track { background: transparent; }
-  #xiangtun-chat-messages::-webkit-scrollbar-thumb { background: rgba(133,18,23,0.15); border-radius: 4px; }
-  .chat-msg {
-    max-width: 82%;
-    padding: 12px 16px;
-    font-size: 14px;
-    line-height: 1.7;
-    word-break: break-word;
-    animation: msgFadeIn 0.3s ease both;
-  }
-  @keyframes msgFadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .chat-msg.bot {
-    align-self: flex-start;
-    background: rgba(245,243,243,0.8);
-    color: #1b1c1c;
-    border-radius: 2px 16px 16px 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .chat-msg.user {
-    align-self: flex-end;
-    background: linear-gradient(135deg, #851217, #a62c2b);
-    color: #fff;
-    border-radius: 16px 2px 16px 16px;
-    box-shadow: 0 4px 16px rgba(133,18,23,0.2);
-  }
-  .chat-msg.bot.typing::after {
-    content: '';
-    display: inline-flex;
-    gap: 4px;
-    margin-left: 4px;
-  }
-  .chat-msg.bot.typing {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .chat-msg.bot.typing::after {
-    content: '\25CF  \25CF  \25CF';
-    animation: typingPulse 1.4s ease-in-out infinite;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #851217;
-    opacity: 0.5;
-  }
-  @keyframes typingPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-  }
-  /* Input Area */
-  #xiangtun-chat-input-area {
-    display: flex;
-    gap: 10px;
-    padding: 16px 20px;
-    background: rgba(251,249,248,0.8);
-    backdrop-filter: blur(8px);
-  }
-  #xiangtun-chat-input {
-    flex: 1;
-    border: none;
-    border-bottom: 2px solid rgba(140,113,110,0.2);
-    border-radius: 0;
-    padding: 10px 4px;
-    font-size: 14px;
-    font-family: 'Manrope', sans-serif;
-    background: transparent;
-    outline: none;
-    transition: border-color 0.3s;
-    color: #1b1c1c;
-  }
-  #xiangtun-chat-input::placeholder { color: rgba(88,65,63,0.4); }
-  #xiangtun-chat-input:focus {
-    border-color: #851217;
-  }
-  #xiangtun-chat-send {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #851217, #a62c2b);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 16px rgba(133,18,23,0.25);
-    flex-shrink: 0;
-  }
-  #xiangtun-chat-send:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 20px rgba(133,18,23,0.35);
-  }
-  #xiangtun-chat-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
-  @media (max-width: 480px) {
-    #xiangtun-chat-panel {
-      width: calc(100vw - 32px);
-      right: -8px;
-      bottom: 68px;
-      max-height: 70vh;
-    }
-  }
+#xiangtun-chat{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Manrope',sans-serif}
+#xiangtun-chat-toggle{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#851217 0%,#6b0e12 50%,#a62c2b 100%);color:#fff;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(133,18,23,0.35),0 2px 8px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
+#xiangtun-chat-toggle:hover{transform:scale(1.1) translateY(-2px);box-shadow:0 12px 40px rgba(133,18,23,0.45),0 4px 12px rgba(0,0,0,0.15)}
+#xiangtun-chat-panel{display:none;width:400px;max-width:calc(100vw - 32px);max-height:580px;background:rgba(251,249,248,0.92);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border-radius:16px;box-shadow:0 24px 80px rgba(27,28,28,0.12),0 8px 32px rgba(133,18,23,0.08),inset 0 1px 0 rgba(255,255,255,0.6);flex-direction:column;overflow:hidden;position:absolute;bottom:72px;right:0;animation:chatSlideUp .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes chatSlideUp{from{opacity:0;transform:translateY(16px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+#xiangtun-chat-panel.open{display:flex}
+#xiangtun-chat-header{padding:20px 24px;background:linear-gradient(135deg,#851217 0%,#6b0e12 40%,#a62c2b 100%);color:#fff;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
+#xiangtun-chat-header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;opacity:.5}
+#xiangtun-chat-header>*{position:relative;z-index:1}
+#xiangtun-chat-header h4{margin:0;font-family:'Newsreader',serif;font-size:18px;font-weight:700}
+#xiangtun-chat-header p{margin:2px 0 0;font-size:11px;opacity:.7;letter-spacing:.05em}
+#xiangtun-chat-header .chat-avatar{font-size:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2))}
+#xiangtun-chat-header .chat-close{margin-left:auto;background:rgba(255,255,255,0.1);border:none;color:#fff;cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s,transform .2s}
+#xiangtun-chat-header .chat-close:hover{background:rgba(255,255,255,0.2);transform:rotate(90deg)}
+#xiangtun-chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;max-height:360px;min-height:200px;background:linear-gradient(180deg,rgba(245,243,243,0.3) 0%,transparent 30%)}
+#xiangtun-chat-messages::-webkit-scrollbar{width:4px}
+#xiangtun-chat-messages::-webkit-scrollbar-thumb{background:rgba(133,18,23,0.15);border-radius:4px}
+.chat-msg{max-width:82%;padding:12px 16px;font-size:14px;line-height:1.7;word-break:break-word;animation:msgFadeIn .3s ease both}
+@keyframes msgFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{align-self:flex-start;background:rgba(245,243,243,0.8);color:#1b1c1c;border-radius:2px 16px 16px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;border-radius:16px 2px 16px 16px;box-shadow:0 4px 16px rgba(133,18,23,0.2)}
+.chat-msg.bot.typing{display:flex;align-items:center;gap:6px}
+.chat-msg.bot.typing::after{content:'\25CF  \25CF  \25CF';animation:typingPulse 1.4s ease-in-out infinite;font-size:12px;letter-spacing:2px;color:#851217;opacity:.5}
+@keyframes typingPulse{0%,100%{opacity:.3}50%{opacity:.8}}
+#xiangtun-chat-input-area{display:flex;gap:10px;padding:16px 20px;background:rgba(251,249,248,0.8);backdrop-filter:blur(8px)}
+#xiangtun-chat-input{flex:1;border:none;border-bottom:2px solid rgba(140,113,110,0.2);border-radius:0;padding:10px 4px;font-size:14px;font-family:'Manrope',sans-serif;background:transparent;outline:none;transition:border-color .3s;color:#1b1c1c}
+#xiangtun-chat-input::placeholder{color:rgba(88,65,63,0.4)}
+#xiangtun-chat-input:focus{border-color:#851217}
+#xiangtun-chat-send{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(133,18,23,0.25);flex-shrink:0}
+#xiangtun-chat-send:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(133,18,23,0.35)}
+#xiangtun-chat-send:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+@media(max-width:480px){#xiangtun-chat-panel{width:calc(100vw - 32px);right:-8px;bottom:68px;max-height:70vh}}
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
 <div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
   <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
-  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;">
-    <div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
-  </div>
+  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;"><div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div></div>
 </div>
-
-<!-- Top Navigation Bar -->
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
-    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
-        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
-        <div class="hidden md:flex gap-16 items-center">
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页 Home</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者 Guardian</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市 Market</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约 Booking</a>
-            <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">个人 Me</a>
-        </div>
-        <div class="flex items-center gap-6">
-            <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
-            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="toggleDarkMode()" id="dark-mode-icon">dark_mode</span>
-            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
-            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        </div>
+  <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+    <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+    <div class="hidden md:flex gap-16 items-center">
+      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页</a>
+      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者</a>
+      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约</a>
+      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市</a>
+      <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">个人</a>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页 Home</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者 Guardian</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市 Market</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约 Booking</a>
-        <a class="block text-[#851217] font-medium font-headline py-3" href="index.html">个人 Me</a>
+    <div class="flex items-center gap-6">
+      <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
+      <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+      <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><span class="material-symbols-outlined">menu</span></button>
     </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页</a>
+    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者</a>
+    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约</a>
+    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市</a>
+    <a class="block text-[#851217] font-medium font-headline py-3" href="index.html">个人</a>
+  </div>
 </nav>
 
-<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-24 md:pt-40 pb-16 md:pb-32 relative">
-
-<!-- Hero Section -->
-<section class="mb-12 md:mb-20 fade-in">
-<div class="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-<!-- Left: Level card -->
-<div class="flex-1 w-full">
-<h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">My Account</h3>
-<h1 class="text-4xl md:text-6xl font-headline font-extrabold leading-[0.95] mb-4">个人中心</h1>
-<p class="text-on-surface-variant font-headline italic mb-8">你的守护之旅，一切尽在掌握</p>
-</div>
-<!-- Right: Balance card -->
-<div class="bg-surface-container-low p-8 md:p-10 rounded-sm w-full md:w-80 flex-shrink-0">
-<div class="text-center">
-<span class="material-symbols-outlined text-tertiary mb-2" style="font-size:32px" id="level-icon">person</span>
-<p class="text-xs text-on-surface-variant tracking-widest uppercase mb-1" id="user-level">新访客</p>
-<p class="text-5xl font-headline font-extrabold text-tertiary mb-2" id="user-balance">0</p>
-<p class="text-xs text-on-surface-variant">能量币</p>
-<div class="mt-4 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-<div class="h-full bg-tertiary rounded-full transition-all duration-500" id="user-progress" style="width:0%"></div>
-</div>
-<p class="text-[10px] text-on-surface-variant mt-2" id="user-next-level">距离下一等级还需 50 能量币</p>
-</div>
-</div>
-</div>
+<!-- HERO -->
+<section class="user-hero">
+  <div class="particle" style="width:6px;height:6px;left:10%;animation-duration:12s;animation-delay:0s" aria-hidden="true"></div>
+  <div class="particle" style="width:4px;height:4px;left:25%;animation-duration:16s;animation-delay:2s" aria-hidden="true"></div>
+  <div class="particle" style="width:8px;height:8px;left:40%;animation-duration:14s;animation-delay:4s" aria-hidden="true"></div>
+  <div class="particle" style="width:5px;height:5px;left:55%;animation-duration:18s;animation-delay:1s" aria-hidden="true"></div>
+  <div class="particle" style="width:7px;height:7px;left:70%;animation-duration:13s;animation-delay:3s" aria-hidden="true"></div>
+  <div class="particle" style="width:4px;height:4px;left:82%;animation-duration:15s;animation-delay:5s" aria-hidden="true"></div>
+  <div class="particle" style="width:6px;height:6px;left:90%;animation-duration:17s;animation-delay:7s" aria-hidden="true"></div>
+  <div class="particle" style="width:5px;height:5px;left:5%;animation-duration:19s;animation-delay:6s" aria-hidden="true"></div>
+  <div class="hero-content px-4">
+    <p class="text-[10px] font-bold tracking-[0.5em] uppercase text-white/50 mb-6">My Account</p>
+    <div class="avatar-ring mb-6"><div class="avatar-inner"><span class="material-symbols-outlined" style="font-size:40px" id="hero-level-icon">person</span></div></div>
+    <h1 class="font-headline font-black text-white text-5xl md:text-7xl mb-3" style="text-shadow:0 0 40px rgba(255,180,170,0.4),0 4px 20px rgba(0,0,0,0.5)" id="hero-level-name">新访客</h1>
+    <p class="text-white/60 font-headline italic text-lg mb-6">守护长城文化的每一步，都闪闪发光</p>
+    <div class="inline-flex items-center gap-3 px-6 py-3" style="background:rgba(255,255,255,0.15)">
+      <span class="material-symbols-outlined text-white/80" style="font-size:18px">trending_up</span>
+      <span class="text-sm font-bold text-white/80" id="hero-cta">距离下一等级还需 50 能量币</span>
+    </div>
+    <div class="mt-12 scroll-indicator" aria-hidden="true"><span class="material-symbols-outlined text-white/40" style="font-size:28px">expand_more</span></div>
+  </div>
 </section>
 
-<!-- Tab Navigation -->
-<section class="mb-16 md:mb-32">
-<div class="flex gap-2 mb-10 border-b border-outline-variant/20 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0" role="tablist">
-<button role="tab" aria-selected="true" class="user-tab active whitespace-nowrap" onclick="switchUserTab('coins')">
-<span class="material-symbols-outlined text-sm align-middle mr-1">bolt</span>我的能量币
-</button>
-<button role="tab" aria-selected="false" class="user-tab whitespace-nowrap" onclick="switchUserTab('records')">
-<span class="material-symbols-outlined text-sm align-middle mr-1">receipt_long</span>我的记录
-</button>
-<button role="tab" aria-selected="false" class="user-tab whitespace-nowrap" onclick="switchUserTab('guardian')">
-<span class="material-symbols-outlined text-sm align-middle mr-1">shield</span>守护者档案
-</button>
-</div>
-<div id="tab-content"></div>
+<!-- STATS -->
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 -mt-16 relative z-20 mb-16 md:mb-24">
+  <div class="flex flex-col lg:flex-row gap-6">
+    <div class="stat-glass stat-glass-lg flex-1 stagger-item" style="transition-delay:0ms">
+      <div class="flex items-center justify-center gap-2 mb-2"><span class="material-symbols-outlined text-tertiary" style="font-size:28px">bolt</span><span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">能量币余额</span></div>
+      <span class="stat-num" style="font-size:4.5rem" id="stat-balance">0</span>
+      <div class="progress-ring" id="stat-ring" style="background:conic-gradient(#851217 0deg,#593d00 0deg,#e4e2e2 0deg,#e4e2e2 360deg)"><div class="progress-ring-inner" id="stat-ring-label">0%</div></div>
+      <p class="text-[10px] text-on-surface-variant mt-2">升级进度</p>
+    </div>
+    <div class="flex flex-col gap-6 lg:w-72">
+      <div class="stat-glass stat-glass-sm stagger-item" style="transition-delay:100ms">
+        <div class="flex items-center justify-center gap-2 mb-1"><span class="material-symbols-outlined text-primary" style="font-size:20px">shield</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">守护者等级</span></div>
+        <span class="stat-num" style="font-size:1.6rem" id="stat-level">新访客</span>
+      </div>
+      <div class="stat-glass stat-glass-sm stagger-item" style="transition-delay:200ms">
+        <div class="flex items-center justify-center gap-2 mb-1"><span class="material-symbols-outlined text-secondary" style="font-size:20px">task_alt</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">完成任务</span></div>
+        <span class="stat-num" id="stat-tasks">0</span>
+      </div>
+      <div class="stat-glass stat-glass-sm stagger-item" style="transition-delay:300ms">
+        <div class="flex items-center justify-center gap-2 mb-1"><span class="material-symbols-outlined text-tertiary" style="font-size:20px">military_tech</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">徽章数量</span></div>
+        <span class="stat-num" id="stat-badges">0</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-</main>
+<!-- Wall Divider -->
+<div class="max-w-screen-2xl mx-auto px-4 md:px-12"><svg class="wall-divider" viewBox="0 0 960 24" fill="none" aria-hidden="true"><path d="M0 24V12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V24" stroke="#1b1c1c" stroke-width="1.5"/></svg></div>
+
+<!-- TABS -->
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32 fade-in">
+  <div class="flex justify-center mb-12">
+    <div class="user-tabs" role="tablist">
+      <button role="tab" aria-selected="true" class="user-tab active" onclick="switchUserTab('coins')"><span class="material-symbols-outlined" style="font-size:18px">bolt</span>能量币<span class="tab-count" id="tab-count-coins">0</span></button>
+      <button role="tab" aria-selected="false" class="user-tab" onclick="switchUserTab('records')"><span class="material-symbols-outlined" style="font-size:18px">receipt_long</span>我的记录</button>
+      <button role="tab" aria-selected="false" class="user-tab" onclick="switchUserTab('guardian')"><span class="material-symbols-outlined" style="font-size:18px">shield</span>守护者档案</button>
+    </div>
+  </div>
+  <div id="tab-content" class="max-w-4xl mx-auto"></div>
+</section>
 
 <!-- Footer -->
 <footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
 <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
-<div class="max-w-xs">
-<a href="/" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
-<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
-通过现代视觉叙事，守护长城板栗林色彩遗产。
-</p>
-</div>
+<div class="max-w-xs"><a href="/" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a><p class="text-sm text-gray-500 leading-relaxed font-headline italic">通过现代视觉叙事，守护长城板栗林色彩遗产。</p></div>
 <div class="grid grid-cols-2 gap-8 md:gap-20">
-<div class="space-y-6">
-<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
-<ul class="space-y-4 text-sm text-gray-400">
-<li><a class="hover:text-white transition-colors" href="/">首页</a></li>
-<li><a class="hover:text-white transition-colors" href="../about/history.html">香屯故事</a></li>
-<li><a class="hover:text-white transition-colors" href="../routes/red-study.html">文旅路线</a></li>
-<li><a class="hover:text-white transition-colors" href="../guardian/index.html">守护者</a></li>
-<li><a class="hover:text-white transition-colors" href="../market/index.html">能量集市</a></li>
-<li><a class="hover:text-white transition-colors" href="../booking/index.html">预约游览</a></li>
-<li><a class="hover:text-white transition-colors" href="index.html">个人中心</a></li>
-</ul>
-</div>
-<div class="space-y-6">
-<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
-<ul class="space-y-4 text-sm text-gray-400">
-<li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li>
-<li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li>
-<li><a class="hover:text-white transition-colors" href="mailto:support@editnow.uk">联系我们</a></li>
-</ul>
-</div>
-</div>
-</div>
+<div class="space-y-6"><h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6><ul class="space-y-4 text-sm text-gray-400"><li><a class="hover:text-white transition-colors" href="/">首页</a></li><li><a class="hover:text-white transition-colors" href="../guardian/index.html">守护者计划</a></li><li><a class="hover:text-white transition-colors" href="../market/index.html">能量集市</a></li></ul></div>
+<div class="space-y-6"><h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6><ul class="space-y-4 text-sm text-gray-400"><li><a class="hover:text-white transition-colors" href="../booking/index.html">预约游览</a></li><li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li><li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li></ul></div>
+</div></div>
 <div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
-<p>&copy; 2026 四色香屯 &middot; 挑战杯团队 &middot; 任济坤</p>
-<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
-</div>
-</footer>
+<p>&copy; 2026 四色香屯 &middot; 挑战杯团队 &middot; 任济坤</p><p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div></footer>
 
 <!-- Chat Widget -->
 <div id="xiangtun-chat">
   <div id="xiangtun-chat-panel">
-    <div id="xiangtun-chat-header">
-      <div class="chat-avatar">&#127983;</div>
-      <div>
-        <h4>香屯小卒</h4>
-        <p>长城脚下的 AI 小兵 &middot; 有问必答</p>
-      </div>
-      <button class="chat-close" onclick="toggleChat()">&#10005;</button>
-    </div>
-    <div id="xiangtun-chat-messages">
-      <div class="chat-msg bot">你好！我是香屯小卒 &#127956;&#65039; 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div>
-    </div>
-    <div id="xiangtun-chat-input-area">
-      <input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off" />
-      <button id="xiangtun-chat-send" onclick="sendMessage()">
-        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
-      </button>
-    </div>
+    <div id="xiangtun-chat-header"><div class="chat-avatar">&#127983;</div><div><h4>香屯小卒</h4><p>长城脚下的 AI 小兵 &middot; 有问必答</p></div><button class="chat-close" onclick="toggleChat()">&#10005;</button></div>
+    <div id="xiangtun-chat-messages"><div class="chat-msg bot">你好！我是香屯小卒 &#127956;&#65039; 一个守护长城文化的AI小兵。关于香屯村的长城故事、文旅路线、村庄历史，尽管问我！</div></div>
+    <div id="xiangtun-chat-input-area"><input id="xiangtun-chat-input" type="text" placeholder="问我关于香屯的任何事..." autocomplete="off"/><button id="xiangtun-chat-send" onclick="sendMessage()"><span class="material-symbols-outlined" style="font-size:20px">send</span></button></div>
   </div>
-  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
-    <span class="material-symbols-outlined" style="font-size:28px;">chat</span>
-  </button>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()"><span class="material-symbols-outlined" style="font-size:28px">chat</span></button>
 </div>
 
-<!-- Chat Knowledge Base -->
 <script src="../js/chat-knowledge.js"></script>
-<!-- Chat Logic -->
 <script>
-  var SYSTEM_PROMPT = '你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。\n\n你的知识背景：\n- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气\n- 明代为昌镇黄花路西老星口段长城，村民世代守护长城\n- 早在辽代，香屯就是"辽代首钢"的采矿地\n- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地\n- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"\n- 板栗是香屯特产，村中板栗林历史悠久\n- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目\n- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事\n- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)\n\n交互原则：\n- 用亲切、生动的语言，像一位当地老乡在讲故事\n- 回答简洁（2-4句），但内容丰富有趣\n- 适当加入历史典故和文化细节\n- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访\n- 用中文回答';
-
-  var API_URL = 'https://xiangtun-chat.garetneda.workers.dev/api/chat';
-  var chatHistory = [];
-
-  function toggleChat() {
-    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
-    document.getElementById('xiangtun-chat-input').focus();
-  }
-
-  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
-
-  function sendMessage() {
-    var input = document.getElementById('xiangtun-chat-input');
-    var msg = input.value.trim();
-    if (!msg) return;
-
-    input.value = '';
-    appendMessage(msg, 'user');
-    chatHistory.push({ role: 'user', content: msg });
-
-    var typingEl = appendMessage('', 'bot typing');
-    var sendBtn = document.getElementById('xiangtun-chat-send');
-    sendBtn.disabled = true;
-
-    fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT }
-        ].concat(chatHistory.slice(-10))
-      })
-    }).then(function(resp) {
-      if (!resp.ok) throw new Error('API error');
-      return resp.json();
-    }).then(function(data) {
-      var reply = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '抱歉，我暂时无法回答，请稍后再试~';
-      typingEl.remove();
-      appendMessage(reply, 'bot');
-      chatHistory.push({ role: 'assistant', content: reply });
-    }).catch(function() {
-      typingEl.remove();
-      appendMessage('网络连接中断了，请检查网络后重试', 'bot');
-    }).finally(function() {
-      sendBtn.disabled = false;
-    });
-  }
-
-  function appendMessage(text, cls) {
-    var container = document.getElementById('xiangtun-chat-messages');
-    var div = document.createElement('div');
-    div.className = 'chat-msg ' + cls;
-    div.textContent = text;
-    container.appendChild(div);
-    container.scrollTop = container.scrollHeight;
-    return div;
-  }
+var SYSTEM_PROMPT='你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。\n\n你的知识背景：\n- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气\n- 明代为昌镇黄花路西老星口段长城，村民世代守护长城\n- 早在辽代，香屯就是"辽代首钢"的采矿地\n- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地\n- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"\n- 板栗是香屯特产，村中板栗林历史悠久\n- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目\n- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事\n- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)\n\n交互原则：\n- 用亲切、生动的语言，像一位当地老乡在讲故事\n- 回答简洁（2-4句），但内容丰富有趣\n- 适当加入历史典故和文化细节\n- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访\n- 用中文回答';
+var API_URL='https://xiangtun-chat.garetneda.workers.dev/api/chat';
+var chatHistory=[];
+function toggleChat(){document.getElementById('xiangtun-chat-panel').classList.toggle('open');document.getElementById('xiangtun-chat-input').focus()}
+document.getElementById('xiangtun-chat-input').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}});
+function sendMessage(){var input=document.getElementById('xiangtun-chat-input');var msg=input.value.trim();if(!msg)return;input.value='';appendMessage(msg,'user');chatHistory.push({role:'user',content:msg});var typingEl=appendMessage('','bot typing');var sendBtn=document.getElementById('xiangtun-chat-send');sendBtn.disabled=true;fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'system',content:SYSTEM_PROMPT}].concat(chatHistory.slice(-10))})}).then(function(r){if(!r.ok)throw new Error('API error');return r.json()}).then(function(d){var reply=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content)||'抱歉，我暂时无法回答，请稍后再试~';typingEl.remove();appendMessage(reply,'bot');chatHistory.push({role:'assistant',content:reply})}).catch(function(){typingEl.remove();appendMessage('网络连接中断了，请检查网络后重试','bot')}).finally(function(){sendBtn.disabled=false})}
+function appendMessage(t,c){var box=document.getElementById('xiangtun-chat-messages');var d=document.createElement('div');d.className='chat-msg '+c;d.textContent=t;box.appendChild(d);box.scrollTop=box.scrollHeight;return d}
 </script>
-
-<!-- Energy Store -->
 <script src="../js/energy-store.js"></script>
-
-<!-- User Center Page Logic -->
 <script>
-var currentUserTab = 'coins';
-
-function switchUserTab(tab) {
-  currentUserTab = tab;
-  document.querySelectorAll('.user-tab').forEach(function(btn) {
-    var isActive = (tab === 'coins' && btn.textContent.includes('能量币')) ||
-                   (tab === 'records' && btn.textContent.includes('记录')) ||
-                   (tab === 'guardian' && btn.textContent.includes('守护者'));
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-  });
-  renderTabContent();
-}
-
-function renderTabContent() {
-  var container = document.getElementById('tab-content');
-  container.innerHTML = '';
-  if (currentUserTab === 'coins') renderCoinsTab(container);
-  else if (currentUserTab === 'records') renderRecordsTab(container);
-  else if (currentUserTab === 'guardian') renderGuardianTab(container);
-}
-
-function renderCoinsTab(container) {
-  var data = EnergyStore.getData();
-  if (data.history.length === 0) {
-    renderEmptyState(container, 'savings', '还没有能量币记录', '去守护者页开始你的第一个任务！', '../guardian/index.html');
-    return;
-  }
-
-  var table = document.createElement('div');
-  table.className = 'space-y-3';
-
-  var sorted = data.history.slice().sort(function(a, b) { return new Date(b.time) - new Date(a.time); });
-
-  sorted.forEach(function(entry) {
-    var row = document.createElement('div');
-    row.className = 'flex items-center justify-between py-4 px-6 bg-surface-container-low rounded-sm';
-
-    var left = document.createElement('div');
-    var reason = document.createElement('p');
-    reason.className = 'text-sm font-medium';
-    reason.textContent = entry.reason;
-    left.appendChild(reason);
-
-    var time = document.createElement('p');
-    time.className = 'text-xs text-on-surface-variant mt-1';
-    time.textContent = new Date(entry.time).toLocaleString('zh-CN');
-    left.appendChild(time);
-
-    var amount = document.createElement('span');
-    amount.className = 'font-bold text-lg ' + (entry.amount > 0 ? 'history-earn' : 'history-spend');
-    amount.textContent = (entry.amount > 0 ? '+' : '') + entry.amount;
-
-    row.appendChild(left);
-    row.appendChild(amount);
-    table.appendChild(row);
-  });
-
-  container.appendChild(table);
-}
-
-function renderRecordsTab(container) {
-  var bookings = EnergyStore.getBookings();
-  var redemptions = EnergyStore.getRedemptions();
-
-  renderCollapsible(container, '我的预约', 'event', bookings, function(item) {
-    return item.routeName + ' \u00B7 ' + item.date + ' ' + (item.period === 'morning' ? '上午' : '下午');
-  }, function(item) {
-    return '预约编号: ' + item.id + ' \u00B7 ' + item.visitors + '人 \u00B7 ' + new Date(item.time).toLocaleString('zh-CN');
-  }, '暂无预约记录', '预约一次游览即可获得 15 能量币', '../booking/index.html');
-
-  renderCollapsible(container, '我的兑换', 'redeem', redemptions, function(item) {
-    return item.productName;
-  }, function(item) {
-    return '凭证: ' + item.id + ' \u00B7 消耗 ' + item.cost + ' 能量币 \u00B7 ' + new Date(item.time).toLocaleString('zh-CN');
-  }, '暂无兑换记录', '去能量集市看看有什么可以兑换', '../market/index.html');
-}
-
-function renderCollapsible(container, title, icon, items, primaryFn, secondaryFn, emptyTitle, emptyHint, emptyLink) {
-  var section = document.createElement('div');
-  section.className = 'mb-8';
-
-  var header = document.createElement('div');
-  header.className = 'collapsible-header open';
-  header.innerHTML = '<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">' + icon + '</span><h3 class="font-headline font-bold text-lg">' + title + ' (' + items.length + ')</h3></div><span class="material-symbols-outlined text-on-surface-variant">expand_more</span>';
-
-  var body = document.createElement('div');
-  body.className = 'collapsible-body open';
-
-  header.onclick = function() {
-    header.classList.toggle('open');
-    body.classList.toggle('open');
-  };
-  section.appendChild(header);
-
-  if (items.length === 0) {
-    var empty = document.createElement('div');
-    empty.className = 'text-center py-10 bg-surface-container-low rounded-sm';
-    var emptyIcon = document.createElement('span');
-    emptyIcon.className = 'material-symbols-outlined text-4xl text-outline-variant mb-3 block';
-    emptyIcon.textContent = icon;
-    empty.appendChild(emptyIcon);
-    var emptyP = document.createElement('p');
-    emptyP.className = 'text-sm text-on-surface-variant mb-2';
-    emptyP.textContent = emptyTitle;
-    empty.appendChild(emptyP);
-    var emptyA = document.createElement('a');
-    emptyA.href = emptyLink;
-    emptyA.className = 'text-sm text-primary hover:underline';
-    emptyA.textContent = emptyHint + ' \u2192';
-    empty.appendChild(emptyA);
-    body.appendChild(empty);
-  } else {
-    var list = document.createElement('div');
-    list.className = 'space-y-3';
-    items.sort(function(a, b) { return new Date(b.time) - new Date(a.time); }).forEach(function(item) {
-      var card = document.createElement('div');
-      card.className = 'bg-surface-container-low p-5 rounded-sm';
-      var p1 = document.createElement('p');
-      p1.className = 'font-medium text-sm';
-      p1.textContent = primaryFn(item);
-      card.appendChild(p1);
-      var p2 = document.createElement('p');
-      p2.className = 'text-xs text-on-surface-variant mt-1';
-      p2.textContent = secondaryFn(item);
-      card.appendChild(p2);
-      list.appendChild(card);
-    });
-    body.appendChild(list);
-  }
-
-  section.appendChild(body);
-  container.appendChild(section);
-}
-
-function renderGuardianTab(container) {
-  var data = EnergyStore.getData();
-  var level = EnergyStore.getLevelInfo(data.coins);
-
-  var levelCard = document.createElement('div');
-  levelCard.className = 'bg-surface-container-low p-8 rounded-sm mb-8 text-center';
-
-  var iconEl = document.createElement('span');
-  iconEl.className = 'material-symbols-outlined text-primary mb-3';
-  iconEl.style.fontSize = '48px';
-  iconEl.textContent = level.icon;
-  levelCard.appendChild(iconEl);
-
-  var levelName = document.createElement('h3');
-  levelName.className = 'font-headline font-bold text-2xl mb-2';
-  levelName.textContent = level.name;
-  levelCard.appendChild(levelName);
-
-  var totalEarned = 0;
-  data.history.forEach(function(h) { if (h.amount > 0) totalEarned += h.amount; });
-  var stats = document.createElement('p');
-  stats.className = 'text-sm text-on-surface-variant';
-  stats.textContent = '累计赚取 ' + totalEarned + ' 能量币';
-  levelCard.appendChild(stats);
-
-  container.appendChild(levelCard);
-
-  var badgeSection = document.createElement('div');
-  badgeSection.className = 'mb-8';
-  var badgeTitle = document.createElement('h4');
-  badgeTitle.className = 'font-headline font-bold text-lg mb-4';
-  badgeTitle.textContent = '徽章成就';
-  badgeSection.appendChild(badgeTitle);
-
-  var hasPledge = data.history.some(function(h) { return h.reason === '签署保护倡议'; });
-  var hasQuiz = data.history.some(function(h) { return h.reason && h.reason.indexOf('知识问答') === 0; });
-  var hasTask = data.history.some(function(h) { return h.reason && (h.reason.indexOf('打卡') !== -1 || h.reason.indexOf('分享') !== -1); });
-
-  var badges = [
-    { name: '签署倡议', icon: 'handshake', earned: hasPledge, color: '#851217' },
-    { name: '知识达人', icon: 'school', earned: hasQuiz, color: '#3b6934' },
-    { name: '行动派', icon: 'hiking', earned: hasTask, color: '#593d00' }
-  ];
-
-  var badgeGrid = document.createElement('div');
-  badgeGrid.className = 'grid grid-cols-3 gap-4';
-  badges.forEach(function(badge) {
-    var el = document.createElement('div');
-    el.className = 'text-center p-6 rounded-sm ' + (badge.earned ? 'bg-surface-container-low' : 'bg-surface-container-low opacity-30');
-    var icon = document.createElement('span');
-    icon.className = 'material-symbols-outlined mb-2';
-    icon.style.cssText = 'font-size:32px;color:' + (badge.earned ? badge.color : '#8c716e');
-    icon.textContent = badge.icon;
-    el.appendChild(icon);
-    var name = document.createElement('p');
-    name.className = 'text-xs font-bold tracking-wider';
-    name.textContent = badge.name;
-    el.appendChild(name);
-    badgeGrid.appendChild(el);
-  });
-  badgeSection.appendChild(badgeGrid);
-  container.appendChild(badgeSection);
-
-  if (data.history.length === 0) {
-    renderEmptyState(container, 'shield', '签署保护倡议，开启你的守护之旅', '前往守护者页面', '../guardian/index.html');
-  }
-}
-
-function renderEmptyState(container, icon, title, linkText, linkHref) {
-  var el = document.createElement('div');
-  el.className = 'text-center py-16';
-  var iconEl = document.createElement('span');
-  iconEl.className = 'material-symbols-outlined text-6xl text-outline-variant mb-4 block';
-  iconEl.textContent = icon;
-  el.appendChild(iconEl);
-  var p = document.createElement('p');
-  p.className = 'text-on-surface-variant font-headline italic mb-4';
-  p.textContent = title;
-  el.appendChild(p);
-  var a = document.createElement('a');
-  a.href = linkHref;
-  a.className = 'inline-block px-6 py-2 bg-primary text-on-primary rounded-xl text-sm font-bold tracking-wider hover:opacity-90 transition-opacity';
-  a.textContent = linkText + ' \u2192';
-  el.appendChild(a);
-  container.appendChild(el);
-}
-
-function updateUserHero() {
-  var data = EnergyStore.getData();
-  var level = EnergyStore.getLevelInfo(data.coins);
-  document.getElementById('user-balance').textContent = data.coins;
-  document.getElementById('user-level').textContent = level.name;
-  document.getElementById('level-icon').textContent = level.icon;
-  document.getElementById('user-progress').style.width = level.progress + '%';
-  if (level.next) {
-    document.getElementById('user-next-level').textContent = '距离下一等级还需 ' + (level.next - data.coins) + ' 能量币';
-  } else {
-    document.getElementById('user-next-level').textContent = '已达最高等级';
-  }
-}
-
-function updateNavBalance() {
-  var el = document.getElementById('nav-balance');
-  if (el) el.textContent = EnergyStore.getBalance();
-}
-
-window.addEventListener('energy-changed', function() {
-  updateNavBalance();
-  updateUserHero();
-  renderTabContent();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  updateNavBalance();
-  updateUserHero();
-  renderTabContent();
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in, .scale-in').forEach(function(el) { observer.observe(el); });
-
-  window.addEventListener('scroll', function() {
-    var nav = document.querySelector('nav');
-    if (window.scrollY > 50) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
-});
+var currentUserTab='coins';
+function switchUserTab(tab){currentUserTab=tab;document.querySelectorAll('.user-tab').forEach(function(btn){var a=(tab==='coins'&&btn.textContent.includes('能量币'))||(tab==='records'&&btn.textContent.includes('记录'))||(tab==='guardian'&&btn.textContent.includes('守护者'));btn.classList.toggle('active',a);btn.setAttribute('aria-selected',a?'true':'false')});renderTabContent()}
+function renderTabContent(){var c=document.getElementById('tab-content');c.innerHTML='';if(currentUserTab==='coins')renderCoinsTab(c);else if(currentUserTab==='records')renderRecordsTab(c);else if(currentUserTab==='guardian')renderGuardianTab(c)}
+function renderCoinsTab(container){var data=EnergyStore.getData();if(data.history.length===0){renderEmptyState(container,'savings','还没有能量币记录','去守护者页开始你的第一个守护任务！','../guardian/index.html');return}var list=document.createElement('div');list.className='space-y-3';var sorted=data.history.slice().sort(function(a,b){return new Date(b.time)-new Date(a.time)});sorted.forEach(function(entry,i){var card=document.createElement('div');card.className='history-card stagger-item '+(entry.amount>0?'earn':'spend');card.style.transitionDelay=(i*60)+'ms';var left=document.createElement('div');var reason=document.createElement('p');reason.className='text-sm font-semibold';reason.textContent=entry.reason;left.appendChild(reason);var time=document.createElement('p');time.className='text-xs text-on-surface-variant mt-1';time.textContent=new Date(entry.time).toLocaleString('zh-CN');left.appendChild(time);var amount=document.createElement('span');amount.className='history-amount min-w-0 truncate '+(entry.amount>0?'earn':'spend');amount.textContent=(entry.amount>0?'+':'')+entry.amount;card.appendChild(left);card.appendChild(amount);list.appendChild(card)});container.appendChild(list);requestAnimationFrame(function(){list.querySelectorAll('.stagger-item').forEach(function(el){el.classList.add('visible')})})}
+function renderRecordsTab(container){var bookings=EnergyStore.getBookings();var redemptions=EnergyStore.getRedemptions();renderCollapsible(container,'我的预约','event',bookings,function(item){return item.routeName+' \u00B7 '+item.date+' '+(item.period==='morning'?'上午':'下午')},function(item){return '预约编号: '+item.id+' \u00B7 '+item.visitors+'人 \u00B7 '+new Date(item.time).toLocaleString('zh-CN')},'暂无预约记录','预约一次游览即可获得 15 能量币','../booking/index.html');renderCollapsible(container,'我的兑换','redeem',redemptions,function(item){return item.productName},function(item){return '凭证: '+item.id+' \u00B7 消耗 '+item.cost+' 能量币 \u00B7 '+new Date(item.time).toLocaleString('zh-CN')},'暂无兑换记录','去能量集市看看有什么可以兑换','../market/index.html')}
+function renderCollapsible(container,title,icon,items,primaryFn,secondaryFn,emptyTitle,emptyHint,emptyLink){var section=document.createElement('div');section.className='mb-8';var header=document.createElement('div');header.className='collapsible-header open';header.innerHTML='<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">'+icon+'</span><h3 class="font-headline font-bold text-lg">'+title+' ('+items.length+')</h3></div><span class="material-symbols-outlined text-on-surface-variant">expand_more</span>';var body=document.createElement('div');body.className='collapsible-body open';header.onclick=function(){header.classList.toggle('open');body.classList.toggle('open')};section.appendChild(header);if(items.length===0){renderEmptyState(body,icon,emptyTitle,emptyHint,emptyLink)}else{var list=document.createElement('div');list.className='space-y-3';items.sort(function(a,b){return new Date(b.time)-new Date(a.time)}).forEach(function(item){var card=document.createElement('div');card.className='history-card';var p1=document.createElement('p');p1.className='font-semibold text-sm';p1.textContent=primaryFn(item);card.appendChild(p1);var p2=document.createElement('p');p2.className='text-xs text-on-surface-variant mt-1';p2.textContent=secondaryFn(item);card.appendChild(p2);list.appendChild(card)});body.appendChild(list)}section.appendChild(body);container.appendChild(section)}
+function renderGuardianTab(container){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);if(data.history.length===0){renderEmptyState(container,'shield','签署保护倡议，开启你的守护之旅','前往守护者页面','../guardian/index.html');return}var tw=document.createElement('div');tw.className='mb-12 fade-in';var tt=document.createElement('h4');tt.className='font-headline font-bold text-lg mb-6 text-center';tt.textContent='守护者成长之路';tw.appendChild(tt);var levels=[{name:'新访客',icon:'person',threshold:0},{name:'守护学徒',icon:'school',threshold:50},{name:'守护使者',icon:'shield',threshold:150},{name:'荣誉守护者',icon:'military_tech',threshold:300}];var tl=document.createElement('div');tl.className='level-timeline';levels.forEach(function(lv,i){var reached=data.coins>=lv.threshold;var isCurrent=level.name===lv.name;var node=document.createElement('div');node.className='level-node';var dot=document.createElement('div');dot.className='level-dot '+(reached?'reached':'future')+(isCurrent?' current':'');dot.innerHTML='<span class="material-symbols-outlined" style="font-size:22px">'+lv.icon+'</span>';node.appendChild(dot);var lb=document.createElement('span');lb.className='text-[10px] font-bold tracking-wider '+(reached?'text-primary':'text-on-surface-variant');lb.textContent=lv.name;node.appendChild(lb);tl.appendChild(node);if(i<levels.length-1){var cn=document.createElement('div');cn.className='level-connector '+(data.coins>=levels[i+1].threshold?'solid':'dashed');tl.appendChild(cn)}});tw.appendChild(tl);container.appendChild(tw);var bs=document.createElement('div');bs.className='mb-8 fade-in';var bt=document.createElement('h4');bt.className='font-headline font-bold text-lg mb-6 text-center';bt.textContent='徽章成就';bs.appendChild(bt);var hasPledge=data.history.some(function(h){return h.reason==='签署保护倡议'});var hasQuiz=data.history.some(function(h){return h.reason&&h.reason.indexOf('知识问答')===0});var hasTask=data.history.some(function(h){return h.reason&&(h.reason.indexOf('打卡')!==-1||h.reason.indexOf('分享')!==-1)});var badges=[{name:'签署倡议',icon:'handshake',earned:hasPledge,color:'#851217',tip:'在守护者页面签署保护倡议即可获得'},{name:'知识达人',icon:'school',earned:hasQuiz,color:'#3b6934',tip:'完成一次知识问答即可获得'},{name:'行动派',icon:'hiking',earned:hasTask,color:'#593d00',tip:'完成一次打卡或分享任务即可获得'}];var bg=document.createElement('div');bg.className='flex justify-center gap-10 md:gap-16 flex-wrap';badges.forEach(function(badge){var el=document.createElement('div');el.className='text-center';el.setAttribute('data-tip',badge.earned?'已获得！':badge.tip);var circle=document.createElement('div');circle.className='badge-circle '+(badge.earned?'earned':'locked');if(badge.earned){circle.style.background='linear-gradient(135deg,'+badge.color+','+badge.color+'cc)';circle.style.setProperty('--badge-color-a',badge.color+'40');circle.style.setProperty('--badge-color-b',badge.color+'00');circle.style.filter='drop-shadow(0 0 12px '+badge.color+'40)'}var ic=document.createElement('span');ic.className='material-symbols-outlined';ic.style.cssText='font-size:32px;color:'+(badge.earned?'#fff':'#8c716e');ic.textContent=badge.earned?badge.icon:'lock';circle.appendChild(ic);el.appendChild(circle);var tag=document.createElement('span');tag.className='ink-tag';tag.style.color=badge.earned?badge.color:'#8c716e';tag.textContent=badge.name;el.appendChild(tag);bg.appendChild(el)});bs.appendChild(bg);container.appendChild(bs)}
+function renderEmptyState(container,icon,title,linkText,linkHref){var el=document.createElement('div');el.className='text-center py-16';el.innerHTML='<svg width="120" height="60" viewBox="0 0 120 60" fill="none" class="mx-auto mb-6 opacity-20" aria-hidden="true"><path d="M0 60V40h12V28h8v12h12V28h8v12h12V28h8v12h12V28h8v12h12V28h8v12h12V60" stroke="#851217" stroke-width="1.5"/><circle cx="60" cy="18" r="6" stroke="#593d00" stroke-width="1.5"/><path d="M54 18l6-8 6 8" stroke="#593d00" stroke-width="1.5"/></svg>';var p=document.createElement('p');p.className='text-on-surface-variant font-headline italic mb-6';p.textContent=title;el.appendChild(p);var a=document.createElement('a');a.href=linkHref;a.className='inline-flex items-center gap-2 px-8 py-3 text-sm font-bold tracking-wider text-white rounded-xl transition-all duration-300 hover:scale-105';a.style.background='linear-gradient(135deg,#851217,#a62c2b)';a.style.boxShadow='0 8px 24px rgba(133,18,23,0.25)';a.innerHTML='<span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>'+linkText;el.appendChild(a);container.appendChild(el)}
+function updateHero(){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);document.getElementById('hero-level-icon').textContent=level.icon;document.getElementById('hero-level-name').textContent=level.name;if(level.next){document.getElementById('hero-cta').textContent='距离下一等级还需 '+(level.next-data.coins)+' 能量币'}else{document.getElementById('hero-cta').textContent='已达最高等级 — 荣誉守护者'}}
+function updateStats(){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);document.getElementById('stat-balance').textContent=data.coins;document.getElementById('stat-level').textContent=level.name;var tc=0;data.history.forEach(function(h){if(h.amount>0)tc++});document.getElementById('stat-tasks').textContent=tc;var hp=data.history.some(function(h){return h.reason==='签署保护倡议'});var hq=data.history.some(function(h){return h.reason&&h.reason.indexOf('知识问答')===0});var ht=data.history.some(function(h){return h.reason&&(h.reason.indexOf('打卡')!==-1||h.reason.indexOf('分享')!==-1)});document.getElementById('stat-badges').textContent=(hp?1:0)+(hq?1:0)+(ht?1:0);document.getElementById('tab-count-coins').textContent=data.history.length;var pct=Math.round(level.progress);var deg=(pct/100)*360;document.getElementById('stat-ring').style.background='conic-gradient(#851217 0deg,#593d00 '+deg+'deg,#e4e2e2 '+deg+'deg,#e4e2e2 360deg)';document.getElementById('stat-ring-label').textContent=pct+'%'}
+function updateNavBalance(){var el=document.getElementById('nav-balance');if(el)el.textContent=EnergyStore.getBalance()}
+window.addEventListener('energy-changed',function(){updateNavBalance();updateHero();updateStats();renderTabContent()});
+document.addEventListener('DOMContentLoaded',function(){updateNavBalance();updateHero();updateStats();renderTabContent();var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:0.1});document.querySelectorAll('.fade-in,.stagger-item').forEach(function(el){observer.observe(el)});window.addEventListener('scroll',function(){var nav=document.querySelector('nav');if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled')})});
 </script>
-
-<!-- Page Loader -->
+<script>(function(){var bar=document.getElementById('loader-bar'),loader=document.getElementById('page-loader');if(!bar||!loader)return;bar.style.width='70%';window.addEventListener('load',function(){bar.style.width='100%';setTimeout(function(){loader.style.opacity='0';loader.style.transform='translateY(-20px)';setTimeout(function(){loader.remove()},400)},200)})})()</script>
 <script>
-(function(){
-  var bar=document.getElementById('loader-bar');
-  var loader=document.getElementById('page-loader');
-  if(!bar||!loader)return;
-  bar.style.width='70%';
-  window.addEventListener('load',function(){
-    bar.style.width='100%';
-    setTimeout(function(){
-      loader.style.opacity='0';
-      loader.style.transform='translateY(-20px)';
-      setTimeout(function(){loader.remove();},400);
-    },200);
-  });
-})();
+function toggleDarkMode(){document.documentElement.classList.toggle('dark');var isDark=document.documentElement.classList.contains('dark');localStorage.setItem('darkMode',isDark?'1':'0');var icon=document.getElementById('dark-mode-icon');if(icon)icon.textContent=isDark?'light_mode':'dark_mode'}
+(function(){if(localStorage.getItem('darkMode')==='1'){document.documentElement.classList.add('dark');var icon=document.getElementById('dark-mode-icon');if(icon)icon.textContent='light_mode'}})();
 </script>
-<script>
-function toggleDarkMode(){
-  document.documentElement.classList.toggle('dark');
-  var isDark=document.documentElement.classList.contains('dark');
-  localStorage.setItem('darkMode',isDark?'1':'0');
-  var icon=document.getElementById('dark-mode-icon');
-  if(icon)icon.textContent=isDark?'light_mode':'dark_mode';
-}
-(function(){
-  if(localStorage.getItem('darkMode')==='1'){
-    document.documentElement.classList.add('dark');
-    var icon=document.getElementById('dark-mode-icon');
-    if(icon)icon.textContent='light_mode';
-  }
-})();
-</script>
-<script src="../js/ambient-dust.js"></script>
 </body>
 </html>
-<!-- v2 -->

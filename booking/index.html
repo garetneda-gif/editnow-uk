@@ -135,7 +135,7 @@
         box-shadow: 0 4px 30px rgba(0,0,0,0.06);
     }
     /* 平滑滚动 */
-    html { scroll-behavior: smooth; zoom: 0.67; }
+    html { scroll-behavior: smooth; } @media (min-width: 768px) { html { zoom: 0.67; } }
     /* 时段卡片选中态 */
     .slot-card {
         transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
@@ -317,6 +317,7 @@
   #xiangtun-chat-panel {
     display: none;
     width: 400px;
+    max-width: calc(100vw - 32px);
     max-height: 580px;
     background: rgba(251,249,248,0.92);
     backdrop-filter: blur(24px) saturate(1.4);
