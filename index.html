@@ -258,20 +258,38 @@
         .hero-name-card { animation:nameSlideIn 0.8s cubic-bezier(0.16,1,0.3,1) 1.2s both; }
 
         /* ===== 壁画侧边面板 ===== */
-        #mural-panel-overlay { position:fixed; inset:0; background:rgba(27,28,28,0.45); backdrop-filter:blur(2px); z-index:9998; opacity:0; pointer-events:none; transition:opacity 0.35s ease; }
+        #mural-panel-overlay { position:fixed; inset:0; background:rgba(27,28,28,0.55); backdrop-filter:blur(6px); z-index:9998; opacity:0; pointer-events:none; transition:opacity 0.4s ease; }
         #mural-panel-overlay.open { opacity:1; pointer-events:auto; }
-        #mural-panel { position:fixed; top:0; right:0; width:min(480px,90vw); height:100vh; background:rgba(251,249,248,0.97); backdrop-filter:blur(20px); z-index:9999; transform:translateX(100%); transition:transform 0.45s cubic-bezier(0.16,1,0.3,1); overflow-y:auto; box-shadow:-8px 0 48px rgba(0,0,0,0.12); }
+        #mural-panel { position:fixed; top:0; right:0; width:min(520px,92vw); height:100vh; height:100dvh; background:#fbf9f8; z-index:9999; transform:translateX(100%); transition:transform 0.5s cubic-bezier(0.16,1,0.3,1); overflow-y:auto; box-shadow:-12px 0 60px rgba(0,0,0,0.18); }
         #mural-panel.open { transform:translateX(0); }
-        #mural-panel::-webkit-scrollbar { width:4px; }
-        #mural-panel::-webkit-scrollbar-thumb { background:rgba(133,18,23,0.15); border-radius:2px; }
-        .mural-color-tag { display:inline-flex; align-items:center; gap:6px; padding:3px 12px 3px 8px; border-radius:2px; font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; }
-        .mural-quote { position:relative; padding:20px 24px; margin:16px 0; border-left:3px solid #593d00; background:rgba(89,61,0,0.04); font-family:Newsreader,serif; font-style:italic; font-size:14px; line-height:1.9; color:#58413f; }
-        .mural-quote::before { content:'\201C'; position:absolute; top:8px; left:8px; font-size:36px; color:rgba(89,61,0,0.15); line-height:1; font-family:Newsreader,serif; }
-        .mural-stat { display:flex; flex-direction:column; align-items:center; padding:12px 0; }
-        .mural-stat-num { font-family:Newsreader,serif; font-size:28px; font-weight:800; color:#851217; }
-        .mural-stat-label { font-size:10px; color:#58413f; text-transform:uppercase; letter-spacing:0.2em; margin-top:2px; }
+        #mural-panel::-webkit-scrollbar { width:3px; }
+        #mural-panel::-webkit-scrollbar-track { background:transparent; }
+        #mural-panel::-webkit-scrollbar-thumb { background:rgba(133,18,23,0.12); border-radius:3px; }
+        .mp-hero { position:relative; padding:40px 32px 32px; overflow:hidden; }
+        .mp-hero::before { content:''; position:absolute; inset:0; opacity:0.06; background:url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q) center/cover; }
+        .mp-hero-close { position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.2); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.3s, transform 0.2s; z-index:2; }
+        .mp-hero-close:hover { background:rgba(255,255,255,0.4); transform:scale(1.1); }
+        .mp-num { position:absolute; top:20px; left:32px; font-family:Newsreader,serif; font-size:72px; font-weight:900; line-height:1; opacity:0.08; z-index:0; color:#fff; }
+        .mp-dots { display:flex; gap:6px; margin-top:20px; }
+        .mp-dot { width:24px; height:3px; border-radius:2px; background:rgba(255,255,255,0.25); transition:background 0.3s, width 0.3s; }
+        .mp-dot.active { width:32px; background:rgba(255,255,255,0.9); }
+        .mp-body { padding:28px 32px 32px; }
+        .mp-section { margin-bottom:28px; }
+        .mp-section-title { font-size:10px; font-weight:800; letter-spacing:0.35em; text-transform:uppercase; color:#58413f; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+        .mp-section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(224,191,188,0.4),transparent); }
+        .mp-tag { display:inline-flex; align-items:center; gap:6px; padding:4px 14px 4px 10px; border-radius:2px; font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; }
+        .mp-quote { position:relative; padding:24px 28px 24px 32px; margin:0; border-radius:2px; font-family:Newsreader,serif; font-style:italic; font-size:14px; line-height:1.9; color:#58413f; overflow:hidden; }
+        .mp-quote::after { content:'\201C'; position:absolute; top:-4px; right:16px; font-size:80px; font-family:Newsreader,serif; opacity:0.06; line-height:1; }
+        .mp-stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-radius:4px; overflow:hidden; }
+        .mp-stat { padding:16px 8px; text-align:center; position:relative; }
+        .mp-stat:not(:last-child)::after { content:''; position:absolute; right:0; top:20%; height:60%; width:1px; background:rgba(224,191,188,0.3); }
+        .mp-stat-val { font-family:Newsreader,serif; font-size:24px; font-weight:800; }
+        .mp-stat-lbl { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:#58413f; margin-top:4px; }
+        .mp-nav { display:flex; gap:8px; padding:0 32px 32px; }
+        .mp-nav-btn { flex:1; display:flex; align-items:center; gap:8px; padding:14px 16px; border-radius:2px; border:1px solid rgba(224,191,188,0.3); background:transparent; cursor:pointer; transition:all 0.3s; font-family:Manrope,sans-serif; }
+        .mp-nav-btn:hover { border-color:rgba(133,18,23,0.3); background:rgba(133,18,23,0.03); }
+        .mp-nav-btn:disabled { opacity:0.3; cursor:default; pointer-events:none; }
         @keyframes muralDash { to { stroke-dashoffset:0; } }
-        .mural-walk-line { stroke-dasharray:12 8; stroke-dashoffset:200; animation:muralDash 2s linear forwards; }
         .mural-marker-square { transition:transform 0.3s ease, box-shadow 0.3s ease; cursor:pointer; }
         .mural-marker-square:hover { transform:scale(1.15); box-shadow:0 6px 20px rgba(89,61,0,0.4) !important; }
     </style>
@@ -830,17 +848,7 @@
 <!-- Mural Side Panel Overlay -->
 <div id="mural-panel-overlay" onclick="closeMuralPanel()"></div>
 <div id="mural-panel">
-<div class="sticky top-0 bg-[#fbf9f8]/95 backdrop-blur-xl z-10 px-8 py-5 flex items-center justify-between border-b border-outline-variant/20">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-tertiary">brush</span>
-<span class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant">壁画详情 Mural Detail</span>
-</div>
-<button onclick="closeMuralPanel()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
-<span class="material-symbols-outlined text-on-surface-variant">close</span>
-</button>
-</div>
-<div id="mural-panel-content" class="px-8 py-8">
-</div>
+<div id="mural-panel-content"></div>
 </div>
 
 <!-- Section: Data Stats Counter -->
@@ -1603,6 +1611,7 @@ document.querySelectorAll('.route-card').forEach(card => {
 
   // ===== Mural Side Panel =====
   var colorBg = { red:'rgba(133,18,23,0.08)', gold:'rgba(89,61,0,0.08)', green:'rgba(59,105,52,0.08)', grey:'rgba(27,28,28,0.08)' };
+  var colorGrad = { red:'linear-gradient(135deg,#851217 0%,#a62c2b 40%,#6b0f12 100%)', gold:'linear-gradient(135deg,#593d00 0%,#775300 40%,#3e2a00 100%)', green:'linear-gradient(135deg,#3b6934 0%,#4a8340 40%,#2a4d24 100%)', grey:'linear-gradient(135deg,#1b1c1c 0%,#3a3a3a 40%,#0d0d0d 100%)' };
 
   window.openMuralPanel = function(mural) {
     var panel = document.getElementById('mural-panel');
@@ -1611,40 +1620,84 @@ document.querySelectorAll('.route-card').forEach(card => {
     var h = parseFloat(mural.size);
     var w = parseFloat(mural.size.split('\u00d7')[1]);
     var area = (h * w).toFixed(1);
-
-    var nextHtml = mural.nextDist
-      ? '<div class="flex items-center gap-3 mt-8 p-4 bg-surface-container-low rounded-sm"><span class="material-symbols-outlined text-tertiary">directions_walk</span><div><p class="text-xs font-bold text-on-surface">距下一幅壁画</p><p class="text-sm text-on-surface-variant">'+mural.nextDist+' · '+mural.nextTime+'</p></div><span class="material-symbols-outlined text-on-surface-variant/40 ml-auto">arrow_forward</span></div>'
-      : '<div class="flex items-center gap-3 mt-8 p-4 rounded-sm" style="background:rgba(133,18,23,0.05);"><span class="material-symbols-outlined text-primary">flag</span><p class="text-xs font-bold text-primary uppercase tracking-widest">壁画寻踪终点 · Trail End</p></div>';
+    var dots = '';
+    for (var d = 0; d < 5; d++) dots += '<span class="mp-dot'+(d===mural.id-1?' active':'')+'"></span>';
+    var prevM = mural.id > 1 ? muralData[mural.id-2] : null;
+    var nextM = mural.id < 5 ? muralData[mural.id] : null;
 
     content.innerHTML =
-      '<div class="mb-6">'+
-        '<div class="flex items-center gap-3 mb-4">'+
-          '<span class="mural-color-tag" style="background:'+colorBg[mural.colorTag]+';color:'+mural.color+';"><span style="width:8px;height:8px;border-radius:2px;background:'+mural.color+';display:inline-block;"></span>'+mural.colorName+'</span>'+
-          '<span class="text-[10px] text-on-surface-variant/50 font-bold tracking-widest">壁画 0'+mural.id+'</span>'+
+      '<div class="mp-hero" style="background:'+colorGrad[mural.colorTag]+';">'+
+        '<span class="mp-num">0'+mural.id+'</span>'+
+        '<button class="mp-hero-close" onclick="closeMuralPanel()"><span class="material-symbols-outlined" style="color:#fff;font-size:20px;">close</span></button>'+
+        '<div style="position:relative;z-index:1;">'+
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">'+
+            '<span class="mp-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);backdrop-filter:blur(4px);"><span style="width:6px;height:6px;border-radius:2px;background:#fff;display:inline-block;"></span>'+mural.colorName+'</span>'+
+            '<span style="font-size:10px;color:rgba(255,255,255,0.4);font-weight:700;letter-spacing:0.15em;">MURAL 0'+mural.id+' / 05</span>'+
+          '</div>'+
+          '<h2 style="font-family:Newsreader,serif;font-size:32px;font-weight:900;color:#fff;margin:0 0 4px;line-height:1.2;">'+mural.title+'</h2>'+
+          '<p style="font-family:Newsreader,serif;font-size:14px;font-style:italic;color:rgba(255,255,255,0.55);margin:0;">'+mural.titleEn+'</p>'+
+          '<div class="mp-dots">'+dots+'</div>'+
         '</div>'+
-        '<h2 class="text-2xl md:text-3xl font-headline font-extrabold text-on-surface mb-1">'+mural.title+'</h2>'+
-        '<p class="text-sm font-headline italic text-on-surface-variant/60">'+mural.titleEn+'</p>'+
       '</div>'+
-      '<div class="grid grid-cols-3 gap-4 mb-8 py-5 border-y border-outline-variant/20">'+
-        '<div class="mural-stat"><span class="mural-stat-num">'+h+'m</span><span class="mural-stat-label">高度</span></div>'+
-        '<div class="mural-stat"><span class="mural-stat-num">'+w+'m</span><span class="mural-stat-label">宽度</span></div>'+
-        '<div class="mural-stat"><span class="mural-stat-num">'+area+'m\u00b2</span><span class="mural-stat-label">面积</span></div>'+
+      '<div class="mp-body">'+
+        '<div class="mp-stat-grid" style="background:'+colorBg[mural.colorTag]+';margin-bottom:24px;">'+
+          '<div class="mp-stat"><div class="mp-stat-val" style="color:'+mural.color+';">'+h+'<span style="font-size:14px;">m</span></div><div class="mp-stat-lbl">高度 H</div></div>'+
+          '<div class="mp-stat"><div class="mp-stat-val" style="color:'+mural.color+';">'+w+'<span style="font-size:14px;">m</span></div><div class="mp-stat-lbl">宽度 W</div></div>'+
+          '<div class="mp-stat"><div class="mp-stat-val" style="color:'+mural.color+';">'+area+'<span style="font-size:14px;">m\u00b2</span></div><div class="mp-stat-lbl">面积 A</div></div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:#f5f3f3;border-radius:2px;margin-bottom:28px;">'+
+          '<span class="material-symbols-outlined" style="font-size:18px;color:'+mural.color+';">location_on</span>'+
+          '<span style="font-size:12px;color:#58413f;font-weight:600;">'+mural.location+'</span>'+
+        '</div>'+
+        '<div class="mp-section">'+
+          '<div class="mp-section-title"><span class="material-symbols-outlined" style="font-size:16px;color:'+mural.color+';">auto_stories</span>创作故事 The Story</div>'+
+          '<p style="font-size:13px;color:#58413f;line-height:1.9;margin:0 0 12px;">'+mural.story+'</p>'+
+          '<p style="font-size:13px;color:#58413f;line-height:1.9;margin:0;">'+mural.story2+'</p>'+
+        '</div>'+
+        '<div class="mp-section">'+
+          '<div class="mp-section-title"><span class="material-symbols-outlined" style="font-size:16px;color:'+mural.color+';">edit_note</span>创作者手记 Creator\'s Note</div>'+
+          '<div class="mp-quote" style="background:'+colorBg[mural.colorTag]+';">'+
+            '<span style="position:absolute;top:0;left:0;width:3px;height:100%;background:'+mural.color+';border-radius:2px;"></span>'+
+            '<p style="position:relative;z-index:1;margin:0;">'+mural.quote+'</p>'+
+            '<p style="font-size:11px;color:rgba(88,65,63,0.5);margin:12px 0 0;font-style:normal;font-family:Manrope,sans-serif;font-weight:600;">'+mural.quoteAuthor+'</p>'+
+          '</div>'+
+        '</div>'+
+        '<div class="mp-section">'+
+          '<div class="mp-section-title"><span class="material-symbols-outlined" style="font-size:16px;color:'+mural.color+';">history_edu</span>历史关联 Historical Context</div>'+
+          '<div style="padding:16px 20px;background:#f5f3f3;border-radius:2px;border-left:3px solid '+mural.color+';">'+
+            '<p style="font-size:13px;color:#58413f;line-height:1.9;margin:0;">'+mural.history+'</p>'+
+          '</div>'+
+        '</div>'+
+        (mural.nextDist
+          ? '<div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:'+colorBg[mural.colorTag]+';border-radius:2px;margin-bottom:8px;">'+
+            '<span class="material-symbols-outlined" style="color:'+mural.color+';font-size:22px;">directions_walk</span>'+
+            '<div style="flex:1;"><p style="font-size:11px;font-weight:700;color:#1b1c1c;margin:0;">距下一幅壁画</p>'+
+            '<p style="font-size:13px;color:#58413f;margin:2px 0 0;">'+mural.nextDist+' · '+mural.nextTime+'</p></div>'+
+            '<span class="material-symbols-outlined" style="color:'+mural.color+';opacity:0.4;font-size:18px;">arrow_forward</span></div>'
+          : '<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(133,18,23,0.05);border-radius:2px;margin-bottom:8px;">'+
+            '<span class="material-symbols-outlined" style="color:#851217;">flag</span>'+
+            '<p style="font-size:11px;font-weight:800;color:#851217;text-transform:uppercase;letter-spacing:0.15em;margin:0;">壁画寻踪终点 Trail End</p></div>')+
       '</div>'+
-      '<div class="flex items-center gap-2 mb-6 text-xs text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:16px;">location_on</span>'+mural.location+'</div>'+
-      '<div class="mb-8"><h3 class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant mb-4">创作故事 The Story</h3>'+
-        '<p class="text-[13px] text-on-surface-variant leading-[1.9] mb-4">'+mural.story+'</p>'+
-        '<p class="text-[13px] text-on-surface-variant leading-[1.9]">'+mural.story2+'</p></div>'+
-      '<div class="mb-8"><h3 class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant mb-4">创作者手记 Creator\'s Note</h3>'+
-        '<div class="mural-quote"><p class="relative z-10">'+mural.quote+'</p>'+
-        '<p class="text-xs text-on-surface-variant/50 mt-3 not-italic">'+mural.quoteAuthor+'</p></div></div>'+
-      '<div class="mb-6"><h3 class="text-xs font-bold tracking-[0.3em] uppercase text-on-surface-variant mb-4">历史关联 Historical Context</h3>'+
-        '<div class="p-4 bg-surface-container-low rounded-sm" style="border-left:3px solid '+mural.color+';"><p class="text-[13px] text-on-surface-variant leading-[1.9]">'+mural.history+'</p></div></div>'+
-      nextHtml;
+      '<div class="mp-nav">'+
+        '<button class="mp-nav-btn" onclick="openMuralPanel(muralData['+(mural.id-2)+'])"'+(prevM?'':' disabled')+'>'+
+          '<span class="material-symbols-outlined" style="font-size:18px;color:#58413f;">arrow_back</span>'+
+          '<div><p style="font-size:9px;font-weight:700;color:#58413f;text-transform:uppercase;letter-spacing:0.15em;margin:0;">上一幅</p>'+
+          '<p style="font-size:13px;font-weight:700;color:#1b1c1c;margin:2px 0 0;font-family:Newsreader,serif;">'+(prevM?prevM.title:'')+'</p></div>'+
+        '</button>'+
+        '<button class="mp-nav-btn" style="justify-content:flex-end;text-align:right;" onclick="openMuralPanel(muralData['+mural.id+'])"'+(nextM?'':' disabled')+'>'+
+          '<div><p style="font-size:9px;font-weight:700;color:#58413f;text-transform:uppercase;letter-spacing:0.15em;margin:0;">下一幅</p>'+
+          '<p style="font-size:13px;font-weight:700;color:#1b1c1c;margin:2px 0 0;font-family:Newsreader,serif;">'+(nextM?nextM.title:'')+'</p></div>'+
+          '<span class="material-symbols-outlined" style="font-size:18px;color:#58413f;">arrow_forward</span>'+
+        '</button>'+
+      '</div>';
 
+    panel.scrollTop = 0;
     panel.classList.add('open');
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   };
+
+  window.muralData = muralData;
 
   window.closeMuralPanel = function() {
     document.getElementById('mural-panel').classList.remove('open');
