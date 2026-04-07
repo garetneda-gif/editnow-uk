@@ -837,13 +837,6 @@
 <section class="market-hero" id="hero">
 
   <div class="hero-content px-4">
-    <!-- Animated energy coin counter -->
-    <div class="coin-display inline-flex items-center gap-3 px-6 py-3 rounded-full mb-10" style="border-radius:9999px;">
-      <span class="material-symbols-outlined" style="font-size:24px;color:#f5bd58;">bolt</span>
-      <span style="color:#f5bd58;font-family:'Newsreader',serif;font-weight:800;font-size:24px;" id="hero-balance">0</span>
-      <span style="color:rgba(245,243,243,0.95);font-size:12px;font-weight:700;letter-spacing:0.1em;">能量币可用</span>
-    </div>
-
     <h3 class="text-xs font-bold tracking-[0.5em] uppercase mb-6" style="color:rgba(245,189,88,0.7);">Energy Market</h3>
     <h1 class="hero-title text-5xl md:text-8xl lg:text-9xl leading-[0.9] mb-8">能量集市</h1>
     <p class="hero-subtitle text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-headline italic mb-4" id="hero-tagline"></p>
@@ -1203,13 +1196,13 @@ function renderProducts() {
     var card = document.createElement('div');
     card.className = 'product-card card-stagger' + (isRedeemed ? ' redeemed' : '');
     card.style.transitionDelay = (idx * 0.1) + 's';
-    if (idx === 0) card.className += ' md:col-span-2 md:row-span-2';
+    if (idx === 0) card.className += ' md:col-span-2';
 
     // Card image container
     var imgDiv = document.createElement('div');
     imgDiv.className = 'card-image';
-    imgDiv.style.height = idx === 0 ? '280px' : '220px';
-    if (window.innerWidth >= 768 && idx === 0) imgDiv.style.height = '380px';
+    imgDiv.style.height = idx === 0 ? '240px' : '200px';
+    if (window.innerWidth >= 768 && idx === 0) imgDiv.style.height = '280px';
 
     var img = document.createElement('img');
     img.src = product.image;
