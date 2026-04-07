@@ -1330,58 +1330,61 @@ function generateCert(name) {
   ctx.textAlign = 'right';
   ctx.fillText('\u8bc1\u4e66\u7f16\u53f7\uff1a' + certId, W - 60, 430);
 
-  // ---- 盖章（双圈印章效果） ----
+  // ---- 盖章 ----
+  // 弧形文字辅助函数
+  function drawArcText(ctx, str, radius, startAngle, endAngle, isTop) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(133,18,23,0.75)';
+    ctx.font = 'bold 8px Manrope, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const totalAngle = endAngle - startAngle;
+    const step = totalAngle / (str.length - 1 || 1);
+    for (let i = 0; i < str.length; i++) {
+      const angle = startAngle + step * i;
+      ctx.save();
+      ctx.rotate(angle);
+      ctx.translate(0, -radius);
+      if (isTop) { ctx.rotate(0); }
+      else { ctx.rotate(Math.PI); }
+      ctx.fillText(str[i], 0, 0);
+      ctx.restore();
+    }
+    ctx.restore();
+  }
+
   ctx.save();
   ctx.translate(W - 120, 500);
-  ctx.rotate(-0.12);
+  ctx.rotate(-0.1);
+  const sColor = 'rgba(133,18,23,0.7)';
   // 外圈
-  ctx.strokeStyle = 'rgba(133,18,23,0.7)';
-  ctx.lineWidth = 3;
+  ctx.strokeStyle = sColor;
+  ctx.lineWidth = 2.5;
   ctx.beginPath();
-  ctx.arc(0, 0, 42, 0, Math.PI * 2);
+  ctx.arc(0, 0, 40, 0, Math.PI * 2);
   ctx.stroke();
   // 内圈
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 0.8;
   ctx.beginPath();
-  ctx.arc(0, 0, 36, 0, Math.PI * 2);
+  ctx.arc(0, 0, 34, 0, Math.PI * 2);
   ctx.stroke();
   // 五角星
-  ctx.fillStyle = 'rgba(133,18,23,0.7)';
+  ctx.fillStyle = sColor;
   ctx.beginPath();
   for (let i = 0; i < 5; i++) {
-    const a = (i * 4 * Math.PI / 5) - Math.PI / 2;
-    const r = 10;
-    if (i === 0) ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r);
-    else ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+    const outerA = (i * 2 * Math.PI / 5) - Math.PI / 2;
+    const innerA = outerA + Math.PI / 5;
+    const oR = 10, iR = 4;
+    if (i === 0) ctx.moveTo(Math.cos(outerA) * oR, Math.sin(outerA) * oR);
+    else ctx.lineTo(Math.cos(outerA) * oR, Math.sin(outerA) * oR);
+    ctx.lineTo(Math.cos(innerA) * iR, Math.sin(innerA) * iR);
   }
   ctx.closePath();
   ctx.fill();
-  // 印章文字（弧形英文）
-  ctx.fillStyle = 'rgba(133,18,23,0.7)';
-  ctx.font = 'bold 8px Manrope, sans-serif';
-  ctx.textAlign = 'center';
-  const stampTop = 'FOUR COLORS OF XIANGTUN';
-  for (let i = 0; i < stampTop.length; i++) {
-    const angle = -Math.PI * 0.75 + (i / (stampTop.length - 1)) * Math.PI * 0.5 + Math.PI / 4;
-    ctx.save();
-    ctx.rotate(angle);
-    ctx.translate(0, -30);
-    ctx.rotate(-angle);
-    ctx.fillText(stampTop[i], 0, 0);
-    ctx.restore();
-  }
-  // 下方弧形
-  ctx.font = 'bold 7px Manrope, sans-serif';
-  const stampBottom = 'GUARDIAN PROGRAM';
-  for (let i = 0; i < stampBottom.length; i++) {
-    const angle = Math.PI * 0.75 - (i / (stampBottom.length - 1)) * Math.PI * 0.5 + Math.PI / 4;
-    ctx.save();
-    ctx.rotate(angle);
-    ctx.translate(0, -30);
-    ctx.rotate(-angle + Math.PI);
-    ctx.fillText(stampBottom[i], 0, 0);
-    ctx.restore();
-  }
+  // 上弧文字：从左到右沿顶部
+  drawArcText(ctx, 'FOUR COLORS OF XIANGTUN', 28, -Math.PI * 0.82, Math.PI * 0.82, true);
+  // 下弧文字：从左到右沿底部
+  drawArcText(ctx, 'GUARDIAN PROGRAM', 28, Math.PI * 1.22, Math.PI * 0.78 + Math.PI, false);
   ctx.restore();
 
   // ---- 左下品牌 ----
