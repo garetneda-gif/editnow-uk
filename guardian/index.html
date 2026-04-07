@@ -233,18 +233,6 @@
             max-width: none;
         }
     }
-    html.transitioning * { transition: background-color 0.3s, color 0.3s, border-color 0.3s !important; }
-    html.dark { background: #1b1c1c; }
-    html.dark body { background: #1b1c1c; color: #e4e2e2; }
-    html.dark .paper-texture { background-image: none; background-color: #1b1c1c; }
-    html.dark nav { background: rgba(27,28,28,0.9) !important; }
-    html.dark .bg-surface, html.dark .bg-\[\#fbf9f8\] { background-color: #1b1c1c !important; }
-    html.dark .bg-surface-container-low { background-color: #2a2a2a !important; }
-    html.dark .bg-surface-container-high, html.dark .bg-\[\#eae8e7\] { background-color: #333333 !important; }
-    html.dark .text-on-surface, html.dark .text-\[\#1b1c1c\] { color: #e4e2e2 !important; }
-    html.dark .text-on-surface-variant { color: #b0a5a3 !important; }
-    html.dark footer { background: #111111 !important; }
-    html.dark #page-loader { background: #1b1c1c !important; }
 </style>
 <!-- Chat Widget Styles -->
 <style>
@@ -1230,99 +1218,199 @@ function generateCert(name) {
   const canvas = document.getElementById('cert-canvas');
   const ctx = canvas.getContext('2d');
   const W = 800, H = 600;
+  const cx = W / 2;
 
-  // 背景
-  ctx.fillStyle = '#fbf9f8';
+  // ---- 背景：温暖纸质渐变 ----
+  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, '#faf8f6');
+  bgGrad.addColorStop(0.5, '#fbf9f8');
+  bgGrad.addColorStop(1, '#f7f3ef');
+  ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, W, H);
 
-  // 边框（Heritage Red 双线）
-  ctx.strokeStyle = '#851217';
-  ctx.lineWidth = 6;
-  ctx.strokeRect(24, 24, W - 48, H - 48);
-  ctx.lineWidth = 2;
-  ctx.strokeRect(36, 36, W - 72, H - 72);
+  // ---- 纸质纹理（细腻噪点） ----
+  ctx.globalAlpha = 0.03;
+  for (let i = 0; i < 6000; i++) {
+    ctx.fillStyle = Math.random() > 0.5 ? '#1b1c1c' : '#851217';
+    ctx.fillRect(Math.random() * W, Math.random() * H, 1, 1);
+  }
+  ctx.globalAlpha = 1;
 
-  // 装饰角标
-  const cornerSize = 20;
-  ctx.fillStyle = '#851217';
-  [[40, 40], [W - 40 - cornerSize, 40], [40, H - 40 - cornerSize], [W - 40 - cornerSize, H - 40 - cornerSize]].forEach(([x, y]) => {
-    ctx.fillRect(x, y, cornerSize, cornerSize);
-  });
-
-  // 标题
-  ctx.fillStyle = '#851217';
-  ctx.font = 'bold 36px Newsreader, serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('香屯长城守护者证书', W / 2, 120);
-
-  // 英文副标题
-  ctx.fillStyle = '#58413f';
-  ctx.font = 'italic 16px Newsreader, serif';
-  ctx.fillText('Xiangtun Great Wall Guardian Certificate', W / 2, 152);
-
-  // 分割线
-  ctx.strokeStyle = '#851217';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(200, 175);
-  ctx.lineTo(600, 175);
-  ctx.stroke();
-
-  // 正文
-  ctx.fillStyle = '#1b1c1c';
-  ctx.font = '18px Manrope, sans-serif';
-  ctx.fillText('兹证明', W / 2, 220);
-
-  // 签署人名字
-  ctx.fillStyle = '#851217';
-  ctx.font = 'bold 40px Newsreader, serif';
-  ctx.fillText(name, W / 2, 275);
-
-  // 承诺内容
-  ctx.fillStyle = '#1b1c1c';
-  ctx.font = '15px Manrope, sans-serif';
-  const lines = [
-    '已郑重签署《香屯长城保护倡议书》',
-    '承诺不攀爬未开放长城、不乱扔垃圾、不破坏植被',
-    '积极宣传保护知识、发现破坏行为及时举报',
-    '正式成为香屯长城守护者'
-  ];
-  lines.forEach((line, i) => {
-    ctx.fillText(line, W / 2, 325 + i * 28);
-  });
-
-  // 日期
-  const now = new Date();
-  const dateStr = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
-  ctx.fillStyle = '#58413f';
-  ctx.font = 'italic 14px Newsreader, serif';
-  ctx.fillText('签署日期：' + dateStr, W / 2, 470);
-
-  // 盖章效果
-  ctx.save();
-  ctx.translate(620, 480);
-  ctx.rotate(-0.15);
+  // ---- 外框：精致双线 ----
   ctx.strokeStyle = '#851217';
   ctx.lineWidth = 3;
+  ctx.strokeRect(20, 20, W - 40, H - 40);
+  ctx.lineWidth = 1;
+  ctx.strokeRect(28, 28, W - 56, H - 56);
+
+  // ---- 四角装饰（L形角标） ----
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 2;
+  const cL = 24;
+  [[34, 34, 1, 1], [W - 34, 34, -1, 1], [34, H - 34, 1, -1], [W - 34, H - 34, -1, -1]].forEach(([x, y, dx, dy]) => {
+    ctx.beginPath();
+    ctx.moveTo(x, y + dy * cL);
+    ctx.lineTo(x, y);
+    ctx.lineTo(x + dx * cL, y);
+    ctx.stroke();
+  });
+
+  // ---- 顶部装饰线 ----
+  ctx.strokeStyle = 'rgba(133,18,23,0.15)';
+  ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.arc(0, 0, 45, 0, Math.PI * 2);
+  ctx.moveTo(60, 70);
+  ctx.lineTo(W - 60, 70);
   ctx.stroke();
-  ctx.fillStyle = '#851217';
-  ctx.font = 'bold 14px Newsreader, serif';
+
+  // ---- 标签 ----
+  ctx.fillStyle = '#8c716e';
+  ctx.font = '600 10px Manrope, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('四色', 0, -8);
-  ctx.fillText('香屯', 0, 12);
+  ctx.letterSpacing = '6px';
+  ctx.fillText('XIANGTUN GREAT WALL GUARDIAN CERTIFICATE', cx, 62);
+
+  // ---- 主标题 ----
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 38px Newsreader, serif';
+  ctx.fillText('\u9999\u5c6f\u957f\u57ce\u5b88\u62a4\u8005\u8bc1\u4e66', cx, 115);
+
+  // ---- 标题下装饰 ----
+  ctx.fillStyle = '#851217';
+  ctx.fillRect(cx - 40, 130, 80, 2);
+  // 两侧细线
+  ctx.fillStyle = 'rgba(133,18,23,0.2)';
+  ctx.fillRect(cx - 120, 131, 70, 0.5);
+  ctx.fillRect(cx + 50, 131, 70, 0.5);
+
+  // ---- "兹证明" ----
+  ctx.fillStyle = '#58413f';
+  ctx.font = '16px Manrope, sans-serif';
+  ctx.fillText('\u5179\u8bc1\u660e', cx, 175);
+
+  // ---- 签署人名字（大号手写感） ----
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold italic 48px Newsreader, serif';
+  ctx.fillText(name, cx, 230);
+
+  // ---- 名字下划线 ----
+  const nameW = ctx.measureText(name).width;
+  ctx.strokeStyle = 'rgba(133,18,23,0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx - nameW / 2 - 20, 240);
+  ctx.lineTo(cx + nameW / 2 + 20, 240);
+  ctx.stroke();
+
+  // ---- 正文 ----
+  ctx.fillStyle = '#1b1c1c';
+  ctx.font = '15px Manrope, sans-serif';
+  const bodyLines = [
+    '\u5df2\u90d1\u91cd\u7b7e\u7f72\u300a\u9999\u5c6f\u957f\u57ce\u4fdd\u62a4\u5021\u8bae\u4e66\u300b',
+    '\u627f\u8bfa\u4e0d\u6500\u722c\u672a\u5f00\u653e\u957f\u57ce\u3001\u4e0d\u4e71\u6254\u5783\u573e\u3001\u4e0d\u7834\u574f\u690d\u88ab',
+    '\u79ef\u6781\u5ba3\u4f20\u4fdd\u62a4\u77e5\u8bc6\u3001\u53d1\u73b0\u7834\u574f\u884c\u4e3a\u53ca\u65f6\u4e3e\u62a5',
+    '\u6b63\u5f0f\u6210\u4e3a\u9999\u5c6f\u957f\u57ce\u8363\u8a89\u5b88\u62a4\u8005'
+  ];
+  bodyLines.forEach((line, i) => {
+    ctx.fillText(line, cx, 285 + i * 28);
+  });
+
+  // ---- 分隔装饰 ----
+  ctx.fillStyle = 'rgba(133,18,23,0.1)';
+  ctx.fillRect(cx - 60, 398, 120, 0.5);
+
+  // ---- 日期与编号 ----
+  const now = new Date();
+  const dateStr = now.getFullYear() + '\u5e74' + (now.getMonth() + 1) + '\u6708' + now.getDate() + '\u65e5';
+  const certId = 'XC-' + now.getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+  ctx.fillStyle = '#58413f';
+  ctx.font = 'italic 13px Newsreader, serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('\u7b7e\u7f72\u65e5\u671f\uff1a' + dateStr, 60, 430);
+  ctx.textAlign = 'right';
+  ctx.fillText('\u8bc1\u4e66\u7f16\u53f7\uff1a' + certId, W - 60, 430);
+
+  // ---- 盖章（双圈印章效果） ----
+  ctx.save();
+  ctx.translate(W - 120, 500);
+  ctx.rotate(-0.12);
+  // 外圈
+  ctx.strokeStyle = 'rgba(133,18,23,0.7)';
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(0, 0, 42, 0, Math.PI * 2);
+  ctx.stroke();
+  // 内圈
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(0, 0, 36, 0, Math.PI * 2);
+  ctx.stroke();
+  // 五角星
+  ctx.fillStyle = 'rgba(133,18,23,0.7)';
+  ctx.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const a = (i * 4 * Math.PI / 5) - Math.PI / 2;
+    const r = 10;
+    if (i === 0) ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r);
+    else ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+  }
+  ctx.closePath();
+  ctx.fill();
+  // 印章文字（弧形）
+  ctx.fillStyle = 'rgba(133,18,23,0.7)';
+  ctx.font = 'bold 11px Newsreader, serif';
+  ctx.textAlign = 'center';
+  const stampText = '\u56db\u8272\u9999\u5c6f';
+  for (let i = 0; i < stampText.length; i++) {
+    const angle = -Math.PI / 2 + (i - (stampText.length - 1) / 2) * 0.42;
+    ctx.save();
+    ctx.rotate(angle);
+    ctx.translate(0, -26);
+    ctx.rotate(-angle);
+    ctx.fillText(stampText[i], 0, 0);
+    ctx.restore();
+  }
+  // 下方文字
+  ctx.font = 'bold 9px Manrope, sans-serif';
+  const bottomStamp = '\u5b88\u62a4\u8005\u8ba1\u5212';
+  for (let i = 0; i < bottomStamp.length; i++) {
+    const angle = Math.PI / 2 + (i - (bottomStamp.length - 1) / 2) * 0.38;
+    ctx.save();
+    ctx.rotate(angle);
+    ctx.translate(0, -26);
+    ctx.rotate(-angle + Math.PI);
+    ctx.fillText(bottomStamp[i], 0, 0);
+    ctx.restore();
+  }
   ctx.restore();
 
-  // 底部
-  ctx.fillStyle = '#58413f';
-  ctx.font = '11px Manrope, sans-serif';
+  // ---- 左下品牌 ----
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 16px Newsreader, serif';
+  ctx.fillText('\u56db\u8272\u9999\u5c6f', 60, 510);
+  ctx.fillStyle = '#8c716e';
+  ctx.font = '10px Manrope, sans-serif';
+  ctx.fillText('FOUR COLORS OF XIANGTUN', 60, 525);
+  ctx.fillText('\u201c\u9752\u632f\u4eac\u90ca\u201d\u4e61\u6751\u632f\u5174\u4e13\u9879\u8d5b\u53c2\u8d5b\u4f5c\u54c1', 60, 540);
+
+  // ---- 底部装饰线 ----
+  ctx.strokeStyle = 'rgba(133,18,23,0.15)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(60, H - 40);
+  ctx.lineTo(W - 60, H - 40);
+  ctx.stroke();
+
+  // 底部网址
   ctx.textAlign = 'center';
-  ctx.fillText('四色香屯 · 挑战杯团队', W / 2, 560);
+  ctx.fillStyle = '#8c716e';
+  ctx.font = '9px Manrope, sans-serif';
+  ctx.fillText('stitch.editnow.uk/guardian', cx, H - 28);
 
   // 显示证书
   document.getElementById('cert-placeholder').style.display = 'none';
-  document.getElementById('cert-preview').style.display = 'block';
+  document.getElementById('cert-preview').style.display = 'flex';
 }
 
 function downloadCert() {
@@ -1337,114 +1425,39 @@ function downloadCert() {
 // 知识问答
 // =============================================
 const allQuestions = [
-  // 长城保护法规（5题）
-  {
-    category: '长城保护法规',
-    question: '《长城保护条例》是哪一年颁布实施的？',
-    options: ['2003年', '2006年', '2010年', '2015年'],
-    answer: 1,
-    explanation: '《长城保护条例》于2006年12月1日起施行，是我国专门保护长城的行政法规。'
-  },
-  {
-    category: '长城保护法规',
-    question: '根据《长城保护条例》，以下哪种行为是被明确禁止的？',
-    options: ['在长城上拍照留念', '在长城墙体上刻画涂鸦', '沿长城徒步旅行', '在长城附近露营'],
-    answer: 1,
-    explanation: '《长城保护条例》明确禁止在长城上刻画、涂污、张贴等损毁长城的行为。'
-  },
-  {
-    category: '长城保护法规',
-    question: '发现长城遭到破坏，应该拨打哪个举报电话？',
-    options: ['110', '119', '12345', '12359'],
-    answer: 3,
-    explanation: '12359是全国文物违法举报电话，发现长城遭到破坏可拨打此电话举报。'
-  },
-  {
-    category: '长城保护法规',
-    question: '《北京市长城保护管理办法》规定，在长城保护范围内禁止取土取石的范围是多少？',
-    options: ['长城两侧各50米', '长城两侧各100米', '长城两侧各200米', '长城两侧各500米'],
-    answer: 3,
-    explanation: '根据北京市相关规定，长城两侧各500米范围内禁止取土取石等破坏行为。'
-  },
-  {
-    category: '长城保护法规',
-    question: '香屯村所在的长城段属于哪个防御体系？',
-    options: ['蓟镇', '昌镇', '宣府镇', '大同镇'],
-    answer: 1,
-    explanation: '香屯村的长城属于明代昌镇黄花路西老星口段，是昌镇防御体系的一部分。'
-  },
-  // 生态知识（5题）
-  {
-    category: '生态知识',
-    question: '香屯村的林木覆盖率约为多少？',
-    options: ['65%', '75%', '85%', '95%'],
-    answer: 3,
-    explanation: '香屯村林木覆盖率高达95%，是延庆区绿化率最高的村庄之一，2007年被评为"北京市最美乡村"。'
-  },
-  {
-    category: '生态知识',
-    question: '以下哪种植物是香屯村的标志性特产？',
-    options: ['核桃', '板栗', '柿子', '山楂'],
-    answer: 1,
-    explanation: '板栗是香屯村最具代表性的特产，村中板栗林历史悠久，秋天满山金黄，是"板栗金"色彩的来源。'
-  },
-  {
-    category: '生态知识',
-    question: '长城沿线生态保护中，"最小干预原则"是指什么？',
-    options: ['不做任何修缮', '尽量少修改原有结构和材料', '只用现代材料替换', '完全恢复原貌'],
-    answer: 1,
-    explanation: '"最小干预原则"是文物保护的核心理念，指在修缮中尽量保留原有结构和材料，只做必要的加固和保护。'
-  },
-  {
-    category: '生态知识',
-    question: '"无痕旅行"（Leave No Trace）的核心原则不包括以下哪项？',
-    options: ['带走所有垃圾', '不采摘野花野果', '在岩石上刻写到此一游', '在指定区域活动'],
-    answer: 2,
-    explanation: '"无痕旅行"倡导游客不留下任何人为痕迹，在岩石上刻写显然违反了这一原则。'
-  },
-  {
-    category: '生态知识',
-    question: '香屯村的地理特征可以概括为？',
-    options: ['一马平川', '四面环山、一水中流', '临海而居', '高原草甸'],
-    answer: 1,
-    explanation: '香屯村地处延庆、昌平、怀柔三区交界处，四面环山、一水中流，被形容为"藏风聚气"的风水宝地。'
-  },
-  // 香屯文化（5题）
-  {
-    category: '香屯文化',
-    question: '香屯村行政上隶属于北京市哪个区？',
-    options: ['昌平区', '怀柔区', '延庆区', '密云区'],
-    answer: 2,
-    explanation: '香屯村行政上属于北京市延庆区大庄科乡，地处延庆、昌平、怀柔三区交界处。'
-  },
-  {
-    category: '香屯文化',
-    question: '"四色香屯"品牌中的"传承红"代表什么？',
-    options: ['板栗的颜色', '长城砖石的颜色', '辽代冶铁炉火与革命红色血脉', '秋天枫叶的颜色'],
-    answer: 2,
-    explanation: '"传承红"（#851217）象征辽代冶铁炉火、抗日烽火和长城守护者世代相传的热血，是品牌的核心色彩。'
-  },
-  {
-    category: '香屯文化',
-    question: '2021-2024年间，香屯村长城段进行了什么重要项目？',
-    options: ['商业开发', '研究性修缮试点', '全段重建', '旅游索道建设'],
-    answer: 1,
-    explanation: '国家文物局首批批复明长城大庄科段研究性修缮试点，以考古先行、最小干预为核心。香港黄廷方基金会捐赠1000万元。'
-  },
-  {
-    category: '香屯文化',
-    question: '香屯村早在哪个朝代就有人类活动的记录？',
-    options: ['唐代', '宋代', '辽代', '元代'],
-    answer: 2,
-    explanation: '早在辽代（916-1125年），香屯一带就是"辽代首钢"的采矿地，是北京地区最早的冶铁遗址之一。'
-  },
-  {
-    category: '香屯文化',
-    question: '在研究性修缮中重新发现的、消失了380多年的历史地名是什么？',
-    options: ['大庄科', '香屯口', '西星口', '黄花路'],
-    answer: 2,
-    explanation: '在2021-2024年的研究性修缮中，考古团队重新发现了消失380多年的历史地名"西星口"。'
-  }
+  // ===== 长城保护法规（10题） =====
+  { category: '长城保护法规', question: '《长城保护条例》是哪一年颁布实施的？', options: ['2003年', '2006年', '2010年', '2015年'], answer: 1, explanation: '《长城保护条例》于2006年12月1日起施行，是我国专门保护长城的行政法规。' },
+  { category: '长城保护法规', question: '根据《长城保护条例》，以下哪种行为是被明确禁止的？', options: ['在长城上拍照留念', '在长城墙体上刻画涂鸦', '沿长城徒步旅行', '在长城附近露营'], answer: 1, explanation: '《长城保护条例》明确禁止在长城上刻画、涂污、张贴等损毁长城的行为。' },
+  { category: '长城保护法规', question: '发现长城遭到破坏，应该拨打哪个举报电话？', options: ['110', '119', '12345', '12359'], answer: 3, explanation: '12359是全国文物违法举报电话，发现长城遭到破坏可拨打此电话举报。' },
+  { category: '长城保护法规', question: '《北京市长城保护管理办法》规定，在长城保护范围内禁止取土取石的范围是多少？', options: ['长城两侧各50米', '长城两侧各100米', '长城两侧各200米', '长城两侧各500米'], answer: 3, explanation: '根据北京市相关规定，长城两侧各500米范围内禁止取土取石等破坏行为。' },
+  { category: '长城保护法规', question: '香屯村所在的长城段属于哪个防御体系？', options: ['蓟镇', '昌镇', '宣府镇', '大同镇'], answer: 1, explanation: '香屯村的长城属于明代昌镇黄花路西老星口段，是昌镇防御体系的一部分。' },
+  { category: '长城保护法规', question: '长城保护的"四有"工作是指什么？', options: ['有围栏、有标志、有档案、有保护员', '有门票、有导游、有停车场、有厕所', '有规划、有预算、有团队、有设备', '有监控、有巡逻、有报警、有维修'], answer: 0, explanation: '长城保护"四有"工作指：有保护范围和建设控制地带、有标志说明、有记录档案、有专门的保护管理机构或保护员。' },
+  { category: '长城保护法规', question: '未经批准在长城上架设通信天线等设施，最高可处多少罚款？', options: ['5万元', '10万元', '50万元', '100万元'], answer: 2, explanation: '根据《长城保护条例》，擅自在长城上架设、安装设备的，可处5万元以上50万元以下罚款。' },
+  { category: '长城保护法规', question: '长城国家文化公园的建设范围覆盖多少个省份？', options: ['8个', '12个', '15个', '18个'], answer: 2, explanation: '长城国家文化公园覆盖北京、天津、河北、山西、内蒙古等15个省（区、市）。' },
+  { category: '长城保护法规', question: '中国长城被列入世界遗产名录是哪一年？', options: ['1978年', '1985年', '1987年', '1990年'], answer: 2, explanation: '1987年，长城被联合国教科文组织列入《世界遗产名录》，是中国首批世界文化遗产之一。' },
+  { category: '长城保护法规', question: '长城保护员制度要求每公里至少配备几名保护员？', options: ['不做硬性要求', '1名', '2名', '3名'], answer: 1, explanation: '国家文物局要求长城沿线各地落实长城保护员制度，原则上每公里至少配备1名保护员。' },
+  // ===== 生态知识（10题） =====
+  { category: '生态知识', question: '香屯村的林木覆盖率约为多少？', options: ['65%', '75%', '85%', '95%'], answer: 3, explanation: '香屯村林木覆盖率高达95%，是延庆区绿化率最高的村庄之一，2007年被评为"北京市最美乡村"。' },
+  { category: '生态知识', question: '以下哪种植物是香屯村的标志性特产？', options: ['核桃', '板栗', '柿子', '山楂'], answer: 1, explanation: '板栗是香屯村最具代表性的特产，村中板栗林历史悠久，秋天满山金黄，是"板栗金"色彩的来源。' },
+  { category: '生态知识', question: '长城沿线生态保护中，"最小干预原则"是指什么？', options: ['不做任何修缮', '尽量少修改原有结构和材料', '只用现代材料替换', '完全恢复原貌'], answer: 1, explanation: '"最小干预原则"是文物保护的核心理念，指在修缮中尽量保留原有结构和材料，只做必要的加固和保护。' },
+  { category: '生态知识', question: '"无痕旅行"（Leave No Trace）的核心原则不包括以下哪项？', options: ['带走所有垃圾', '不采摘野花野果', '在岩石上刻写到此一游', '在指定区域活动'], answer: 2, explanation: '"无痕旅行"倡导游客不留下任何人为痕迹，在岩石上刻写显然违反了这一原则。' },
+  { category: '生态知识', question: '香屯村的地理特征可以概括为？', options: ['一马平川', '四面环山、一水中流', '临海而居', '高原草甸'], answer: 1, explanation: '香屯村地处延庆、昌平、怀柔三区交界处，四面环山、一水中流，被形容为"藏风聚气"的风水宝地。' },
+  { category: '生态知识', question: '延庆区被誉为什么？', options: ['首都后花园', '北京的北大门', '夏都', '京北第一州'], answer: 2, explanation: '延庆区因夏季凉爽宜人，平均气温比城区低5-8度，素有"夏都"之美誉。' },
+  { category: '生态知识', question: '长城沿线最常见的野生动物不包括以下哪种？', options: ['野猪', '狍子', '金丝猴', '豹猫'], answer: 2, explanation: '金丝猴主要栖息在西南高山地区。北京长城沿线常见野猪、狍子、豹猫等野生动物。' },
+  { category: '生态知识', question: '香屯村属于哪个气候带？', options: ['亚热带季风气候', '温带大陆性季风气候', '高原山地气候', '温带海洋性气候'], answer: 1, explanation: '香屯村地处北京延庆，属温带大陆性季风气候，四季分明，昼夜温差较大。' },
+  { category: '生态知识', question: '板栗树一般需要生长多少年才能进入盛果期？', options: ['3-5年', '7-10年', '15-20年', '30年以上'], answer: 2, explanation: '板栗树通常7-10年进入盛果期，而香屯村的古板栗树已有上百年树龄，依然硕果累累。' },
+  { category: '生态知识', question: '香屯村2007年获得了什么荣誉称号？', options: ['全国文明村', '北京市最美乡村', '中国历史文化名村', '国家级生态村'], answer: 1, explanation: '2007年，香屯村因优美的自然环境和丰富的文化底蕴被评为"北京市最美乡村"。' },
+  // ===== 香屯文化（10题） =====
+  { category: '香屯文化', question: '香屯村行政上隶属于北京市哪个区？', options: ['昌平区', '怀柔区', '延庆区', '密云区'], answer: 2, explanation: '香屯村行政上属于北京市延庆区大庄科乡，地处延庆、昌平、怀柔三区交界处。' },
+  { category: '香屯文化', question: '"四色香屯"品牌中的"传承红"代表什么？', options: ['板栗的颜色', '长城砖石的颜色', '辽代冶铁炉火与革命红色血脉', '秋天枫叶的颜色'], answer: 2, explanation: '"传承红"（#851217）象征辽代冶铁炉火、抗日烽火和长城守护者世代相传的热血，是品牌的核心色彩。' },
+  { category: '香屯文化', question: '2021-2024年间，香屯村长城段进行了什么重要项目？', options: ['商业开发', '研究性修缮试点', '全段重建', '旅游索道建设'], answer: 1, explanation: '国家文物局首批批复明长城大庄科段研究性修缮试点，以考古先行、最小干预为核心。香港黄廷方基金会捐赠1000万元。' },
+  { category: '香屯文化', question: '香屯村早在哪个朝代就有人类活动的记录？', options: ['唐代', '宋代', '辽代', '元代'], answer: 2, explanation: '早在辽代（916-1125年），香屯一带就是"辽代首钢"的采矿地，是北京地区最早的冶铁遗址之一。' },
+  { category: '香屯文化', question: '在研究性修缮中重新发现的、消失了380多年的历史地名是什么？', options: ['大庄科', '香屯口', '西星口', '黄花路'], answer: 2, explanation: '在2021-2024年的研究性修缮中，考古团队重新发现了消失380多年的历史地名"西星口"。' },
+  { category: '香屯文化', question: '香屯村目前有多少户常住人家？', options: ['18户', '28户', '38户', '58户'], answer: 2, explanation: '香屯村现有38户常住人家，村民世代守护长城和板栗林，延续着古老的生活方式。' },
+  { category: '香屯文化', question: '"四色香屯"品牌中的"板栗金"色值是什么？', options: ['#FFD700', '#593D00', '#8B6914', '#DAA520'], answer: 1, explanation: '"板栗金"（#593D00）取自秋天板栗成熟时的温暖金棕色，代表丰收和自然馈赠。' },
+  { category: '香屯文化', question: '香屯村的长城修缮获得了哪个基金会的1000万元捐赠？', options: ['腾讯基金会', '壹基金', '香港黄廷方基金会', '中国文物保护基金会'], answer: 2, explanation: '香港黄廷方基金会捐赠1000万元支持明长城大庄科段的研究性修缮试点项目。' },
+  { category: '香屯文化', question: '"四色香屯"中的"玄石墨"代表什么？', options: ['墨水的颜色', '城墙石料的深沉与历史积淀', '夜空的颜色', '煤炭的颜色'], answer: 1, explanation: '"玄石墨"（#1B1C1C）取自长城石料和古村青瓦的色调，代表历史的厚重与沉淀。' },
+  { category: '香屯文化', question: '2025年引入香屯的文旅公司名称是什么？', options: ['长城文旅集团', '龙吟溪谷文旅发展有限公司', '京北生态旅游公司', '延庆乡村振兴集团'], answer: 1, explanation: '2025年4月，"龙吟溪谷"文旅发展有限公司引入香屯，规划1000多亩文旅项目。' }
 ];
 
 let currentQuiz = [];
