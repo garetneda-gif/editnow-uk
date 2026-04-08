@@ -28,9 +28,6 @@ html.dark .stat-glass{background:#252525}
 .stat-glass:hover{transform:translateY(-3px)}
 .stat-num{font-family:'Newsreader',serif;font-weight:900;background:linear-gradient(135deg,#851217,#593d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block}
 html.dark .stat-num{background:linear-gradient(135deg,#ffb3ad,#f5bd58);-webkit-background-clip:text;background-clip:text}
-.stat-glass-lg{padding:36px 28px}
-.stat-glass-lg .stat-num{font-size:4rem;margin-bottom:8px}
-.stat-glass-sm .stat-num{font-size:2.2rem;margin-bottom:6px}
 .progress-ring{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:16px auto 0}
 .progress-ring-inner{width:64px;height:64px;border-radius:50%;background:#fbf9f8;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:800;font-size:14px;color:#851217}
 html.dark .progress-ring-inner{background:#252525;color:#ffb3ad}
@@ -38,10 +35,10 @@ html.dark .progress-ring-inner{background:#252525;color:#ffb3ad}
 .stagger-item.visible{opacity:1;transform:translateY(0)}
 
 /* TABS */
-.user-tabs{display:flex;gap:6px;padding:6px;background:#f5f3f3;width:fit-content;margin:0 auto}
+.user-tabs{background:#f5f3f3;border-radius:0.5rem;padding:4px;display:inline-flex}
 html.dark .user-tabs{background:#252525}
-.user-tab{padding:14px 28px;border-radius:12px;font-size:14px;font-weight:700;letter-spacing:.05em;cursor:pointer;border:none;background:transparent;color:#8c716e;transition:all .4s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:8px;white-space:nowrap;font-family:'Manrope',sans-serif}
-.user-tab.active{background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;box-shadow:0 8px 24px rgba(133,18,23,0.25)}
+.user-tab{padding:10px 20px;font-size:13px;border-radius:8px;cursor:pointer;border:none;background:transparent;color:#8c716e;transition:all .3s;display:flex;align-items:center;gap:8px;white-space:nowrap;font-family:'Manrope',sans-serif;font-weight:700;letter-spacing:.05em}
+.user-tab.active{background:linear-gradient(135deg,#851217,#a62c2b);color:#fff}
 .user-tab:not(.active):hover{background:rgba(133,18,23,0.1);color:#851217}
 .tab-count{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:800}
 .user-tab.active .tab-count{background:rgba(255,255,255,0.25);color:#fff}
@@ -74,6 +71,9 @@ html.dark .badge-circle.locked{background:#333 !important}
 [data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(27,28,28,0.92);color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap;z-index:20;pointer-events:none;animation:tooltip-in .2s ease}
 @keyframes tooltip-in{from{opacity:0;transform:translateX(-50%) translateY(4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
+/* LEVEL PULSE */
+@keyframes ring-pulse{0%,100%{box-shadow:0 0 0 0 rgba(133,18,23,0.3)}50%{box-shadow:0 0 0 10px rgba(133,18,23,0)}}
+
 /* LEVEL TIMELINE */
 .level-timeline{display:flex;align-items:center;justify-content:center;gap:0;padding:20px 0;overflow-x:auto}
 .level-node{display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0}
@@ -92,7 +92,7 @@ html.dark .level-connector.dashed{background:repeating-linear-gradient(90deg,#44
 .fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px rgba(0,0,0,0.06)}
-@media(prefers-reduced-motion:reduce){.particle,.scroll-indicator{animation:none !important}.avatar-ring,.badge-circle.earned,.level-dot.current{animation:none !important}.stagger-item,.fade-in{transition:none !important;opacity:1 !important;transform:none !important}}
+@media(prefers-reduced-motion:reduce){.badge-circle.earned,.level-dot.current{animation:none !important}.stagger-item,.fade-in{transition:none !important;opacity:1 !important;transform:none !important}}
 </style>
 <!-- Chat Widget Styles -->
 <style>
@@ -161,50 +161,80 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 </nav>
 
 <!-- HERO -->
-<section class="user-hero">
-  <div class="particle" style="width:6px;height:6px;left:10%;animation-duration:12s;animation-delay:0s" aria-hidden="true"></div>
-  <div class="particle" style="width:4px;height:4px;left:25%;animation-duration:16s;animation-delay:2s" aria-hidden="true"></div>
-  <div class="particle" style="width:8px;height:8px;left:40%;animation-duration:14s;animation-delay:4s" aria-hidden="true"></div>
-  <div class="particle" style="width:5px;height:5px;left:55%;animation-duration:18s;animation-delay:1s" aria-hidden="true"></div>
-  <div class="particle" style="width:7px;height:7px;left:70%;animation-duration:13s;animation-delay:3s" aria-hidden="true"></div>
-  <div class="particle" style="width:4px;height:4px;left:82%;animation-duration:15s;animation-delay:5s" aria-hidden="true"></div>
-  <div class="particle" style="width:6px;height:6px;left:90%;animation-duration:17s;animation-delay:7s" aria-hidden="true"></div>
-  <div class="particle" style="width:5px;height:5px;left:5%;animation-duration:19s;animation-delay:6s" aria-hidden="true"></div>
-  <div class="hero-content px-4">
-    <p class="text-[10px] font-bold tracking-[0.5em] uppercase text-white/50 mb-6">My Account</p>
-    <div class="avatar-ring mb-6"><div class="avatar-inner"><span class="material-symbols-outlined" style="font-size:40px" id="hero-level-icon">person</span></div></div>
-    <h1 class="font-headline font-black text-white text-5xl md:text-7xl mb-3" style="text-shadow:0 0 40px rgba(255,180,170,0.4),0 4px 20px rgba(0,0,0,0.5)" id="hero-level-name">新访客</h1>
-    <p class="text-white/60 font-headline italic text-lg mb-6">守护长城文化的每一步，都闪闪发光</p>
-    <div class="inline-flex items-center gap-3 px-6 py-3" style="background:rgba(255,255,255,0.15)">
-      <span class="material-symbols-outlined text-white/80" style="font-size:18px">trending_up</span>
-      <span class="text-sm font-bold text-white/80" id="hero-cta">距离下一等级还需 50 能量币</span>
-    </div>
-    <div class="mt-12 scroll-indicator" aria-hidden="true"><span class="material-symbols-outlined text-white/40" style="font-size:28px">expand_more</span></div>
-  </div>
-</section>
+<div class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-40 md:pt-56">
+<header class="mb-24 md:mb-48 relative">
+<div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+<div class="max-w-3xl flex-1">
+<div class="mb-6 flex items-center gap-4">
+<span class="h-px w-12 bg-primary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-primary">My Account | 个人中心</span>
+</div>
+<h1 class="text-3xl md:text-5xl lg:text-8xl font-headline font-extrabold text-on-surface tracking-tight mb-8 leading-[1.05]">
+个人中心<span class="text-primary italic"> ·</span><br/>
+<span class="text-primary font-normal italic text-2xl md:text-4xl lg:text-5xl">My Account</span>
+</h1>
+<div class="h-1 w-24 bg-primary mt-8 mb-10"></div>
+<p class="text-base md:text-lg text-on-surface-variant leading-[1.9] max-w-2xl">
+守护长城文化的每一步，都闪闪发光。查看能量币余额、守护者等级和活动记录。
+</p>
+</div>
+<!-- 账户概览卡 -->
+<div class="w-full lg:w-80 flex-shrink-0 fade-in">
+<div class="bg-surface-container-low p-8 rounded-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" id="hero-level-icon">person</span>
+<div>
+<p class="text-sm font-bold text-primary tracking-wider uppercase" id="hero-level-name">新访客</p>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase">Guardian Level</p>
+</div>
+</div>
+<div class="mb-6">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">累计能量币</span>
+<span class="text-3xl font-headline font-black text-primary" id="stat-balance">0</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-sm overflow-hidden">
+<div class="h-full bg-primary rounded-sm transition-all duration-500" id="hero-progress-bar" style="width:0%"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 tracking-wider" id="hero-cta">距离下一等级还需 50 能量币</p>
+</div>
+<div class="flex gap-3 flex-wrap">
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background:rgba(234,232,231,0.8);color:#8c716e;opacity:0.35;" id="badge-hero-pledge" title="签署倡议后点亮">倡议</span>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background:rgba(234,232,231,0.8);color:#8c716e;opacity:0.35;" id="badge-hero-quiz" title="完成答题后点亮">答题</span>
+<span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm" style="background:rgba(234,232,231,0.8);color:#8c716e;opacity:0.35;" id="badge-hero-task" title="完成任务后点亮">任务</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute top-0 right-0 hidden lg:block opacity-[0.03] text-[20rem] font-headline font-black text-on-surface leading-none select-none" aria-hidden="true">人</div>
+</header>
+</div>
 
 <!-- STATS -->
-<section class="max-w-screen-2xl mx-auto px-4 md:px-12 -mt-48 relative z-20 mb-16 md:mb-24">
-  <div class="flex flex-col lg:flex-row gap-6">
-    <div class="stat-glass stat-glass-lg flex-1 stagger-item" style="transition-delay:0ms">
-      <div class="flex items-center justify-center gap-2 mb-2"><span class="material-symbols-outlined text-tertiary" style="font-size:28px">bolt</span><span class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">能量币余额</span></div>
-      <span class="stat-num" style="font-size:4.5rem" id="stat-balance">0</span>
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 mb-24 md:mb-48">
+  <div class="flex flex-col items-center mb-16 text-center fade-in">
+    <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Overview</h3>
+    <h2 class="text-3xl md:text-5xl font-headline font-bold">数据总览</h2>
+    <div class="h-1 w-24 bg-primary mt-6"></div>
+  </div>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="stat-glass stagger-item" style="transition-delay:0ms">
+      <div class="flex items-center justify-center gap-2 mb-2"><span class="material-symbols-outlined text-tertiary" style="font-size:24px">bolt</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">能量币</span></div>
+      <span class="stat-num" style="font-size:2.8rem" id="stat-balance-grid">0</span>
       <div class="progress-ring" id="stat-ring" style="background:conic-gradient(#851217 0deg,#593d00 0deg,#e4e2e2 0deg,#e4e2e2 360deg)"><div class="progress-ring-inner" id="stat-ring-label">0%</div></div>
       <p class="text-[10px] text-on-surface-variant mt-2">升级进度</p>
     </div>
-    <div class="flex flex-col gap-6 lg:w-72">
-      <div class="stat-glass stat-glass-sm stagger-item" style="transition-delay:100ms">
-        <div class="flex items-center justify-center gap-2 mb-1"><span class="material-symbols-outlined text-primary" style="font-size:20px">shield</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">守护者等级</span></div>
-        <span class="stat-num" style="font-size:1.6rem" id="stat-level">新访客</span>
-      </div>
-      <div class="stat-glass stat-glass-sm stagger-item" style="transition-delay:200ms">
-        <div class="flex items-center justify-center gap-2 mb-1"><span class="material-symbols-outlined text-secondary" style="font-size:20px">task_alt</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">完成任务</span></div>
-        <span class="stat-num" id="stat-tasks">0</span>
-      </div>
-      <div class="stat-glass stat-glass-sm stagger-item" style="transition-delay:300ms">
-        <div class="flex items-center justify-center gap-2 mb-1"><span class="material-symbols-outlined text-tertiary" style="font-size:20px">military_tech</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">徽章数量</span></div>
-        <span class="stat-num" id="stat-badges">0</span>
-      </div>
+    <div class="stat-glass stagger-item" style="transition-delay:100ms">
+      <div class="flex items-center justify-center gap-2 mb-2"><span class="material-symbols-outlined text-primary" style="font-size:24px">shield</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">守护者等级</span></div>
+      <span class="stat-num" style="font-size:1.6rem" id="stat-level">新访客</span>
+    </div>
+    <div class="stat-glass stagger-item" style="transition-delay:200ms">
+      <div class="flex items-center justify-center gap-2 mb-2"><span class="material-symbols-outlined text-secondary" style="font-size:24px">task_alt</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">完成任务</span></div>
+      <span class="stat-num" style="font-size:2.2rem" id="stat-tasks">0</span>
+    </div>
+    <div class="stat-glass stagger-item" style="transition-delay:300ms">
+      <div class="flex items-center justify-center gap-2 mb-2"><span class="material-symbols-outlined text-tertiary" style="font-size:24px">military_tech</span><span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">徽章数量</span></div>
+      <span class="stat-num" style="font-size:2.2rem" id="stat-badges">0</span>
     </div>
   </div>
 </section>
@@ -213,7 +243,12 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 <div class="max-w-screen-2xl mx-auto px-4 md:px-12"><svg class="wall-divider" viewBox="0 0 960 24" fill="none" aria-hidden="true"><path d="M0 24V12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V24" stroke="#1b1c1c" stroke-width="1.5"/></svg></div>
 
 <!-- TABS -->
-<section class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32 fade-in">
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 mb-24 md:mb-48 fade-in">
+  <div class="flex flex-col items-center mb-16 text-center">
+    <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">History</h3>
+    <h2 class="text-3xl md:text-5xl font-headline font-bold">我的记录</h2>
+    <div class="h-1 w-24 bg-primary mt-6"></div>
+  </div>
   <div class="flex justify-center mb-12">
     <div class="user-tabs" role="tablist">
       <button role="tab" aria-selected="true" class="user-tab active" onclick="switchUserTab('coins')"><span class="material-symbols-outlined" style="font-size:18px">bolt</span>能量币<span class="tab-count" id="tab-count-coins">0</span></button>
@@ -266,8 +301,8 @@ function renderRecordsTab(container){var bookings=EnergyStore.getBookings();var 
 function renderCollapsible(container,title,icon,items,primaryFn,secondaryFn,emptyTitle,emptyHint,emptyLink){var section=document.createElement('div');section.className='mb-8';var header=document.createElement('div');header.className='collapsible-header open';header.innerHTML='<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">'+icon+'</span><h3 class="font-headline font-bold text-lg">'+title+' ('+items.length+')</h3></div><span class="material-symbols-outlined text-on-surface-variant">expand_more</span>';var body=document.createElement('div');body.className='collapsible-body open';header.onclick=function(){header.classList.toggle('open');body.classList.toggle('open')};section.appendChild(header);if(items.length===0){renderEmptyState(body,icon,emptyTitle,emptyHint,emptyLink)}else{var list=document.createElement('div');list.className='space-y-3';items.sort(function(a,b){return new Date(b.time)-new Date(a.time)}).forEach(function(item){var card=document.createElement('div');card.className='history-card';var p1=document.createElement('p');p1.className='font-semibold text-sm';p1.textContent=primaryFn(item);card.appendChild(p1);var p2=document.createElement('p');p2.className='text-xs text-on-surface-variant mt-1';p2.textContent=secondaryFn(item);card.appendChild(p2);list.appendChild(card)});body.appendChild(list)}section.appendChild(body);container.appendChild(section)}
 function renderGuardianTab(container){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);if(data.history.length===0){renderEmptyState(container,'shield','签署保护倡议，开启你的守护之旅','前往守护者页面','../guardian/index.html');return}var tw=document.createElement('div');tw.className='mb-12 fade-in';var tt=document.createElement('h4');tt.className='font-headline font-bold text-lg mb-6 text-center';tt.textContent='守护者成长之路';tw.appendChild(tt);var levels=[{name:'新访客',icon:'person',threshold:0},{name:'守护学徒',icon:'school',threshold:50},{name:'守护使者',icon:'shield',threshold:150},{name:'荣誉守护者',icon:'military_tech',threshold:300}];var tl=document.createElement('div');tl.className='level-timeline';levels.forEach(function(lv,i){var reached=data.coins>=lv.threshold;var isCurrent=level.name===lv.name;var node=document.createElement('div');node.className='level-node';var dot=document.createElement('div');dot.className='level-dot '+(reached?'reached':'future')+(isCurrent?' current':'');dot.innerHTML='<span class="material-symbols-outlined" style="font-size:22px">'+lv.icon+'</span>';node.appendChild(dot);var lb=document.createElement('span');lb.className='text-[10px] font-bold tracking-wider '+(reached?'text-primary':'text-on-surface-variant');lb.textContent=lv.name;node.appendChild(lb);tl.appendChild(node);if(i<levels.length-1){var cn=document.createElement('div');cn.className='level-connector '+(data.coins>=levels[i+1].threshold?'solid':'dashed');tl.appendChild(cn)}});tw.appendChild(tl);container.appendChild(tw);var bs=document.createElement('div');bs.className='mb-8 fade-in';var bt=document.createElement('h4');bt.className='font-headline font-bold text-lg mb-6 text-center';bt.textContent='徽章成就';bs.appendChild(bt);var hasPledge=data.history.some(function(h){return h.reason==='签署保护倡议'});var hasQuiz=data.history.some(function(h){return h.reason&&h.reason.indexOf('知识问答')===0});var hasTask=data.history.some(function(h){return h.reason&&(h.reason.indexOf('打卡')!==-1||h.reason.indexOf('分享')!==-1)});var badges=[{name:'签署倡议',icon:'handshake',earned:hasPledge,color:'#851217',tip:'在守护者页面签署保护倡议即可获得'},{name:'知识达人',icon:'school',earned:hasQuiz,color:'#3b6934',tip:'完成一次知识问答即可获得'},{name:'行动派',icon:'hiking',earned:hasTask,color:'#593d00',tip:'完成一次打卡或分享任务即可获得'}];var bg=document.createElement('div');bg.className='flex justify-center gap-10 md:gap-16 flex-wrap';badges.forEach(function(badge){var el=document.createElement('div');el.className='text-center';el.setAttribute('data-tip',badge.earned?'已获得！':badge.tip);var circle=document.createElement('div');circle.className='badge-circle '+(badge.earned?'earned':'locked');if(badge.earned){circle.style.background='linear-gradient(135deg,'+badge.color+','+badge.color+'cc)';circle.style.setProperty('--badge-color-a',badge.color+'40');circle.style.setProperty('--badge-color-b',badge.color+'00');circle.style.filter='drop-shadow(0 0 12px '+badge.color+'40)'}var ic=document.createElement('span');ic.className='material-symbols-outlined';ic.style.cssText='font-size:32px;color:'+(badge.earned?'#fff':'#8c716e');ic.textContent=badge.earned?badge.icon:'lock';circle.appendChild(ic);el.appendChild(circle);var tag=document.createElement('span');tag.className='ink-tag';tag.style.color=badge.earned?badge.color:'#8c716e';tag.textContent=badge.name;el.appendChild(tag);bg.appendChild(el)});bs.appendChild(bg);container.appendChild(bs)}
 function renderEmptyState(container,icon,title,linkText,linkHref){var el=document.createElement('div');el.className='text-center py-16';el.innerHTML='<svg width="120" height="60" viewBox="0 0 120 60" fill="none" class="mx-auto mb-6 opacity-20" aria-hidden="true"><path d="M0 60V40h12V28h8v12h12V28h8v12h12V28h8v12h12V28h8v12h12V28h8v12h12V60" stroke="#851217" stroke-width="1.5"/><circle cx="60" cy="18" r="6" stroke="#593d00" stroke-width="1.5"/><path d="M54 18l6-8 6 8" stroke="#593d00" stroke-width="1.5"/></svg>';var p=document.createElement('p');p.className='text-on-surface-variant font-headline italic mb-6';p.textContent=title;el.appendChild(p);var a=document.createElement('a');a.href=linkHref;a.className='inline-flex items-center gap-2 px-8 py-3 text-sm font-bold tracking-wider text-white rounded-xl transition-all duration-300 hover:scale-105';a.style.background='linear-gradient(135deg,#851217,#a62c2b)';a.style.boxShadow='0 8px 24px rgba(133,18,23,0.25)';a.innerHTML='<span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>'+linkText;el.appendChild(a);container.appendChild(el)}
-function updateHero(){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);document.getElementById('hero-level-icon').textContent=level.icon;document.getElementById('hero-level-name').textContent=level.name;if(level.next){document.getElementById('hero-cta').textContent='距离下一等级还需 '+(level.next-data.coins)+' 能量币'}else{document.getElementById('hero-cta').textContent='已达最高等级 — 荣誉守护者'}}
-function updateStats(){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);document.getElementById('stat-balance').textContent=data.coins;document.getElementById('stat-level').textContent=level.name;var tc=0;data.history.forEach(function(h){if(h.amount>0)tc++});document.getElementById('stat-tasks').textContent=tc;var hp=data.history.some(function(h){return h.reason==='签署保护倡议'});var hq=data.history.some(function(h){return h.reason&&h.reason.indexOf('知识问答')===0});var ht=data.history.some(function(h){return h.reason&&(h.reason.indexOf('打卡')!==-1||h.reason.indexOf('分享')!==-1)});document.getElementById('stat-badges').textContent=(hp?1:0)+(hq?1:0)+(ht?1:0);document.getElementById('tab-count-coins').textContent=data.history.length;var pct=Math.round(level.progress);var deg=(pct/100)*360;document.getElementById('stat-ring').style.background='conic-gradient(#851217 0deg,#593d00 '+deg+'deg,#e4e2e2 '+deg+'deg,#e4e2e2 360deg)';document.getElementById('stat-ring-label').textContent=pct+'%'}
+function updateHero(){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);document.getElementById('hero-level-icon').textContent=level.icon;document.getElementById('hero-level-name').textContent=level.name;if(level.next){document.getElementById('hero-cta').textContent='距离下一等级还需 '+(level.next-data.coins)+' 能量币'}else{document.getElementById('hero-cta').textContent='已达最高等级 — 荣誉守护者'}var pBar=document.getElementById('hero-progress-bar');if(pBar)pBar.style.width=Math.round(level.progress)+'%';var hp=data.history.some(function(h){return h.reason==='签署保护倡议'});var hq=data.history.some(function(h){return h.reason&&h.reason.indexOf('知识问答')===0});var ht=data.history.some(function(h){return h.reason&&(h.reason.indexOf('打卡')!==-1||h.reason.indexOf('分享')!==-1)});var bpEl=document.getElementById('badge-hero-pledge');if(bpEl&&hp){bpEl.style.background='linear-gradient(135deg,#851217,#a62c2b)';bpEl.style.color='#fff';bpEl.style.opacity='1'}var bqEl=document.getElementById('badge-hero-quiz');if(bqEl&&hq){bqEl.style.background='linear-gradient(135deg,#3b6934,#5a9950)';bqEl.style.color='#fff';bqEl.style.opacity='1'}var btEl=document.getElementById('badge-hero-task');if(btEl&&ht){btEl.style.background='linear-gradient(135deg,#593d00,#775300)';btEl.style.color='#fff';btEl.style.opacity='1'}}
+function updateStats(){var data=EnergyStore.getData();var level=EnergyStore.getLevelInfo(data.coins);document.getElementById('stat-balance').textContent=data.coins;var sbg=document.getElementById('stat-balance-grid');if(sbg)sbg.textContent=data.coins;document.getElementById('stat-level').textContent=level.name;var tc=0;data.history.forEach(function(h){if(h.amount>0)tc++});document.getElementById('stat-tasks').textContent=tc;var hp=data.history.some(function(h){return h.reason==='签署保护倡议'});var hq=data.history.some(function(h){return h.reason&&h.reason.indexOf('知识问答')===0});var ht=data.history.some(function(h){return h.reason&&(h.reason.indexOf('打卡')!==-1||h.reason.indexOf('分享')!==-1)});document.getElementById('stat-badges').textContent=(hp?1:0)+(hq?1:0)+(ht?1:0);document.getElementById('tab-count-coins').textContent=data.history.length;var pct=Math.round(level.progress);var deg=(pct/100)*360;document.getElementById('stat-ring').style.background='conic-gradient(#851217 0deg,#593d00 '+deg+'deg,#e4e2e2 '+deg+'deg,#e4e2e2 360deg)';document.getElementById('stat-ring-label').textContent=pct+'%'}
 function updateNavBalance(){var el=document.getElementById('nav-balance');if(el)el.textContent=EnergyStore.getBalance()}
 window.addEventListener('energy-changed',function(){updateNavBalance();updateHero();updateStats();renderTabContent()});
 document.addEventListener('DOMContentLoaded',function(){updateNavBalance();updateHero();updateStats();renderTabContent();var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:0.1});document.querySelectorAll('.fade-in,.stagger-item').forEach(function(el){observer.observe(el)});window.addEventListener('scroll',function(){var nav=document.querySelector('nav');if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled')})});
