@@ -229,6 +229,7 @@
 
         /* Back to top */
         #back-to-top { position:fixed; bottom:100px; right:32px; width:44px; height:44px; border-radius:50%; background:rgba(133,18,23,0.85); color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(20px) scale(0.8); transition:opacity 0.4s, transform 0.4s, background 0.3s; z-index:999; box-shadow:0 4px 24px rgba(133,18,23,0.3); backdrop-filter:blur(8px); pointer-events:none; }
+        @media (max-width: 480px) { #back-to-top { right:16px; bottom:80px; width:40px; height:40px; } }
         #back-to-top.show { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
         #back-to-top:hover { background:#a62c2b; transform:translateY(-3px) scale(1.05); box-shadow:0 8px 32px rgba(133,18,23,0.4); }
 
@@ -728,7 +729,7 @@
 
 <!-- Card 2: Red Study Route -->
 <a href="/routes/red-study" class="route-card lg:col-span-4 rounded-sm overflow-hidden min-h-[400px] relative flex flex-col justify-between p-8 md:p-10 group/card shadow-xl">
-<img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80&fit=crop" alt="中国古建筑" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+<img src="https://images.unsplash.com/photo-1650189222404-cf60dc90eae5?w=800&q=80&fit=crop" alt="中国古建筑" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#851217]/75"></div>
 <div class="z-10 relative">
 <p class="text-xs font-bold tracking-[0.3em] uppercase text-white/60 mb-4">ROUTE 02 | 红色研学</p>
@@ -762,7 +763,7 @@
 
 <!-- Card 4: Xiangtun Story -->
 <a href="/about/history" class="route-card lg:col-span-6 rounded-sm overflow-hidden min-h-[280px] relative flex items-stretch group/card shadow-xl">
-<img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&q=80&fit=crop" alt="乡村秋景" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+<img src="https://images.unsplash.com/photo-1693924456823-84ea7edd2a9a?w=800&q=80&fit=crop" alt="乡村秋景" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#593d00]/75"></div>
 <div class="flex-1 p-8 md:p-10 flex flex-col justify-between z-10 relative">
 <div>
@@ -795,7 +796,7 @@
 </div>
 <div class="relative">
 <!-- Map Container (full width) -->
-<div class="relative overflow-hidden rounded-sm shadow-2xl" style="height: 600px;">
+<div class="relative overflow-hidden rounded-sm shadow-2xl" style="height: min(600px, 70vh);">
 <div id="xiangtun-map" class="w-full h-full"></div>
 <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(27,28,28,0.15)]"></div>
 <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#1b1c1c]/50 to-transparent pointer-events-none"></div>
@@ -1710,7 +1711,7 @@ document.querySelectorAll('.route-card').forEach(card => {
   // Responsive map height
   function adjustMapHeight() {
     if (window.innerWidth < 768) {
-      mapEl.parentElement.style.height = '350px';
+      mapEl.parentElement.style.height = '55vh';
     } else {
       mapEl.parentElement.style.height = '500px';
     }

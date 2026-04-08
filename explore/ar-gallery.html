@@ -22,7 +22,7 @@
 
   /* Model selector tabs */
   .tabs{display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid rgba(27,28,28,0.08);padding:0 16px;}
-  .tab{flex-shrink:0;padding:14px 18px;font-size:12px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-bottom:3px solid transparent;color:rgba(27,28,28,0.4);transition:all 0.2s;white-space:nowrap;}
+  .tab{flex-shrink:0;padding:16px 18px;font-size:12px;min-height:44px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-bottom:3px solid transparent;color:rgba(27,28,28,0.4);transition:all 0.2s;white-space:nowrap;}
   .tab.active{color:#851217;border-bottom-color:#851217;}
   .tab:hover{color:#1b1c1c;}
   .tab .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle;}
@@ -45,6 +45,16 @@
   .info-card .en{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(27,28,28,0.35);margin-bottom:16px;}
   .info-card p{font-size:13px;line-height:1.8;color:#58413f;}
 
+  .info-card p+p{margin-top:12px;}
+  .stats{display:flex;gap:0;margin:20px 0 12px;border-top:1px solid rgba(27,28,28,0.06);border-bottom:1px solid rgba(27,28,28,0.06);}
+  .stat{flex:1;text-align:center;padding:14px 8px;border-right:1px solid rgba(27,28,28,0.06);}
+  .stat:last-child{border-right:none;}
+  .stat-num{display:block;font-family:'Newsreader',serif;font-size:20px;font-weight:700;color:#851217;}
+  .stat-label{display:block;font-size:10px;color:rgba(27,28,28,0.4);letter-spacing:0.04em;margin-top:4px;}
+  .tip{font-size:11px;color:rgba(27,28,28,0.35);text-align:center;margin-top:16px;padding:10px;background:rgba(27,28,28,0.02);font-style:italic;}
+  .ar-guide{background:rgba(133,18,23,0.03);border-left:3px solid #851217;padding:20px 24px;margin-top:20px;}
+  .ar-guide h3{font-size:14px;font-weight:700;margin-bottom:12px;color:#851217;}
+  .ar-guide ol{font-size:13px;color:#58413f;line-height:2.0;padding-left:18px;}
   .footer-seal{text-align:center;padding:32px;font-family:'Newsreader',serif;font-size:12px;color:#851217;font-style:italic;opacity:0.4;}
 </style>
 </head>
@@ -62,8 +72,9 @@
 <model-viewer
   id="mv"
   src="../models/watchtower.glb"
+  ios-src="../models/watchtower.usdz"
   ar
-  ar-modes="scene-viewer webxr quick-look"
+  ar-modes="scene-viewer quick-look webxr"
   camera-controls
   touch-action="pan-y"
   auto-rotate
@@ -100,26 +111,70 @@
   <div class="info-card" id="info-0">
     <div class="color-tag" style="background:rgba(107,107,107,0.1);color:#6b6b6b;">灰 · 长城古韵</div>
     <h2>长城敌台</h2>
-    <p class="en">Great Wall Watchtower</p>
-    <p>以大庄科段明长城真实形制数字复原。砖红色塔身、青灰城墙基座、层叠垛口，再现五百年前戍边将士眺望山川的场景。大庄科段长城全长 4,057 米，空心敌台 13 座。</p>
+    <p class="en">Great Wall Watchtower · Digital Reconstruction</p>
+    <p>大庄科段明长城蜿蜒于香屯村后山岭之上，全长 <strong>4,057 米</strong>，现存空心敌台 <strong>13 座</strong>，均为砖石结构，是延庆区保存最完整的明代长城段之一。</p>
+    <p>这座敌台以实地测绘数据为参考进行数字复原：八角形塔身采用传统"三券三伏"砌筑工艺，窗拱为典型的明代半圆券顶，层叠飞檐与金色宝顶呼应着北京官式建筑的庄重气韵。两侧延伸的城墙设有步道和垛口，曾是戍边将士巡逻和瞭望的关键通道。</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">1368</span><span class="stat-label">始建年份（明洪武）</span></div>
+      <div class="stat"><span class="stat-num">13</span><span class="stat-label">空心敌台</span></div>
+      <div class="stat"><span class="stat-num">4,057m</span><span class="stat-label">长城全长</span></div>
+    </div>
+    <p class="tip">双指缩放查看砖墙纹理 · 长按拖拽旋转视角</p>
   </div>
+
   <div class="info-card" id="info-1" style="display:none;">
     <div class="color-tag" style="background:rgba(133,18,23,0.1);color:#851217;">红 · 革命传承</div>
     <h2>烽火台</h2>
-    <p class="en">Beacon Tower</p>
-    <p>烽火台是长城防御体系的"眼睛"。狼烟一起，信号沿山脊传递百里。大庄科乡是平北抗日根据地的核心区域，红色革命精神与古长城烽火遥相呼应。</p>
+    <p class="en">Beacon Tower · Signal of Defense</p>
+    <p>烽火台是长城防御体系中最古老的通信工具。白天燃烟称"燧"，夜间举火称"烽"，信号沿山脊可在数小时内传递千里——这是人类最早的远程通信系统之一。</p>
+    <p>大庄科乡也是<strong>平北抗日根据地</strong>的核心区域。1938 年，八路军在这片长城脚下的山区建立了平北第一个抗日民主政权。红色革命的烽火与古长城的狼烟跨越时空，在同一片山脊上交汇。模型顶部的火焰象征着这份从未熄灭的精神传承。</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">1938</span><span class="stat-label">平北抗日根据地建立</span></div>
+      <div class="stat"><span class="stat-num">100+km</span><span class="stat-label">烽火传信距离</span></div>
+    </div>
+    <p class="tip">旋转模型查看三层递缩的塔身结构</p>
   </div>
+
   <div class="info-card" id="info-2" style="display:none;">
     <div class="color-tag" style="background:rgba(89,61,0,0.1);color:#593d00;">金 · 板栗丰收</div>
     <h2>百年板栗树</h2>
-    <p class="en">Centennial Chestnut Tree</p>
-    <p>香屯村拥有千余株百年古栗树，是延庆板栗的核心产区。每年秋季，金黄的栗子铺满山坡，"板栗金"是四色香屯最温暖的底色。</p>
+    <p class="en">Centennial Chestnut Tree · Living Heritage</p>
+    <p>香屯村坐落在延庆板栗的核心产区，村内拥有<strong>千余株百年古栗树</strong>，最老的一棵已有 300 余年树龄。每年九月，金黄的栗壳在枝头裂开，拳头大的栗子纷纷坠落，铺满山坡——这是属于香屯村的"黄金时节"。</p>
+    <p>延庆板栗以"甘甜、糯香、个大"闻名京津，是国家地理标志保护产品。村民们世代以板栗为生，从春天嫁接、夏天管护到秋天采收、冬天修剪，一棵板栗树串联起整个村庄的生活节律。"板栗金"是四色香屯最温暖也最朴实的底色。</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">1000+</span><span class="stat-label">百年古栗树</span></div>
+      <div class="stat"><span class="stat-num">300年</span><span class="stat-label">最老树龄</span></div>
+      <div class="stat"><span class="stat-num">9月</span><span class="stat-label">采收季节</span></div>
+    </div>
+    <p class="tip">注意树下散落的栗子和落叶</p>
   </div>
+
   <div class="info-card" id="info-3" style="display:none;">
     <div class="color-tag" style="background:rgba(59,105,52,0.1);color:#3b6934;">绿 · 生态山林</div>
     <h2>村口牌楼</h2>
-    <p class="en">Village Gate</p>
-    <p>香屯村始建于明代天启年间（1623年），错落有致的石墙院落、石板台阶、古井石磨，一切都保留着古朴典雅的风貌。村口牌楼是进入这片世外桃源的门户。</p>
+    <p class="en">Village Gate · Portal to Heritage</p>
+    <p>香屯村始建于<strong>明代天启三年（1623 年）</strong>，因山顶山神庙香火不断而得名。全村仅 <strong>24 户 66 口人</strong>，是北京周边极为罕见的原生态古村落。</p>
+    <p>错落有致的石墙院落、一层层的石头台阶、潺潺的山间溪流、古井石磨石碾……踏过村口牌楼，便是另一个时空。红色的宫灯高挂门楣，既是迎客之礼，也是传统中国村落"耕读传家"精神的象征。牌楼两侧的石墙延伸向绿荫掩映的巷道深处，引导着来客走入四百年的时光。</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">1623</span><span class="stat-label">建村年份</span></div>
+      <div class="stat"><span class="stat-num">24户</span><span class="stat-label">现有村民</span></div>
+      <div class="stat"><span class="stat-num">400年</span><span class="stat-label">村庄历史</span></div>
+    </div>
+    <p class="tip">观察牌楼上的红灯笼和匾额细节</p>
+  </div>
+</div>
+
+<!-- How to use AR -->
+<div class="info" style="padding-top:0;">
+  <div class="ar-guide">
+    <h3>如何体验 AR 增强现实</h3>
+    <ol>
+      <li>点击 3D 模型上方的<strong>「在 AR 中查看」</strong>按钮</li>
+      <li>允许摄像头权限，将手机对准地面或桌面</li>
+      <li>长城敌台将出现在您面前的真实空间中</li>
+      <li>走近观察建筑细节，捏合缩放调整大小，截图分享</li>
+    </ol>
+    <p style="font-size:11px;color:rgba(27,28,28,0.35);margin-top:12px;">需要 iPhone（iOS 12+）或支持 ARCore 的 Android 手机</p>
   </div>
 </div>
 
@@ -127,10 +182,10 @@
 
 <script>
 var models = [
-  {src:'../models/watchtower.glb', orbit:'45deg 65deg 12m'},
-  {src:'../models/beacon.glb', orbit:'45deg 60deg 15m'},
-  {src:'../models/chestnut-tree.glb', orbit:'30deg 70deg 10m'},
-  {src:'../models/village-gate.glb', orbit:'0deg 65deg 14m'}
+  {src:'../models/watchtower.glb', ios:'../models/watchtower.usdz', orbit:'45deg 65deg 12m'},
+  {src:'../models/beacon.glb', ios:'../models/beacon.usdz', orbit:'45deg 60deg 15m'},
+  {src:'../models/chestnut-tree.glb', ios:'../models/chestnut-tree.usdz', orbit:'30deg 70deg 10m'},
+  {src:'../models/village-gate.glb', ios:'../models/village-gate.usdz', orbit:'0deg 65deg 14m'}
 ];
 var mv = document.getElementById('mv');
 var tabs = document.querySelectorAll('.tab');
@@ -146,6 +201,7 @@ tabs.forEach(function(tab) {
     this.classList.add('active');
     document.getElementById('info-'+idx).style.display = 'block';
     mv.src = models[idx].src;
+    mv.setAttribute('ios-src', models[idx].ios);
     mv.cameraOrbit = models[idx].orbit;
   });
 });

@@ -158,8 +158,9 @@
         border-bottom: 2px solid #e0bfbc;
         border-radius: 0;
         background: transparent;
-        padding: 12px 0;
+        padding: 14px 0;
         font-size: 1rem;
+        min-height: 44px;
         font-family: 'Manrope', sans-serif;
         color: #1b1c1c;
         outline: none;
@@ -253,6 +254,11 @@
         margin: 0 8px;
         transition: background 0.4s;
         flex-shrink: 0;
+    }
+    @media (max-width: 480px) {
+        .step-connector { width: 24px; margin: 0 4px; }
+        .step-circle { width: 30px; height: 30px; font-size: 12px; }
+        .step-label { font-size: 9px; }
     }
     .step-connector.done {
         background: #3b6934;
