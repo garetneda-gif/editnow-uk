@@ -307,6 +307,7 @@ The Great Wall on Village Walls
 <div class="border-l-4 border-primary pl-6">
 <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm mb-4" style="background: rgba(133,18,23,0.08); color: #851217;">壁画 01</span>
 <h3 class="text-xl font-headline font-bold mb-3">长城雄关</h3>
+<button data-audio-id="mural-0" onclick="AudioGuide.playMural(0)" class="inline-flex items-center gap-1 text-primary text-xs font-bold mb-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
 <p class="text-on-surface-variant leading-[1.9] text-sm mb-2">描绘大庄科段明长城3号、4号敌台的雄伟全貌。画面以传承红为主色调，夕阳映照下的城墙如同一条火龙盘踞在山脊之上。壁画高3.2米，宽8米，是所有作品中面积最大的一幅。</p>
 <p class="text-xs text-on-surface-variant opacity-60">位置：村口广场东侧墙面</p>
 </div>
@@ -319,6 +320,7 @@ The Great Wall on Village Walls
 <div class="border-l-4 border-tertiary pl-6">
 <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm mb-4" style="background: rgba(89,61,0,0.08); color: #593d00;">壁画 02</span>
 <h3 class="text-xl font-headline font-bold mb-3">戍边将士</h3>
+<button data-audio-id="mural-1" onclick="AudioGuide.playMural(1)" class="inline-flex items-center gap-1 text-tertiary text-xs font-bold mb-2 hover:opacity-70 transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
 <p class="text-on-surface-variant leading-[1.9] text-sm mb-2">再现明代昌镇黄花路守军的日常生活场景。画中将士们正在城楼上下棋、烹饪、修缮兵器，融入了考古出土文物中"老虎吃猪"棋盘和粮食作物的元素，让四百年前的边关生活跃然墙上。</p>
 <p class="text-xs text-on-surface-variant opacity-60">位置：东香路中段民居外墙</p>
 </div>
@@ -337,6 +339,7 @@ The Great Wall on Village Walls
 <div class="border-l-4 border-secondary pl-6">
 <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm mb-4" style="background: rgba(59,105,52,0.08); color: #3b6934;">壁画 03</span>
 <h3 class="text-xl font-headline font-bold mb-3">四季山色</h3>
+<button data-audio-id="mural-2" onclick="AudioGuide.playMural(2)" class="inline-flex items-center gap-1 text-secondary text-xs font-bold mb-2 hover:opacity-70 transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
 <p class="text-on-surface-variant leading-[1.9] text-sm mb-2">以四色为线索，展现香屯村春夏秋冬的自然风光与物产。春花、夏绿、秋栗、冬雪四个画面无缝衔接，横跨两户人家的外墙，形成一幅12米的长卷。</p>
 <p class="text-xs text-on-surface-variant opacity-60">位置：主街道西侧连墙</p>
 </div>
@@ -490,6 +493,8 @@ if(window.matchMedia('(pointer:fine)').matches){
 })();
 </script>
 <script src="../js/energy-store.js"></script>
+<script src="../js/audio-scripts.js"></script>
+<script src="../js/audio-guide.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var el = document.getElementById('nav-balance');

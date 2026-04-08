@@ -406,6 +406,18 @@
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32 relative">
 
+    <!-- Audio Guide Discovery Banner -->
+    <div id="audio-intro-banner" class="bg-primary-fixed/20 px-4 py-3 flex items-center gap-3 rounded-lg mb-6 mt-8" style="display:none">
+        <span class="material-symbols-outlined text-primary">headphones</span>
+        <p class="font-body text-sm text-on-surface flex-1">戴上耳机，开启语音导览，边听边看</p>
+        <button onclick="AudioGuide.playFullRoute('red')" class="font-label text-xs text-primary font-bold whitespace-nowrap hover:text-primary-container transition-colors">开始全程导览</button>
+        <button onclick="dismissAudioIntro()" class="text-on-surface-variant"><span class="material-symbols-outlined text-sm">close</span></button>
+    </div>
+    <script>
+    function dismissAudioIntro(){document.getElementById('audio-intro-banner').style.display='none';try{localStorage.setItem('xiangtun_audio_intro_seen','1')}catch(e){}}
+    if(!localStorage.getItem('xiangtun_audio_intro_seen')){document.getElementById('audio-intro-banner').style.display='flex'}
+    </script>
+
     <!-- Route Overview -->
     <section class="py-16 md:py-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
@@ -473,6 +485,7 @@
                     <div class="p-8 flex-1">
                         <span class="bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-sm">建议 40 分钟</span>
                         <h3 class="font-headline font-extrabold text-xl md:text-2xl mt-4 mb-3">香屯村乡情村史陈列室</h3>
+                        <button data-audio-id="red-0" onclick="AudioGuide.playStation('red',0)" class="inline-flex items-center gap-1 text-primary text-xs font-bold mb-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                         <p class="text-on-surface-variant leading-relaxed text-sm">2024年11月15日开馆，120平米空间浓缩千年长城史。延庆融媒体《洞见长城》全程直播，在线观众超2000人次。从辽代冶铁到明代筑城，从考古出土的杏核到消失380年后重现的"西星口"地名，一部村庄编年史在这里展开。</p>
                     </div>
                 </div>
@@ -488,6 +501,7 @@
                     <div class="p-8 flex-1">
                         <span class="bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-sm">建议 60 分钟</span>
                         <h3 class="font-headline font-extrabold text-xl md:text-2xl mt-4 mb-3">明长城大庄科段修缮遗址</h3>
+                        <button data-audio-id="red-1" onclick="AudioGuide.playStation('red',1)" class="inline-flex items-center gap-1 text-primary text-xs font-bold mb-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                         <p class="text-on-surface-variant leading-relaxed text-sm">2021年启动、2024年竣工，香港黄廷方基金会捐赠1000万元。考古先行、最小干预、多学科协同、全过程数字化——每一寸墙面都有精确的三维数据存档，这是中国长城保护从"抢救修复"转向"研究+保护+预防"的标志性工程。</p>
                     </div>
                 </div>
@@ -503,6 +517,7 @@
                     <div class="p-8 flex-1">
                         <span class="bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-sm">建议 90 分钟</span>
                         <h3 class="font-headline font-extrabold text-xl md:text-2xl mt-4 mb-3">西星口营地</h3>
+                        <button data-audio-id="red-2" onclick="AudioGuide.playStation('red',2)" class="inline-flex items-center gap-1 text-primary text-xs font-bold mb-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                         <p class="text-on-surface-variant leading-relaxed text-sm">明代昌镇黄花路的重要关口，守边将士进出长城防线的通道。地名消失380余年后在考古文献中被重新发现，如今以营地形态复活——盾牌绘制、长城攻防游戏、模拟考古发掘，让"书写在古籍里的文字"真正活了起来。</p>
                     </div>
                 </div>
@@ -518,6 +533,7 @@
                     <div class="p-8 flex-1">
                         <span class="bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-sm">建议 20 分钟</span>
                         <h3 class="font-headline font-extrabold text-xl md:text-2xl mt-4 mb-3">长城主题墙画</h3>
+                        <button data-audio-id="red-3" onclick="AudioGuide.playStation('red',3)" class="inline-flex items-center gap-1 text-primary text-xs font-bold mb-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                         <p class="text-on-surface-variant leading-relaxed text-sm">北京建筑大学师生驻村创作，以建筑遗产数字化记录为基础，用水墨与当代视觉语言重现大庄科段长城的山脊走势与敌台剪影。村民每日经过的石墙，成了一座露天的长城历史画廊。</p>
                     </div>
                 </div>
@@ -785,12 +801,12 @@
             </div>
             <div class="bg-surface-container-low rounded-sm p-8 transition-all duration-500 hover:bg-surface-container-high">
                 <div class="w-full aspect-[3/1] bg-gradient-to-r from-[#851217]/10 to-[#3b6934]/5 rounded-sm flex items-center justify-center mb-6">
-                    <img src="../img/cnu-logo.png" alt="参赛团队" class="h-full object-contain p-2">
+                    <img src="../img/cnu-logo.png" alt="首都师范大学" class="h-full object-contain p-2">
                 </div>
-                <h4 class="font-headline font-extrabold text-lg mb-3">参赛团队</h4>
+                <h4 class="font-headline font-extrabold text-lg mb-3">首都师范大学</h4>
                 <p class="text-xs text-primary font-bold tracking-wide mb-3">国潮文化季</p>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
-                    挑战杯参赛团队深度参与2025年"首届长城国潮文化季"，40名大学生志愿者为1.5万余名游客提供研学导览与文化活动策划，以青年行动回应乡村振兴的时代命题。
+                    首都师范大学参赛团队深度参与2025年"首届长城国潮文化季"，40名大学生志愿者为1.5万余名游客提供研学导览与文化活动策划，以青年行动回应乡村振兴的时代命题。
                 </p>
             </div>
         </div>
@@ -982,6 +998,8 @@ if(window.matchMedia('(pointer:fine)').matches){
 })();
 </script>
 <script src="../js/energy-store.js"></script>
+<script src="../js/audio-scripts.js"></script>
+<script src="../js/audio-guide.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var el = document.getElementById('nav-balance');

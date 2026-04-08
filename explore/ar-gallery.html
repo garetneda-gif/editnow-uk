@@ -69,11 +69,13 @@
   <div style="width:60px;"></div>
 </div>
 
+<div style="position:relative;">
 <model-viewer
   id="mv"
   src="../models/watchtower.glb"
+  ios-src="../models/watchtower.usdz"
   ar
-  ar-modes="scene-viewer webxr"
+  ar-modes="scene-viewer quick-look webxr"
   camera-controls
   touch-action="pan-y"
   auto-rotate
@@ -85,11 +87,13 @@
   alt="3D 模型"
   ar-scale="auto"
 >
-  <button slot="ar-button" class="ar-btn" style="position:absolute;bottom:16px;right:16px;">
-    <span class="material-symbols-outlined" style="font-size:18px;">view_in_ar</span>
-    在 AR 中查看
-  </button>
 </model-viewer>
+</div>
+
+<!-- WeChat detection banner -->
+<div id="wechat-tip" style="display:none;background:#851217;color:#fff;padding:12px 20px;font-size:13px;text-align:center;line-height:1.6;">
+  请点击右上角 <strong>⋯</strong> 选择 <strong>"在浏览器中打开"</strong> 以体验 AR 功能
+</div>
 
 <!-- Tab selector -->
 <div class="tabs" id="tabs">
@@ -98,12 +102,6 @@
   <div class="tab" data-idx="2"><span class="dot" style="background:#593d00;"></span>百年板栗</div>
   <div class="tab" data-idx="3"><span class="dot" style="background:#3b6934;"></span>村口牌楼</div>
 </div>
-
-<!-- AR button (outside model-viewer as fallback) -->
-<button class="ar-btn" id="ar-fallback" onclick="try{document.getElementById('mv').activateAR()}catch(e){alert('您的设备暂不支持 AR，请使用手机打开此页面。')}" style="display:none;">
-  <span class="material-symbols-outlined" style="font-size:18px;">view_in_ar</span>
-  在 AR 中查看
-</button>
 
 <!-- Info cards -->
 <div class="info">
@@ -119,6 +117,7 @@
       <div class="stat"><span class="stat-num">4,057m</span><span class="stat-label">长城全长</span></div>
     </div>
     <p class="tip">双指缩放查看砖墙纹理 · 长按拖拽旋转视角</p>
+    <button data-audio-id="model-watchtower" onclick="AudioGuide.playModel('watchtower')" class="inline-flex items-center gap-1 text-primary text-xs font-bold mt-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
   </div>
 
   <div class="info-card" id="info-1" style="display:none;">
@@ -132,6 +131,7 @@
       <div class="stat"><span class="stat-num">100+km</span><span class="stat-label">烽火传信距离</span></div>
     </div>
     <p class="tip">旋转模型查看三层递缩的塔身结构</p>
+    <button data-audio-id="model-beacon" onclick="AudioGuide.playModel('beacon')" class="inline-flex items-center gap-1 text-primary text-xs font-bold mt-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
   </div>
 
   <div class="info-card" id="info-2" style="display:none;">
@@ -146,6 +146,7 @@
       <div class="stat"><span class="stat-num">9月</span><span class="stat-label">采收季节</span></div>
     </div>
     <p class="tip">注意树下散落的栗子和落叶</p>
+    <button data-audio-id="model-chestnut" onclick="AudioGuide.playModel('chestnut')" class="inline-flex items-center gap-1 text-primary text-xs font-bold mt-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
   </div>
 
   <div class="info-card" id="info-3" style="display:none;">
@@ -160,6 +161,7 @@
       <div class="stat"><span class="stat-num">400年</span><span class="stat-label">村庄历史</span></div>
     </div>
     <p class="tip">观察牌楼上的红灯笼和匾额细节</p>
+    <button data-audio-id="model-gate" onclick="AudioGuide.playModel('gate')" class="inline-flex items-center gap-1 text-primary text-xs font-bold mt-2 hover:text-primary-container transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音讲解</button>
   </div>
 </div>
 
@@ -181,14 +183,22 @@
 
 <script>
 var models = [
-  {src:'../models/watchtower.glb', orbit:'45deg 65deg 12m'},
-  {src:'../models/beacon.glb', orbit:'45deg 60deg 15m'},
-  {src:'../models/chestnut-tree.glb', orbit:'30deg 70deg 10m'},
-  {src:'../models/village-gate.glb', orbit:'0deg 65deg 14m'}
+  {src:'../models/watchtower.glb', ios:'../models/watchtower.usdz', orbit:'45deg 65deg 12m'},
+  {src:'../models/beacon.glb', ios:'../models/beacon.usdz', orbit:'45deg 60deg 15m'},
+  {src:'../models/chestnut-tree.glb', ios:'../models/chestnut-tree.usdz', orbit:'30deg 70deg 10m'},
+  {src:'../models/village-gate.glb', ios:'../models/village-gate.usdz', orbit:'0deg 65deg 14m'}
 ];
 var mv = document.getElementById('mv');
 var tabs = document.querySelectorAll('.tab');
 var current = 0;
+
+// Platform detection
+var ua = navigator.userAgent;
+var isWeChat = /MicroMessenger/i.test(ua);
+
+if (isWeChat) {
+  document.getElementById('wechat-tip').style.display = 'block';
+}
 
 tabs.forEach(function(tab) {
   tab.addEventListener('click', function() {
@@ -200,22 +210,17 @@ tabs.forEach(function(tab) {
     this.classList.add('active');
     document.getElementById('info-'+idx).style.display = 'block';
     mv.src = models[idx].src;
+    mv.setAttribute('ios-src', models[idx].ios);
     mv.cameraOrbit = models[idx].orbit;
+    // Update iOS AR link
+    arLink.href = models[idx].ios;
+    if(window.AudioGuide) AudioGuide.stop();
   });
-});
-
-// Fallback AR button
-mv.addEventListener('load', function() {
-  setTimeout(function() {
-    var slotBtn = mv.shadowRoot && mv.shadowRoot.querySelector('[part="default-ar-button"]');
-    var customSlot = mv.querySelector('[slot="ar-button"]');
-    if (customSlot && getComputedStyle(customSlot).display === 'none') {
-      document.getElementById('ar-fallback').style.display = 'flex';
-    }
-  }, 1500);
 });
 </script>
 
 <script src="../js/ambient-dust.js"></script>
+<script src="../js/audio-scripts.js"></script>
+<script src="../js/audio-guide.js"></script>
 </body>
 </html>

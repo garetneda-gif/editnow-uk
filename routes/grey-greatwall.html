@@ -410,6 +410,17 @@
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-20 md:pt-32 pb-16 md:pb-32 relative">
 
+<div id="audio-intro-banner" class="bg-surface-container-high/50 px-4 py-3 flex items-center gap-3 rounded-lg mb-6 mt-8" style="display:none">
+    <span class="material-symbols-outlined text-on-surface-variant">headphones</span>
+    <p class="font-body text-sm text-on-surface flex-1">戴上耳机，开启语音导览，边听边看</p>
+    <button onclick="AudioGuide.playFullRoute('gray')" class="font-label text-xs text-on-surface font-bold whitespace-nowrap hover:opacity-70 transition-colors">开始全程导览</button>
+    <button onclick="dismissAudioIntro()" class="text-on-surface-variant"><span class="material-symbols-outlined text-sm">close</span></button>
+</div>
+<script>
+function dismissAudioIntro(){document.getElementById('audio-intro-banner').style.display='none';try{localStorage.setItem('xiangtun_audio_intro_seen','1')}catch(e){}}
+if(!localStorage.getItem('xiangtun_audio_intro_seen')){document.getElementById('audio-intro-banner').style.display='flex'}
+</script>
+
     <!-- Route Overview -->
     <section class="mb-24 md:mb-48">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24">
@@ -487,6 +498,7 @@
                         <span class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant">Watchtower No.3 Ruins</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">3号敌台遗址</h3>
+                    <button data-audio-id="gray-0" onclick="AudioGuide.playStation('gray',0)" class="inline-flex items-center gap-1 text-on-surface-variant text-xs font-bold mb-2 hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                     <p class="text-base text-on-surface-variant leading-[1.9] mb-8">
                         研究性修缮的核心起点。驻村第一书记范学新——延庆区文物局研究馆员，从事文物保护30余年——在这里践行"考古先行"理念：每拆一块砖之前先记录、采样、三维扫描。建筑学、植物学、材料科学、数字测绘多学科协同，让明代工匠六百年前的砌筑技法重新可读。
                     </p>
@@ -505,6 +517,7 @@
                         <span class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant">Watchtower No.4 & Wall</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">4号敌台及墙体</h3>
+                    <button data-audio-id="gray-1" onclick="AudioGuide.playStation('gray',1)" class="inline-flex items-center gap-1 text-on-surface-variant text-xs font-bold mb-2 hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                     <p class="text-base text-on-surface-variant leading-[1.9] mb-8">
                         2号至5号敌台间约400米墙体，展现"最小干预"的保护哲学——修旧如旧，尊重每一块砖石六百年来积累的苔藓、裂纹与风化层。香港黄廷方基金会捐赠1000万元支持这一工程，全过程数字化记录使每一寸墙面都有精确的三维数据存档，这是中国"数字长城"的先行实践。
                     </p>
@@ -541,6 +554,7 @@
                         <span class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant">Xixingkou Ruins</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">西星口遗址</h3>
+                    <button data-audio-id="gray-2" onclick="AudioGuide.playStation('gray',2)" class="inline-flex items-center gap-1 text-on-surface-variant text-xs font-bold mb-2 hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                     <p class="text-base text-on-surface-variant leading-[1.9] mb-8">
                         明代昌镇黄花路军事防御体系中的重要关口，守边将士进出长城防线的咽喉通道。地名在历史文献中沉睡了380余年，直到2024年研究性修缮的考古文献梳理中被重新发现并确认。如今以"西星口营地"之名复活，成为长城研学基地的核心空间。
                     </p>
@@ -559,6 +573,7 @@
                         <span class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant">Scenic Trail (Planned)</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">京畿长城风景道<span class="text-sm font-body font-normal text-on-surface-variant ml-3">规划中</span></h3>
+                    <button data-audio-id="gray-3" onclick="AudioGuide.playStation('gray',3)" class="inline-flex items-center gap-1 text-on-surface-variant text-xs font-bold mb-2 hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
                     <p class="text-base text-on-surface-variant leading-[1.9] mb-8">
                         延庆区"京畿长城风景道"规划中的香屯段，沿长城山脊与龙吟溪谷蜿蜒展开。2026年3月1日《北京市长城保护条例》实施后，第二十七条明确推动具备条件的长城点段辟为参观游览区——这条风景道将串联修缮遗址、西星口营地与板栗古林，成为集历史体验、自然观赏、户外徒步于一体的文化景观廊道。
                     </p>
@@ -1114,5 +1129,7 @@ window.addEventListener('energy-changed', function() {
 </script>
 
 <script src="../js/ambient-dust.js"></script>
+<script src="../js/audio-scripts.js"></script>
+<script src="../js/audio-guide.js"></script>
 </body>
 </html><!-- v2 -->

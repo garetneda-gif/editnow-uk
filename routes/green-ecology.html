@@ -364,6 +364,17 @@ tailwind.config = {
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-16 md:pt-24 pb-16 md:pb-32 relative">
 
+<div id="audio-intro-banner" class="bg-secondary-fixed/20 px-4 py-3 flex items-center gap-3 rounded-lg mb-6 mt-8" style="display:none">
+    <span class="material-symbols-outlined text-secondary">headphones</span>
+    <p class="font-body text-sm text-on-surface flex-1">戴上耳机，开启语音导览，边听边看</p>
+    <button onclick="AudioGuide.playFullRoute('green')" class="font-label text-xs text-secondary font-bold whitespace-nowrap hover:opacity-70 transition-colors">开始全程导览</button>
+    <button onclick="dismissAudioIntro()" class="text-on-surface-variant"><span class="material-symbols-outlined text-sm">close</span></button>
+</div>
+<script>
+function dismissAudioIntro(){document.getElementById('audio-intro-banner').style.display='none';try{localStorage.setItem('xiangtun_audio_intro_seen','1')}catch(e){}}
+if(!localStorage.getItem('xiangtun_audio_intro_seen')){document.getElementById('audio-intro-banner').style.display='flex'}
+</script>
+
 <!-- Route Overview -->
 <section class="mb-24 md:mb-40">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
@@ -444,6 +455,7 @@ tailwind.config = {
 <span class="text-sm text-on-surface-variant">建议 60 分钟</span>
 </div>
 <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">板栗古林漫步道</h3>
+<button data-audio-id="green-0" onclick="AudioGuide.playStation('green',0)" class="inline-flex items-center gap-1 text-secondary text-xs font-bold mb-2 hover:opacity-70 transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
 <p class="text-base text-on-surface-variant leading-relaxed mb-6">
 漫山板栗树龄逾百年，春天花穗如雪、秋来满坡金黄。长城修缮考古中出土的明代杏核遗存，证明这片山林的果木种植史至少可追溯六百年。脚下是落叶铺成的软毯，头顶是板栗壳与松针交织的穹顶。
 </p>
@@ -465,6 +477,7 @@ tailwind.config = {
 <span class="text-sm text-on-surface-variant">建议 90 分钟</span>
 </div>
 <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">龙吟溪谷生态区</h3>
+<button data-audio-id="green-1" onclick="AudioGuide.playStation('green',1)" class="inline-flex items-center gap-1 text-secondary text-xs font-bold mb-2 hover:opacity-70 transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
 <p class="text-base text-on-surface-variant leading-relaxed mb-6">
 龙吟溪谷文旅公司规划的1000多亩核心区域，峡谷溪流从长城山脊下蜿蜒汇聚，水声在两岸石壁间回响如龙吟。村东峡谷尽头可通怀柔水长城景区，两区山色在此无缝衔接，是整条路线的精华所在。
 </p>
@@ -504,6 +517,7 @@ tailwind.config = {
 <span class="text-sm text-on-surface-variant">建议 40 分钟</span>
 </div>
 <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">香屯古村落</h3>
+<button data-audio-id="green-2" onclick="AudioGuide.playStation('green',2)" class="inline-flex items-center gap-1 text-secondary text-xs font-bold mb-2 hover:opacity-70 transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
 <p class="text-base text-on-surface-variant leading-relaxed mb-6">
 38户74口人依山而居，60岁以下仅10余人。石墙青瓦的民居散布在板栗林间，2007年获评"北京市最美村庄"。村民胡淑琴的院子里飘出古法杏皮茶的酸甜香气，时间在这里慢了下来。
 </p>
@@ -524,6 +538,7 @@ tailwind.config = {
 <span class="text-sm text-on-surface-variant">建议 30 分钟</span>
 </div>
 <h3 class="text-2xl md:text-3xl font-headline font-extrabold mb-6">长城远眺台</h3>
+<button data-audio-id="green-3" onclick="AudioGuide.playStation('green',3)" class="inline-flex items-center gap-1 text-secondary text-xs font-bold mb-2 hover:opacity-70 transition-colors"><span class="material-symbols-outlined text-base">volume_up</span>语音导览</button>
 <p class="text-base text-on-surface-variant leading-relaxed mb-6">
 站在村东高处，大庄科段明长城沿山脊蜿蜒而去，3号、4号敌台的轮廓清晰可辨。日出时分晨光勾勒城墙剪影，黄昏时远山绿渐变为深墨色——这是整条路线中将自然与人文收入同一画框的最佳位置。
 </p>
@@ -1057,5 +1072,7 @@ window.addEventListener('energy-changed', function() {
 </script>
 
 <script src="../js/ambient-dust.js"></script>
+<script src="../js/audio-scripts.js"></script>
+<script src="../js/audio-guide.js"></script>
 </body>
 </html><!-- v2 -->
