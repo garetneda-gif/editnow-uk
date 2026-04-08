@@ -487,8 +487,8 @@
         <div class="hidden md:flex gap-10 items-center">
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页</a>
             <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">守护者</a>
-            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市</a>
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约</a>
+            <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市</a>
             <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../user/index.html">个人</a>
         </div>
         <div class="flex items-center gap-6">
@@ -503,8 +503,8 @@
     <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
         <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页</a>
         <a class="block text-[#851217] font-medium font-headline py-3 border-b border-outline-variant/10" href="index.html">守护者</a>
-        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市</a>
         <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约</a>
+        <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市</a>
         <a class="block text-[#1b1c1c]/60 font-headline py-3" href="../user/index.html">个人</a>
     </div>
 </nav>
@@ -1219,160 +1219,86 @@ function generateCert(name) {
   const canvas = document.getElementById('cert-canvas');
   const ctx = canvas.getContext('2d');
   const W = 800, H = 600;
-  const cx = W / 2;
+  var L = 70, R = W - 50; // 左右内边距（不对称：左宽右窄）
 
-  // ==== 1. 羊皮纸渐变背景 ====
-  var bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  // ==== 背景 ====
+  var bgGrad = ctx.createLinearGradient(0, 0, W * 0.3, H);
   bgGrad.addColorStop(0, '#faf5ed');
-  bgGrad.addColorStop(0.4, '#f7efe3');
-  bgGrad.addColorStop(1, '#f2e8d8');
+  bgGrad.addColorStop(1, '#f4ebda');
   ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, W, H);
-
-  // 纸质纹理（加密）
-  ctx.globalAlpha = 0.02;
-  for (var i = 0; i < 8000; i++) {
-    var r = Math.random();
-    ctx.fillStyle = r > 0.6 ? '#1b1c1c' : r > 0.3 ? '#8c716e' : '#593d00';
+  // 纸纹
+  ctx.globalAlpha = 0.018;
+  for (var i = 0; i < 6000; i++) {
+    ctx.fillStyle = Math.random() > 0.5 ? '#1b1c1c' : '#8c716e';
     ctx.fillRect(Math.random() * W, Math.random() * H, 1, 1);
   }
   ctx.globalAlpha = 1;
-
-  // 边缘暗角
-  var vignette = ctx.createRadialGradient(cx, H / 2, 200, cx, H / 2, 500);
-  vignette.addColorStop(0, 'rgba(89,61,0,0)');
-  vignette.addColorStop(1, 'rgba(89,61,0,0.07)');
-  ctx.fillStyle = vignette;
+  // 暗角
+  var vig = ctx.createRadialGradient(W * 0.35, H * 0.4, 180, W * 0.35, H * 0.4, 520);
+  vig.addColorStop(0, 'rgba(89,61,0,0)');
+  vig.addColorStop(1, 'rgba(89,61,0,0.06)');
+  ctx.fillStyle = vig;
   ctx.fillRect(0, 0, W, H);
 
-  // ==== 2. 长城天际线水印 ====
-  ctx.save();
-  ctx.globalAlpha = 0.035;
+  // ==== 左侧传承红竖条 ====
   ctx.fillStyle = '#851217';
+  ctx.fillRect(0, 0, 8, H);
+  // 竖条上的四色渐变
+  var stripeH = H / 4;
+  ['#851217','#3b6934','#593d00','#1b1c1c'].forEach(function(c, i) {
+    ctx.fillStyle = c;
+    ctx.globalAlpha = 0.85;
+    ctx.fillRect(0, i * stripeH, 8, stripeH);
+  });
+  ctx.globalAlpha = 1;
+
+  // ==== 细线框（仅右侧和上下） ====
+  ctx.strokeStyle = 'rgba(89,61,0,0.15)';
+  ctx.lineWidth = 0.5;
   ctx.beginPath();
-  var wallY = 85, merlonH = 12, merlonW = 18, gapW = 10;
-  var xp = 60;
-  ctx.moveTo(0, wallY);
-  ctx.lineTo(xp, wallY);
-  while (xp < W - 60) {
-    ctx.lineTo(xp, wallY - merlonH);
-    ctx.lineTo(xp + merlonW, wallY - merlonH);
-    ctx.lineTo(xp + merlonW, wallY);
-    xp += merlonW + gapW;
-    if (xp < W - 60) ctx.lineTo(xp, wallY);
-  }
-  ctx.lineTo(W, wallY);
-  ctx.lineTo(W, wallY + 6);
-  ctx.lineTo(0, wallY + 6);
-  ctx.closePath();
-  ctx.fill();
-  [[130, wallY], [W - 150, wallY]].forEach(function(p) {
-    ctx.fillRect(p[0] - 10, p[1] - merlonH - 16, 20, 16);
-    ctx.fillRect(p[0] - 14, p[1] - merlonH - 20, 28, 6);
-  });
-  ctx.restore();
+  ctx.moveTo(28, 24); ctx.lineTo(W - 24, 24);
+  ctx.lineTo(W - 24, H - 24); ctx.lineTo(28, H - 24);
+  ctx.stroke();
 
-  // ==== 3. 三层嵌套边框 ====
-  ctx.strokeStyle = '#593d00';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(18, 18, W - 36, H - 36);
-
-  // 回纹装饰带
-  var patY1 = 30, patY2 = H - 30, patX1 = 30, patX2 = W - 30;
-  ctx.strokeStyle = 'rgba(89,61,0,0.2)';
-  ctx.lineWidth = 0.8;
-  var step = 8;
-  for (var px = patX1; px < patX2 - step; px += step * 2) {
-    ctx.beginPath();
-    ctx.moveTo(px, patY1); ctx.lineTo(px, patY1 - 4); ctx.lineTo(px + step, patY1 - 4);
-    ctx.lineTo(px + step, patY1 + 4); ctx.lineTo(px + step * 2, patY1 + 4); ctx.lineTo(px + step * 2, patY1);
-    ctx.stroke();
-  }
-  for (var px2 = patX1; px2 < patX2 - step; px2 += step * 2) {
-    ctx.beginPath();
-    ctx.moveTo(px2, patY2); ctx.lineTo(px2, patY2 + 4); ctx.lineTo(px2 + step, patY2 + 4);
-    ctx.lineTo(px2 + step, patY2 - 4); ctx.lineTo(px2 + step * 2, patY2 - 4); ctx.lineTo(px2 + step * 2, patY2);
-    ctx.stroke();
-  }
-
-  // 内框
-  ctx.strokeStyle = '#851217';
-  ctx.lineWidth = 1.5;
-  ctx.strokeRect(40, 40, W - 80, H - 80);
-
-  // L 形角标
-  var cLen = 22, cOff = 40;
-  ctx.strokeStyle = '#851217';
-  ctx.lineWidth = 2.5;
-  [[cOff, cOff, 1, 1], [W - cOff, cOff, -1, 1], [cOff, H - cOff, 1, -1], [W - cOff, H - cOff, -1, -1]].forEach(function(c) {
-    ctx.beginPath();
-    ctx.moveTo(c[0], c[1] + c[3] * cLen); ctx.lineTo(c[0], c[1]); ctx.lineTo(c[0] + c[2] * cLen, c[1]);
-    ctx.stroke();
-  });
-
-  // ==== 4. 顶部标签 ====
-  ctx.fillStyle = '#8c716e';
-  ctx.font = '500 9px Manrope, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('XIANGTUN GREAT WALL  \u00b7  GUARDIAN CERTIFICATE', cx, 68);
-
-  // 金色渐变装饰线 + 菱形
-  var lineGrad = ctx.createLinearGradient(cx - 40, 0, cx + 40, 0);
-  lineGrad.addColorStop(0, 'rgba(179,135,40,0.3)');
-  lineGrad.addColorStop(0.5, 'rgba(252,246,186,0.6)');
-  lineGrad.addColorStop(1, 'rgba(179,135,40,0.3)');
-  ctx.fillStyle = lineGrad;
-  ctx.fillRect(cx - 40, 80, 80, 1.5);
-  ctx.fillStyle = '#851217';
-  [cx - 50, cx + 50].forEach(function(dx) {
-    ctx.save(); ctx.translate(dx, 81); ctx.rotate(Math.PI / 4);
-    ctx.fillRect(-2.5, -2.5, 5, 5); ctx.restore();
-  });
-
-  // ==== 5. 主标题（逐字加宽间距） ====
-  ctx.fillStyle = '#851217';
-  ctx.font = 'bold 36px Newsreader, serif';
+  // ==== 顶部：英文标签 ====
+  ctx.fillStyle = '#b0a09e';
+  ctx.font = '500 8px Manrope, sans-serif';
   ctx.textAlign = 'left';
-  var titleChars = '\u9999\u5c6f\u957f\u57ce\u5b88\u62a4\u8005\u8bc1\u4e66'.split('');
-  var titleTotalW = 0;
-  var charWidths = titleChars.map(function(ch) { var w = ctx.measureText(ch).width; titleTotalW += w; return w; });
-  var titleSpacing = 6;
-  titleTotalW += titleSpacing * (titleChars.length - 1);
-  var ttx = cx - titleTotalW / 2;
-  titleChars.forEach(function(ch, idx) {
-    ctx.fillText(ch, ttx, 128); ttx += charWidths[idx] + titleSpacing;
-  });
+  ctx.fillText('XIANGTUN GREAT WALL  \u00b7  GUARDIAN CERTIFICATE', L, 52);
 
-  // 标题下方双装饰线
-  ctx.strokeStyle = '#851217';
-  ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(cx - 60, 140); ctx.lineTo(cx + 60, 140); ctx.stroke();
-  ctx.lineWidth = 0.5;
-  ctx.beginPath(); ctx.moveTo(cx - 45, 145); ctx.lineTo(cx + 45, 145); ctx.stroke();
-
-  // ==== 6. "兹证明" ====
-  ctx.fillStyle = '#58413f';
-  ctx.font = '15px Manrope, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('\u5179 \u8bc1 \u660e', cx, 180);
-
-  // ==== 7. 姓名 ====
+  // ==== 主标题（左对齐，大号） ====
   ctx.fillStyle = '#851217';
-  ctx.font = 'bold 54px Newsreader, serif';
-  ctx.textAlign = 'center';
-  ctx.fillText(name, cx, 240);
+  ctx.font = 'bold 30px Newsreader, serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('\u9999\u5c6f\u957f\u57ce\u5b88\u62a4\u8005\u8bc1\u4e66', L, 90);
 
-  var nW = Math.max(ctx.measureText(name).width, 100);
-  ctx.strokeStyle = 'rgba(133,18,23,0.2)';
-  ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(cx - nW / 2 - 15, 253); ctx.lineTo(cx + nW / 2 + 15, 253); ctx.stroke();
-  ctx.lineWidth = 0.5;
-  ctx.beginPath(); ctx.moveTo(cx - nW / 2 - 5, 258); ctx.lineTo(cx + nW / 2 + 5, 258); ctx.stroke();
+  // 标题下方短装饰线
+  ctx.fillStyle = '#851217';
+  ctx.fillRect(L, 100, 48, 2);
 
-  // ==== 8. 正文 ====
-  ctx.fillStyle = '#2a2a2a';
-  ctx.font = '14px Manrope, sans-serif';
-  ctx.textAlign = 'center';
+  // ==== "兹证明"标签 ====
+  ctx.fillStyle = '#8c716e';
+  ctx.font = '11px Manrope, sans-serif';
+  ctx.fillText('\u5179\u8bc1\u660e', L, 140);
+
+  // ==== 姓名（左对齐，适中大小） ====
+  ctx.fillStyle = '#1b1c1c';
+  ctx.font = 'bold 38px Newsreader, serif';
+  ctx.fillText(name, L, 185);
+
+  // 姓名下装饰线（金色渐变，从左到右淡出）
+  var nameW = ctx.measureText(name).width;
+  var nGrad = ctx.createLinearGradient(L, 0, L + nameW + 60, 0);
+  nGrad.addColorStop(0, 'rgba(179,135,40,0.4)');
+  nGrad.addColorStop(0.7, 'rgba(179,135,40,0.15)');
+  nGrad.addColorStop(1, 'rgba(179,135,40,0)');
+  ctx.fillStyle = nGrad;
+  ctx.fillRect(L, 195, nameW + 60, 1);
+
+  // ==== 正文（左对齐） ====
+  ctx.fillStyle = '#3a3a3a';
+  ctx.font = '13px Manrope, sans-serif';
   var lines = [
     '\u5df2\u90d1\u91cd\u7b7e\u7f72\u300a\u9999\u5c6f\u957f\u57ce\u4fdd\u62a4\u5021\u8bae\u4e66\u300b',
     '\u627f\u8bfa\u4e0d\u6500\u722c\u672a\u5f00\u653e\u957f\u57ce\u3001\u4e0d\u4e71\u6254\u5783\u573e\u3001\u4e0d\u7834\u574f\u690d\u88ab',
@@ -1380,107 +1306,107 @@ function generateCert(name) {
     '\u6b63\u5f0f\u6210\u4e3a\u9999\u5c6f\u957f\u57ce\u8363\u8a89\u5b88\u62a4\u8005'
   ];
   for (var li = 0; li < lines.length; li++) {
-    ctx.fillText(lines[li], cx, 295 + li * 28);
+    ctx.fillText(lines[li], L, 235 + li * 24);
   }
 
-  // ==== 9. 金色渐变分隔线 ====
-  var sepGrad = ctx.createLinearGradient(80, 0, W - 80, 0);
-  sepGrad.addColorStop(0, 'rgba(179,135,40,0)');
-  sepGrad.addColorStop(0.2, 'rgba(179,135,40,0.3)');
-  sepGrad.addColorStop(0.5, 'rgba(252,246,186,0.5)');
-  sepGrad.addColorStop(0.8, 'rgba(179,135,40,0.3)');
-  sepGrad.addColorStop(1, 'rgba(179,135,40,0)');
-  ctx.fillStyle = sepGrad;
-  ctx.fillRect(80, 408, W - 160, 1);
+  // ==== 右侧大水印字"守" ====
+  ctx.save();
+  ctx.globalAlpha = 0.03;
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 280px Newsreader, serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('\u5b88', W - 30, 340);
+  ctx.restore();
 
-  // ==== 10. 日期与编号 ====
+  // ==== 分隔线 ====
+  ctx.strokeStyle = 'rgba(140,113,110,0.1)';
+  ctx.lineWidth = 0.5;
+  ctx.beginPath();
+  ctx.moveTo(L, 345); ctx.lineTo(W - 50, 345);
+  ctx.stroke();
+
+  // ==== 底部区域：左侧品牌 + 日期，右侧印章 ====
+  // 日期
   var now = new Date();
   var dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
-  var certId = 'No. XC-' + now.getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+  var certId = 'XC-' + now.getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
   ctx.fillStyle = '#8c716e';
-  ctx.font = '11px Manrope, sans-serif';
+  ctx.font = '10px Manrope, sans-serif';
   ctx.textAlign = 'left';
-  ctx.fillText(dateStr, 65, 438);
-  ctx.textAlign = 'right';
-  ctx.fillText(certId, W - 65, 438);
+  ctx.fillText(dateStr, L, 375);
+  ctx.fillText(certId, L, 390);
 
-  // ==== 11. 方形印章（中式篆刻 + 做旧） ====
+  // 品牌
+  ctx.fillStyle = '#851217';
+  ctx.font = 'bold 18px Newsreader, serif';
+  ctx.fillText('\u56db\u8272\u9999\u5c6f', L, 440);
+  ctx.fillStyle = '#b0a09e';
+  ctx.font = '8px Manrope, sans-serif';
+  ctx.fillText('FOUR COLORS OF XIANGTUN', L, 455);
+  ctx.fillStyle = '#ccc0be';
+  ctx.font = '7.5px Manrope, sans-serif';
+  ctx.fillText('stitch.editnow.uk', L, 468);
+
+  // ==== 右下方形印章 ====
   ctx.save();
-  ctx.translate(W - 135, 505);
-  ctx.rotate(-0.06);
-  var stampColor = 'rgba(133,18,23,0.82)';
-  var stampSize = 48;
-  ctx.strokeStyle = stampColor;
-  ctx.lineWidth = 3;
+  ctx.translate(W - 130, 430);
+  ctx.rotate(-0.05);
+  var sc = 'rgba(133,18,23,0.8)';
+  var ss = 44;
+  // 方框
+  ctx.strokeStyle = sc; ctx.lineWidth = 2.5;
   ctx.beginPath();
-  var sr = 3;
-  ctx.moveTo(-stampSize + sr, -stampSize);
-  ctx.lineTo(stampSize - sr, -stampSize);
-  ctx.quadraticCurveTo(stampSize, -stampSize, stampSize, -stampSize + sr);
-  ctx.lineTo(stampSize, stampSize - sr);
-  ctx.quadraticCurveTo(stampSize, stampSize, stampSize - sr, stampSize);
-  ctx.lineTo(-stampSize + sr, stampSize);
-  ctx.quadraticCurveTo(-stampSize, stampSize, -stampSize, stampSize - sr);
-  ctx.lineTo(-stampSize, -stampSize + sr);
-  ctx.quadraticCurveTo(-stampSize, -stampSize, -stampSize + sr, -stampSize);
+  var cr = 2;
+  ctx.moveTo(-ss + cr, -ss);
+  ctx.lineTo(ss - cr, -ss); ctx.quadraticCurveTo(ss, -ss, ss, -ss + cr);
+  ctx.lineTo(ss, ss - cr); ctx.quadraticCurveTo(ss, ss, ss - cr, ss);
+  ctx.lineTo(-ss + cr, ss); ctx.quadraticCurveTo(-ss, ss, -ss, ss - cr);
+  ctx.lineTo(-ss, -ss + cr); ctx.quadraticCurveTo(-ss, -ss, -ss + cr, -ss);
   ctx.closePath(); ctx.stroke();
-  ctx.lineWidth = 1;
-  ctx.strokeRect(-stampSize + 6, -stampSize + 6, (stampSize - 6) * 2, (stampSize - 6) * 2);
-  // 五角星
-  ctx.fillStyle = stampColor;
+  // 内框
+  ctx.lineWidth = 0.8;
+  ctx.strokeRect(-ss + 5, -ss + 5, (ss - 5) * 2, (ss - 5) * 2);
+  // 星
+  ctx.fillStyle = sc;
   ctx.beginPath();
   for (var si = 0; si < 5; si++) {
     var oa = (si * 2 * Math.PI / 5) - Math.PI / 2;
     var ia = oa + Math.PI / 5;
-    ctx[si === 0 ? 'moveTo' : 'lineTo'](Math.cos(oa) * 13, Math.sin(oa) * 13);
-    ctx.lineTo(Math.cos(ia) * 5, Math.sin(ia) * 5);
+    ctx[si === 0 ? 'moveTo' : 'lineTo'](Math.cos(oa) * 11, Math.sin(oa) * 11);
+    ctx.lineTo(Math.cos(ia) * 4.5, Math.sin(ia) * 4.5);
   }
   ctx.closePath(); ctx.fill();
-  // 弧形文字"四色香屯"
-  ctx.fillStyle = stampColor;
-  ctx.font = 'bold 14px Newsreader, serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  var arcR = 32, arcStart = -Math.PI / 2 - 0.5, arcStep = 1.0 / 3;
-  '\u56db\u8272\u9999\u5c6f'.split('').forEach(function(ch, ai) {
-    var angle = arcStart + ai * arcStep;
-    ctx.save(); ctx.translate(Math.cos(angle) * arcR, Math.sin(angle) * arcR);
-    ctx.rotate(angle + Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore();
+  // 弧字
+  ctx.fillStyle = sc;
+  ctx.font = 'bold 12px Newsreader, serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  var aR = 28, aS = -Math.PI / 2 - 0.48, aD = 0.96 / 3;
+  '\u56db\u8272\u9999\u5c6f'.split('').forEach(function(ch, i) {
+    var a = aS + i * aD;
+    ctx.save(); ctx.translate(Math.cos(a) * aR, Math.sin(a) * aR);
+    ctx.rotate(a + Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore();
   });
-  // 弧形文字"守护者"
-  var arcStart2 = Math.PI / 2 + 0.38, arcStep2 = -0.76 / 2;
-  '\u5b88\u62a4\u8005'.split('').forEach(function(ch, ai) {
-    var angle = arcStart2 + ai * arcStep2;
-    ctx.save(); ctx.translate(Math.cos(angle) * arcR, Math.sin(angle) * arcR);
-    ctx.rotate(angle - Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore();
+  var aS2 = Math.PI / 2 + 0.35, aD2 = -0.7 / 2;
+  '\u5b88\u62a4\u8005'.split('').forEach(function(ch, i) {
+    var a = aS2 + i * aD2;
+    ctx.save(); ctx.translate(Math.cos(a) * aR, Math.sin(a) * aR);
+    ctx.rotate(a - Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore();
   });
   // 做旧
   ctx.globalCompositeOperation = 'destination-out';
-  ctx.globalAlpha = 0.6;
-  for (var di = 0; di < 60; di++) {
-    ctx.fillRect((Math.random() - 0.5) * stampSize * 2, (Math.random() - 0.5) * stampSize * 2, Math.random() * 4 + 1, Math.random() * 4 + 1);
+  ctx.globalAlpha = 0.55;
+  for (var di = 0; di < 50; di++) {
+    ctx.fillRect((Math.random() - 0.5) * ss * 2, (Math.random() - 0.5) * ss * 2, Math.random() * 3.5 + 1, Math.random() * 3.5 + 1);
   }
   ctx.globalCompositeOperation = 'source-over';
   ctx.globalAlpha = 1;
   ctx.restore();
 
-  // ==== 12. 左下品牌 ====
-  ctx.textAlign = 'left';
-  ctx.fillStyle = '#851217';
-  ctx.font = 'bold 16px Newsreader, serif';
-  ctx.fillText('\u56db\u8272\u9999\u5c6f', 65, 498);
-  ctx.fillStyle = '#8c716e';
-  ctx.font = '500 9px Manrope, sans-serif';
-  ctx.fillText('FOUR COLORS OF XIANGTUN', 65, 514);
-  ctx.fillStyle = '#b0a09e';
-  ctx.font = '8px Manrope, sans-serif';
-  ctx.fillText('stitch.editnow.uk', 65, 529);
-
-  // ==== 13. 底部四色标识条 ====
-  var barY = H - 25, barW = (W - 80) / 4;
-  ['#851217', '#3b6934', '#593d00', '#1b1c1c'].forEach(function(c, i) {
-    ctx.fillStyle = c; ctx.globalAlpha = 0.7;
-    ctx.fillRect(40 + i * barW, barY, barW, 3);
+  // ==== 底边四色条 ====
+  var bW = W / 4;
+  ['#851217','#3b6934','#593d00','#1b1c1c'].forEach(function(c, i) {
+    ctx.fillStyle = c; ctx.globalAlpha = 0.6;
+    ctx.fillRect(i * bW, H - 4, bW, 4);
   });
   ctx.globalAlpha = 1;
 
