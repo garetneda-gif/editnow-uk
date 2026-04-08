@@ -627,12 +627,12 @@
 <!-- 证书模态框 -->
 <div id="cert-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" style="display:none;">
 <div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm" onclick="closeCertModal()"></div>
-<div class="relative bg-surface rounded-sm p-6 md:p-8 max-w-lg w-full shadow-2xl" style="animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;">
+<div class="relative bg-surface rounded-sm p-6 md:p-8 max-w-2xl w-full" style="animation: chatSlideUp 0.4s cubic-bezier(0.16,1,0.3,1) both;">
 <button onclick="closeCertModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high hover:bg-surface-container-highest transition-colors text-on-surface-variant">
 <span class="material-symbols-outlined text-lg">close</span>
 </button>
 <h4 class="text-xs font-bold tracking-widest uppercase text-on-surface-variant mb-4 text-center">您的守护者证书</h4>
-<canvas id="cert-canvas" width="800" height="600" class="w-full rounded-sm"></canvas>
+<canvas id="cert-canvas" width="960" height="540" class="w-full rounded-sm"></canvas>
 <div class="flex gap-3 mt-6 justify-center">
 <button onclick="downloadCert()" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl text-sm font-bold tracking-wider uppercase hover:bg-primary-container transition-colors duration-300 flex items-center gap-2">
 <span class="material-symbols-outlined text-lg">download</span>
@@ -1218,8 +1218,8 @@ function signPledge() {
 function generateCert(name) {
   const canvas = document.getElementById('cert-canvas');
   const ctx = canvas.getContext('2d');
-  const W = 800, H = 600;
-  var L = 70, R = W - 50; // 左右内边距（不对称：左宽右窄）
+  const W = 960, H = 540;
+  var L = 70, R = W - 50;
 
   // ==== 背景 ====
   var bgGrad = ctx.createLinearGradient(0, 0, W * 0.3, H);

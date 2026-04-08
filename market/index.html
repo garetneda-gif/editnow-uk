@@ -1446,21 +1446,9 @@ function updateNavBalance() {
 
 function updateHeroBalance() {
   var el = document.getElementById('hero-balance');
-  if (el && typeof EnergyStore !== 'undefined') {
-    var target = EnergyStore.getBalance() || 0;
-    var current = parseInt(el.textContent) || 0;
-    if (current === target) return;
-    var duration = 800;
-    var startTime = null;
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      el.textContent = Math.floor(current + (target - current) * progress);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
+  if (!el) return;
+  var val = (typeof EnergyStore !== 'undefined') ? (EnergyStore.getBalance() || 0) : 0;
+  el.textContent = val;
 }
 
 // ---- Typewriter tagline ----
