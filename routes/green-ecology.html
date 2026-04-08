@@ -364,10 +364,10 @@ tailwind.config = {
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-16 md:pt-24 pb-16 md:pb-32 relative">
 
-<div id="audio-intro-banner" class="bg-secondary-fixed/20 px-4 py-3 flex items-center gap-3 rounded-lg mb-6 mt-8" style="display:none">
+<div id="audio-intro-banner" class="bg-secondary-fixed/20 px-4 py-3 flex items-center justify-center gap-3 rounded-lg mb-6" style="display:none">
     <span class="material-symbols-outlined text-secondary">headphones</span>
-    <p class="font-body text-sm text-on-surface flex-1">戴上耳机，开启语音导览，边听边看</p>
-    <button onclick="AudioGuide.playFullRoute('green')" class="font-label text-xs text-secondary font-bold whitespace-nowrap hover:opacity-70 transition-colors">开始全程导览</button>
+    <p class="font-body text-sm text-on-surface">戴上耳机，开启语音导览，边听边看</p>
+    <button onclick="AudioGuide.playFullRoute('green')" class="font-label text-xs text-secondary font-bold whitespace-nowrap hover:opacity-70 transition-colors ml-2">开始全程导览</button>
     <button onclick="dismissAudioIntro()" class="text-on-surface-variant"><span class="material-symbols-outlined text-sm">close</span></button>
 </div>
 <script>
