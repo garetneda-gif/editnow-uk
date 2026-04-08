@@ -72,9 +72,8 @@
 <model-viewer
   id="mv"
   src="../models/watchtower.glb"
-  ios-src="../models/watchtower.usdz"
   ar
-  ar-modes="scene-viewer quick-look webxr"
+  ar-modes="scene-viewer webxr"
   camera-controls
   touch-action="pan-y"
   auto-rotate
@@ -182,10 +181,10 @@
 
 <script>
 var models = [
-  {src:'../models/watchtower.glb', ios:'../models/watchtower.usdz', orbit:'45deg 65deg 12m'},
-  {src:'../models/beacon.glb', ios:'../models/beacon.usdz', orbit:'45deg 60deg 15m'},
-  {src:'../models/chestnut-tree.glb', ios:'../models/chestnut-tree.usdz', orbit:'30deg 70deg 10m'},
-  {src:'../models/village-gate.glb', ios:'../models/village-gate.usdz', orbit:'0deg 65deg 14m'}
+  {src:'../models/watchtower.glb', orbit:'45deg 65deg 12m'},
+  {src:'../models/beacon.glb', orbit:'45deg 60deg 15m'},
+  {src:'../models/chestnut-tree.glb', orbit:'30deg 70deg 10m'},
+  {src:'../models/village-gate.glb', orbit:'0deg 65deg 14m'}
 ];
 var mv = document.getElementById('mv');
 var tabs = document.querySelectorAll('.tab');
@@ -201,7 +200,6 @@ tabs.forEach(function(tab) {
     this.classList.add('active');
     document.getElementById('info-'+idx).style.display = 'block';
     mv.src = models[idx].src;
-    mv.setAttribute('ios-src', models[idx].ios);
     mv.cameraOrbit = models[idx].orbit;
   });
 });
