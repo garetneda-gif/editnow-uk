@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
     tailwind.config = {
+        darkMode: "class",
         theme: {
             extend: {
                 "colors": {
@@ -93,113 +94,29 @@
         background-blend-mode: multiply;
     }
 
-    /* ========================================== */
-    /* HERO                                       */
-    /* ========================================== */
-    .market-hero {
-      position: relative;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: linear-gradient(180deg, #1b1c1c 0%, #2a1d00 25%, #593d00 50%, #a07020 70%, #fbf9f8 100%);
-    }
-    .market-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(89,61,0,0.4) 0%, transparent 60%),
-        radial-gradient(circle at 70% 60%, rgba(133,18,23,0.2) 0%, transparent 50%),
-        radial-gradient(circle at 50% 20%, rgba(245,189,88,0.15) 0%, transparent 40%);
-      z-index: 1;
-    }
-    .market-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='rgba(245,189,88,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;
-      z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 10; text-align: center; }
-
-
-    /* Hero title glow */
-    .hero-title {
-      font-family: 'Newsreader', serif;
-      font-weight: 900;
-      color: #fff;
-      text-shadow: 0 0 40px rgba(245,189,88,0.5), 0 0 80px rgba(245,189,88,0.2), 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .hero-subtitle {
-      color: rgba(255,255,255,0.7);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
     /* Typewriter effect */
     @keyframes typewriter-blink {
-      0%, 100% { border-color: rgba(245,189,88,0.8); }
+      0%, 100% { border-color: rgba(89,61,0,0.6); }
       50% { border-color: transparent; }
     }
     .typewriter-cursor {
-      border-right: 3px solid rgba(245,189,88,0.8);
+      border-right: 3px solid rgba(89,61,0,0.6);
       animation: typewriter-blink 1s ease-in-out infinite;
       padding-right: 4px;
-    }
-
-    /* Scroll indicator bounce */
-    @keyframes scroll-bounce {
-      0%, 100% { transform: translateY(0); opacity: 0.6; }
-      50% { transform: translateY(12px); opacity: 1; }
-    }
-    .scroll-indicator {
-      animation: scroll-bounce 2s ease-in-out infinite;
-    }
-
-    /* Energy coin pulse */
-    @keyframes coin-pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245,189,88,0.4); }
-      50% { transform: scale(1.05); box-shadow: 0 0 20px 8px rgba(245,189,88,0.15); }
-    }
-    .coin-display {
-      animation: coin-pulse 3s ease-in-out infinite;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: none;
-      border: 1px solid rgba(245,189,88,0.3);
     }
 
     /* ========================================== */
     /* STATS BAR                                  */
     /* ========================================== */
     .stat-glass {
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 2px;
+      background: #f5f3f3;
       padding: 28px 20px;
       text-align: center;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .stat-glass::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #851217, #593d00, #3b6934);
-      opacity: 0;
-      transition: opacity 0.4s;
+      transition: transform 0.3s;
     }
     .stat-glass:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(89,61,0,0.15), 0 4px 16px rgba(0,0,0,0.05);
+      transform: translateY(-3px);
     }
-    .stat-glass:hover::before { opacity: 1; }
     .stat-num {
       font-family: 'Newsreader', serif;
       font-size: 3.2rem;
@@ -216,19 +133,16 @@
     /* HOW IT WORKS STEPS                         */
     /* ========================================== */
     .step-card {
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: none;
+      background: #f5f3f3;
       border-radius: 2px;
       padding: 28px 24px;
       text-align: center;
       flex: 1;
       min-width: 160px;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
-      border: 1px solid rgba(255,255,255,0.5);
+      transition: transform 0.3s;
     }
     .step-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(89,61,0,0.12);
+      transform: translateY(-3px);
     }
     .step-icon {
       width: 56px;
@@ -249,9 +163,9 @@
     .market-tabs {
       display: flex;
       gap: 6px;
-      padding: 6px;
-      background: rgba(89,61,0,0.06);
-      border-radius: 2px;
+      padding: 4px;
+      background: #f5f3f3;
+      border-radius: 0.5rem;
       width: fit-content;
       margin: 0 auto;
     }
@@ -275,13 +189,13 @@
       font-family: 'Manrope', sans-serif;
     }
     .market-tab.active {
-      background: linear-gradient(135deg, #593d00, #775300);
+      background: linear-gradient(135deg, #851217, #a62c2b);
       color: white;
-      box-shadow: 0 8px 24px rgba(89,61,0,0.25);
+      border-radius: 8px;
     }
     .market-tab:not(.active):hover {
-      background: rgba(89,61,0,0.1);
-      color: #593d00;
+      background: rgba(133,18,23,0.08);
+      color: #851217;
     }
     .tab-count {
       display: inline-flex;
@@ -298,8 +212,8 @@
       color: white;
     }
     .market-tab:not(.active) .tab-count {
-      background: rgba(89,61,0,0.1);
-      color: #593d00;
+      background: rgba(133,18,23,0.1);
+      color: #851217;
     }
 
     /* ========================================== */
@@ -833,28 +747,37 @@
 </nav>
 
 <!-- ============================================ -->
-<!-- HERO SECTION — Dramatic full-width           -->
+<!-- HERO SECTION                                 -->
 <!-- ============================================ -->
-<section class="market-hero" id="hero">
-
-  <div class="hero-content px-4">
-    <h3 class="text-xs font-bold tracking-[0.5em] uppercase mb-6" style="color:rgba(245,189,88,0.7);">Energy Market</h3>
-    <h1 class="hero-title text-5xl md:text-8xl lg:text-9xl leading-[0.9] mb-8">能量集市</h1>
-    <p class="hero-subtitle text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-headline italic mb-4" id="hero-tagline"></p>
-    <div style="height:3px;width:80px;background:linear-gradient(90deg,rgba(245,189,88,0.8),rgba(133,18,23,0.6));border-radius:2px;margin:0 auto;"></div>
-
-    <!-- Scroll indicator -->
-    <div class="scroll-indicator mt-16" style="cursor:pointer;" onclick="document.getElementById('stats-section').scrollIntoView({behavior:'smooth'})">
-      <p style="color:rgba(255,255,255,0.5);font-size:12px;font-weight:700;letter-spacing:0.15em;margin-bottom:8px;">开始探索</p>
-      <span class="material-symbols-outlined" style="color:rgba(245,189,88,0.7);font-size:32px;">expand_more</span>
-    </div>
-  </div>
-</section>
+<div class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-40 md:pt-56">
+<header class="mb-24 md:mb-48 relative" id="hero">
+<div class="max-w-4xl">
+<div class="mb-6 flex items-center gap-4">
+<span class="h-px w-12 bg-tertiary"></span>
+<span class="text-xs font-bold tracking-[0.4em] uppercase text-tertiary">Energy Market | 能量集市</span>
+</div>
+<h1 class="text-3xl md:text-5xl lg:text-8xl font-headline font-extrabold text-on-surface tracking-tight mb-8 leading-[1.05]">
+能量集市<span class="text-tertiary italic"> ·</span><br/>
+<span class="text-tertiary font-normal italic text-2xl md:text-4xl lg:text-5xl">Energy Market</span>
+</h1>
+<div class="h-1 w-24 bg-tertiary mt-8 mb-10"></div>
+<p class="text-base md:text-lg text-on-surface-variant leading-[1.9] max-w-2xl mb-8" id="hero-tagline"></p>
+</div>
+<!-- Energy coin card -->
+<div class="absolute top-0 right-0 hidden lg:flex flex-col items-center bg-surface-container-low p-8 rounded-sm">
+<span class="material-symbols-outlined text-tertiary mb-3" style="font-size:40px;">bolt</span>
+<span class="stat-num text-4xl" id="hero-balance">0</span>
+<span class="text-xs font-bold text-on-surface-variant tracking-wide mt-2">当前能量币</span>
+<a href="../guardian/index.html" class="mt-4 text-xs font-bold text-primary hover:underline">去赚取 →</a>
+</div>
+<div class="absolute top-0 right-0 hidden lg:block opacity-[0.03] text-[20rem] font-headline font-black text-on-surface leading-none select-none" aria-hidden="true">市</div>
+</header>
+</div>
 
 <!-- ============================================ -->
 <!-- STATS BAR — Animated counters                -->
 <!-- ============================================ -->
-<section class="max-w-screen-2xl mx-auto px-4 md:px-12 -mt-16 relative z-10 mb-16 md:mb-24" id="stats-section">
+<section class="max-w-screen-2xl mx-auto px-4 md:px-12 mb-16 md:mb-24" id="stats-section">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
     <div class="stat-glass fade-in">
       <span class="stat-num" data-target="9">0</span>
@@ -879,9 +802,11 @@
 <!-- HOW IT WORKS                                 -->
 <!-- ============================================ -->
 <section class="max-w-screen-2xl mx-auto px-4 md:px-12 py-16 md:py-24 text-center fade-in">
-  <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">How It Works</h3>
-  <p class="text-2xl md:text-3xl font-headline font-bold mb-12" style="color:#593d00;">守护即收获</p>
-  <div class="section-divider mb-16"></div>
+  <div class="flex flex-col items-center mb-20 text-center fade-in">
+    <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">How It Works</h3>
+    <h2 class="text-3xl md:text-5xl font-headline font-bold">守护即收获</h2>
+    <div class="h-1 w-24 bg-primary mt-6"></div>
+  </div>
   <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 max-w-4xl mx-auto">
     <div class="step-card">
       <div class="step-icon" style="background:rgba(133,18,23,0.08);">
@@ -915,10 +840,10 @@
 <!-- PRODUCT TABS + GRID                          -->
 <!-- ============================================ -->
 <section class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32">
-  <div class="text-center mb-12 fade-in">
+  <div class="flex flex-col items-center mb-20 text-center fade-in">
     <h3 class="text-xs font-bold tracking-[0.5em] uppercase text-on-surface-variant mb-4">Collections</h3>
-    <p class="text-2xl md:text-3xl font-headline font-bold mb-8" style="color:#593d00;">精选体验</p>
-    <div class="section-divider mb-12"></div>
+    <h2 class="text-3xl md:text-5xl font-headline font-bold">精选体验</h2>
+    <div class="h-1 w-24 bg-primary mt-6"></div>
   </div>
 
   <!-- Premium pill tabs -->
@@ -1110,47 +1035,47 @@
 
 <!-- Market Page Logic -->
 <script>
-// Product data with working picsum.photos images
+// Product data
 var PRODUCTS = [
   // 金色良品
   { id: 'chestnut-tea', category: 'goods', name: '板栗茶礼盒', cost: 30, icon: 'eco',
     badge: '人气之选',
     story: '精选香屯村百年板栗林中的野生板栗，经传统工艺烘焙研磨，配以延庆高山泉水冲泡。每一杯都带着长城脚下泥土的芬芳。',
-    image: 'https://picsum.photos/seed/chestnut/800/600' },
+    image: 'https://images.unsplash.com/photo-1601275875269-c48cd2c46546?w=800&q=80&fit=crop' },
   { id: 'apricot-tea', category: 'goods', name: '杏皮茶', cost: 20, icon: 'local_cafe',
     badge: '轻松入门',
     story: '大庄科乡的杏树在春天开出漫山遍野的花海。每年七月，村民采摘成熟的山杏，晾晒杏皮，制成这一杯酸甜可口的传统饮品。',
-    image: 'https://picsum.photos/seed/apricot/800/600' },
+    image: 'https://images.unsplash.com/photo-1760120067369-1e5138b8d3ab?w=800&q=80&fit=crop' },
   { id: 'walnut-set', category: 'goods', name: '核桃伴手礼', cost: 40, icon: 'nutrition',
     badge: '匠心之作',
     story: '延庆山核桃以皮薄仁大闻名。村里的老核桃树有些已有两百多年历史，见证了长城脚下的岁月变迁。',
-    image: 'https://picsum.photos/seed/walnut/800/600' },
+    image: 'https://images.unsplash.com/photo-1650458752641-1d201bb344b0?w=800&q=80&fit=crop' },
   // 四色文创
   { id: 'mug-fourcolor', category: 'creative', name: '四色马克杯', cost: 50, icon: 'coffee',
     badge: '限定文创',
     story: '传承红、远山绿、板栗金、玄石墨 — 四种属于香屯的颜色，烧制在景德镇手工陶瓷杯上。每个杯子都是独一无二的。',
-    image: 'https://picsum.photos/seed/ceramic/800/600' },
+    image: 'https://images.unsplash.com/photo-1755638110931-3da1d1174c14?w=800&q=80&fit=crop' },
   { id: 'postcard-set', category: 'creative', name: '长城明信片套装', cost: 15, icon: 'mail',
     badge: '轻松入门',
     story: '6 张手绘明信片，记录了大庄科段长城四季的不同面貌。从春天的杏花长城到冬日的雪覆敌台。',
-    image: 'https://picsum.photos/seed/greatwall/800/600' },
+    image: 'https://images.unsplash.com/photo-1713220425194-635e2fe9f9e4?w=800&q=80&fit=crop' },
   { id: 'badge-guardian', category: 'creative', name: '守护者徽章', cost: 25, icon: 'shield',
     badge: '守护象征',
     story: '金属珐琅工艺，正面是香屯村标志性的圆形敌台剪影，背面刻有"长城守护者"字样。佩戴它，你就是长城的守护人。',
-    image: 'https://picsum.photos/seed/badge/800/600' },
+    image: 'https://images.unsplash.com/photo-1522097191880-ae2a4e8b0a4d?w=800&q=80&fit=crop' },
   // 戍边餐
   { id: 'meal-spring', category: 'meal', name: '春季戍边餐', cost: 60, icon: 'dinner_dining',
     badge: '时令限定',
     story: '以明代戍边将士的饮食为灵感，用延庆本地时令食材重新演绎。春季餐包含香椿炒蛋、山野菜拼盘、板栗焖鸡和自酿米酒。',
-    image: 'https://picsum.photos/seed/feast/800/600' },
+    image: 'https://images.unsplash.com/photo-1576089073624-b5751a8f4de9?w=800&q=80&fit=crop' },
   { id: 'meal-chestnut', category: 'meal', name: '板栗宴', cost: 80, icon: 'restaurant_menu',
     badge: '招牌体验',
     story: '板栗是香屯村的灵魂食材。板栗宴从板栗小米粥开始，经过板栗烧肉、糖炒栗子，到板栗蛋糕收尾——一场完整的板栗风味之旅。',
-    image: 'https://picsum.photos/seed/banquet/800/600' },
+    image: 'https://images.unsplash.com/photo-1517499414974-3b42addf2d86?w=800&q=80&fit=crop' },
   { id: 'meal-lunchbox', category: 'meal', name: '长城便当', cost: 30, icon: 'takeout_dining',
     badge: '徒步必备',
     story: '专为长城徒步者设计的便携餐盒。杂粮饭团、酱牛肉、腌黄瓜、山楂糕——补充能量又不添负担。环保餐盒可带走做纪念。',
-    image: 'https://picsum.photos/seed/bento/800/600' }
+    image: 'https://images.unsplash.com/photo-1696677049263-cc38af1c7681?w=800&q=80&fit=crop' }
 ];
 
 var CATEGORY_NAMES = { goods: '金色良品', creative: '四色文创', meal: '戍边餐' };

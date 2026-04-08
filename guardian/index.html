@@ -1221,67 +1221,158 @@ function generateCert(name) {
   const W = 800, H = 600;
   const cx = W / 2;
 
-  // ---- 背景 ----
-  ctx.fillStyle = '#faf8f6';
+  // ==== 1. 羊皮纸渐变背景 ====
+  var bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, '#faf5ed');
+  bgGrad.addColorStop(0.4, '#f7efe3');
+  bgGrad.addColorStop(1, '#f2e8d8');
+  ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, W, H);
 
-  // 微妙纸质纹理
-  ctx.globalAlpha = 0.025;
-  for (var i = 0; i < 4000; i++) {
-    ctx.fillStyle = Math.random() > 0.5 ? '#1b1c1c' : '#8c716e';
+  // 纸质纹理（加密）
+  ctx.globalAlpha = 0.02;
+  for (var i = 0; i < 8000; i++) {
+    var r = Math.random();
+    ctx.fillStyle = r > 0.6 ? '#1b1c1c' : r > 0.3 ? '#8c716e' : '#593d00';
     ctx.fillRect(Math.random() * W, Math.random() * H, 1, 1);
   }
   ctx.globalAlpha = 1;
 
-  // ---- 边框：单线 + 内距 ----
-  ctx.strokeStyle = '#851217';
-  ctx.lineWidth = 2;
-  ctx.strokeRect(30, 30, W - 60, H - 60);
+  // 边缘暗角
+  var vignette = ctx.createRadialGradient(cx, H / 2, 200, cx, H / 2, 500);
+  vignette.addColorStop(0, 'rgba(89,61,0,0)');
+  vignette.addColorStop(1, 'rgba(89,61,0,0.07)');
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, W, H);
 
-  // 四角装饰点
-  var dotR = 3;
+  // ==== 2. 长城天际线水印 ====
+  ctx.save();
+  ctx.globalAlpha = 0.035;
   ctx.fillStyle = '#851217';
-  [[38, 38], [W - 38, 38], [38, H - 38], [W - 38, H - 38]].forEach(function(p) {
-    ctx.beginPath(); ctx.arc(p[0], p[1], dotR, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath();
+  var wallY = 85, merlonH = 12, merlonW = 18, gapW = 10;
+  var xp = 60;
+  ctx.moveTo(0, wallY);
+  ctx.lineTo(xp, wallY);
+  while (xp < W - 60) {
+    ctx.lineTo(xp, wallY - merlonH);
+    ctx.lineTo(xp + merlonW, wallY - merlonH);
+    ctx.lineTo(xp + merlonW, wallY);
+    xp += merlonW + gapW;
+    if (xp < W - 60) ctx.lineTo(xp, wallY);
+  }
+  ctx.lineTo(W, wallY);
+  ctx.lineTo(W, wallY + 6);
+  ctx.lineTo(0, wallY + 6);
+  ctx.closePath();
+  ctx.fill();
+  [[130, wallY], [W - 150, wallY]].forEach(function(p) {
+    ctx.fillRect(p[0] - 10, p[1] - merlonH - 16, 20, 16);
+    ctx.fillRect(p[0] - 14, p[1] - merlonH - 20, 28, 6);
+  });
+  ctx.restore();
+
+  // ==== 3. 三层嵌套边框 ====
+  ctx.strokeStyle = '#593d00';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(18, 18, W - 36, H - 36);
+
+  // 回纹装饰带
+  var patY1 = 30, patY2 = H - 30, patX1 = 30, patX2 = W - 30;
+  ctx.strokeStyle = 'rgba(89,61,0,0.2)';
+  ctx.lineWidth = 0.8;
+  var step = 8;
+  for (var px = patX1; px < patX2 - step; px += step * 2) {
+    ctx.beginPath();
+    ctx.moveTo(px, patY1); ctx.lineTo(px, patY1 - 4); ctx.lineTo(px + step, patY1 - 4);
+    ctx.lineTo(px + step, patY1 + 4); ctx.lineTo(px + step * 2, patY1 + 4); ctx.lineTo(px + step * 2, patY1);
+    ctx.stroke();
+  }
+  for (var px2 = patX1; px2 < patX2 - step; px2 += step * 2) {
+    ctx.beginPath();
+    ctx.moveTo(px2, patY2); ctx.lineTo(px2, patY2 + 4); ctx.lineTo(px2 + step, patY2 + 4);
+    ctx.lineTo(px2 + step, patY2 - 4); ctx.lineTo(px2 + step * 2, patY2 - 4); ctx.lineTo(px2 + step * 2, patY2);
+    ctx.stroke();
+  }
+
+  // 内框
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(40, 40, W - 80, H - 80);
+
+  // L 形角标
+  var cLen = 22, cOff = 40;
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 2.5;
+  [[cOff, cOff, 1, 1], [W - cOff, cOff, -1, 1], [cOff, H - cOff, 1, -1], [W - cOff, H - cOff, -1, -1]].forEach(function(c) {
+    ctx.beginPath();
+    ctx.moveTo(c[0], c[1] + c[3] * cLen); ctx.lineTo(c[0], c[1]); ctx.lineTo(c[0] + c[2] * cLen, c[1]);
+    ctx.stroke();
   });
 
-  // ---- 顶部标签 ----
+  // ==== 4. 顶部标签 ====
   ctx.fillStyle = '#8c716e';
   ctx.font = '500 9px Manrope, sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('XIANGTUN GREAT WALL  \u00b7  GUARDIAN CERTIFICATE', cx, 68);
 
-  // ---- 装饰短线 ----
+  // 金色渐变装饰线 + 菱形
+  var lineGrad = ctx.createLinearGradient(cx - 40, 0, cx + 40, 0);
+  lineGrad.addColorStop(0, 'rgba(179,135,40,0.3)');
+  lineGrad.addColorStop(0.5, 'rgba(252,246,186,0.6)');
+  lineGrad.addColorStop(1, 'rgba(179,135,40,0.3)');
+  ctx.fillStyle = lineGrad;
+  ctx.fillRect(cx - 40, 80, 80, 1.5);
   ctx.fillStyle = '#851217';
-  ctx.fillRect(cx - 30, 80, 60, 1.5);
+  [cx - 50, cx + 50].forEach(function(dx) {
+    ctx.save(); ctx.translate(dx, 81); ctx.rotate(Math.PI / 4);
+    ctx.fillRect(-2.5, -2.5, 5, 5); ctx.restore();
+  });
 
-  // ---- 主标题 ----
+  // ==== 5. 主标题（逐字加宽间距） ====
   ctx.fillStyle = '#851217';
-  ctx.font = 'bold 32px Newsreader, serif';
-  ctx.fillText('\u9999\u5c6f\u957f\u57ce\u5b88\u62a4\u8005\u8bc1\u4e66', cx, 125);
+  ctx.font = 'bold 36px Newsreader, serif';
+  ctx.textAlign = 'left';
+  var titleChars = '\u9999\u5c6f\u957f\u57ce\u5b88\u62a4\u8005\u8bc1\u4e66'.split('');
+  var titleTotalW = 0;
+  var charWidths = titleChars.map(function(ch) { var w = ctx.measureText(ch).width; titleTotalW += w; return w; });
+  var titleSpacing = 6;
+  titleTotalW += titleSpacing * (titleChars.length - 1);
+  var ttx = cx - titleTotalW / 2;
+  titleChars.forEach(function(ch, idx) {
+    ctx.fillText(ch, ttx, 128); ttx += charWidths[idx] + titleSpacing;
+  });
 
-  // ---- 留白后 "兹证明" ----
+  // 标题下方双装饰线
+  ctx.strokeStyle = '#851217';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(cx - 60, 140); ctx.lineTo(cx + 60, 140); ctx.stroke();
+  ctx.lineWidth = 0.5;
+  ctx.beginPath(); ctx.moveTo(cx - 45, 145); ctx.lineTo(cx + 45, 145); ctx.stroke();
+
+  // ==== 6. "兹证明" ====
   ctx.fillStyle = '#58413f';
-  ctx.font = '14px Manrope, sans-serif';
-  ctx.fillText('\u5179\u8bc1\u660e', cx, 175);
+  ctx.font = '15px Manrope, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('\u5179 \u8bc1 \u660e', cx, 180);
 
-  // ---- 姓名（视觉焦点，最大） ----
+  // ==== 7. 姓名 ====
   ctx.fillStyle = '#851217';
-  ctx.font = 'bold 52px Newsreader, serif';
-  ctx.fillText(name, cx, 235);
+  ctx.font = 'bold 54px Newsreader, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(name, cx, 240);
 
-  // 姓名下方细线
-  var nW = Math.max(ctx.measureText(name).width, 80);
-  ctx.strokeStyle = 'rgba(133,18,23,0.15)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(cx - nW / 2 - 10, 248);
-  ctx.lineTo(cx + nW / 2 + 10, 248);
-  ctx.stroke();
+  var nW = Math.max(ctx.measureText(name).width, 100);
+  ctx.strokeStyle = 'rgba(133,18,23,0.2)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(cx - nW / 2 - 15, 253); ctx.lineTo(cx + nW / 2 + 15, 253); ctx.stroke();
+  ctx.lineWidth = 0.5;
+  ctx.beginPath(); ctx.moveTo(cx - nW / 2 - 5, 258); ctx.lineTo(cx + nW / 2 + 5, 258); ctx.stroke();
 
-  // ---- 正文（简洁四行） ----
-  ctx.fillStyle = '#1b1c1c';
+  // ==== 8. 正文 ====
+  ctx.fillStyle = '#2a2a2a';
   ctx.font = '14px Manrope, sans-serif';
+  ctx.textAlign = 'center';
   var lines = [
     '\u5df2\u90d1\u91cd\u7b7e\u7f72\u300a\u9999\u5c6f\u957f\u57ce\u4fdd\u62a4\u5021\u8bae\u4e66\u300b',
     '\u627f\u8bfa\u4e0d\u6500\u722c\u672a\u5f00\u653e\u957f\u57ce\u3001\u4e0d\u4e71\u6254\u5783\u573e\u3001\u4e0d\u7834\u574f\u690d\u88ab',
@@ -1289,81 +1380,109 @@ function generateCert(name) {
     '\u6b63\u5f0f\u6210\u4e3a\u9999\u5c6f\u957f\u57ce\u8363\u8a89\u5b88\u62a4\u8005'
   ];
   for (var li = 0; li < lines.length; li++) {
-    ctx.fillText(lines[li], cx, 290 + li * 26);
+    ctx.fillText(lines[li], cx, 295 + li * 28);
   }
 
-  // ---- 分隔线 ----
-  ctx.strokeStyle = 'rgba(140,113,110,0.12)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(80, 400);
-  ctx.lineTo(W - 80, 400);
-  ctx.stroke();
+  // ==== 9. 金色渐变分隔线 ====
+  var sepGrad = ctx.createLinearGradient(80, 0, W - 80, 0);
+  sepGrad.addColorStop(0, 'rgba(179,135,40,0)');
+  sepGrad.addColorStop(0.2, 'rgba(179,135,40,0.3)');
+  sepGrad.addColorStop(0.5, 'rgba(252,246,186,0.5)');
+  sepGrad.addColorStop(0.8, 'rgba(179,135,40,0.3)');
+  sepGrad.addColorStop(1, 'rgba(179,135,40,0)');
+  ctx.fillStyle = sepGrad;
+  ctx.fillRect(80, 408, W - 160, 1);
 
-  // ---- 日期与编号 ----
+  // ==== 10. 日期与编号 ====
   var now = new Date();
   var dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
   var certId = 'No. XC-' + now.getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
   ctx.fillStyle = '#8c716e';
   ctx.font = '11px Manrope, sans-serif';
   ctx.textAlign = 'left';
-  ctx.fillText(dateStr, 80, 430);
+  ctx.fillText(dateStr, 65, 438);
   ctx.textAlign = 'right';
-  ctx.fillText(certId, W - 80, 430);
+  ctx.fillText(certId, W - 65, 438);
 
-  // ---- 印章（简洁风：双圈 + 星 + 水平文字） ----
+  // ==== 11. 方形印章（中式篆刻 + 做旧） ====
   ctx.save();
-  ctx.translate(W - 140, 510);
-  ctx.rotate(-0.08);
-  var sc = 'rgba(133,18,23,0.65)';
-  // 外圈
-  ctx.strokeStyle = sc;
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.arc(0, 0, 36, 0, Math.PI * 2); ctx.stroke();
-  // 内圈
-  ctx.lineWidth = 0.6;
-  ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2); ctx.stroke();
+  ctx.translate(W - 135, 505);
+  ctx.rotate(-0.06);
+  var stampColor = 'rgba(133,18,23,0.82)';
+  var stampSize = 48;
+  ctx.strokeStyle = stampColor;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  var sr = 3;
+  ctx.moveTo(-stampSize + sr, -stampSize);
+  ctx.lineTo(stampSize - sr, -stampSize);
+  ctx.quadraticCurveTo(stampSize, -stampSize, stampSize, -stampSize + sr);
+  ctx.lineTo(stampSize, stampSize - sr);
+  ctx.quadraticCurveTo(stampSize, stampSize, stampSize - sr, stampSize);
+  ctx.lineTo(-stampSize + sr, stampSize);
+  ctx.quadraticCurveTo(-stampSize, stampSize, -stampSize, stampSize - sr);
+  ctx.lineTo(-stampSize, -stampSize + sr);
+  ctx.quadraticCurveTo(-stampSize, -stampSize, -stampSize + sr, -stampSize);
+  ctx.closePath(); ctx.stroke();
+  ctx.lineWidth = 1;
+  ctx.strokeRect(-stampSize + 6, -stampSize + 6, (stampSize - 6) * 2, (stampSize - 6) * 2);
   // 五角星
-  ctx.fillStyle = sc;
+  ctx.fillStyle = stampColor;
   ctx.beginPath();
   for (var si = 0; si < 5; si++) {
     var oa = (si * 2 * Math.PI / 5) - Math.PI / 2;
     var ia = oa + Math.PI / 5;
-    ctx[si === 0 ? 'moveTo' : 'lineTo'](Math.cos(oa) * 9, Math.sin(oa) * 9);
-    ctx.lineTo(Math.cos(ia) * 3.5, Math.sin(ia) * 3.5);
+    ctx[si === 0 ? 'moveTo' : 'lineTo'](Math.cos(oa) * 13, Math.sin(oa) * 13);
+    ctx.lineTo(Math.cos(ia) * 5, Math.sin(ia) * 5);
   }
   ctx.closePath(); ctx.fill();
-  // 上方文字（水平）
-  ctx.fillStyle = sc;
-  ctx.font = 'bold 6px Manrope, sans-serif';
+  // 弧形文字"四色香屯"
+  ctx.fillStyle = stampColor;
+  ctx.font = 'bold 14px Newsreader, serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('FOUR COLORS', 0, -20);
-  ctx.fillText('OF XIANGTUN', 0, -13);
-  // 下方文字（水平）
-  ctx.fillText('GUARDIAN', 0, 14);
-  ctx.fillText('PROGRAM', 0, 21);
+  var arcR = 32, arcStart = -Math.PI / 2 - 0.5, arcStep = 1.0 / 3;
+  '\u56db\u8272\u9999\u5c6f'.split('').forEach(function(ch, ai) {
+    var angle = arcStart + ai * arcStep;
+    ctx.save(); ctx.translate(Math.cos(angle) * arcR, Math.sin(angle) * arcR);
+    ctx.rotate(angle + Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore();
+  });
+  // 弧形文字"守护者"
+  var arcStart2 = Math.PI / 2 + 0.38, arcStep2 = -0.76 / 2;
+  '\u5b88\u62a4\u8005'.split('').forEach(function(ch, ai) {
+    var angle = arcStart2 + ai * arcStep2;
+    ctx.save(); ctx.translate(Math.cos(angle) * arcR, Math.sin(angle) * arcR);
+    ctx.rotate(angle - Math.PI / 2); ctx.fillText(ch, 0, 0); ctx.restore();
+  });
+  // 做旧
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.globalAlpha = 0.6;
+  for (var di = 0; di < 60; di++) {
+    ctx.fillRect((Math.random() - 0.5) * stampSize * 2, (Math.random() - 0.5) * stampSize * 2, Math.random() * 4 + 1, Math.random() * 4 + 1);
+  }
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.globalAlpha = 1;
   ctx.restore();
 
-  // ---- 左下品牌 ----
+  // ==== 12. 左下品牌 ====
   ctx.textAlign = 'left';
   ctx.fillStyle = '#851217';
-  ctx.font = 'bold 14px Newsreader, serif';
-  ctx.fillText('\u56db\u8272\u9999\u5c6f', 80, 505);
+  ctx.font = 'bold 16px Newsreader, serif';
+  ctx.fillText('\u56db\u8272\u9999\u5c6f', 65, 498);
   ctx.fillStyle = '#8c716e';
-  ctx.font = '9px Manrope, sans-serif';
-  ctx.fillText('FOUR COLORS OF XIANGTUN', 80, 520);
+  ctx.font = '500 9px Manrope, sans-serif';
+  ctx.fillText('FOUR COLORS OF XIANGTUN', 65, 514);
   ctx.fillStyle = '#b0a09e';
   ctx.font = '8px Manrope, sans-serif';
-  ctx.fillText('stitch.editnow.uk', 80, 535);
+  ctx.fillText('stitch.editnow.uk', 65, 529);
 
-  // ---- 底部细线 ----
-  ctx.strokeStyle = 'rgba(133,18,23,0.08)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(80, H - 38);
-  ctx.lineTo(W - 80, H - 38);
-  ctx.stroke();
+  // ==== 13. 底部四色标识条 ====
+  var barY = H - 25, barW = (W - 80) / 4;
+  ['#851217', '#3b6934', '#593d00', '#1b1c1c'].forEach(function(c, i) {
+    ctx.fillStyle = c; ctx.globalAlpha = 0.7;
+    ctx.fillRect(40 + i * barW, barY, barW, 3);
+  });
+  ctx.globalAlpha = 1;
 
   // 显示证书模态框
   document.getElementById('cert-modal').style.display = 'flex';
