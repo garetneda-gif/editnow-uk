@@ -123,4 +123,9 @@
       audio: null
     }
   };
+
+  // 自动填充 MP3 路径：所有脚本均有对应 /audio/{id}.mp3
+  Object.keys(window.AUDIO_SCRIPTS).forEach(function (id) {
+    window.AUDIO_SCRIPTS[id].audio = '/audio/' + id + '.mp3';
+  });
 })();
