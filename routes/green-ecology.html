@@ -364,7 +364,7 @@ tailwind.config = {
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pt-16 md:pt-24 pb-16 md:pb-32 relative">
 
-<div id="audio-intro-banner" class="bg-secondary-fixed/20 px-4 py-3 flex items-center justify-center gap-3 rounded-lg mb-6" style="display:none">
+<div id="audio-intro-banner" class="bg-surface-container-low px-4 py-3 flex items-center justify-center gap-3 rounded-lg mb-6" style="display:none">
     <span class="material-symbols-outlined text-secondary">headphones</span>
     <p class="font-body text-sm text-on-surface">戴上耳机，开启语音导览，边听边看</p>
     <button onclick="AudioGuide.playFullRoute('green')" class="font-label text-xs text-secondary font-bold whitespace-nowrap hover:opacity-70 transition-colors ml-2">开始全程导览</button>
@@ -390,6 +390,20 @@ if(!localStorage.getItem('xiangtun_audio_intro_seen')){document.getElementById('
 <p class="text-base text-on-surface-variant leading-relaxed mb-8">
 村东峡谷可通怀柔水长城景区，两区山色在此无缝衔接。2025年4月，北京龙吟溪谷文旅发展有限公司入驻，投入430余万元，规划1000多亩文旅生态区域。试运营已接待游客1.5万余人次——这片沉寂多年的绿色宝藏，正在向世界敞开怀抱。
 </p>
+<div class="grid grid-cols-3 gap-6 mt-8">
+<div class="py-6 border-t-2 border-secondary/20">
+<p class="text-3xl font-headline font-black text-secondary">95%</p>
+<p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">林木覆盖率</p>
+</div>
+<div class="py-6 border-t-2 border-secondary/20">
+<p class="text-3xl font-headline font-black text-secondary">1000<span class="text-lg">+</span></p>
+<p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">亩生态区域</p>
+</div>
+<div class="py-6 border-t-2 border-secondary/20">
+<p class="text-3xl font-headline font-black text-secondary">38</p>
+<p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">户人家</p>
+</div>
+</div>
 </div>
 </div>
 <div class="lg:col-span-6">
@@ -408,20 +422,6 @@ if(!localStorage.getItem('xiangtun_audio_intro_seen')){document.getElementById('
 <img src="https://images.unsplash.com/photo-1751381242866-b1f9b4d53cc1?w=800&q=80&fit=crop" alt="溪谷流水" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 <div class="absolute inset-0 bg-[#3b6934]/30"></div>
 <p class="absolute bottom-3 left-3 text-xs text-white/80 font-headline italic z-10">溪谷流水</p>
-</div>
-</div>
-<div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
-<div class="text-center py-8 border-t-2 border-secondary/20">
-<p class="text-4xl font-headline font-black text-secondary">95%</p>
-<p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">林木覆盖率</p>
-</div>
-<div class="text-center py-8 border-t-2 border-secondary/20">
-<p class="text-4xl font-headline font-black text-secondary">1000<span class="text-lg">+</span></p>
-<p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">亩生态区域</p>
-</div>
-<div class="text-center py-8 border-t-2 border-secondary/20">
-<p class="text-4xl font-headline font-black text-secondary">38</p>
-<p class="text-xs text-on-surface-variant mt-2 tracking-widest uppercase font-bold">户人家</p>
 </div>
 </div>
 </div>
