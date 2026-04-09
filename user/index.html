@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
-tailwind.config={darkMode:"class",theme:{extend:{colors:{error:"#ba1a1a",secondary:"#3b6934",tertiary:"#593d00","secondary-fixed":"#bcf0ae","on-error-container":"#93000a","on-secondary-fixed":"#002201","surface-container-low":"#f5f3f3","surface-container-highest":"#e4e2e2","on-secondary":"#ffffff","primary-fixed-dim":"#ffb3ad","error-container":"#ffdad6","surface-variant":"#e4e2e2","on-tertiary-fixed":"#271900","primary-fixed":"#ffdad7","on-surface-variant":"#58413f","outline-variant":"#e0bfbc","inverse-primary":"#ffb3ad","on-background":"#1b1c1c","on-secondary-fixed-variant":"#23501e","surface-container-high":"#eae8e7","tertiary-fixed-dim":"#f5bd58","tertiary-fixed":"#ffdeaa","surface-container-lowest":"#ffffff","on-tertiary-container":"#ffc868","inverse-on-surface":"#f2f0f0","on-tertiary-fixed-variant":"#5f4100","on-secondary-container":"#3f6d38","surface-dim":"#dbdad9","on-primary-container":"#ffc2bd","inverse-surface":"#303030","on-primary":"#ffffff","surface-bright":"#fbf9f8","primary-container":"#a62c2b","on-primary-fixed":"#410004","surface-container":"#efeded","tertiary-container":"#775300","on-surface":"#1b1c1c","on-tertiary":"#ffffff","secondary-fixed-dim":"#a1d494","secondary-container":"#b9eeab",outline:"#8c716e",surface:"#fbf9f8",primary:"#851217","surface-tint":"#ad312f","on-error":"#ffffff","on-primary-fixed-variant":"#8b181b",background:"#fbf9f8"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}}}};
+tailwind.config={darkMode:"class",theme:{extend:{colors:{error:"#ba1a1a",secondary:"#3b6934",tertiary:"#593d00","secondary-fixed":"#bcf0ae","on-error-container":"#93000a","on-secondary-fixed":"#002201","surface-container-low":"#f5f3f3","surface-container-highest":"#e4e2e2","on-secondary":"#ffffff","primary-fixed-dim":"#ffb3ad","error-container":"#ffdad6","surface-variant":"#e4e2e2","on-tertiary-fixed":"#271900","primary-fixed":"#ffdad7","on-surface-variant":"#58413f","outline-variant":"#e0bfbc","inverse-primary":"#ffb3ad","on-background":"#1c2b2b","on-secondary-fixed-variant":"#23501e","surface-container-high":"#eae8e7","tertiary-fixed-dim":"#f5bd58","tertiary-fixed":"#ffdeaa","surface-container-lowest":"#ffffff","on-tertiary-container":"#ffc868","inverse-on-surface":"#f2f0f0","on-tertiary-fixed-variant":"#5f4100","on-secondary-container":"#3f6d38","surface-dim":"#dbdad9","on-primary-container":"#ffc2bd","inverse-surface":"#303030","on-primary":"#ffffff","surface-bright":"#fbf9f8","primary-container":"#a62c2b","on-primary-fixed":"#410004","surface-container":"#efeded","tertiary-container":"#775300","on-surface":"#1c2b2b","on-tertiary":"#ffffff","secondary-fixed-dim":"#a1d494","secondary-container":"#b9eeab",outline:"#8c716e",surface:"#fbf9f8",primary:"#851217","surface-tint":"#ad312f","on-error":"#ffffff","on-primary-fixed-variant":"#8b181b",background:"#fbf9f8"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},fontFamily:{headline:["Newsreader","serif"],body:["Manrope","sans-serif"],label:["Manrope","sans-serif"]}}}};
 </script>
 <style>
 html{scroll-behavior:smooth} @media(min-width:768px){html{zoom:0.67}}
@@ -23,10 +23,10 @@ html{scroll-behavior:smooth} @media(min-width:768px){html{zoom:0.67}}
 .paper-texture{background-image:url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);background-size:1200px 900px;background-blend-mode:multiply}
 
 /* STATS */
-.stat-glass{background:#f5f3f3;padding:28px 20px;text-align:center;transition:transform .3s;position:relative;overflow:hidden}
+.stat-glass{background:#f5f3f3;padding:28px 20px;text-align:center;transition:transform .3s;position:relative}
 html.dark .stat-glass{background:#252525}
 .stat-glass:hover{transform:translateY(-3px)}
-.stat-num{font-family:'Newsreader',serif;font-weight:900;background:linear-gradient(135deg,#851217,#593d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block}
+.stat-num{font-family:'Newsreader',serif;font-weight:900;background:linear-gradient(135deg,#851217,#593d00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;display:block;padding-top:2px}
 html.dark .stat-num{background:linear-gradient(135deg,#ffb3ad,#f5bd58);-webkit-background-clip:text;background-clip:text}
 .stagger-item{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
 .stagger-item.visible{opacity:1;transform:translateY(0)}
@@ -112,13 +112,13 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 #xiangtun-chat-messages::-webkit-scrollbar-thumb{background:rgba(133,18,23,0.15);border-radius:4px}
 .chat-msg{max-width:82%;padding:12px 16px;font-size:14px;line-height:1.7;word-break:break-word;animation:msgFadeIn .3s ease both}
 @keyframes msgFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.chat-msg.bot{align-self:flex-start;background:rgba(245,243,243,0.8);color:#1b1c1c;border-radius:2px 16px 16px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.chat-msg.bot{align-self:flex-start;background:rgba(245,243,243,0.8);color:#1c2b2b;border-radius:2px 16px 16px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
 .chat-msg.user{align-self:flex-end;background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;border-radius:16px 2px 16px 16px;box-shadow:0 4px 16px rgba(133,18,23,0.2)}
 .chat-msg.bot.typing{display:flex;align-items:center;gap:6px}
 .chat-msg.bot.typing::after{content:'\25CF  \25CF  \25CF';animation:typingPulse 1.4s ease-in-out infinite;font-size:12px;letter-spacing:2px;color:#851217;opacity:.5}
 @keyframes typingPulse{0%,100%{opacity:.3}50%{opacity:.8}}
 #xiangtun-chat-input-area{display:flex;gap:10px;padding:16px 20px;background:rgba(251,249,248,0.8);backdrop-filter:blur(8px)}
-#xiangtun-chat-input{flex:1;border:none;border-bottom:2px solid rgba(140,113,110,0.2);border-radius:0;padding:10px 4px;font-size:14px;font-family:'Manrope',sans-serif;background:transparent;outline:none;transition:border-color .3s;color:#1b1c1c}
+#xiangtun-chat-input{flex:1;border:none;border-bottom:2px solid rgba(140,113,110,0.2);border-radius:0;padding:10px 4px;font-size:14px;font-family:'Manrope',sans-serif;background:transparent;outline:none;transition:border-color .3s;color:#1c2b2b}
 #xiangtun-chat-input::placeholder{color:rgba(88,65,63,0.4)}
 #xiangtun-chat-input:focus{border-color:#851217}
 #xiangtun-chat-send{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#851217,#a62c2b);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(133,18,23,0.25);flex-shrink:0}
@@ -130,16 +130,16 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
 <div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
   <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
-  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;"><div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1b1c1c);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div></div>
+  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;"><div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1c2b2b);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div></div>
 </div>
 <nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
   <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
     <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
     <div class="hidden md:flex gap-16 items-center">
-      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页</a>
-      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者</a>
-      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约</a>
-      <a class="text-[#1b1c1c]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市</a>
+      <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页</a>
+      <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者</a>
+      <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约</a>
+      <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市</a>
       <a class="text-[#851217] border-b-2 border-[#851217] font-medium pb-1 font-headline tracking-wide" href="index.html">个人</a>
     </div>
     <div class="flex items-center gap-6">
@@ -149,10 +149,10 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
-    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页</a>
-    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者</a>
-    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约</a>
-    <a class="block text-[#1b1c1c]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市</a>
+    <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页</a>
+    <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者</a>
+    <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约</a>
+    <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市</a>
     <a class="block text-[#851217] font-medium font-headline py-3" href="index.html">个人</a>
   </div>
 </nav>
@@ -240,7 +240,7 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 </section>
 
 <!-- Wall Divider -->
-<div class="max-w-screen-2xl mx-auto px-4 md:px-12"><svg class="wall-divider" viewBox="0 0 960 24" fill="none" aria-hidden="true"><path d="M0 24V12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V24" stroke="#1b1c1c" stroke-width="1.5"/></svg></div>
+<div class="max-w-screen-2xl mx-auto px-4 md:px-12"><svg class="wall-divider" viewBox="0 0 960 24" fill="none" aria-hidden="true"><path d="M0 24V12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V0h20v12h40V24" stroke="#1c2b2b" stroke-width="1.5"/></svg></div>
 
 <!-- TABS -->
 <section class="max-w-screen-2xl mx-auto px-4 md:px-12 mb-24 md:mb-48 fade-in">
@@ -260,7 +260,7 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 </section>
 
 <!-- Footer -->
-<footer class="bg-[#1b1c1c] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<footer class="bg-[#1c2b2b] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
 <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
 <div class="max-w-xs"><a href="/" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a><p class="text-sm text-gray-500 leading-relaxed font-headline italic">通过现代视觉叙事，守护长城板栗林色彩遗产。</p></div>
 <div class="grid grid-cols-2 gap-8 md:gap-20">
@@ -283,7 +283,7 @@ nav.scrolled{background:rgba(251,249,248,0.95) !important;box-shadow:0 4px 30px 
 
 <script src="../js/chat-knowledge.js"></script>
 <script>
-var SYSTEM_PROMPT='你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。\n\n你的知识背景：\n- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气\n- 明代为昌镇黄花路西老星口段长城，村民世代守护长城\n- 早在辽代，香屯就是"辽代首钢"的采矿地\n- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地\n- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"\n- 板栗是香屯特产，村中板栗林历史悠久\n- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目\n- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事\n- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石墨(#1B1C1C)\n\n交互原则：\n- 用亲切、生动的语言，像一位当地老乡在讲故事\n- 回答简洁（2-4句），但内容丰富有趣\n- 适当加入历史典故和文化细节\n- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访\n- 用中文回答';
+var SYSTEM_PROMPT='你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。\n\n你的知识背景：\n- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气\n- 明代为昌镇黄花路西老星口段长城，村民世代守护长城\n- 早在辽代，香屯就是"辽代首钢"的采矿地\n- 抗日战争时期，这里是抵抗日寇侵略的前沿阵地\n- 自然资源丰富，林木覆盖率达95%，2007年被评为"北京市最美乡村"\n- 板栗是香屯特产，村中板栗林历史悠久\n- 2025年4月引入"龙吟溪谷"文旅发展有限公司，规划1000多亩文旅项目\n- 文旅路线：红色研学、绿色生态、灰色长城，以及香屯故事\n- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石青(#1C2B2B)\n\n交互原则：\n- 用亲切、生动的语言，像一位当地老乡在讲故事\n- 回答简洁（2-4句），但内容丰富有趣\n- 适当加入历史典故和文化细节\n- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访\n- 用中文回答';
 var API_URL='https://xiangtun-chat.garetneda.workers.dev/api/chat';
 var chatHistory=[];
 function toggleChat(){document.getElementById('xiangtun-chat-panel').classList.toggle('open');document.getElementById('xiangtun-chat-input').focus()}

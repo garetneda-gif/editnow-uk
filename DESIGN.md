@@ -14,7 +14,7 @@ The palette is rooted in the "Four Colors of Xiangtun." We avoid the neon artifi
 *   **Primary (`#851217`) - Heritage Red:** The pulse of the system. Use for high-impact brand moments and critical actions.
 *   **Secondary (`#3b6934`) - Mountain Green:** Represents the natural environment. Used for success states and growth-oriented content.
 *   **Tertiary (`#593d00`) - Chestnut Gold:** The harvest color. Used for accents, warnings, or highlighting "premium" information.
-*   **Neutral (`#fbf9f8` to `#1b1c1c`) - Stone & Ink:** The foundation. Our "Gray" is never a true neutral; it is warmed by the `surface` background to feel like aged paper.
+*   **Neutral (`#fbf9f8` to `#1c2b2b`) - Stone & Ink:** The foundation. Our "Gray" is never a true neutral; it is warmed by the `surface` background to feel like aged paper.
 
 ### The "No-Line" Rule
 **Explicit Instruction:** Designers are prohibited from using 1px solid borders to section content. Boundaries must be defined solely through background color shifts.
@@ -82,7 +82,7 @@ Traditional shadows are too heavy for this system. We use "Ambient Light."
 *   **DO** use the `tertiary` (Yellow/Chestnut) for call-outs. It is our "highlight" color.
 
 ### Don't
-*   **DON'T** use 100% black. Use `on-surface` (`#1b1c1c`) for all "black" text.
+*   **DON'T** use 100% black. Use `on-surface` (`#1c2b2b`) for all "black" text.
 *   **DON'T** use `full` (pill-shaped) roundedness for anything other than utility buttons or status indicators. It breaks the "grounded/historical" feel.
 *   **DON'T** use standard grid layouts. If a section has three items, consider making the first item larger (66% width) and the other two stacked (33% width) to create an editorial flow.
 

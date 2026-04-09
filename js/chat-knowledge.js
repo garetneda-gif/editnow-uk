@@ -163,8 +163,8 @@ window.XIANGTUN_KNOWLEDGE = {
       role: '表达生长、成功与生态和谐，承载"绿色生态"路线的精神内核'
     },
     ink: {
-      name: '玄石墨',
-      hex: '#1b1c1c',
+      name: '玄石青',
+      hex: '#1c2b2b',
       origin: '2号至5号敌台间400米墙体的沉稳色泽，城砖经数百年风化后的深灰',
       symbolism: '长城的本色，时间的书法——每一道裂痕都是时间的笔迹',
       role: '基底色，从不使用纯黑#000000，赋予岁月沉淀质感；配合#fbf9f8的"石纸"背景形成完整灰阶'
@@ -321,7 +321,7 @@ window.XIANGTUN_KNOWLEDGE = {
         title: '铁火初燃',
         description: '辽代冶铁遗址想象复原图，浓烈灰黑色调描绘千年前炉火通明、铁水奔流的冶炼场景',
         size: '2米×4米',
-        mainColor: '玄石墨（#1b1c1c）',
+        mainColor: '玄石青（#1c2b2b）',
         location: '冶铁遗址旁民居墙面',
         materialInnovation: '使用含铁矿粉的特殊颜料，特定光线下呈现微微金属光泽',
         backgroundFusion: '背景融入现代香屯村轮廓线，形成"千年炉火映照今日村庄"的时空对话'
@@ -369,7 +369,7 @@ window.XIANGTUN_KNOWLEDGE = {
       activities: {
         shieldPainting: {
           name: '盾牌绘制体验',
-          description: '蓝本取自考古出土的戍边器物，用传承红与玄石墨颜料绘制，每一笔都是与六百年前守城将士的隔空对话'
+          description: '蓝本取自考古出土的戍边器物，用传承红与玄石青颜料绘制，每一笔都是与六百年前守城将士的隔空对话'
         },
         battleGame: {
           name: '长城攻防游戏',
@@ -584,7 +584,7 @@ window.XIANGTUN_KNOWLEDGE = {
     bestPhotoTime: '清晨和黄昏光线最佳',
     photographyGuide: {
       sunrise: '村东高处拍摄3号敌台剪影，晨光沿山脊勾勒城墙天际线（5:30—6:30）',
-      goldenAutumn: '9—10月板栗金与玄石墨冷暖对比，大庄科段最动人的长城影像',
+      goldenAutumn: '9—10月板栗金与玄石青冷暖对比，大庄科段最动人的长城影像',
       snowScene: '雪后初晴，银装素裹的400米墙体最为壮观，黑白之间六百年沧桑尽收眼底'
     }
   },
@@ -820,7 +820,7 @@ window.buildSystemPrompt = function buildSystemPrompt() {
     '传承红（' + k.fourColors.red.hex + '）——' + k.fourColors.red.origin + '。' + k.fourColors.red.symbolism + '。' + k.fourColors.red.role + '。',
     '板栗金（' + k.fourColors.gold.hex + '）——' + k.fourColors.gold.origin + '。' + k.fourColors.gold.symbolism + '。' + k.fourColors.gold.role + '。',
     '远山绿（' + k.fourColors.green.hex + '）——' + k.fourColors.green.origin + '。' + k.fourColors.green.symbolism + '。' + k.fourColors.green.role + '。',
-    '玄石墨（' + k.fourColors.ink.hex + '）——' + k.fourColors.ink.origin + '。' + k.fourColors.ink.symbolism + '。' + k.fourColors.ink.role + '。',
+    '玄石青（' + k.fourColors.ink.hex + '）——' + k.fourColors.ink.origin + '。' + k.fourColors.ink.symbolism + '。' + k.fourColors.ink.role + '。',
     '',
 
     '【长城保护与修缮】',
