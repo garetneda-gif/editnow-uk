@@ -69,21 +69,33 @@
   // ---- 播放条 DOM ----
   function ensurePlayerBar() {
     if (document.getElementById('audio-player-bar')) return;
+    // 注入专用样式（移动端安全区 + 细节）
+    if (!document.getElementById('audio-player-bar-style')) {
+      var st = document.createElement('style');
+      st.id = 'audio-player-bar-style';
+      st.textContent = '#audio-player-bar{padding-bottom:calc(10px + env(safe-area-inset-bottom));}' +
+        '#audio-player-bar .ap-row{display:flex;align-items:center;gap:12px;width:100%;}' +
+        '#audio-player-bar .ap-track{flex:1 1 auto;height:3px;background:rgba(140,113,110,0.25);border-radius:2px;overflow:hidden;min-width:0;}' +
+        '#audio-player-bar .ap-track > div{height:100%;background:#851217;transition:width .1s linear;}' +
+        '#audio-player-bar .ap-title{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Newsreader,serif;font-weight:700;font-size:14px;color:#1c2b2b;}' +
+        '#audio-player-bar .ap-time{flex:0 0 auto;font-size:11px;color:#58413f;font-variant-numeric:tabular-nums;white-space:nowrap;}' +
+        '#audio-player-bar button{flex:0 0 auto;background:none;border:none;padding:0;cursor:pointer;line-height:0;}' +
+        '@media (min-width:640px){#audio-player-bar .ap-wrap{display:flex;align-items:center;gap:16px;}#audio-player-bar .ap-row.ap-progress-row{flex:1 1 auto;}}';
+      document.head.appendChild(st);
+    }
     var bar = document.createElement('div');
     bar.id = 'audio-player-bar';
-    bar.className = 'fixed bottom-0 inset-x-0 z-50 bg-surface-container-high/85 backdrop-blur-xl shadow-[0_-4px_24px_rgba(27,28,28,0.04)] transform translate-y-full transition-transform duration-300 px-4 py-3 sm:py-2';
+    bar.className = 'fixed bottom-0 inset-x-0 z-50 bg-surface-container-high/92 backdrop-blur-xl shadow-[0_-4px_24px_rgba(27,28,28,0.08)] transform translate-y-full transition-transform duration-300 px-4 pt-3';
     bar.innerHTML =
-      '<div class="sm:flex sm:items-center sm:gap-4">' +
-        '<div class="flex items-center gap-3">' +
-          '<button id="ap-toggle" onclick="AudioGuide.togglePlay()" class="text-primary"><span class="material-symbols-outlined" id="ap-icon">pause_circle</span></button>' +
-          '<span id="ap-title" class="font-headline font-bold text-on-surface truncate max-w-[180px] sm:max-w-[300px] text-sm"></span>' +
-          '<button onclick="AudioGuide.stop()" class="ml-auto sm:ml-0 text-on-surface-variant"><span class="material-symbols-outlined text-xl">close</span></button>' +
+      '<div class="ap-wrap">' +
+        '<div class="ap-row">' +
+          '<button id="ap-toggle" onclick="AudioGuide.togglePlay()" aria-label="播放/暂停"><span class="material-symbols-outlined text-primary" id="ap-icon" style="font-size:30px;">pause_circle</span></button>' +
+          '<span id="ap-title" class="ap-title"></span>' +
+          '<button onclick="AudioGuide.stop()" aria-label="关闭"><span class="material-symbols-outlined text-on-surface-variant" style="font-size:22px;">close</span></button>' +
         '</div>' +
-        '<div class="flex items-center gap-2 mt-1 sm:mt-0 sm:flex-1">' +
-          '<div class="flex-1 h-[2px] bg-outline-variant/30 rounded-full overflow-hidden">' +
-            '<div id="ap-progress" class="h-full bg-primary transition-all duration-100" style="width:0%"></div>' +
-          '</div>' +
-          '<span id="ap-time" class="font-label text-xs text-on-surface-variant whitespace-nowrap">0:00</span>' +
+        '<div class="ap-row ap-progress-row" style="margin-top:8px;">' +
+          '<div class="ap-track"><div id="ap-progress" style="width:0%"></div></div>' +
+          '<span id="ap-time" class="ap-time">0:00</span>' +
         '</div>' +
       '</div>';
     document.body.appendChild(bar);
