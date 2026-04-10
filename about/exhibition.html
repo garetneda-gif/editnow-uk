@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="../img/favicon-180.png">
+<meta charset="utf-8"/>
+<title>乡情村史陈列室 · 线上展 | 四色香屯</title>
+<meta name="description" content="香屯村乡情村史陈列室线上展——序厅、香屯记忆、守护长城、香屯建设三大部分，完整呈现村庄建制、辽代冶铁、明长城、抗日烽火与当代守护。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="乡情村史陈列室 · 线上展 | 四色香屯">
+<meta property="og:description" content="从辽代矿冶到明代戍边、从抗日烽火到长城守护员——走进香屯村乡情村史陈列室线上展。">
+<meta property="og:url" content="https://stitch.editnow.uk/about/exhibition">
+<meta property="og:locale" content="zh_CN">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "error": "#ba1a1a",
+                    "secondary": "#3b6934",
+                    "tertiary": "#593d00",
+                    "secondary-fixed": "#bcf0ae",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002201",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#271900",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#58413f",
+                    "outline-variant": "#e0bfbc",
+                    "inverse-primary": "#ffb3ad",
+                    "on-background": "#1c2b2b",
+                    "on-secondary-fixed-variant": "#23501e",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary-fixed-dim": "#f5bd58",
+                    "tertiary-fixed": "#ffdeaa",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#ffc868",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-fixed-variant": "#5f4100",
+                    "on-secondary-container": "#3f6d38",
+                    "surface-dim": "#dbdad9",
+                    "on-primary-container": "#ffc2bd",
+                    "inverse-surface": "#303030",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "primary-container": "#a62c2b",
+                    "on-primary-fixed": "#410004",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#775300",
+                    "on-surface": "#1c2b2b",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a1d494",
+                    "secondary-container": "#b9eeab",
+                    "outline": "#8c716e",
+                    "surface": "#fbf9f8",
+                    "primary": "#851217",
+                    "surface-tint": "#ad312f",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#8b181b",
+                    "background": "#fbf9f8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    html { scroll-behavior: smooth; } @media (min-width: 768px) { html { zoom: 0.67; } }
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .paper-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzi2ud4Fip8h7MusfHs_VBx0qN-iyhRP4d-nK2PANHvWBr_02-FeN696qg09UK4E_k5XdIpPNQt0MNw5w3qSC8bzKnJbF412k0eL9hb6yabVDlvYTAYxEtySZESNKyqSKPdC_b2VQhi6vQ1n3CctMKiAilXqwG3HJLMHd0ZZJtGbkWJAWH45s4B-Dt44gUuuFH8vPvpQ2nrA9q8Ml8ZBtdH-Zxl-qanZZqkT_wpNg1Qe4MyT7fCBuqt_hFdce4054TE61rS0MOK6Q);
+            background-size: 1200px 900px;
+            background-blend-mode: multiply;
+        }
+    @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .panel-card {
+        animation: fade-in-up 0.7s ease-out both;
+    }
+    .panel-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        box-shadow: 0 24px 64px rgba(27,43,43,0.12), 0 4px 16px rgba(27,43,43,0.06);
+        cursor: zoom-in;
+        transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .panel-img:hover { transform: translateY(-4px); }
+    .decorative-hr {
+        background: linear-gradient(90deg, transparent, currentColor, transparent);
+        height: 1px;
+        border: none;
+        opacity: 0.25;
+    }
+    /* Lightbox */
+    #lightbox {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(27,43,43,0.92);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        cursor: zoom-out;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+        max-width: 100%;
+        max-height: 92vh;
+        box-shadow: 0 40px 120px rgba(0,0,0,0.5);
+    }
+    #lightbox .close-hint {
+        position: absolute; top: 32px; right: 40px;
+        color: rgba(255,255,255,0.6); font-family: 'Manrope', sans-serif;
+        font-size: 13px; letter-spacing: 0.2em;
+    }
+    /* Vertical seal text */
+    .seal-vertical {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        letter-spacing: 0.4em;
+    }
+</style>
+<!-- Chat Widget Styles -->
+<style>
+  #xiangtun-chat { position: fixed; bottom: 24px; right: 24px; z-index: 9999; font-family: 'Manrope', sans-serif; }
+  #xiangtun-chat-toggle { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #851217 0%, #6b0e12 50%, #a62c2b 100%); color: #fff; border: none; cursor: pointer; box-shadow: 0 8px 32px rgba(133,18,23,0.35), 0 2px 8px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; }
+  #xiangtun-chat-toggle:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 12px 40px rgba(133,18,23,0.45), 0 4px 12px rgba(0,0,0,0.15); }
+  #xiangtun-chat-panel { display: none; width: 400px; max-width: calc(100vw - 32px); max-height: 580px; background: rgba(251,249,248,0.92); backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4); border-radius: 16px; box-shadow: 0 24px 80px rgba(27,28,28,0.12), 0 8px 32px rgba(133,18,23,0.08), inset 0 1px 0 rgba(255,255,255,0.6); flex-direction: column; overflow: hidden; position: absolute; bottom: 72px; right: 0; }
+  #xiangtun-chat-panel.open { display: flex; }
+  #xiangtun-chat-header { padding: 20px 24px; background: linear-gradient(135deg, #851217 0%, #6b0e12 40%, #a62c2b 100%); color: #fff; display: flex; align-items: center; gap: 14px; }
+  #xiangtun-chat-header h4 { margin: 0; font-family: 'Newsreader', serif; font-size: 18px; font-weight: 700; }
+  #xiangtun-chat-header p { margin: 2px 0 0; font-size: 11px; opacity: 0.7; }
+  #xiangtun-chat-header .chat-avatar { font-size: 32px; }
+  #xiangtun-chat-header .chat-close { margin-left: auto; background: rgba(255,255,255,0.1); border: none; color: #fff; cursor: pointer; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  #xiangtun-chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; max-height: 360px; min-height: 200px; }
+  .chat-msg { max-width: 82%; padding: 12px 16px; font-size: 14px; line-height: 1.7; word-break: break-word; }
+  .chat-msg.bot { align-self: flex-start; background: rgba(245,243,243,0.8); color: #1c2b2b; border-radius: 2px 16px 16px 16px; }
+  .chat-msg.user { align-self: flex-end; background: linear-gradient(135deg, #851217, #a62c2b); color: #fff; border-radius: 16px 2px 16px 16px; }
+  #xiangtun-chat-input-area { display: flex; gap: 10px; padding: 16px 20px; background: rgba(251,249,248,0.8); }
+  #xiangtun-chat-input { flex: 1; border: none; border-bottom: 2px solid rgba(140,113,110,0.2); padding: 10px 4px; font-size: 14px; font-family: 'Manrope', sans-serif; background: transparent; outline: none; color: #1c2b2b; }
+  #xiangtun-chat-send { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #851217, #a62c2b); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-fixed overflow-x-hidden paper-texture">
+<div id="page-loader" style="position:fixed;inset:0;z-index:99999;background:#fbf9f8;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s,transform 0.4s;">
+  <div style="font-family:'Newsreader',serif;font-size:28px;font-weight:800;color:#851217;letter-spacing:0.05em;margin-bottom:16px;">四色香屯</div>
+  <div style="width:120px;height:3px;background:#eae8e7;border-radius:2px;overflow:hidden;">
+    <div id="loader-bar" style="height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,#851217,#593d00,#3b6934,#1c2b2b);transition:width 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+  </div>
+</div>
+
+<!-- Top Navigation Bar -->
+<nav class="bg-[#fbf9f8]/80 backdrop-blur-xl border-b border-outline-variant/10 w-full fixed top-0 z-50">
+    <div class="flex justify-between items-center w-full px-4 md:px-12 py-5 max-w-screen-2xl mx-auto">
+        <a href="../index.html" class="text-2xl font-headline font-extrabold tracking-tight text-[#851217]">四色香屯</a>
+        <div class="hidden md:flex gap-10 items-center">
+            <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../index.html">首页</a>
+            <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../guardian/index.html">守护者</a>
+            <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../booking/index.html">预约</a>
+            <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../market/index.html">集市</a>
+            <a class="text-[#1c2b2b]/60 font-headline hover:text-[#851217] transition-colors duration-300 tracking-wide" href="../user/index.html">个人</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="text-xs font-bold text-tertiary flex items-center gap-1" id="nav-coins"><span class="material-symbols-outlined" style="font-size:16px">bolt</span> <span id="nav-balance">0</span></span>
+            <span class="material-symbols-outlined text-[#851217] cursor-pointer hover:opacity-70 transition-opacity" onclick="typeof toggleChat==='function'&&toggleChat()">smart_toy</span>
+            <button class="md:hidden text-[#851217]" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-[#fbf9f8]/95 backdrop-blur-xl">
+        <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../index.html">首页</a>
+        <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../guardian/index.html">守护者</a>
+        <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../booking/index.html">预约</a>
+        <a class="block text-[#1c2b2b]/60 font-headline py-3 border-b border-outline-variant/10" href="../market/index.html">集市</a>
+        <a class="block text-[#1c2b2b]/60 font-headline py-3" href="../user/index.html">个人</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative pt-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#851217] via-[#6b0e12] to-[#3b2322]"></div>
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M30 0L60 30L30 60L0 30Z&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.15)&quot; stroke-width=&quot;1&quot;/%3E%3C/svg%3E');"></div>
+    <div class="relative max-w-screen-2xl mx-auto px-4 md:px-12 py-24 md:py-40">
+        <div class="max-w-3xl">
+            <div class="mb-6 flex items-center gap-4">
+                <span class="h-px w-12 bg-white/40"></span>
+                <span class="text-xs font-bold tracking-[0.4em] uppercase text-white/70">Village History Exhibition Hall</span>
+            </div>
+            <h1 class="text-3xl md:text-6xl lg:text-7xl font-headline font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
+                乡情村史<span class="opacity-50 mx-2">·</span>陈列室
+            </h1>
+            <p class="text-lg md:text-2xl font-headline italic text-white/80 leading-relaxed mb-10 max-w-xl">
+                序厅 · 香屯记忆 · 守护长城 · 香屯建设——2024 年落成的香屯村实体陈列室完整数字化呈现
+            </p>
+            <div class="flex items-center gap-6 text-white/60 text-sm font-body flex-wrap">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">collections_bookmark</span>
+                    14 块展板
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">book</span>
+                    辽代 → 当代 千年跨度
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">stadia_controller</span>
+                    点击展板可放大
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="relative h-16 bg-gradient-to-b from-transparent to-surface"></div>
+</header>
+
+<main class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32 relative">
+
+    <!-- 序厅 Preface Hall -->
+    <section class="mb-24 md:mb-40 pt-12 md:pt-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-start">
+            <div class="lg:col-span-7 panel-card">
+                <div class="mb-6 flex items-center gap-3">
+                    <span class="text-[10px] font-black tracking-[0.4em] uppercase text-primary">Entrance Hall</span>
+                    <span class="h-px flex-1 bg-primary/20"></span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-headline font-extrabold text-on-surface mb-2 leading-tight">序厅</h2>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">长城脚下的世外桃源 · A Paradise at the Foot of The Great Wall</p>
+                <img src="../images/exhibition/00-preface-hall.jpg" alt="序厅 — 长城脚下的世外桃源 · 香屯村" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            </div>
+            <div class="lg:col-span-5 panel-card" style="animation-delay:0.2s">
+                <div class="bg-[#fdfbf5] border-l-4 border-primary px-8 py-10 md:px-10 md:py-14 shadow-[0_24px_64px_rgba(27,43,43,0.08)]">
+                    <p class="text-xs font-black tracking-[0.3em] uppercase text-primary mb-4">习近平总书记回信</p>
+                    <h3 class="text-xl md:text-2xl font-headline font-extrabold text-on-surface mb-6 leading-snug">给北京市八达岭长城脚下的乡亲们</h3>
+                    <hr class="decorative-hr text-primary mb-6"/>
+                    <div class="text-sm md:text-base font-body text-on-surface leading-[1.95] space-y-4">
+                        <p>北京市延庆区八达岭镇石峡村的乡亲们：</p>
+                        <p class="indent-8">你们好！来信收悉。这些年你们自发守护长城、传承长城文化，并依托长城资源走上了致富路，我很高兴。</p>
+                        <p class="indent-8">长城是中华民族的代表性符号和中华文明的重要象征，凝聚着中华民族自强不息的奋斗精神和众志成城、坚韧不屈的爱国情怀。保护好、传承好这一历史文化遗产，是我们共同的责任。</p>
+                        <p class="indent-8">希望大家接续努力，久久为功，像守护家园一样守护好长城，弘扬长城文化，讲好长城故事，带动更多人了解长城、保护长城，把祖先留下的这份珍贵财富世世代代传下去，为建设社会主义文化强国、推进中国式现代化贡献力量。</p>
+                        <p class="indent-8">祝愿大家的日子越过越红火！</p>
+                    </div>
+                    <div class="mt-8 text-right">
+                        <p class="font-headline italic text-on-surface-variant">习近平</p>
+                        <p class="text-xs text-on-surface-variant/60 mt-1">2024 年 5 月 14 日</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三部分导览 -->
+    <section class="mb-24 md:mb-40">
+        <div class="text-center mb-12 md:mb-16">
+            <span class="text-[10px] font-black tracking-[0.4em] uppercase text-tertiary">Three Parts · 三个部分</span>
+            <h2 class="text-2xl md:text-4xl font-headline font-extrabold text-on-surface mt-3">展厅动线</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <a href="#memory" class="block group">
+                <div class="bg-[#851217] text-white p-10 md:p-14 relative overflow-hidden h-full transition-transform duration-500 group-hover:-translate-y-2">
+                    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;40&quot; height=&quot;40&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M20 0L40 20L20 40L0 20Z&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;1&quot;/%3E%3C/svg%3E');"></div>
+                    <div class="relative">
+                        <div class="text-xs tracking-[0.3em] font-bold mb-2 opacity-70">PART 01</div>
+                        <h3 class="text-3xl md:text-4xl font-headline font-extrabold mb-2">香屯记忆</h3>
+                        <p class="text-sm italic opacity-80 mb-6">The Memory of Xiangtun Village</p>
+                        <hr class="decorative-hr text-white mb-6"/>
+                        <p class="text-sm leading-relaxed opacity-80">村庄建制 · 辽代采矿 · 长城关隘 · 抗日烽火 · 英烈传记</p>
+                        <div class="mt-8 text-xs tracking-[0.3em] flex items-center gap-2 opacity-70">
+                            <span>进入展区</span>
+                            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#protection" class="block group">
+                <div class="bg-[#593d00] text-white p-10 md:p-14 relative overflow-hidden h-full transition-transform duration-500 group-hover:-translate-y-2">
+                    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Crect x=&quot;0&quot; y=&quot;0&quot; width=&quot;20&quot; height=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;1&quot;/%3E%3Crect x=&quot;30&quot; y=&quot;30&quot; width=&quot;20&quot; height=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;1&quot;/%3E%3C/svg%3E');"></div>
+                    <div class="relative">
+                        <div class="text-xs tracking-[0.3em] font-bold mb-2 opacity-70">PART 02</div>
+                        <h3 class="text-3xl md:text-4xl font-headline font-extrabold mb-2">守护长城</h3>
+                        <p class="text-sm italic opacity-80 mb-6">The Protection of The Great Wall</p>
+                        <hr class="decorative-hr text-white mb-6"/>
+                        <p class="text-sm leading-relaxed opacity-80">自发保护 · 研究修缮 · 结构材料 · 数字化与展陈</p>
+                        <div class="mt-8 text-xs tracking-[0.3em] flex items-center gap-2 opacity-70">
+                            <span>进入展区</span>
+                            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#construction" class="block group">
+                <div class="bg-[#a62c2b] text-white p-10 md:p-14 relative overflow-hidden h-full transition-transform duration-500 group-hover:-translate-y-2">
+                    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;50&quot; height=&quot;50&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Ccircle cx=&quot;25&quot; cy=&quot;25&quot; r=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;1&quot;/%3E%3C/svg%3E');"></div>
+                    <div class="relative">
+                        <div class="text-xs tracking-[0.3em] font-bold mb-2 opacity-70">PART 03</div>
+                        <h3 class="text-3xl md:text-4xl font-headline font-extrabold mb-2">香屯建设</h3>
+                        <p class="text-sm italic opacity-80 mb-6">The Construction of Xiangtun</p>
+                        <hr class="decorative-hr text-white mb-6"/>
+                        <p class="text-sm leading-relaxed opacity-80">发展旅游 · 物产丰富 · 规划蓝图 · 广纳贤才</p>
+                        <div class="mt-8 text-xs tracking-[0.3em] flex items-center gap-2 opacity-70">
+                            <span>进入展区</span>
+                            <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= PART 1: 香屯记忆 ================= -->
+    <section id="memory" class="mb-24 md:mb-40 scroll-mt-24">
+        <div class="mb-16 md:mb-20 flex items-end justify-between border-b-2 border-primary/30 pb-8">
+            <div>
+                <div class="text-[10px] font-black tracking-[0.4em] uppercase text-primary mb-3">Part 01</div>
+                <h2 class="text-4xl md:text-6xl font-headline font-extrabold text-primary leading-none">香屯记忆</h2>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mt-3">The Memory of Xiangtun Village</p>
+            </div>
+            <div class="hidden md:block">
+                <span class="seal-vertical text-xs tracking-widest text-primary/40">MEMORY · PANEL 1-5</span>
+            </div>
+        </div>
+
+        <!-- 前言 -->
+        <div class="mb-16 md:mb-24 max-w-4xl mx-auto">
+            <div class="bg-[#fdf9f3] border border-tertiary/15 px-8 py-10 md:px-14 md:py-16 relative">
+                <div class="absolute -top-4 left-10 bg-primary text-white text-[10px] font-black tracking-[0.4em] px-4 py-1.5">PREFACE · 前言</div>
+                <div class="text-sm md:text-base font-body text-on-surface leading-[1.95] space-y-4">
+                    <p class="indent-8">香屯村位于北京市延庆区大庄科乡东南，四面环山，一水中流，为藏风聚气之福地，宛如陶渊明笔下的世外桃源，2007 年被评为"北京市最美乡村"。</p>
+                    <p class="indent-8">香屯人文底蕴深厚，早在辽代就是"辽代首钢"的采矿地，明代成为昌镇黄花路前哨，是守卫陵京的重要防线。抗日战争时期，这里又成为了抵抗日寇侵略的前沿阵地。</p>
+                    <p class="indent-8">香屯自然资源丰富，林木覆盖率达 95%，位居全区之首。村庄北依长城，民居依山势而建，错落有致。村中的古井、石磨、石碾、上千株的百年古栗树，以及村东幽静的大云峡谷，无一不揭示出村庄的古朴与天然。</p>
+                    <p class="indent-8">2022 年，北京市文物局启动了香屯段长城研究性修缮工程，开启了长城科学保护、长城文化推动乡村振兴的新篇章。在延庆区委宣传部、大庄科乡党委政府的大力支持下，我们举办了乡情村史展览，以让更多的人了解香屯、爱上香屯，让香屯的山更青、水更绿，香屯人的生活更美好！</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1-1 村庄建制 -->
+        <div class="mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14 items-start">
+            <div class="lg:col-span-4 panel-card">
+                <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-1 · Historical Evolution</div>
+                <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-4">村庄建制</h3>
+                <hr class="decorative-hr text-primary mb-6"/>
+                <div class="text-sm md:text-base font-body text-on-surface-variant leading-relaxed space-y-4">
+                    <p>香屯村地处延庆区大庄科乡东南，距乡政府驻地 10 公里。北邻龙泉峪村、旺泉沟村，南邻东王庄村，西接东三沟村。村域面积 <strong class="text-on-surface">4.27 平方公里</strong>，海拔 <strong class="text-on-surface">400 米</strong>，截至 2023 年底，全村共 <strong class="text-on-surface">38 户 74 口人</strong>，是一座没有耕地的村庄。</p>
+                    <p>据史籍记载，香屯所在的大庄科地区在商周至春秋时期有山戎人活动，历经燕、上谷郡、幽州、儒州缙山县、龙庆州、昌镇、延庆州。1913 年全国撤州设县，香屯属延庆县。1945 年与"后七村"一起划归怀柔，解放后复归延庆。清光绪《昌平州志》有山羊香屯村的记载，与城南香屯村相区别，村内原有庙，早时香火旺盛，香烟缭绕，故名香屯。</p>
+                </div>
+            </div>
+            <div class="lg:col-span-8 panel-card" style="animation-delay:0.1s">
+                <img src="../images/exhibition/1-1-history.jpg" alt="展板 1-1 村庄建制 Historical Evolution" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+                <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">含大庄科乡行政区划图 · 香屯村历任村干部一览表（1949—至今，14 任书记 / 村主任）</p>
+            </div>
+        </div>
+
+        <!-- 1-2 辽代采矿 -->
+        <div class="mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14 items-start">
+            <div class="lg:col-span-5 panel-card order-2 lg:order-1">
+                <img src="../images/exhibition/1-2-relics.jpg" alt="展板 1-2 辽代采矿遗址 Mining Site of the Liao Dynasty" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+                <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">大庄科辽代矿冶遗址群 · 2014 年全国十大考古新发现</p>
+            </div>
+            <div class="lg:col-span-7 panel-card order-1 lg:order-2" style="animation-delay:0.1s">
+                <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-2 · Cultural Relics</div>
+                <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-4">村中古迹 · 辽代采矿遗址</h3>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-6">Mining Site of the Liao Dynasty</p>
+                <hr class="decorative-hr text-primary mb-6"/>
+                <div class="text-sm md:text-base font-body text-on-surface leading-[1.9] space-y-4">
+                    <p>从 <strong>2006 年</strong>开始，考古工作者陆续在大庄科地区发现了辽代矿冶遗址群，由矿山、冶炼、居住及作坊遗址等构成，主要分布于水泉沟、铁炉、汉家川、慈母川等地。</p>
+                    <p>遗址附近有采矿遗址、冶炼遗址，以及冶铁工匠工作、生活、居住的遗址，遗址类型比较系统、丰富，被评为 <strong class="text-primary">2014 年度全国十大考古新发现</strong>。</p>
+                    <p>香屯就是大庄科辽代冶铁系统中的一处采矿地，现存露天采矿遗迹一处，主要包括<strong>磁铁矿、赤铁矿及褐铁矿</strong>。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1-3 长城关隘 -->
+        <div class="mb-20 md:mb-32 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-3 · Great Wall Passes</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">狮子柳外口谴台 · 狮子柳外口堡塞</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-6">The Great Wall Watchtower and Fort</p>
+            <hr class="decorative-hr text-primary mb-8"/>
+            <img src="../images/exhibition/1-3-passes.jpg" alt="展板 1-3 狮子柳外口谴台与堡塞" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">含历代舆图考证 · 明代边防文书 · 大庄科段长城卫星图</p>
+        </div>
+
+        <!-- 1-4 抗日烽火 -->
+        <div class="mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14 items-start">
+            <div class="lg:col-span-7 panel-card">
+                <img src="../images/exhibition/1-4-antijapan.jpg" alt="展板 1-4 抗日烽火 The War of Resistance" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            </div>
+            <div class="lg:col-span-5 panel-card" style="animation-delay:0.1s">
+                <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-4 · War of Resistance</div>
+                <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-4">抗日烽火</h3>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-6">The War of Resistance Against Japanese Aggression</p>
+                <hr class="decorative-hr text-primary mb-6"/>
+                <div class="text-sm md:text-base font-body text-on-surface leading-[1.9] space-y-4">
+                    <p>石城隘西山战役 · 平北军分区联合指挥部驻地 · 石城砖瓦文物。</p>
+                    <p>抗日战争时期，香屯作为长城防线一线，成为抵抗日寇侵略的前沿阵地，留下了昌延联合县、平北根据地的斗争印记。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1-5 两位烈士 -->
+        <div class="mb-8 md:mb-16 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-5 · Martyrs</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">烈士传记 · 王海清 · 卫兴顺</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Two Heroes of Xiangtun</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14">
+                <div class="lg:col-span-5">
+                    <img src="../images/exhibition/1-5-martyrs.jpg" alt="展板 1-5 王海清、卫兴顺两位抗日烈士" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+                </div>
+                <div class="lg:col-span-7 space-y-10">
+                    <div class="bg-[#fdf9f3] border-l-4 border-primary px-6 py-8 md:px-8 md:py-10">
+                        <h4 class="text-xl md:text-2xl font-headline font-extrabold text-primary mb-3">王海清投身抗日</h4>
+                        <p class="text-xs text-on-surface-variant/60 mb-4">Wang Haiqing · 1909—1945</p>
+                        <div class="text-sm font-body text-on-surface leading-[1.85] space-y-3">
+                            <p>大庄科乡香屯村人，原名王永和，化名千一。<strong>1938 年加入中国共产党</strong>。1940 年 1 月中共昌（平）延（庆）联合县成立后，历任十三区助理、昌延联合县十三区区长、六区区长、五区区长，组建十几个村政权，为平北抗日根据地送粮数十万斤。</p>
+                            <p>1945 年 9 月 20 日，王海清率区干部在房子房村召开各村乡长会议。因坏人告密，伪"满洲军"500 余人包围村庄。王海清等人被捕后押至村南娘娘庙前空场，<strong class="text-primary">宁死不屈，即遭枪杀，时年 36 岁</strong>。</p>
+                        </div>
+                    </div>
+                    <div class="bg-[#fdf9f3] border-l-4 border-primary px-6 py-8 md:px-8 md:py-10">
+                        <h4 class="text-xl md:text-2xl font-headline font-extrabold text-primary mb-3">卫兴顺香屯遇难</h4>
+                        <p class="text-xs text-on-surface-variant/60 mb-4">Wei Xingshun · 1918—1944</p>
+                        <div class="text-sm font-body text-on-surface leading-[1.85] space-y-3">
+                            <p>大庄科乡汉家川村人。1937 年春参加暴动痛歼伪警察分驻所后入狱。1940 年初参加昌延联合县游击队，作战勇敢被推选为队长，9 月加入中国共产党。1942 年 10 月任二区游击队队长。</p>
+                            <p>1944 年 3 月袭击周西沟伪军后，日伪军集中大庄科、二道关、黄花城五六百人包围香屯村。卫兴顺指挥 12 名战士激战至子弹打光，与敌白刃肉搏，<strong class="text-primary">被捕后遭枭首，英勇就义</strong>，人民群众含泪掩埋忠骨。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PART 2: 守护长城 ================= -->
+    <section id="protection" class="mb-24 md:mb-40 scroll-mt-24">
+        <div class="mb-16 md:mb-20 flex items-end justify-between border-b-2 border-tertiary/30 pb-8">
+            <div>
+                <div class="text-[10px] font-black tracking-[0.4em] uppercase text-tertiary mb-3">Part 02</div>
+                <h2 class="text-4xl md:text-6xl font-headline font-extrabold text-tertiary leading-none">守护长城</h2>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mt-3">The Protection of The Great Wall</p>
+            </div>
+            <div class="hidden md:block">
+                <span class="seal-vertical text-xs tracking-widest text-tertiary/40">PROTECTION · PANEL 6-9</span>
+            </div>
+        </div>
+
+        <!-- 2-1 自发保护 -->
+        <div class="mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14 items-start">
+            <div class="lg:col-span-5 panel-card">
+                <img src="../images/exhibition/2-1-protection.jpg" alt="展板 2-1 村民自发保护长城" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            </div>
+            <div class="lg:col-span-7 panel-card" style="animation-delay:0.1s">
+                <div class="text-[10px] font-black tracking-[0.3em] uppercase text-tertiary mb-3">Panel 2-1 · Spontaneous Protection</div>
+                <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-4">村民自发守护</h3>
+                <hr class="decorative-hr text-tertiary mb-6"/>
+                <div class="text-sm md:text-base font-body text-on-surface leading-[1.9] space-y-4">
+                    <p>香屯人世世代代生活在长城脚下，一直守护着长城至今已有。从上世纪六十年代开始，村民们就开始自发地保护着长城。</p>
+                    <p><strong class="text-tertiary">2010 年至 2015 年</strong>，市区文物部门净取文物保护资金，对村民的长城进行了抢险修缮，使长城保护工作得到了极大的改善。</p>
+                    <p><strong class="text-tertiary">2019 年</strong>，延庆区成立长城保护员队伍，香屯村选聘护林员同时兼任长城保护员，守护队伍更上了一个正规化、专业化建设。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2-2 研究修缮 -->
+        <div class="mb-20 md:mb-32 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-tertiary mb-3">Panel 2-2 · Research & Repair</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">研究修缮 · 植物专业 · 考古专业</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Research and Repair on the Same Time</p>
+            <img src="../images/exhibition/2-2-research.jpg" alt="展板 2-2 植物与考古研究专业" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">植物专家对敌台苔藓、病害的记录 · 考古专家对明代建筑基址、出土器物的分析</p>
+        </div>
+
+        <!-- 2-3 结构材料 -->
+        <div class="mb-20 md:mb-32 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-tertiary mb-3">Panel 2-3 · Structure & Material</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">结构专业 · 材料专业</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Research on the Structure &amp; Building Materials of The Great Wall</p>
+            <img src="../images/exhibition/2-3-structure.jpg" alt="展板 2-3 结构与材料专业" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">大庄科段长城 11 号—1 号敌台示意 · 抗震性能分析 · 建筑材料显微图</p>
+        </div>
+
+        <!-- 2-4 数字化 -->
+        <div class="mb-8 md:mb-16 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-tertiary mb-3">Panel 2-4 · Digitalization</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">数字化专业 · 文物展陈专业</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Digitalization &amp; Repair Plan of The Great Wall</p>
+            <img src="../images/exhibition/2-4-digital.jpg" alt="展板 2-4 数字化与文物展陈" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">各敌台三维重建模型 · 研究性修缮方案 · 文物保护展陈设计</p>
+        </div>
+    </section>
+
+    <!-- ================= PART 3: 香屯建设 ================= -->
+    <section id="construction" class="mb-24 md:mb-40 scroll-mt-24">
+        <div class="mb-16 md:mb-20 flex items-end justify-between border-b-2 border-[#a62c2b]/30 pb-8">
+            <div>
+                <div class="text-[10px] font-black tracking-[0.4em] uppercase text-[#a62c2b] mb-3">Part 03</div>
+                <h2 class="text-4xl md:text-6xl font-headline font-extrabold text-[#a62c2b] leading-none">香屯建设</h2>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mt-3">The Construction of Xiangtun Village</p>
+            </div>
+            <div class="hidden md:block">
+                <span class="seal-vertical text-xs tracking-widest text-[#a62c2b]/40">CONSTRUCTION · PANEL 10-11</span>
+            </div>
+        </div>
+
+        <!-- 3-1 发展旅游 -->
+        <div class="mb-20 md:mb-32 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-[#a62c2b] mb-3">Panel 3-1 · Tourism &amp; Products</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">发展旅游 · 物产丰富</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Develop Tourism by Utilizing Resources · Rich in Products</p>
+            <img src="../images/exhibition/3-1-tourism.jpg" alt="展板 3-1 发展旅游与物产" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">板栗 · 蔬菜 · 野菜 · 土蜂蜜 — 香屯依托长城与生态资源发展乡村旅游</p>
+        </div>
+
+        <!-- 3-2 规划人才 -->
+        <div class="mb-8 md:mb-16 panel-card">
+            <div class="text-[10px] font-black tracking-[0.3em] uppercase text-[#a62c2b] mb-3">Panel 3-2 · Plan &amp; Talent</div>
+            <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">本着初心 · 砥砺前行</h3>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Development Plan · Gather Talents to Boost the Development</p>
+            <img src="../images/exhibition/3-2-plan.jpg" alt="展板 3-2 发展规划与人才引进" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+            <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">香屯村资源分布图 · 乡贤引才照片 · 村企合作框架</p>
+        </div>
+    </section>
+
+    <!-- 结束语 + 合影 -->
+    <section class="mb-16 md:mb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14 items-start">
+            <div class="lg:col-span-6 panel-card">
+                <div class="bg-[#fdfbf5] border-l-4 border-primary px-8 py-10 md:px-12 md:py-14 relative">
+                    <div class="absolute -top-4 left-10 bg-primary text-white text-[10px] font-black tracking-[0.4em] px-4 py-1.5">POSTSCRIPT · 结束语</div>
+                    <div class="text-sm md:text-base font-body text-on-surface leading-[1.95] space-y-4">
+                        <p class="indent-8">香屯有着得天独厚的自然资源优势，有着博大精深的长城文化背景，有着其不屈的红色文化根脉。作为长城脚下北京市最美乡村，香屯走过了辉煌的过去，在社会主义新农村建设的今天，香屯勇敢地面对着新的机遇和挑战。</p>
+                        <p class="indent-8">2024 年 5 月 14 日习近平总书记在给八达岭长城脚下乡亲们的回信中，对石峡村村民自发守护长城、传承长城文化，并依托长城资源走上了致富路给予了充分肯定。香屯村同样有着世世代代守护长城、传承长城文化的传统。我们一定牢记习近平总书记嘱托，接续努力，久久为功，像守护家园一样守护好长城。</p>
+                        <p class="indent-8">在守护好长城的同时，积极利用自身资源优势，努力推动香屯振兴，让绿水青山真正变成金山银山，让香屯一直成为北京最美村庄。</p>
+                        <p class="indent-8">在香屯村乡情村史陈列室建设过程中，我们得到了<strong>北京建筑大学、北京市考古研究院（北京市文化遗产研究院）、北京未名文博文科科技有限公司、延庆区委宣传部、延庆区文物局、大庄科乡党委政府</strong>以及各界热心人士的关心和帮助，在此谨向那些关心和帮助过我们的单位和个人表示衷心的感谢！</p>
+                    </div>
+                    <div class="mt-8 text-right">
+                        <p class="font-headline italic text-on-surface-variant">香屯村村委会</p>
+                        <p class="text-xs text-on-surface-variant/60 mt-1">2024 年 9 月</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-6 panel-card" style="animation-delay:0.15s">
+                <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">We Are All Guardians of the Great Wall</div>
+                <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-6">我们都是<span class="text-primary">长城</span>守护人</h3>
+                <img src="../images/exhibition/3-3-postscript.jpg" alt="结束语与长城守护人合影墙" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
+                <p class="text-xs text-on-surface-variant/60 mt-4 font-headline italic">2024 年 9 月 · 香屯村乡情村史陈列室落成合影墙</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 返回探索 -->
+    <section class="mt-16 md:mt-24 pt-12 md:pt-20 border-t border-outline-variant/20 text-center">
+        <div class="text-[10px] font-black tracking-[0.4em] uppercase text-on-surface-variant/60 mb-4">Continue Exploring</div>
+        <h3 class="text-2xl md:text-3xl font-headline font-extrabold text-on-surface mb-10">看完陈列，走进香屯</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <a href="./history.html" class="group block p-8 bg-surface-container-low hover:bg-surface-container transition-colors">
+                <div class="text-xs tracking-[0.3em] text-primary font-bold mb-2">STORY</div>
+                <h4 class="text-lg font-headline font-bold text-on-surface mb-2">香屯故事</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">六百年长城守望时间轴</p>
+            </a>
+            <a href="../routes/red-study.html" class="group block p-8 bg-surface-container-low hover:bg-surface-container transition-colors">
+                <div class="text-xs tracking-[0.3em] text-primary font-bold mb-2">ROUTE</div>
+                <h4 class="text-lg font-headline font-bold text-on-surface mb-2">红色研学</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">重走抗日烽火路线</p>
+            </a>
+            <a href="../routes/grey-greatwall.html" class="group block p-8 bg-surface-container-low hover:bg-surface-container transition-colors">
+                <div class="text-xs tracking-[0.3em] text-tertiary font-bold mb-2">ROUTE</div>
+                <h4 class="text-lg font-headline font-bold text-on-surface mb-2">灰色长城</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">研究性修缮工程实地探访</p>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+    <span class="close-hint">ESC · CLICK TO CLOSE</span>
+    <img id="lightbox-img" src="" alt=""/>
+</div>
+
+<footer class="bg-[#1c2b2b] text-white py-12 md:py-24 px-4 md:px-12 border-t border-white/5">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16">
+<div class="max-w-xs">
+<a href="/" class="text-3xl font-headline font-black text-primary mb-6 block">四色香屯</a>
+<p class="text-sm text-gray-500 leading-relaxed font-headline italic">
+通过现代视觉叙事，守护长城板栗林色彩遗产。
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:gap-20">
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">探索 Explore</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="/">首页</a></li>
+<li><a class="hover:text-white transition-colors" href="./history.html">香屯故事</a></li>
+<li><a class="hover:text-white transition-colors" href="./exhibition.html">乡情村史陈列室</a></li>
+<li><a class="hover:text-white transition-colors" href="../routes/red-study.html">文旅路线</a></li>
+<li><a class="hover:text-white transition-colors" href="../guardian/index.html">守护者</a></li>
+<li><a class="hover:text-white transition-colors" href="../market/index.html">能量集市</a></li>
+<li><a class="hover:text-white transition-colors" href="../booking/index.html">预约游览</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h6 class="text-[10px] font-black tracking-widest uppercase text-primary">信息 Info</h6>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-white transition-colors" href="../info/transport.html">交通指南</a></li>
+<li><a class="hover:text-white transition-colors" href="../info/visitor-guide.html">游客须知</a></li>
+<li><a class="hover:text-white transition-colors" href="mailto:support@editnow.uk">联系我们</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-widest uppercase text-gray-600">
+<p>&copy; 2026 四色香屯 · 挑战杯团队 · 任济坤</p>
+<p class="mt-4 text-gray-700 text-xs">"青振京郊"乡村振兴专项赛参赛作品（项目编号17）</p>
+</div>
+</footer>
+
+<!-- Chat Widget -->
+<div id="xiangtun-chat">
+  <div id="xiangtun-chat-panel">
+    <div id="xiangtun-chat-header">
+      <div class="chat-avatar">🏯</div>
+      <div>
+        <h4>香屯小卒</h4>
+        <p>长城脚下的 AI 小兵 · 有问必答</p>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div id="xiangtun-chat-messages">
+      <div class="chat-msg bot">你好！我是香屯小卒 🏔️ 这里是乡情村史陈列室线上展。想了解哪块展板的内容？或者村庄的哪段历史？</div>
+    </div>
+    <div id="xiangtun-chat-input-area">
+      <input id="xiangtun-chat-input" type="text" placeholder="问我关于展览或香屯的任何事..." autocomplete="off" />
+      <button id="xiangtun-chat-send" onclick="sendMessage()">
+        <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+      </button>
+    </div>
+  </div>
+  <button id="xiangtun-chat-toggle" onclick="toggleChat()">
+    <span class="material-symbols-outlined" style="font-size:28px;">chat</span>
+  </button>
+</div>
+
+<script>
+  // Lightbox
+  function openLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    img.src = src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+  // Chat
+  const SYSTEM_PROMPT = `你是"香屯文化导游"，一位热情、博学的AI虚拟导游，专门为游客介绍北京市延庆区大庄科乡香屯村。
+
+你的知识背景：
+- 香屯村地处延庆区大庄科乡东南，四面环山，一水中流，藏风聚气
+- 村域面积4.27平方公里，海拔400米，截至2023年底共38户74口人
+- 早在辽代，香屯就是"辽代首钢"的采矿地，2014年被评为全国十大考古新发现
+- 明代为昌镇黄花路前哨，村民世代守护长城
+- 抗日战争时期是平北抗日根据地，有王海清（1909-1945）、卫兴顺（1918-1944）两位烈士
+- 2019年延庆区成立长城保护员队伍
+- 2022年北京市文物局启动香屯段长城研究性修缮工程
+- 2024年9月乡情村史陈列室落成，分序厅、香屯记忆、守护长城、香屯建设三大部分
+- 四色品牌：传承红(#851217)、板栗金(#593D00)、远山绿(#3B6934)、玄石青(#1C2B2B)
+
+交互原则：
+- 用亲切、生动的语言，像一位当地老乡在讲故事
+- 回答简洁（2-4句），但内容丰富有趣
+- 适当加入历史典故和文化细节
+- 如果游客问的问题超出你的知识范围，诚实说不知道，并建议他们实地探访
+- 用中文回答`;
+
+  const API_URL = 'https://xiangtun-chat.garetneda.workers.dev/api/chat';
+  let chatHistory = [];
+
+  function toggleChat() {
+    document.getElementById('xiangtun-chat-panel').classList.toggle('open');
+    document.getElementById('xiangtun-chat-input').focus();
+  }
+
+  document.getElementById('xiangtun-chat-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  async function sendMessage() {
+    const input = document.getElementById('xiangtun-chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+    appendMessage(msg, 'user');
+    chatHistory.push({ role: 'user', content: msg });
+    const typingEl = appendMessage('', 'bot typing');
+    const sendBtn = document.getElementById('xiangtun-chat-send');
+    sendBtn.disabled = true;
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...chatHistory.slice(-10)]
+        })
+      });
+      if (!resp.ok) throw new Error('API error');
+      const data = await resp.json();
+      const reply = data.choices?.[0]?.message?.content || '抱歉，我暂时无法回答，请稍后再试~';
+      typingEl.remove();
+      appendMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typingEl.remove();
+      appendMessage('网络连接中断了，请检查网络后重试', 'bot');
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  function appendMessage(text, cls) {
+    const container = document.getElementById('xiangtun-chat-messages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + cls;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+</script>
+<script>
+(function(){
+  var bar=document.getElementById('loader-bar');
+  var loader=document.getElementById('page-loader');
+  if(!bar||!loader)return;
+  bar.style.width='70%';
+  window.addEventListener('load',function(){
+    bar.style.width='100%';
+    setTimeout(function(){
+      loader.style.opacity='0';
+      loader.style.transform='translateY(-20px)';
+      setTimeout(function(){loader.remove();},400);
+    },200);
+  });
+})();
+</script>
+<script src="../js/energy-store.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('nav-balance');
+  if (el && typeof EnergyStore !== 'undefined') el.textContent = EnergyStore.getBalance();
+});
+window.addEventListener('energy-changed', function() {
+  var el = document.getElementById('nav-balance');
+  if (el && typeof EnergyStore !== 'undefined') el.textContent = EnergyStore.getBalance();
+});
+</script>
+<script src="../js/ambient-dust.js"></script>
+</body>
+</html>
