@@ -279,7 +279,7 @@
 
   // ---- 路线奖励检查 ----
   function checkRouteBonus(scriptId) {
-    var routes = { red: 4, green: 4, gray: 4 };
+    var routes = { red: 4, green: 4, gray: 4, exhibition: 6 };
     var prefix = scriptId.split('-')[0];
     if (!routes[prefix]) return;
     var total = routes[prefix];
@@ -290,8 +290,9 @@
     var bonusKey = prefix + '-route-bonus';
     if (!isDone(bonusKey)) {
       markDone(bonusKey);
+      var bonusName = prefix === 'exhibition' ? '完成乡情村史陈列室全程导览' : '完成' + prefix + '路线全程导览';
       if (window.EnergyStore) {
-        window.EnergyStore.earn(15, '完成' + prefix + '路线全程导览');
+        window.EnergyStore.earn(15, bonusName);
       }
       showEnergyToast(15);
     }
@@ -414,7 +415,7 @@
     },
 
     playFullRoute: function (routeId) {
-      var routes = { red: 4, green: 4, gray: 4 };
+      var routes = { red: 4, green: 4, gray: 4, exhibition: 6 };
       var total = routes[routeId];
       if (!total) return;
       _autoplayQueue = [];

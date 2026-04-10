@@ -238,6 +238,17 @@
 
 <main class="max-w-screen-2xl mx-auto px-4 md:px-12 pb-16 md:pb-32 relative">
 
+    <!-- Audio Guide Banner -->
+    <div id="audio-intro-banner" class="bg-surface-container-low border-l-4 border-primary px-4 py-3 md:px-6 md:py-4 flex items-center justify-center flex-wrap gap-3 mt-8 mb-4" style="display:flex">
+        <span class="material-symbols-outlined text-primary">headphones</span>
+        <p class="font-body text-sm text-on-surface">戴上耳机，听策展人讲完六件展板后面的故事</p>
+        <button onclick="AudioGuide.playFullRoute('exhibition')" class="font-label text-xs text-primary font-bold whitespace-nowrap hover:text-primary-container transition-colors ml-2 border border-primary/40 px-3 py-1.5">
+            <span class="material-symbols-outlined text-sm align-middle">play_circle</span>
+            开始全程导览（约 30 分钟）
+        </button>
+        <button onclick="document.getElementById('audio-intro-banner').style.display='none'" class="text-on-surface-variant hover:opacity-70"><span class="material-symbols-outlined text-sm">close</span></button>
+    </div>
+
     <!-- 序厅 Preface Hall -->
     <section class="mb-24 md:mb-40 pt-12 md:pt-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-start">
@@ -247,7 +258,11 @@
                     <span class="h-px flex-1 bg-primary/20"></span>
                 </div>
                 <h2 class="text-3xl md:text-5xl font-headline font-extrabold text-on-surface mb-2 leading-tight">序厅</h2>
-                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">长城脚下的世外桃源 · A Paradise at the Foot of The Great Wall</p>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-4">长城脚下的世外桃源 · A Paradise at the Foot of The Great Wall</p>
+                <button onclick="AudioGuide.play('exhibition-0')" data-audio-id="exhibition-0" class="mb-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-container transition-colors border-b-2 border-primary/30 hover:border-primary pb-1">
+                    <span class="material-symbols-outlined text-lg">headphones</span>
+                    听讲解 · 序厅与习近平回信
+                </button>
                 <img src="../images/exhibition/00-preface-hall.jpg" alt="序厅 — 长城脚下的世外桃源 · 香屯村" class="panel-img" onclick="openLightbox(this.src)" loading="lazy"/>
             </div>
             <div class="lg:col-span-5 panel-card" style="animation-delay:0.2s">
@@ -344,6 +359,12 @@
 
         <!-- 前言 -->
         <div class="mb-16 md:mb-24 max-w-4xl mx-auto">
+            <div class="flex justify-end mb-3">
+                <button onclick="AudioGuide.play('exhibition-1')" data-audio-id="exhibition-1" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-container transition-colors border-b-2 border-primary/30 hover:border-primary pb-1">
+                    <span class="material-symbols-outlined text-lg">headphones</span>
+                    听讲解 · 前言与村庄建制
+                </button>
+            </div>
             <div class="bg-[#fdf9f3] border border-tertiary/15 px-8 py-10 md:px-14 md:py-16 relative">
                 <div class="absolute -top-4 left-10 bg-primary text-white text-[10px] font-black tracking-[0.4em] px-4 py-1.5">PREFACE · 前言</div>
                 <div class="text-sm md:text-base font-body text-on-surface leading-[1.95] space-y-4">
@@ -381,7 +402,11 @@
             <div class="lg:col-span-7 panel-card order-1 lg:order-2" style="animation-delay:0.1s">
                 <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-2 · Cultural Relics</div>
                 <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-4">村中古迹 · 辽代采矿遗址</h3>
-                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-6">Mining Site of the Liao Dynasty</p>
+                <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-4">Mining Site of the Liao Dynasty</p>
+                <button onclick="AudioGuide.play('exhibition-2')" data-audio-id="exhibition-2" class="mb-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-container transition-colors border-b-2 border-primary/30 hover:border-primary pb-1">
+                    <span class="material-symbols-outlined text-lg">headphones</span>
+                    听讲解 · 辽代冶铁"首钢"
+                </button>
                 <hr class="decorative-hr text-primary mb-6"/>
                 <div class="text-sm md:text-base font-body text-on-surface leading-[1.9] space-y-4">
                     <p>从 <strong>2006 年</strong>开始，考古工作者陆续在大庄科地区发现了辽代矿冶遗址群，由矿山、冶炼、居住及作坊遗址等构成，主要分布于水泉沟、铁炉、汉家川、慈母川等地。</p>
@@ -422,7 +447,11 @@
         <div class="mb-8 md:mb-16 panel-card">
             <div class="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-3">Panel 1-5 · Martyrs</div>
             <h3 class="text-3xl md:text-4xl font-headline font-extrabold text-on-surface mb-2">烈士传记 · 王海清 · 卫兴顺</h3>
-            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-8">Two Heroes of Xiangtun</p>
+            <p class="text-base md:text-lg font-headline italic text-on-surface-variant mb-4">Two Heroes of Xiangtun</p>
+            <button onclick="AudioGuide.play('exhibition-3')" data-audio-id="exhibition-3" class="mb-8 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-container transition-colors border-b-2 border-primary/30 hover:border-primary pb-1">
+                <span class="material-symbols-outlined text-lg">headphones</span>
+                听讲解 · 抗日烽火与两位烈士
+            </button>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-14">
                 <div class="lg:col-span-5">
@@ -457,6 +486,10 @@
                 <div class="text-[10px] font-black tracking-[0.4em] uppercase text-tertiary mb-3">Part 02</div>
                 <h2 class="text-4xl md:text-6xl font-headline font-extrabold text-tertiary leading-none">守护长城</h2>
                 <p class="text-base md:text-lg font-headline italic text-on-surface-variant mt-3">The Protection of The Great Wall</p>
+                <button onclick="AudioGuide.play('exhibition-4')" data-audio-id="exhibition-4" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-tertiary hover:opacity-70 transition-opacity border-b-2 border-tertiary/30 hover:border-tertiary pb-1">
+                    <span class="material-symbols-outlined text-lg">headphones</span>
+                    听讲解 · 自发守护与研究性修缮
+                </button>
             </div>
             <div class="hidden md:block">
                 <span class="seal-vertical text-xs tracking-widest text-tertiary/40">PROTECTION · PANEL 6-9</span>
@@ -515,6 +548,10 @@
                 <div class="text-[10px] font-black tracking-[0.4em] uppercase text-[#a62c2b] mb-3">Part 03</div>
                 <h2 class="text-4xl md:text-6xl font-headline font-extrabold text-[#a62c2b] leading-none">香屯建设</h2>
                 <p class="text-base md:text-lg font-headline italic text-on-surface-variant mt-3">The Construction of Xiangtun Village</p>
+                <button onclick="AudioGuide.play('exhibition-5')" data-audio-id="exhibition-5" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#a62c2b] hover:opacity-70 transition-opacity border-b-2 border-[#a62c2b]/30 hover:border-[#a62c2b] pb-1">
+                    <span class="material-symbols-outlined text-lg">headphones</span>
+                    听讲解 · 乡村振兴与结束语
+                </button>
             </div>
             <div class="hidden md:block">
                 <span class="seal-vertical text-xs tracking-widest text-[#a62c2b]/40">CONSTRUCTION · PANEL 10-11</span>
@@ -772,6 +809,8 @@
   });
 })();
 </script>
+<script src="../js/audio-scripts.js"></script>
+<script src="../js/audio-guide.js"></script>
 <script src="../js/energy-store.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
